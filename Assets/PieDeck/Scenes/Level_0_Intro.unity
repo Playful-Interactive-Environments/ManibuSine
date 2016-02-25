@@ -3006,7 +3006,7 @@ Prefab:
       objectReference: {fileID: 476508450}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.29.16.64
+      value: 10.29.16.15
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -6919,6 +6919,10 @@ Prefab:
     - target: {fileID: 400000, guid: 402bb4a1938902b438ca4fc86a1c236f, type: 3}
       propertyPath: m_LocalScale.z
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 402bb4a1938902b438ca4fc86a1c236f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 402bb4a1938902b438ca4fc86a1c236f, type: 3}
