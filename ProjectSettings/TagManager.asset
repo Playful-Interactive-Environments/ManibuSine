@@ -9,6 +9,9 @@ TagManager:
   - tbe_room
   - GameManager
   - Communicator
+  - Bubble
+  - areaEffect
+  - Environment
   layers:
   - Default
   - TransparentFX
@@ -28,7 +31,7 @@ TagManager:
   - object
   - bubbles
   - Communicator
-  - 
+  - Environment
   - 
   - 
   - 
