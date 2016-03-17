@@ -137,5 +137,18 @@ public class ServerManager : NetworkManager
 		base.OnStopClient();
 		debugTextClient.text = "Server Stopped";
 	}
+
+    public void ReconnectClient()
+    {
+        StopClient();
+        StartCoroutine("Reconnect");
+    }
+
+    IEnumerator Reconnect()
+    {
+        yield return new WaitForSeconds(1f);
+        StartClient();
+
+    }
 	#endregion
 }

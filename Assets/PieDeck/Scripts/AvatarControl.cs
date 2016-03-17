@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.VR;
+using VRStandardAssets.Utils;
 public class AvatarControl : MonoBehaviour {
 
     public GameObject PlayerAvatar;
@@ -38,6 +40,10 @@ public class AvatarControl : MonoBehaviour {
 
             if (PlayerAvatar != null)
             {
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    ServerManager.Instance.ReconnectClient();
+                }
                 this.transform.position = PlayerAvatar.transform.position;
             }
         }
