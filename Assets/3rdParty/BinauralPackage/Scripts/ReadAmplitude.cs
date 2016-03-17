@@ -22,7 +22,7 @@ public class ReadAmplitude : MonoBehaviour {
 		talkerColor.b = Mathf.Clamp(amplitude*100, 0, 0.04f);
 		talkerColor.g = Mathf.Clamp(amplitude*100, 0, 0.04f);
 		talkerColor.a = 1;
-		Talker.GetComponent<Renderer>().materials[1].color = Talker.GetComponent<Renderer>().materials[0].color = talkerColor;
+		//Talker.GetComponent<Renderer>().materials[1].color = Talker.GetComponent<Renderer>().materials[0].color = talkerColor;
 	}
 
 	void OnAudioFilterRead (float[] data, int channels)
