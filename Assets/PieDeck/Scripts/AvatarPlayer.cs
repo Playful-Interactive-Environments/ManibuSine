@@ -17,6 +17,7 @@ public class AvatarPlayer : NetworkBehaviour
     public GameObject controllingPlayer;
     public GameObject ServerBody;
     public GameObject ClientBody;
+    public int ColorId = 2;
 
 
 	void Awake()
@@ -52,11 +53,15 @@ public class AvatarPlayer : NetworkBehaviour
 		{
 			GameManager.Instance.AvatarRed = this.gameObject;
 		    GetComponentInChildren<MeshRenderer>().material = GameManager.Instance.MaterialRed;
-		}
+            ColorId = 0;
+
+        }
 		if (myTransform.name == "Avatar Green")
 		{
 			GameManager.Instance.AvatarGreen = this.gameObject;
-		}
+            ColorId = 1;
+
+        }
 	    if (isClient)
 	    {
             ClientBody.gameObject.SetActive(true);

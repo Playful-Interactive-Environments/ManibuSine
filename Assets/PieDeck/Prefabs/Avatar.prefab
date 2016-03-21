@@ -193,6 +193,7 @@ MonoBehaviour:
   controllingPlayer: {fileID: 0}
   ServerBody: {fileID: 182316}
   ClientBody: {fileID: 116090}
+  ColorId: 0
 --- !u!114 &11433262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,7 +286,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139562}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
   m_Height: 12
