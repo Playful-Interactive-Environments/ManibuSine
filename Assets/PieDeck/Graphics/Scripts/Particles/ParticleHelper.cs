@@ -17,7 +17,8 @@ public struct ParticleHit
 public class ParticleHelper : MonoBehaviour {
 
     private ParticleSystem ps;
-    private ParticleCollisionEvent[] collisionEvents;
+    private Transform psTransform;
+    //private ParticleCollisionEvent[] collisionEvents;
     private GameObject[] player;
 
     private float sqrStartSpeed;
@@ -28,7 +29,8 @@ public class ParticleHelper : MonoBehaviour {
     void Start() {
         environmentSetup = GameObject.FindObjectOfType<EnvironmentSetup>();
         ps = GetComponent<ParticleSystem>();
-        collisionEvents = new ParticleCollisionEvent[16];
+        psTransform = ps.transform;
+        //collisionEvents = new ParticleCollisionEvent[16];
         sqrStartSpeed = ps.startSpeed * ps.startSpeed;
 
         player = GameObject.FindGameObjectsWithTag("NetworkPlayer");
@@ -45,23 +47,28 @@ public class ParticleHelper : MonoBehaviour {
                 p.velocity = v;
             }
 
-            if (p.lifetime == p.startLifetime && environmentSetup.PieColors.Length > 0)
+            Vector3 pos = p.position;
+            pos.y = p.startSize / 2 - psTransform.position.y;
+
+            p.position = pos;
+
+            /*if (p.lifetime == p.startLifetime && environmentSetup.PieColors.Length > 0)
             {
                 //Debug.Log(p.position);
-                /*int index = (int)Random.Range(0, environmentSetup.PieColors.Length / 2);
+                int index = (int)Random.Range(0, environmentSetup.PieColors.Length / 2);
                 if (index >= environmentSetup.PieColors.Length / 2) index = environmentSetup.PieColors.Length / 2 - 1;
-                p.color = Color.Lerp(environmentSetup.PieColors[index], environmentSetup.PieColors[index + environmentSetup.PieColors.Length / 2], Random.Range(0, 1.0F));*/
-            }
+                p.color = Color.Lerp(environmentSetup.PieColors[index], environmentSetup.PieColors[index + environmentSetup.PieColors.Length / 2], Random.Range(0, 1.0F));
+            }*/
 
-            foreach (ParticleHit pos in hitParticlePos)
+            foreach (ParticleHit hPos in hitParticlePos)
             {
-                Vector3 dir = pos.Position - (p.position + ps.transform.position);
+                Vector3 dir = hPos.Position - (pos + psTransform.position);
                 if (dir.sqrMagnitude < 3000)
                 {
                     //p.color = Color.grey;
                     //p.velocity = dir * 100;
 
-                    int index = pos.ColorId;
+                    int index = hPos.ColorId;
                     p.color = Color.Lerp(environmentSetup.PieColors[index], environmentSetup.PieColors[index + environmentSetup.PieColors.Length / 2], Random.Range(0, 1.0F));
                 }
             }
@@ -83,15 +90,15 @@ public class ParticleHelper : MonoBehaviour {
         {
             AvatarPlayer p = other.GetComponent<AvatarPlayer>();
 
-            int safeLength = ps.GetSafeCollisionEventSize();
+            Vector3 pos = other.transform.position;
+            pos.y = psTransform.position.y;
+            hitParticlePos.Add(new ParticleHit(pos, p.ColorId));
+
+            /*int safeLength = ps.GetSafeCollisionEventSize();
             if (collisionEvents.Length < safeLength)
                 collisionEvents = new ParticleCollisionEvent[safeLength];
 
             int numCollisionEvents = ps.GetCollisionEvents(other, collisionEvents);
-
-            Vector3 pos = other.transform.position;
-            pos.y = ps.transform.position.y;
-            hitParticlePos.Add(new ParticleHit(pos, p.ColorId));
 
             /*int i = 0;
             while (i < numCollisionEvents)
