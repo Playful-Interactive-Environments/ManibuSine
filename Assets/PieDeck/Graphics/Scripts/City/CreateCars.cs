@@ -5,7 +5,7 @@ public class CreateCars : MonoBehaviour {
 
 	public ParticleSystem CarParticleSystem;
 	//public int CarCount = 100;
-    public EnvironmentSetup environmentSetup;
+    private EnvironmentSetup environmentSetup;
 
     public int rowCount;
 
@@ -23,6 +23,7 @@ public class CreateCars : MonoBehaviour {
     private int[] dir = { 1, 1, 3, 3, 0, 0, 2, 2 }; 
 
 	void Start() {
+        environmentSetup = GameObject.FindObjectOfType<EnvironmentSetup>();
         //rowCount = (int)Mathf.Sqrt (CarCount);
         maxDistanceX = environmentSetup.GetXStreetCenter(rowCount / 2); //(rowCount/2) * environmentSetup.BuildingDistanceX - environmentSetup.StreetWidth / 2 - environmentSetup.MainBuildingCenterX;
         maxDistanceY = environmentSetup.GetYStreetCenter(rowCount / 2);

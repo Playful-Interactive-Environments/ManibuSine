@@ -2296,13 +2296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed488123b86ebf544978bd2273bfe46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startColor:
-  - {r: 0.94509804, g: 0.17254902, b: 0.3529412, a: 1}
-  - {r: 0.17254902, g: 0.64705884, b: 0.65882355, a: 1}
-  - {r: 0.69803923, g: 0.78039217, b: 0.25882354, a: 1}
-  - {r: 0.6745098, g: 0.105882354, b: 0.1882353, a: 1}
-  - {r: 0, g: 0.5176471, b: 0.50980395, a: 1}
-  - {r: 0.31764707, g: 0.6392157, b: 0.2, a: 1}
 --- !u!199 &457400813
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -2556,10 +2549,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4281342892
+        rgba: 4281574225
       maxColor:
         serializedVersion: 2
-        rgba: 4284099809
+        rgba: 4282566578
       minMaxState: 2
     startSize:
       scalar: 100
@@ -2703,7 +2696,7 @@ ParticleSystem:
     angle: 25
     length: 5
     boxX: 1920
-    boxY: 50
+    boxY: 1
     boxZ: 1080
     arc: 360
     placementMode: 0
@@ -3840,7 +3833,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 457400811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 25, z: 540}
+  m_LocalPosition: {x: 960, y: 50, z: 540}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6643,7 +6636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainBuilding: {fileID: 686741126}
   BuildingCount: 50
-  environmentSetup: {fileID: 760534894}
 --- !u!1 &1243245986
 GameObject:
   m_ObjectHideFlags: 0
@@ -10879,7 +10871,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CarParticleSystem: {fileID: 1190174264}
-  environmentSetup: {fileID: 760534894}
   rowCount: 8
 --- !u!1 &1840512541
 GameObject:
@@ -11506,6 +11497,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462408, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493974, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

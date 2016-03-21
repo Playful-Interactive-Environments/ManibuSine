@@ -5,10 +5,11 @@ public class CreateBuildings : MonoBehaviour {
 
 	public GameObject MainBuilding;
 	public int BuildingCount = 10;
-    public EnvironmentSetup environmentSetup;
+    private EnvironmentSetup environmentSetup;
 
 	void Start () {
-		int rowCount = (int)Mathf.Sqrt (BuildingCount);
+        environmentSetup = GameObject.FindObjectOfType<EnvironmentSetup>();
+        int rowCount = (int)Mathf.Sqrt (BuildingCount);
 		for (int i = 0; i < rowCount; i++) {
 			for (int j = 0; j < rowCount; j++) {
 				Vector3 scale = new Vector3 ();
