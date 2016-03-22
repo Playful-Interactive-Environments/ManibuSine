@@ -334,6 +334,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 300975860}
+  - 114: {fileID: 300975861}
   - 114: {fileID: 300975859}
   m_Layer: 0
   m_Name: PlayerManager
@@ -350,12 +351,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 300975858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a6080305a7ac96498f124ec2bfa5914, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b2394d4fa6ab87498680abdbd1aac8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistent: 0
-  m_playerPrefab: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
-  m_addUnknownPlayerOnUpdate: 1
+  _playerPrefab: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
+  _addUnknownPlayerOnUpdate: 1
+  _subscribeTuioCursors: 1
+  _subscribeTuioObjects: 0
+  _subscribeTuioBlobs: 0
 --- !u!4 &300975860
 Transform:
   m_ObjectHideFlags: 0
@@ -368,6 +371,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1752594293}
   m_RootOrder: 2
+--- !u!114 &300975861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 300975858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504bce0a5e9081d418f08a25fe29964b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
+  _addUnknownPlayerOnUpdate: 1
 --- !u!1 &399382221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,19 +1294,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b6e52057d9557438bb820de1408ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pharusSettings:
-    protocol: 1
-    tcpRemoteIpAddress: 127.0.0.1
-    tcpLocalPort: 44345
-    udpMulticastIpAddress: 239.1.1.1
-    udpLocalPort: 44345
-    targetScreenWidth: 1920
-    targetScreenHeight: 1080
-    checkServerReconnectIntervall: 5
-    tracklinkEnabled: 0
-    tuioEnabled: 0
-    targetResolution: 0
   m_persistent: 1
+  m_pharusSettings:
+    _tracklinkEnabled: 1
+    _protocol: 1
+    _tcpRemoteIpAddress: 127.0.0.1
+    _tcpLocalPort: 44345
+    _udpMulticastIpAddress: 239.1.1.1
+    _udpLocalPort: 44345
+    _targetScreenWidth: 1920
+    _targetScreenHeight: 1080
+    _stageX: 1600
+    _stageY: 900
+    _checkServerReconnectIntervall: 5
+  canvasControl: {fileID: 0}
+  trackingType: {fileID: 0}
+  protocolStatus: {fileID: 0}
+  resolutionStatus: {fileID: 0}
 --- !u!4 &1752594293
 Transform:
   m_ObjectHideFlags: 0
@@ -1320,11 +1340,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d130cdebefe234e932cdef07a3c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_persistent: 1
   m_tuioSettings:
+    _trackingEnabled: 1
     _udpPort: 3333
     _targetScreenWidth: 1920
     _targetScreenHeight: 1080
-  m_persistent: 1
+    _stageX: 1600
+    _stageY: 900
+  canvasControl: {fileID: 0}
+  trackingType: {fileID: 0}
+  protocolStatus: {fileID: 0}
+  resolutionStatus: {fileID: 0}
 --- !u!1 &1766893350
 GameObject:
   m_ObjectHideFlags: 0

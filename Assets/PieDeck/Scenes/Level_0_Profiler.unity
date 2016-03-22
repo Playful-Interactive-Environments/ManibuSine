@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &457400812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,13 +547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed488123b86ebf544978bd2273bfe46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startColor:
-  - {r: 0.94509804, g: 0.17254902, b: 0.3529412, a: 1}
-  - {r: 0.17254902, g: 0.64705884, b: 0.65882355, a: 1}
-  - {r: 0.69803923, g: 0.78039217, b: 0.25882354, a: 1}
-  - {r: 0.6745098, g: 0.105882354, b: 0.1882353, a: 1}
-  - {r: 0, g: 0.5176471, b: 0.50980395, a: 1}
-  - {r: 0.31764707, g: 0.6392157, b: 0.2, a: 1}
 --- !u!199 &457400813
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -2810,7 +2803,7 @@ Prefab:
       objectReference: {fileID: 476508450}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 192.168.1.2
+      value: localhost
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -3033,7 +3026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainBuilding: {fileID: 686741126}
   BuildingCount: 50
-  environmentSetup: {fileID: 760534894}
 --- !u!1 &1246857413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,7 +3874,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CarParticleSystem: {fileID: 1190174264}
-  environmentSetup: {fileID: 760534894}
   rowCount: 8
 --- !u!1 &1840512541
 GameObject:
@@ -4522,7 +4513,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 200
+      value: 206
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.z

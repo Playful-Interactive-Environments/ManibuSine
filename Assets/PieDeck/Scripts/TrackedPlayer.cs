@@ -2,14 +2,14 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class TrackedPlayer : ATuioPlayer
+public class TrackedPlayer : ATrackingEntity
 {
 	public float Height = 50.0f;
 	bool _isNetworkPlayer;
 	private bool _hasRedPlayer;
 	private bool _hasGreenPlayer;
 
-	public override void MoveTo(Vector2 coords)
+	public override void SetPosition(Vector2 coords)
 	{
 		this.transform.position = new Vector3(coords.x, Height, coords.y);
 
