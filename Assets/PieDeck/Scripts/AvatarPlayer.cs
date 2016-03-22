@@ -19,16 +19,20 @@ public class AvatarPlayer : NetworkBehaviour
     public GameObject ClientBody;
     public int ColorId = 2;
 
+    private ParticleSystem[] ps;
 
-	void Awake()
+
+
+    void Awake()
 	{
         ClientBody.gameObject.SetActive(false);
         ServerBody.gameObject.SetActive(true);
         myTransform = transform;
 		playerActive = false;
-	}
+        ps = GetComponentsInChildren<ParticleSystem>(true);
+    }
 
-	void Update()
+    void Update()
 	{
 		this.transform.position = _syncPos;
 
@@ -54,15 +58,15 @@ public class AvatarPlayer : NetworkBehaviour
 			GameManager.Instance.AvatarRed = this.gameObject;
 		    GetComponentInChildren<MeshRenderer>().material = GameManager.Instance.MaterialRed;
             ColorId = 0;
-
+            ps[2].gameObject.SetActive(true);
         }
 		if (myTransform.name == "Avatar Green")
 		{
 			GameManager.Instance.AvatarGreen = this.gameObject;
             ColorId = 1;
-
+            ps[0].gameObject.SetActive(true);
         }
-	    if (isClient)
+        if (isClient)
 	    {
             ClientBody.gameObject.SetActive(true);
             ServerBody.gameObject.SetActive(true);
