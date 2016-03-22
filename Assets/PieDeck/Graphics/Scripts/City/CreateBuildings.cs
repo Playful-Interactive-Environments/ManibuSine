@@ -10,7 +10,9 @@ public class CreateBuildings : MonoBehaviour {
 	void Start () {
         environmentSetup = GameObject.FindObjectOfType<EnvironmentSetup>();
         int rowCount = (int)Mathf.Sqrt (BuildingCount);
-		for (int i = 0; i < rowCount; i++) {
+        CombineInstance[] combine = new CombineInstance[rowCount * rowCount];
+
+        for (int i = 0; i < rowCount; i++) {
 			for (int j = 0; j < rowCount; j++) {
 				Vector3 scale = new Vector3 ();
 				scale.x = Random.Range (environmentSetup.MainBuildingWidth / 3.0F, environmentSetup.MainBuildingWidth);
@@ -25,12 +27,12 @@ public class CreateBuildings : MonoBehaviour {
 				if (pos.x == environmentSetup.MainBuildingCenterX && pos.z == environmentSetup.MainBuildingCenterY)
 					continue;
 
-				GameObject b = Instantiate (MainBuilding);
+                GameObject b = Instantiate (MainBuilding);
 				b.transform.position = pos;
 				b.transform.localScale = scale;
 				b.transform.parent = MainBuilding.transform.parent;
 
-			}
-		}
+            }
+        }
 	}
 }
