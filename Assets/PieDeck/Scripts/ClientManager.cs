@@ -5,11 +5,13 @@ public class ClientManager : MonoBehaviour {
 
 	
 	void Start () {
-	    GetComponent<ServerManager>().JoinGame();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (!ServerManager.Instance.isNetworkActive)
+		{
+			GetComponent<ServerManager>().JoinGame();
+		}
 	}
 }
