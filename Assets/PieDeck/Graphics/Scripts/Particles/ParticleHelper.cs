@@ -19,12 +19,14 @@ public class ParticleHelper : MonoBehaviour {
     private ParticleSystem ps;
     private Transform psTransform;
     //private ParticleCollisionEvent[] collisionEvents;
-    private GameObject[] player;
+    private AvatarPlayer[] player;
 
     private float sqrStartSpeed;
     private List<ParticleHit> hitParticlePos;
 
     private EnvironmentSetup environmentSetup;
+    private int drawingRadius = 50;
+    private int drawingRadiusSqr;
 
     void Start() {
         environmentSetup = GameObject.FindObjectOfType<EnvironmentSetup>();
@@ -32,12 +34,40 @@ public class ParticleHelper : MonoBehaviour {
         psTransform = ps.transform;
         //collisionEvents = new ParticleCollisionEvent[16];
         sqrStartSpeed = ps.startSpeed * ps.startSpeed;
+        drawingRadiusSqr = drawingRadius * drawingRadius;
 
-        player = GameObject.FindGameObjectsWithTag("NetworkPlayer");
+        player = GameObject.FindObjectsOfType<AvatarPlayer>(); //.FindGameObjectsWithTag("NetworkPlayer");
         hitParticlePos = new List<ParticleHit>();
+
+        ps.UpdateParticles(p =>
+        {
+            Vector3 pos = p.position;
+            pos.y = (p.startSize / 2 - psTransform.position.y);
+            p.position = pos;
+
+            return p;
+        });
     }
 
-	void FixedUpdate () {
+    void Update () {
+
+        hitParticlePos.Clear();
+
+        if (player.Length == 0)
+        {
+            player = GameObject.FindObjectsOfType<AvatarPlayer>();
+            return;
+        }
+
+        foreach (AvatarPlayer ap in player)
+        {
+            Vector3 pos = ap.transform.position;
+            pos.y = psTransform.position.y;
+            hitParticlePos.Add(new ParticleHit(pos, ap.ColorId));
+        }
+
+//        Profiler.BeginSample("Particle Update");
+
         ps.UpdateParticles(p =>
         {
             Vector3 v = p.velocity;
@@ -46,11 +76,6 @@ public class ParticleHelper : MonoBehaviour {
                 v = v * -1;
                 p.velocity = v;
             }
-
-            Vector3 pos = p.position;
-            pos.y = p.startSize / 2 - psTransform.position.y;
-
-            p.position = pos;
 
             /*if (p.lifetime == p.startLifetime && environmentSetup.PieColors.Length > 0)
             {
@@ -62,8 +87,8 @@ public class ParticleHelper : MonoBehaviour {
 
             foreach (ParticleHit hPos in hitParticlePos)
             {
-                Vector3 dir = hPos.Position - (pos + psTransform.position);
-                if (dir.sqrMagnitude < 3000)
+                Vector3 dir = hPos.Position - (p.position + psTransform.position);
+                if (dir.sqrMagnitude < drawingRadiusSqr)
                 {
                     //p.color = Color.grey;
                     //p.velocity = dir * 100;
@@ -76,11 +101,14 @@ public class ParticleHelper : MonoBehaviour {
             return p;
         });
 
-        hitParticlePos.Clear();
+//        Profiler.EndSample();
+
+        //hitParticlePos.Clear();
 
 
     }
 
+    /*
     void OnParticleCollision(GameObject other)
     {
         //Debug.Log(LayerMask.LayerToName(other.layer));
@@ -94,22 +122,23 @@ public class ParticleHelper : MonoBehaviour {
             pos.y = psTransform.position.y;
             //hitParticlePos.Add(new ParticleHit(pos, p.ColorId));
 
-            /*int safeLength = ps.GetSafeCollisionEventSize();
-            if (collisionEvents.Length < safeLength)
-                collisionEvents = new ParticleCollisionEvent[safeLength];
+    //        int safeLength = ps.GetSafeCollisionEventSize();
+    //        if (collisionEvents.Length < safeLength)
+    //            collisionEvents = new ParticleCollisionEvent[safeLength];
 
-            int numCollisionEvents = ps.GetCollisionEvents(other, collisionEvents);
+    //        int numCollisionEvents = ps.GetCollisionEvents(other, collisionEvents);
 
-            /*int i = 0;
-            while (i < numCollisionEvents)
-            {
-//                Vector3 pos = collisionEvents[i].intersection; //.colliderComponent.transform.position;
-                hitParticlePos.Add(pos);
+    //        int i = 0;
+    //        while (i < numCollisionEvents)
+    //        {
+    ////                Vector3 pos = collisionEvents[i].intersection; //.colliderComponent.transform.position;
+    //            hitParticlePos.Add(pos);
 
-                //collisionEvents[i]
-                //ps.SetParticles();
-                i++;
-            }*/
+    //            //collisionEvents[i]
+    //            //ps.SetParticles();
+    //            i++;
+    //        }
         }
     }
+    */
 }
