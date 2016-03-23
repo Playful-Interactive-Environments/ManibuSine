@@ -48,14 +48,15 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 190400, guid: b17cae5e8b017504e94a86a9b0e644b3, type: 2}
+  m_PlayerPrefab: {fileID: 198404, guid: a0d49257c50ec9e4389af27e039f46ae, type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 139562, guid: 63abd6e12bd5c7c4b90c63f0057bf14c, type: 2}
-  - {fileID: 116090, guid: 05c5b43e7f2129c4e9ab8eb6a2396ac5, type: 2}
+  - {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -100,11 +101,14 @@ MonoBehaviour:
   ClientConnected: 0
   debugTextClient: {fileID: 0}
   debugTextServer: {fileID: 0}
-  gameManagerPrefab: {fileID: 116090, guid: 05c5b43e7f2129c4e9ab8eb6a2396ac5, type: 2}
-  AvatarPrefab: {fileID: 139562, guid: 63abd6e12bd5c7c4b90c63f0057bf14c, type: 2}
-  AvatarRed: {fileID: 0}
-  AvatarGreen: {fileID: 0}
-  MaterialRed: {fileID: 2100000, guid: 74ab64b7481d5324197b6325848964b0, type: 2}
+  CurrentPlayerText: {fileID: 0}
+  CurrentSelectedPlayer: {fileID: 0}
+  ButtonDisconnect: {fileID: 0}
+  ButtonPlayerOne: {fileID: 0}
+  ButtonPlayerTwo: {fileID: 0}
+  PlayerOne: {fileID: 0}
+  PlayerTwo: {fileID: 0}
+  TrackedPlayer: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -132,6 +136,10 @@ Prefab:
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 190400, guid: b17cae5e8b017504e94a86a9b0e644b3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_CustomConfig
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177230}

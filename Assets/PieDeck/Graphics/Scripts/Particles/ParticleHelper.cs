@@ -88,11 +88,11 @@ public class ParticleHelper : MonoBehaviour {
 
         if (other.layer == LayerMask.NameToLayer("player"))
         {
-            AvatarPlayer p = other.GetComponent<AvatarPlayer>();
+            //AvatarPlayer p = other.GetComponent<AvatarPlayer>();
 
             Vector3 pos = other.transform.position;
             pos.y = psTransform.position.y;
-            hitParticlePos.Add(new ParticleHit(pos, p.ColorId));
+            //hitParticlePos.Add(new ParticleHit(pos, p.ColorId));
 
             /*int safeLength = ps.GetSafeCollisionEventSize();
             if (collisionEvents.Length < safeLength)
