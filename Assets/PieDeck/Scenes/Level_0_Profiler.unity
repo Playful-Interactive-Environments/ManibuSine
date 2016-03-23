@@ -742,7 +742,7 @@ Transform:
   - {fileID: 2132059590}
   - {fileID: 944298233}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &622270721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1238,10 @@ Prefab:
       propertyPath: m_SpawnPrefabs.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 198404, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
   m_IsPrefabParent: 0
@@ -2017,7 +2021,7 @@ Transform:
   - {fileID: 790900353}
   - {fileID: 257864040}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1001 &1808625552
 Prefab:
   m_ObjectHideFlags: 0
@@ -2592,7 +2596,7 @@ Transform:
   - {fileID: 2122855531}
   - {fileID: 478060599}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1001 &2083255598
 Prefab:
   m_ObjectHideFlags: 0

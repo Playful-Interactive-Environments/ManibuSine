@@ -19,7 +19,7 @@ public class ParticleHelper : MonoBehaviour {
     private ParticleSystem ps;
     private Transform psTransform;
     //private ParticleCollisionEvent[] collisionEvents;
-    private AvatarPlayer[] player;
+    private NetworkPlayer[] player;
 
     private float sqrStartSpeed;
     private List<ParticleHit> hitParticlePos;
@@ -36,7 +36,7 @@ public class ParticleHelper : MonoBehaviour {
         sqrStartSpeed = ps.startSpeed * ps.startSpeed;
         drawingRadiusSqr = drawingRadius * drawingRadius;
 
-        player = GameObject.FindObjectsOfType<AvatarPlayer>(); //.FindGameObjectsWithTag("NetworkPlayer");
+        player = GameObject.FindObjectsOfType<NetworkPlayer>(); //.FindGameObjectsWithTag("NetworkPlayer");
         hitParticlePos = new List<ParticleHit>();
 
         ps.UpdateParticles(p =>
@@ -55,11 +55,11 @@ public class ParticleHelper : MonoBehaviour {
 
         if (player.Length == 0)
         {
-            player = GameObject.FindObjectsOfType<AvatarPlayer>();
+            player = GameObject.FindObjectsOfType<NetworkPlayer>();
             return;
         }
 
-        foreach (AvatarPlayer ap in player)
+        foreach (NetworkPlayer ap in player)
         {
             Vector3 pos = ap.transform.position;
             pos.y = psTransform.position.y;

@@ -6,9 +6,12 @@ public class NetworkPlayer : NetworkBehaviour
 {
 	public GameObject ControllingPlayer;
 	[SyncVar] private Vector3 position;
-	
+	public int ColorId = 2;
+
+	private ParticleSystem[] ps;
+
 	void Start () {
-		
+		ps = GetComponentsInChildren<ParticleSystem>(true);
 	}
 	
 	// Update is called once per frame
@@ -16,12 +19,14 @@ public class NetworkPlayer : NetworkBehaviour
 		if (isLocalPlayer)
 		{
 			GameObject.Find("OVRPlayerController").transform.position = transform.position;
+			ColorId = 1;
+			ps[0].gameObject.SetActive(true);
 		}
 		if (isServer)
 		{
-            transform.name = "" + connectionToClient.connectionId;
-            GetComponent<CharacterController>().enabled = false;
-		    GetComponent<CapsuleCollider>().enabled = false;
+			transform.name = "" + connectionToClient.connectionId;
+			GetComponent<CharacterController>().enabled = false;
+			GetComponent<CapsuleCollider>().enabled = false;
 			if (connectionToClient.connectionId == 1)
 			{
 				ServerManager.Instance.PlayerOne = gameObject;
