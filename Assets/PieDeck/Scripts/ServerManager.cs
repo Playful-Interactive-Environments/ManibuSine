@@ -22,7 +22,6 @@ public class ServerManager : NetworkManager
 	public Button ButtonPlayerTwo;
 	public GameObject PlayerOne;
 	public GameObject PlayerTwo;
-	public GameObject TrackedPlayer;
 
 
 	void Awake()

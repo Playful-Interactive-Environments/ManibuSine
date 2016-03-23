@@ -4105,7 +4105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01177e6a5cdba774cb4ef7b337541a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerAvatar: {fileID: 0}
 --- !u!1 &622270721
 GameObject:
   m_ObjectHideFlags: 0
@@ -6207,7 +6206,7 @@ Prefab:
       objectReference: {fileID: 476508450}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 192.168.1.2
+      value: localhost
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -11125,6 +11124,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2122855531}
   m_RootOrder: 3
+--- !u!1001 &1894216269
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 951
+      objectReference: {fileID: 0}
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 249
+      objectReference: {fileID: 0}
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 484286, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 69ae27144d0054d4ba5d0d0dfbee25df, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1896282122
 GameObject:
   m_ObjectHideFlags: 0
