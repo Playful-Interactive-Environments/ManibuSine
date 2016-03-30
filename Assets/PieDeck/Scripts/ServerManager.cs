@@ -16,10 +16,11 @@ public class ServerManager : NetworkManager
 	public bool isClient;
 	public Text debugTextServer;
 	public Text CurrentPlayerText;
-	public GameObject CurrentSelectedPlayer;
+	public GameObject CurrentTrackedPlayer;
 	public Button ButtonDisconnect;
 	public Button ButtonPlayerOne;
 	public Button ButtonPlayerTwo;
+    public Button ButtonRecalibrate;
 	public GameObject PlayerOne;
 	public GameObject PlayerTwo;
 
@@ -41,26 +42,26 @@ public class ServerManager : NetworkManager
 		//Sets this to not be destroyed when reloading scene
 		DontDestroyOnLoad(gameObject);
 	}
+
 	#region ConnectClients
-	
 	public void DisconnectPlayer()
 	{
 		if (PlayerOne != null)
 		{
-			if (PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer == CurrentSelectedPlayer && PlayerOne != null)
+			if (PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer == CurrentTrackedPlayer && PlayerOne != null)
 			{
 				PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer = null;
-				CurrentSelectedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne = false;
+				CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne = false;
 				ButtonPlayerOne.interactable = true;
-			}
+            }
 		}
 		
 		if (PlayerTwo != null)
 		{
-			if(PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer == CurrentSelectedPlayer)
+			if(PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer == CurrentTrackedPlayer)
 			{
 				PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer = null;
-				CurrentSelectedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo = false;
+				CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo = false;
 				ButtonPlayerTwo.interactable = true;
 			}
 		}
@@ -68,31 +69,38 @@ public class ServerManager : NetworkManager
 	}
 	public void ChoosePlayerOne()
 	{
-		if (CurrentSelectedPlayer != null)
+		if (CurrentTrackedPlayer != null)
 		{
-			PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer = CurrentSelectedPlayer;
+			PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer = CurrentTrackedPlayer;
+			CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().ControlledPlayer = PlayerOne;
 			ButtonPlayerOne.interactable = false;
-			CurrentSelectedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne = true;
+			CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne = true;
 		}
 		
 	}
 	public void ChoosePlayerTwo()
 	{
-		if (CurrentSelectedPlayer != null)
+		if (CurrentTrackedPlayer != null)
 		{
-			PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer = CurrentSelectedPlayer;
+			PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer = CurrentTrackedPlayer;
+			CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().ControlledPlayer = PlayerTwo;
+
 			ButtonPlayerTwo.interactable = false;
-			CurrentSelectedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo = true;
+			CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo = true;
 		}
 	}
-	#endregion
-	void Start()
-	{
-	    if (isServer)
-	    {
-            ButtonPlayerOne.gameObject.SetActive(false);
-            ButtonPlayerTwo.gameObject.SetActive(false);
+
+    public void RecalibratePlayer()
+    {
+        if (CurrentTrackedPlayer != null)
+        {
+            CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().ControlledPlayer.GetComponent<NetworkPlayer>().ResetOrientation();
         }
+            
+    }
+    #endregion
+    void Start()
+	{
 
 	}
 	void Update()
@@ -101,7 +109,9 @@ public class ServerManager : NetworkManager
 	}
 	public void StartupHost()
 	{
-		SetPort();
+		ButtonPlayerOne.gameObject.SetActive(false);
+		ButtonPlayerTwo.gameObject.SetActive(false);
+        SetPort();
 		StartServer();
 		isServer = true;
 		NetworkServer.SpawnObjects();
@@ -121,7 +131,7 @@ public class ServerManager : NetworkManager
 	{
 		networkPort = ConnectionPort;
 	}
-	#region Server Side
+	#region Server 
 	public override void OnStartServer()
 	{
 		base.OnStartServer();
@@ -139,13 +149,13 @@ public class ServerManager : NetworkManager
 		{
 			ButtonPlayerOne.gameObject.SetActive(true);
 			ButtonPlayerOne.interactable = true;
-
-		}
+        }
 		if (conn.connectionId == 2)
 		{
-			ButtonPlayerTwo.gameObject.SetActive(true);
+
+            ButtonPlayerTwo.gameObject.SetActive(true);
 			ButtonPlayerTwo.interactable = true;
-		}
+        }
 		debugTextServer.text = "Client " + conn.connectionId + " connected.";
 		
 	}
@@ -157,14 +167,13 @@ public class ServerManager : NetworkManager
 		{
 			ButtonPlayerOne.gameObject.SetActive(false);
 			ButtonPlayerOne.interactable = true;
-
-		}
-		if (conn.connectionId == 2)
+        }
+        if (conn.connectionId == 2)
 		{
 			ButtonPlayerTwo.gameObject.SetActive(false);
 			ButtonPlayerTwo.interactable = true;
-		}
-		debugTextServer.text = "Client " + conn.connectionId + " disconnected.";
+        }
+        debugTextServer.text = "Client " + conn.connectionId + " disconnected.";
 	}
 
 	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
@@ -181,7 +190,7 @@ public class ServerManager : NetworkManager
 
 	#endregion
 
-	#region Client Side
+	#region Client
 	public void JoinGame()
 	{
 		SetIPAddress();

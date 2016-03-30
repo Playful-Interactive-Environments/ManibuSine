@@ -284,7 +284,7 @@ public class OVRManager : MonoBehaviour
 	/// <summary>
 	/// True if the current platform supports virtual reality.
 	/// </summary>
-    public bool isSupportedPlatform { get; private set; }
+	public bool isSupportedPlatform { get; private set; }
 
 	private static bool wasHmdPresent = false;
 	private static bool wasPositionTracked = false;
@@ -312,37 +312,37 @@ public class OVRManager : MonoBehaviour
 		System.Version ovrVersion = OVRPlugin.version;
 
 		Debug.Log("Unity v" + Application.unityVersion + ", " +
-		          "Oculus Utilities v" + netVersion + ", " +
-		          "OVRPlugin v" + ovrVersion + ".");
+				  "Oculus Utilities v" + netVersion + ", " +
+				  "OVRPlugin v" + ovrVersion + ".");
 
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 		if (SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Direct3D11)
 			Debug.LogWarning("VR rendering requires Direct3D11. Your graphics device: " + SystemInfo.graphicsDeviceType);
 #endif
 
-        // Detect whether this platform is a supported platform
-        RuntimePlatform currPlatform = Application.platform;
-        isSupportedPlatform |= currPlatform == RuntimePlatform.Android;
-        //isSupportedPlatform |= currPlatform == RuntimePlatform.LinuxPlayer;
-        isSupportedPlatform |= currPlatform == RuntimePlatform.OSXEditor;
-        isSupportedPlatform |= currPlatform == RuntimePlatform.OSXPlayer;
-        isSupportedPlatform |= currPlatform == RuntimePlatform.WindowsEditor;
-        isSupportedPlatform |= currPlatform == RuntimePlatform.WindowsPlayer;
-        if (!isSupportedPlatform)
-        {
-            Debug.LogWarning("This platform is unsupported");
-            return;
-        }
+		// Detect whether this platform is a supported platform
+		RuntimePlatform currPlatform = Application.platform;
+		isSupportedPlatform |= currPlatform == RuntimePlatform.Android;
+		//isSupportedPlatform |= currPlatform == RuntimePlatform.LinuxPlayer;
+		isSupportedPlatform |= currPlatform == RuntimePlatform.OSXEditor;
+		isSupportedPlatform |= currPlatform == RuntimePlatform.OSXPlayer;
+		isSupportedPlatform |= currPlatform == RuntimePlatform.WindowsEditor;
+		isSupportedPlatform |= currPlatform == RuntimePlatform.WindowsPlayer;
+		if (!isSupportedPlatform)
+		{
+			Debug.LogWarning("This platform is unsupported");
+			return;
+		}
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 		// We want to set up our touchpad messaging system
 		OVRTouchpad.Create();
 
-        // Turn off chromatic aberration by default to save texture bandwidth.
-        chromatic = false;
+		// Turn off chromatic aberration by default to save texture bandwidth.
+		chromatic = false;
 #endif
 
-        InitVolumeController();
+		InitVolumeController();
 
 		if (display == null)
 			display = new OVRDisplay();
@@ -361,7 +361,7 @@ public class OVRManager : MonoBehaviour
 		{
 			volumeController.UpdatePosition(volumeControllerTransform);
 		}
-    }
+	}
 
 	private void Update()
 	{
@@ -378,10 +378,10 @@ public class OVRManager : MonoBehaviour
 		if (HMDLost != null && wasHmdPresent && !isHmdPresent)
 			HMDLost();
 
-        if (HMDAcquired != null && !wasHmdPresent && isHmdPresent)
+		if (HMDAcquired != null && !wasHmdPresent && isHmdPresent)
 			HMDAcquired();
 
-        wasHmdPresent = isHmdPresent;
+		wasHmdPresent = isHmdPresent;
 
 		if (TrackingLost != null && wasPositionTracked && !tracker.isPositionTracked)
 			TrackingLost();
@@ -418,7 +418,7 @@ public class OVRManager : MonoBehaviour
 			}
 			volumeController.UpdatePosition(volumeControllerTransform);
 		}
-    }
+	}
 
 	/// <summary>
 	/// Creates a popup dialog that shows when volume changes.
@@ -452,19 +452,19 @@ public class OVRManager : MonoBehaviour
 
 #endregion
 
-    public static void PlatformUIConfirmQuit()
+	public static void PlatformUIConfirmQuit()
 	{
 		if (!isHmdPresent)
 			return;
 
 		OVRPlugin.ShowUI(OVRPlugin.PlatformUI.ConfirmQuit);
-    }
+	}
 
-    public static void PlatformUIGlobalMenu()
+	public static void PlatformUIGlobalMenu()
 	{
 		if (!isHmdPresent)
 			return;
 
 		OVRPlugin.ShowUI(OVRPlugin.PlatformUI.GlobalMenu);
-    }
+	}
 }

@@ -80,7 +80,7 @@ public class OVRCameraRig : MonoBehaviour
 	private readonly string legacyEyeAnchorName = "Camera";
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-    bool correctedTrackingSpace = false;
+	bool correctedTrackingSpace = false;
 #endif
 
 #region Unity Messages
@@ -110,19 +110,19 @@ public class OVRCameraRig : MonoBehaviour
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 
-        if (!correctedTrackingSpace)
-        {
-            //HACK: Unity 5.1.1p3 double-counts the head model on Android. Subtract it off in the reference frame.
+		if (!correctedTrackingSpace)
+		{
+			//HACK: Unity 5.1.1p3 double-counts the head model on Android. Subtract it off in the reference frame.
 
-            var headModel = new Vector3(0f, OVRManager.profile.eyeHeight - OVRManager.profile.neckHeight, OVRManager.profile.eyeDepth);
-            var eyePos = -headModel + centerEyeAnchor.localRotation * headModel;
+			var headModel = new Vector3(0f, OVRManager.profile.eyeHeight - OVRManager.profile.neckHeight, OVRManager.profile.eyeDepth);
+			var eyePos = -headModel + centerEyeAnchor.localRotation * headModel;
 
-            if ((eyePos - centerEyeAnchor.localPosition).magnitude > 0.01f)
-            {
-                trackingSpace.localPosition = trackingSpace.localPosition - 2f * (trackingSpace.localRotation * headModel);
-                correctedTrackingSpace = true;
-            }
-        }
+			if ((eyePos - centerEyeAnchor.localPosition).magnitude > 0.01f)
+			{
+				trackingSpace.localPosition = trackingSpace.localPosition - 2f * (trackingSpace.localRotation * headModel);
+				correctedTrackingSpace = true;
+			}
+		}
 #endif
 	}
 
@@ -136,7 +136,7 @@ public class OVRCameraRig : MonoBehaviour
 
 		trackerAnchor.localRotation = tracker.orientation;
 		centerEyeAnchor.localRotation = VR.InputTracking.GetLocalRotation(VR.VRNode.CenterEye);
-        leftEyeAnchor.localRotation = monoscopic ? centerEyeAnchor.localRotation : VR.InputTracking.GetLocalRotation(VR.VRNode.LeftEye);
+		leftEyeAnchor.localRotation = monoscopic ? centerEyeAnchor.localRotation : VR.InputTracking.GetLocalRotation(VR.VRNode.LeftEye);
 		rightEyeAnchor.localRotation = monoscopic ? centerEyeAnchor.localRotation : VR.InputTracking.GetLocalRotation(VR.VRNode.RightEye);
 		leftHandAnchor.localRotation = OVRInput.GetLocalHandRotation(OVRInput.Hand.Left);
 		rightHandAnchor.localRotation = OVRInput.GetLocalHandRotation(OVRInput.Hand.Right);
@@ -160,24 +160,24 @@ public class OVRCameraRig : MonoBehaviour
 			trackingSpace = ConfigureRootAnchor(trackingSpaceName);
 
 		if (leftEyeAnchor == null)
-            leftEyeAnchor = ConfigureEyeAnchor(trackingSpace, VR.VRNode.LeftEye);
+			leftEyeAnchor = ConfigureEyeAnchor(trackingSpace, VR.VRNode.LeftEye);
 
 		if (centerEyeAnchor == null)
-            centerEyeAnchor = ConfigureEyeAnchor(trackingSpace, VR.VRNode.CenterEye);
+			centerEyeAnchor = ConfigureEyeAnchor(trackingSpace, VR.VRNode.CenterEye);
 
 		if (rightEyeAnchor == null)
-            rightEyeAnchor = ConfigureEyeAnchor(trackingSpace, VR.VRNode.RightEye);
+			rightEyeAnchor = ConfigureEyeAnchor(trackingSpace, VR.VRNode.RightEye);
 
 		if (leftHandAnchor == null)
-            leftHandAnchor = ConfigureHandAnchor(trackingSpace, OVRPlugin.Node.LeftHand);
+			leftHandAnchor = ConfigureHandAnchor(trackingSpace, OVRPlugin.Node.LeftHand);
 
 		if (rightHandAnchor == null)
-            rightHandAnchor = ConfigureHandAnchor(trackingSpace, OVRPlugin.Node.RightHand);
+			rightHandAnchor = ConfigureHandAnchor(trackingSpace, OVRPlugin.Node.RightHand);
 
 		if (trackerAnchor == null)
 			trackerAnchor = ConfigureTrackerAnchor(trackingSpace);
 
-        if (leftEyeCamera == null || rightEyeCamera == null)
+		if (leftEyeCamera == null || rightEyeCamera == null)
 		{
 			Camera centerEyeCamera = centerEyeAnchor.GetComponent<Camera>();
 
@@ -208,7 +208,7 @@ public class OVRCameraRig : MonoBehaviour
 			
 			leftEyeCamera = centerEyeCamera;
 			rightEyeCamera = centerEyeCamera;
-		}
+        }
 	}
 
 	private Transform ConfigureRootAnchor(string name)

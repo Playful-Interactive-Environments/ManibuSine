@@ -86,7 +86,7 @@ public class OVRPlayerController : MonoBehaviour
 	private Vector3 MoveThrottle = Vector3.zero;
 	private float FallSpeed = 0.0f;
 	private OVRPose? InitialPose;
-	private float InitialYRotation = 0.0f;
+	public float InitialYRotation = 0.0f;
 	private float MoveScaleMultiplier = 1.0f;
 	private float RotationScaleMultiplier = 1.0f;
 	private bool  SkipMouseRotation = false;
@@ -145,7 +145,7 @@ public class OVRPlayerController : MonoBehaviour
 
 	protected virtual void Update()
 	{
-       
+	   
 
 		if (useProfileData)
 		{
