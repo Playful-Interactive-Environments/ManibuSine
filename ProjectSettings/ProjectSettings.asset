@@ -15,8 +15,8 @@ PlayerSettings:
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
   m_VirtualRealitySplashScreen: {fileID: 0}
-  defaultScreenWidth: 1920
-  defaultScreenHeight: 1080
+  defaultScreenWidth: 1024
+  defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_RenderingPath: 1
@@ -37,9 +37,9 @@ PlayerSettings:
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   disableDepthAndStencilBuffers: 0
-  defaultIsFullScreen: 0
+  defaultIsFullScreen: 1
   defaultIsNativeResolution: 1
-  runInBackground: 1
+  runInBackground: 0
   captureSingleScreen: 0
   Override IPod Music: 0
   Prepare IOS For Recording: 0
@@ -68,6 +68,7 @@ PlayerSettings:
   n3dsEnableSharedListOpt: 1
   n3dsEnableVSync: 0
   uiUse16BitDepthBuffer: 0
+  ignoreAlphaClear: 0
   xboxOneResolution: 0
   ps3SplashScreen: {fileID: 0}
   videoMemoryForVertexBuffers: 0
@@ -133,6 +134,9 @@ PlayerSettings:
   iPadLandscapeSplashScreen: {fileID: 0}
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   appleTVSplashScreen: {fileID: 0}
+  tvOSSmallIconLayers: []
+  tvOSLargeIconLayers: []
+  tvOSTopShelfImageLayers: []
   iOSLaunchScreenType: 0
   iOSLaunchScreenPortrait: {fileID: 0}
   iOSLaunchScreenLandscape: {fileID: 0}
@@ -151,7 +155,7 @@ PlayerSettings:
   iOSLaunchScreeniPadSize: 100
   iOSLaunchScreeniPadCustomXibPath: 
   iOSDeviceRequirements: []
-  AndroidTargetDevice: 3
+  AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: 
@@ -183,9 +187,6 @@ PlayerSettings:
   - m_BuildTarget: WindowsStandaloneSupport
     m_APIs: 0200000001000000
     m_Automatic: 1
-  - m_BuildTarget: AndroidPlayer
-    m_APIs: 08000000
-    m_Automatic: 0
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   wiiUTitleID: 0005000011000000
@@ -341,8 +342,8 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: CROSS_PLATFORM_INPUT
     2: CROSS_PLATFORM_INPUT
-    4: CROSS_PLATFORM_INPUT;MOBILE_INPUT;VUFORIA_IOS_SETTINGS
-    7: CROSS_PLATFORM_INPUT;MOBILE_INPUT;VUFORIA_ANDROID_SETTINGS;VUFORIA_SAMPLE_ORIENTATION_SETTINGS
+    4: CROSS_PLATFORM_INPUT;MOBILE_INPUT
+    7: CROSS_PLATFORM_INPUT;MOBILE_INPUT
     14: MOBILE_INPUT
     15: CROSS_PLATFORM_INPUT;MOBILE_INPUT
     16: CROSS_PLATFORM_INPUT;MOBILE_INPUT
