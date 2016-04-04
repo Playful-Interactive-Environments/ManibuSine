@@ -7,5 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/PieDeck/Scenes/Server_Admin.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/PieDeck/Scenes/Level_0_SoundTest.unity
+  - enabled: 0
+    path: Assets/PieDeck/Scenes/Test.unity
+  - enabled: 1
+    path: Assets/PieDeck/Scenes/CameraTest.unity

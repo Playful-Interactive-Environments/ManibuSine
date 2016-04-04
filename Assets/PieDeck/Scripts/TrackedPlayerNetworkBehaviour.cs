@@ -42,19 +42,17 @@ public class TrackedPlayerNetworkBehaviour : NetworkBehaviour {
 		{
 			if (HasPlayerOne)
 			{
-				ServerManager.Instance.ButtonPlayerOne.interactable = true;
+				Admin.Instance.ButtonPlayerOne.interactable = true;
 			}
 			if (HasPlayerTwo)
 			{
-				ServerManager.Instance.ButtonPlayerTwo.interactable = true;
+				Admin.Instance.ButtonPlayerTwo.interactable = true;
 			}
 		}
-		
-
 	}
 	void OnMouseDown()
 	{
-			ServerManager.Instance.CurrentTrackedPlayer = gameObject;
+		Admin.Instance.CurrentTrackedPlayer = gameObject;
 			StartCoroutine("ChangeColor");
 	}
 
@@ -62,7 +60,7 @@ public class TrackedPlayerNetworkBehaviour : NetworkBehaviour {
 	{
 		Color current = this.transform.FindChild("Server").GetComponent<MeshRenderer>().material.color;
 		this.transform.FindChild("Server").GetComponent<MeshRenderer>().material.color = Color.black;
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2f);
 		this.transform.FindChild("Server").GetComponent<MeshRenderer>().material.color = current;
 
 	}
