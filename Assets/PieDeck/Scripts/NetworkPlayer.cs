@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.VR;
+using UnityPharus;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -15,10 +16,11 @@ public class NetworkPlayer : NetworkBehaviour
 	private OVRPlayerController _vrControllerScript;
 	private Chaperone _chaperoneScript;
 
-    private Vector3 _previousPos;
-    private Vector3 _currentPos;
-    private float distance;
-    private bool timeStamped;
+	private Vector3 _previousPos;
+	private Vector3 _currentPos;
+	private float distance;
+	private float _timePassed;
+	private bool _staticPos;
 
 	private ParticleSystem[] ps;
 
@@ -38,7 +40,7 @@ public class NetworkPlayer : NetworkBehaviour
 		if (isLocalPlayer)
 		{
 			//Update Position and Rotation
-			
+			CalculateVRPos();
 			transform.rotation = _vrController.transform.rotation;
 			CmdUpdateOrientation(transform.rotation);
 
@@ -50,7 +52,7 @@ public class NetworkPlayer : NetworkBehaviour
 		if (isServer)
 		{
 			transform.name = "" + connectionToClient.connectionId;
-			GetComponent<CharacterController>().enabled = false;
+			//GetComponent<CharacterController>().enabled = false;
 			GetComponent<CapsuleCollider>().enabled = false;
 			if (connectionToClient.connectionId == 1)
 			{
@@ -69,10 +71,32 @@ public class NetworkPlayer : NetworkBehaviour
 		}
 	}
 
-    void CalculateVRPos()
-    {
-        _vrController.transform.position = transform.position;
-    }
+	void CalculateVRPos()
+	{
+		_timePassed += Time.deltaTime;
+		if (_timePassed > 3f)
+		{
+			_previousPos = transform.position;
+			_timePassed = 0f;
+		}
+		_currentPos = transform.position;
+		distance = Vector3.Distance(_previousPos, _currentPos);
+		if (distance < 25f)
+		{
+			_vrController.transform.position = _previousPos;
+			_staticPos = true;
+
+		}
+		if (distance >= 25f && !_staticPos)
+		{
+			_vrController.transform.position = transform.position;
+		}
+		if (distance >= 25f && _staticPos)
+		{
+			_vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, 1f);
+			_staticPos = false;
+		}
+	}
 
 	public void ResetOrientation()
 	{
@@ -108,5 +132,46 @@ public class NetworkPlayer : NetworkBehaviour
 		}
 
 	}
+	#endregion
+
+	#region Sound Triggers
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.transform.name == "ambienceTrigger")
+		{
+			SoundManager.Instance.PlaySound("ambience", "in", 1f);
+		}
+		if (other.transform.name == "tribalTrigger")
+		{
+			SoundManager.Instance.PlaySound("tribal", "in", 1f);
+		}
+		if (other.transform.name == "trumpetTrigger")
+		{
+			SoundManager.Instance.PlaySound("trumpet", "in", 1f);
+		}
+        if (other.transform.name == "guitarTrigger")
+        {
+            SoundManager.Instance.PlaySound("guitar", "in", 1f);
+        }
+    }
+	void OnTriggerExit(Collider other)
+	{
+		if (other.transform.name == "ambienceTrigger")
+		{
+			SoundManager.Instance.PlaySound("ambience", "out", 0f);
+		}
+		if (other.transform.name == "tribalTrigger")
+		{
+			SoundManager.Instance.PlaySound("tribal", "out", 0f);
+		}
+		if (other.transform.name == "trumpetTrigger")
+		{
+			SoundManager.Instance.PlaySound("trumpet", "out", 0f);
+		}
+        if (other.transform.name == "guitarTrigger")
+        {
+            SoundManager.Instance.PlaySound("guitar", "out", 0f);
+        }
+    }
 	#endregion
 }

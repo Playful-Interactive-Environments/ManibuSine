@@ -15,6 +15,7 @@ public class ServerManager : NetworkManager
 	public bool isServer;
 	public bool isClient;
 	public Text debugTextServer;
+    public GameObject SoundManager;
 
 
 	void Awake()
@@ -48,6 +49,7 @@ public class ServerManager : NetworkManager
 	{
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
+	    Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
 		SetPort();
 		StartServer();
 		isServer = true;
