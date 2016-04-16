@@ -9,14 +9,17 @@ public class CanonTrigger : NetworkBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "player" && assignedPlayer == null) {
+        print("enter");
+        if (other.tag == "NetworkPlayer") {
             assignedPlayer = other.gameObject;
+            print(other.GetComponent<NetworkIdentity>().playerControllerId + "entered");
         }
     }
 
     void OnTriggerExti(Collider other)
     {
-        assignedPlayer = null;
+        if (other.tag == "NetworkPlayer")
+            assignedPlayer = null;
     }
 
 	void Start () {
