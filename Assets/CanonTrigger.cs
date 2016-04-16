@@ -16,7 +16,7 @@ public class CanonTrigger : NetworkBehaviour {
         }
     }
 
-    void OnTriggerExti(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.tag == "NetworkPlayer")
             assignedPlayer = null;
