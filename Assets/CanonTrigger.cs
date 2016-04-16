@@ -4,29 +4,21 @@ using UnityEngine.Networking;
 
 public class CanonTrigger : NetworkBehaviour {
 
-    [SyncVar]
-    public GameObject assignedPlayer;
+    private GameObject assignedPlayer;
 
     void OnTriggerEnter(Collider other)
     {
-        print("enter");
         if (other.tag == "NetworkPlayer") {
             assignedPlayer = other.gameObject;
-            print(other.GetComponent<NetworkIdentity>().playerControllerId + "entered");
+            SendMessageUpwards("PlayerAssigned", assignedPlayer.transform);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "NetworkPlayer")
-            assignedPlayer = null;
+        if (other.tag == "NetworkPlayer" && other.GetComponent<NetworkIdentity>().playerControllerId == assignedPlayer.GetComponent<NetworkIdentity>().playerControllerId)
+        {
+            SendMessageUpwards("PlayerGone");
+        }
     }
-
-	void Start () {
-	
-	}
-
-	void Update () {
-	
-	}
 }
