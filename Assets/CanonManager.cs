@@ -26,7 +26,9 @@ public class CanonManager : NetworkBehaviour {
         if (gunner != null)
         {
             print("update " + gunner.transform.position);
+            canon.transform.rotation = gunner.rotation;
             canon.transform.position = new Vector3(canon.transform.position.x, canon.transform.position.y, gunner.transform.position.z);
+            
         }
     }
 }
