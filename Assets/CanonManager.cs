@@ -5,9 +5,21 @@ using UnityEngine.Networking;
 public class CanonManager : NetworkBehaviour {
 
     [SyncVar]
-    public GameObject canon;
-
+    public GameObject canonPivot;
     public Transform gunner;
+
+    private Camera mainCamera;
+    private Canon canon;
+
+    void Start()
+    {
+        mainCamera = Camera.main;
+
+        canon = canonPivot.GetComponentInChildren<Canon>();
+
+        //InvokeRepeating("Shoot", 1, 0.1f);
+    }
+
 
     // PlayerAssigned Msg sent in cannon trigger
     void PlayerAssigned(Transform gunner)
@@ -21,14 +33,18 @@ public class CanonManager : NetworkBehaviour {
         gunner = null;
 	}
 
+    void Shoot()
+    {
+        canon.Shoot();
+    }
+
     void Update()
     {
         if (gunner != null)
         {
             print("update " + gunner.transform.position);
-            canon.transform.rotation = gunner.rotation;
-            canon.transform.position = new Vector3(canon.transform.position.x, canon.transform.position.y, gunner.transform.position.z);
-            
+            canonPivot.transform.rotation = mainCamera.transform.rotation;
+            canonPivot.transform.position = new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z);
         }
     }
 }
