@@ -43,7 +43,7 @@ public class CanonManager : NetworkBehaviour {
     {
         if (gunner != null)
         {
-            if (isLocalPlayer)
+            if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
                 canonPivot.transform.rotation = mainCamera.transform.rotation;
 
             canonPivot.transform.position = new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z);
