@@ -43,7 +43,9 @@ public class CanonManager : NetworkBehaviour {
     {
         if (gunner != null)
         {
-            canonPivot.transform.rotation = mainCamera.transform.rotation;
+            if (isLocalPlayer)
+                canonPivot.transform.rotation = mainCamera.transform.rotation;
+
             canonPivot.transform.position = new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z);
         }
     }
