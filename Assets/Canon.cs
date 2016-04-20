@@ -8,17 +8,17 @@ public class Canon : NetworkBehaviour {
 
     public void Shoot()
     {
-        //CmdFire();
+        CmdFire();
     }
 
-    //[Command]
-    //void CmdFire()
-    //{
-    //    GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
+    [Command]
+    void CmdFire()
+    {
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
 
-    //    bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
-    //    Destroy(bullet, 10.0f);
+        bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
+        Destroy(bullet, 10.0f);
 
-    //    NetworkServer.Spawn(bullet);
-    //}
+        NetworkServer.Spawn(bullet);
+    }
 }

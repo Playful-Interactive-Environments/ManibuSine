@@ -17,7 +17,7 @@ public class CanonManager : NetworkBehaviour {
 
         canon = canonPivot.GetComponentInChildren<Canon>();
 
-        //InvokeRepeating("Shoot", 1, 0.1f);
+        InvokeRepeating("Shoot", 0.2f, 0.2f);
     }
 
 

@@ -31,7 +31,6 @@ GameObject:
   - 136: {fileID: 13690922}
   - 23: {fileID: 2378472}
   - 114: {fileID: 11449972}
-  - 114: {fileID: 11452796}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -48,7 +47,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 471468}
   - 114: {fileID: 11446762}
-  - 114: {fileID: 11485296}
+  - 114: {fileID: 11451252}
   m_Layer: 0
   m_Name: CanonStation
   m_TagString: Untagged
@@ -117,8 +116,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157146}
   m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 400}
+  m_LocalScale: {x: 100, y: 400, z: 100}
   m_Children: []
   m_Father: {fileID: 436582}
   m_RootOrder: 0
@@ -225,12 +224,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 134134, guid: 5be50fce690dd304480d086378d88eda, type: 2}
---- !u!114 &11452796
+--- !u!114 &11451252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157146}
+  m_GameObject: {fileID: 183972}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
@@ -268,38 +267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9c9a5f1d746004cb9c825a3630aeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11485296
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 43
-    i1: 210
-    i2: 25
-    i3: 222
-    i4: 235
-    i5: 208
-    i6: 92
-    i7: 180
-    i8: 138
-    i9: 252
-    i10: 187
-    i11: 243
-    i12: 152
-    i13: 206
-    i14: 51
-    i15: 230
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!136 &13690922
 CapsuleCollider:
   m_ObjectHideFlags: 1
