@@ -6,6 +6,7 @@ public class CanonManager : NetworkBehaviour {
 
     [SyncVar]
     public GameObject canonPivot;
+
     public Transform gunner;
 
     private Camera mainCamera;

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Canon : NetworkBehaviour {
+public class Canon : MonoBehaviour {
 
     public GameObject bulletPrefab;
 
@@ -11,7 +11,7 @@ public class Canon : NetworkBehaviour {
         CmdFire();
     }
 
-    [Command]
+    //[Command]
     void CmdFire()
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
@@ -19,6 +19,6 @@ public class Canon : NetworkBehaviour {
         bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
         Destroy(bullet, 10.0f);
 
-        NetworkServer.Spawn(bullet);
+        //NetworkServer.Spawn(bullet);
     }
 }
