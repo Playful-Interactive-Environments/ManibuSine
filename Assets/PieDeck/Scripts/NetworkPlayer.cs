@@ -48,7 +48,10 @@ public class NetworkPlayer : NetworkBehaviour
 			//CalculateVRPos();
 			transform.rotation = _vrController.transform.rotation;
 
-            head.transform.Rotate(1, 1, 1);
+            Vector3 headRotation = new Vector3(1, 1, 0.4f);
+
+            head.transform.Rotate(headRotation);
+            CmdHeadRotation(headRotation);
 
 			CmdUpdateOrientation(transform.rotation);
             CmdUpdatePosition(transform.position);
@@ -132,6 +135,11 @@ public class NetworkPlayer : NetworkBehaviour
     void CmdUpdatePosition(Vector3 pos)
     {
         transform.position = pos;
+    }
+
+    [Command]
+    void CmdHeadRotation(Vector3 rot) {
+        head.transform.Rotate(rot);
     }
 
 	[ClientRpc]
