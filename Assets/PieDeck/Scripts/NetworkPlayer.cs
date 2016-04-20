@@ -6,6 +6,10 @@ using UnityPharus;
 
 public class NetworkPlayer : NetworkBehaviour
 {
+
+    [SyncVar]
+    private GameObject head;
+
 	public GameObject ControllingPlayer;
 	[SyncVar]
 	public Quaternion rotation;
@@ -33,6 +37,7 @@ public class NetworkPlayer : NetworkBehaviour
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
 
+            head = GetComponentInChildren<Head>().gameObject;
 		}
 	}
 	
@@ -44,6 +49,9 @@ public class NetworkPlayer : NetworkBehaviour
 			//Update Position and Rotation
 			//CalculateVRPos();
 			transform.rotation = _vrController.transform.rotation;
+
+            head.transform.Rotate(1, 1, 1);
+
 			CmdUpdateOrientation(transform.rotation);
             CmdUpdatePosition(transform.position);
 
