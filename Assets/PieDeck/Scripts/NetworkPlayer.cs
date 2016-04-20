@@ -6,9 +6,8 @@ using UnityPharus;
 
 public class NetworkPlayer : NetworkBehaviour
 {
-
     [SyncVar]
-    private GameObject head;
+    public GameObject head;
 
 	public GameObject ControllingPlayer;
 	[SyncVar]
@@ -37,7 +36,6 @@ public class NetworkPlayer : NetworkBehaviour
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
 
-            head = GetComponentInChildren<Head>().gameObject;
 		}
 	}
 	
