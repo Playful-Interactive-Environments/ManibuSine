@@ -42,7 +42,6 @@ public class CanonManager : NetworkBehaviour {
     {
         if (gunner != null)
         {
-            print("update " + gunner.transform.position);
             canonPivot.transform.rotation = mainCamera.transform.rotation;
             canonPivot.transform.position = new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z);
         }

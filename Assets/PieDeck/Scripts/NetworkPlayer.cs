@@ -26,6 +26,7 @@ public class NetworkPlayer : NetworkBehaviour
 
 	void Start () {
 		ps = GetComponentsInChildren<ParticleSystem>(true);
+
 		if (!isServer)
 		{
 			_vrController = GameObject.Find("OVRPlayerController");
@@ -39,10 +40,12 @@ public class NetworkPlayer : NetworkBehaviour
 	void Update () {
 		if (isLocalPlayer)
 		{
+            LocalPlayerMovement();
 			//Update Position and Rotation
-			CalculateVRPos();
+			//CalculateVRPos();
 			transform.rotation = _vrController.transform.rotation;
 			CmdUpdateOrientation(transform.rotation);
+            CmdUpdatePosition(transform.position);
 
 			ColorId = 1;
 			ps[0].gameObject.SetActive(true);
@@ -65,11 +68,16 @@ public class NetworkPlayer : NetworkBehaviour
 			}
 			if (ControllingPlayer != null)
 			{
-				transform.position = ControllingPlayer.transform.position;
-				position = transform.position;
+                //transform.position = ControllingPlayer.transform.position;
+                //position = transform.position;
 			}
 		}
 	}
+
+    void LocalPlayerMovement()
+    {
+        transform.position = _vrController.transform.position;
+    }
 
 	void CalculateVRPos()
 	{
@@ -113,6 +121,12 @@ public class NetworkPlayer : NetworkBehaviour
 	{
 		transform.rotation = rot;
 	}
+
+    [Command]
+    void CmdUpdatePosition(Vector3 pos)
+    {
+        transform.position = pos;
+    }
 
 	[ClientRpc]
 	void RpcRecalibrateDevice()
