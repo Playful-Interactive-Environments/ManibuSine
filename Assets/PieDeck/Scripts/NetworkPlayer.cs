@@ -89,6 +89,19 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+
+
+    [Command]
+    public void CmdShoot()
+    {
+        print("PLAYER: CmdShoot");
+        //if (EventShoot != null)
+        //{
+        //    EventShoot();
+        //}
+    }
+
+
     void LocalPlayerMovement()
     {
         transform.position = _vrController.transform.position;

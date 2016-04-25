@@ -22,10 +22,10 @@ public class NetworkDataManager : NetworkBehaviour
     public void CmdShoot()
     {
         print("NDM: CmdShoot");
-        if (EventShoot != null)
-        {
-            EventShoot();
-        }
+        //if (EventShoot != null)
+        //{
+        //    EventShoot();
+        //}
     }
 
     // Use this for initialization
@@ -39,7 +39,7 @@ public class NetworkDataManager : NetworkBehaviour
     {
         if (isLocalPlayer)
             if (Input.GetKeyDown(KeyCode.Space))
-                CmdShoot();
+                GetComponent<NetworkPlayer>().CmdShoot();
         //if (ServerManager.Instance.isServer)
         //{
         //    NetworkServer.Spawn(gameObject);
