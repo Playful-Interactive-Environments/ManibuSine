@@ -22,6 +22,7 @@ public class NetworkDataManager : NetworkBehaviour {
     {
         if(EventShoot != null)
         {
+            print("NDM: CmdShoot");
             EventShoot();
         }
     }
@@ -33,7 +34,7 @@ public class NetworkDataManager : NetworkBehaviour {
 	void Start () {
 	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         if (ServerManager.Instance.isServer)

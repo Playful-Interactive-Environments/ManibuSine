@@ -52,6 +52,7 @@ public class CanonManager : NetworkBehaviour {
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    print("canonMNGR: try shoot");
                     Shoot();
                 }
             }
