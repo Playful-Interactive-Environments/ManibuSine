@@ -37,6 +37,12 @@ public class CanonManager : NetworkBehaviour {
         gunnerHead = null;
 	}
 
+    [Command]
+    void CmdFuck()
+    {
+        print("CANONman: F");
+    }
+
     void Shoot()
     {
         NetworkDataManager.Instance.CmdShoot();

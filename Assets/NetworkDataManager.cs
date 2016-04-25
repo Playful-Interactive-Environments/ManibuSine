@@ -20,9 +20,9 @@ public class NetworkDataManager : NetworkBehaviour {
     [Command]
     public void CmdShoot()
     {
+        print("NDM: CmdShoot");
         if(EventShoot != null)
         {
-            print("NDM: CmdShoot");
             EventShoot();
         }
     }
