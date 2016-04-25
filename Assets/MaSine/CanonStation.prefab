@@ -47,7 +47,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 471468}
   - 114: {fileID: 11446762}
-  - 114: {fileID: 11451252}
+  - 114: {fileID: 11406474}
   m_Layer: 0
   m_Name: CanonStation
   m_TagString: Untagged
@@ -199,32 +199,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11446762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43702c7ca283e74c854331d7cbaa782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canonPivot: {fileID: 187394}
-  gunner: {fileID: 0}
---- !u!114 &11449972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99fd44e7d69df9f4aa0b92bfb451f2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 134134, guid: 5be50fce690dd304480d086378d88eda, type: 2}
---- !u!114 &11451252
+--- !u!114 &11406474
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -256,6 +231,31 @@ MonoBehaviour:
     i15: 230
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &11446762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43702c7ca283e74c854331d7cbaa782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canonPivot: {fileID: 187394}
+  gunner: {fileID: 0}
+--- !u!114 &11449972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fd44e7d69df9f4aa0b92bfb451f2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 134134, guid: 5be50fce690dd304480d086378d88eda, type: 2}
 --- !u!114 &11483100
 MonoBehaviour:
   m_ObjectHideFlags: 1

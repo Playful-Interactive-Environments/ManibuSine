@@ -26,9 +26,6 @@ public class NetworkDataManager : NetworkBehaviour {
             EventShoot();
         }
     }
-    
-
-
 
 	// Use this for initialization
 	void Start () {
