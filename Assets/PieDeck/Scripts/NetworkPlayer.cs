@@ -43,51 +43,51 @@ public class NetworkPlayer : NetworkBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (isLocalPlayer)
-		{
+    void Update()
+    {
+        if (isLocalPlayer)
+        {
             LocalPlayerMovement();
-			//Update Position and Rotation
-			//CalculateVRPos();
-			transform.rotation = _vrController.transform.rotation;
+            //Update Position and Rotation
+            //CalculateVRPos();
+            transform.rotation = _vrController.transform.rotation;
 
             headTilt = Camera.main.transform.rotation.eulerAngles.x;
 
-			CmdUpdateOrientation(transform.rotation);
+            CmdUpdateOrientation(transform.rotation);
             CmdUpdatePosition(transform.position);
 
             CmdHeadRotation(headTilt);
 
             ColorId = 1;
-			ps[0].gameObject.SetActive(true);
-			transform.FindChild("Body").gameObject.SetActive(false);
-			transform.FindChild("Orientation").gameObject.SetActive(false);
-		}
-        if (isClient)
-        {
-            head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
+            ps[0].gameObject.SetActive(true);
+            transform.FindChild("Body").gameObject.SetActive(false);
+            transform.FindChild("Orientation").gameObject.SetActive(false);
         }
-        if (isServer)
-		{
-			transform.name = "" + connectionToClient.connectionId;
-			//GetComponent<CharacterController>().enabled = false;
-			GetComponent<CapsuleCollider>().enabled = false;
-			if (connectionToClient.connectionId == 1)
-			{
-				Admin.Instance.PlayerOne = gameObject;
-			}
-			if (connectionToClient.connectionId == 2)
-			{
-				Admin.Instance.PlayerTwo = gameObject;
 
-			}
-			if (ControllingPlayer != null)
-			{
+        head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
+
+        if (isServer)
+        {
+            transform.name = "" + connectionToClient.connectionId;
+            //GetComponent<CharacterController>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            if (connectionToClient.connectionId == 1)
+            {
+                Admin.Instance.PlayerOne = gameObject;
+            }
+            if (connectionToClient.connectionId == 2)
+            {
+                Admin.Instance.PlayerTwo = gameObject;
+
+            }
+            if (ControllingPlayer != null)
+            {
                 //transform.position = ControllingPlayer.transform.position;
                 //position = transform.position;
-			}
-		}
-	}
+            }
+        }
+    }
 
     void LocalPlayerMovement()
     {
