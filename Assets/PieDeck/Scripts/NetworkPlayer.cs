@@ -7,6 +7,8 @@ using UnityPharus;
 public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar]
+    private float headTilt;
+
     public GameObject head;
 
 	public GameObject ControllingPlayer;
