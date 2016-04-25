@@ -13,6 +13,8 @@ public class CanonManager : NetworkBehaviour {
     private Camera mainCamera;
     private Canon canon;
 
+    NetworkDataManager networkDataManager;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -20,6 +22,17 @@ public class CanonManager : NetworkBehaviour {
         canon = canonPivot.GetComponentInChildren<Canon>();
 
         //InvokeRepeating("Shoot", 0.2f, 0.2f);
+        InvokeRepeating("RegisterAtNetworDataManager", 2.5f, 0.5f);
+    }
+
+    void RegisterAtNetworDataManager()
+    {
+        NetworkDataManager nwd = FindObjectOfType<NetworkDataManager>();
+        if (nwd.GetComponent<NetworkIdentity>().isLocalPlayer)
+            networkDataManager = nwd;
+
+        if (networkDataManager != null)
+            CancelInvoke("RegisterAtNetworDataManager");
     }
 
 
@@ -37,15 +50,9 @@ public class CanonManager : NetworkBehaviour {
         gunnerHead = null;
 	}
 
-    [Command]
-    void CmdFuck()
-    {
-        print("CANONman: F");
-    }
-
     void Shoot()
     {
-        NetworkDataManager.Instance.CmdShoot();
+        networkDataManager.CmdShoot();
     }
 
     void Update()

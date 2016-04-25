@@ -6,6 +6,8 @@ public class Canon : MonoBehaviour {
 
     public GameObject bulletPrefab;
 
+    NetworkDataManager networkDataManager;
+
     void Start()
     {
         InvokeRepeating("RegisterAtNetworDataManager", 2.5f, 0.5f);
@@ -13,8 +15,12 @@ public class Canon : MonoBehaviour {
 
     void RegisterAtNetworDataManager()
     {
-        NetworkDataManager.Instance.EventShoot += Shoot;
-        CancelInvoke("RegisterAtNetworDataManager");
+        NetworkDataManager nwd = FindObjectOfType<NetworkDataManager>();
+        if (nwd.GetComponent<NetworkIdentity>().isLocalPlayer)
+            networkDataManager = nwd;
+
+        if (networkDataManager != null)
+            CancelInvoke("RegisterAtNetworDataManager");
     }
 
     void Shoot()

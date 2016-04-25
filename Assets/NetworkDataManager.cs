@@ -3,13 +3,13 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class NetworkDataManager : NetworkBehaviour {
-    private static NetworkDataManager instance;
-    public static NetworkDataManager Instance { get { return instance;}}
+    //private static NetworkDataManager instance;
+    //public static NetworkDataManager Instance { get { return instance;}}
 
-    void Awake()
-    {
-        instance = this;
-    }
+    //void Awake()
+    //{
+    //    instance = this;
+    //}
 
     public delegate void SimpleEvent();
 
@@ -34,9 +34,9 @@ public class NetworkDataManager : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (ServerManager.Instance.isServer)
-        {
-            NetworkServer.Spawn(gameObject);
-        }
+        //if (ServerManager.Instance.isServer)
+        //{
+        //    NetworkServer.Spawn(gameObject);
+        //}
 	}
 }
