@@ -36,6 +36,9 @@ public class NetworkDataManager : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (ServerManager.Instance.isServer)
+        {
+            NetworkServer.Spawn(gameObject);
+        }
 	}
 }
