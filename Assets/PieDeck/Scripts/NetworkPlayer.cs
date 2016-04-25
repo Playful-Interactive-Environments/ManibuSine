@@ -9,7 +9,8 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar]
     private float headTilt;
 
-    public GameObject head;
+    [SyncVar]
+    public Transform head;
 
 	public GameObject ControllingPlayer;
 	[SyncVar]
@@ -52,7 +53,7 @@ public class NetworkPlayer : NetworkBehaviour
 
             Vector3 headRotation = new Vector3(1, 1, 0.4f);
 
-            head.transform.Rotate(headRotation);
+            head.Rotate(headRotation);
             CmdHeadRotation(headRotation);
 
 			CmdUpdateOrientation(transform.rotation);
@@ -63,7 +64,7 @@ public class NetworkPlayer : NetworkBehaviour
 			transform.FindChild("Body").gameObject.SetActive(false);
 			transform.FindChild("Orientation").gameObject.SetActive(false);
 		}
-		if (isServer)
+        if (isServer)
 		{
 			transform.name = "" + connectionToClient.connectionId;
 			//GetComponent<CharacterController>().enabled = false;
@@ -141,7 +142,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     [Command]
     void CmdHeadRotation(Vector3 rot) {
-        head.transform.Rotate(rot);
+        head.Rotate(rot);
     }
 
 	[ClientRpc]
