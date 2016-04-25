@@ -100,9 +100,9 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdShoot()
     {
-        print("PLAYER: CmdShoot");
         if (EventShoot != null)
         {
+            print("PLAYER: CmdShoot");
             EventShoot();
         }
     }

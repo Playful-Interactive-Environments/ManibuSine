@@ -29,10 +29,18 @@ public class CanonManager : NetworkBehaviour {
     {
         NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
         if (nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
+        {
             networkPlayer = nwp;
+            networkPlayer.EventShoot += BoobsHaha;
+        }
 
         if (networkPlayer != null)
             CancelInvoke("RegisterAtNetworDataManager");
+    }
+
+    private void BoobsHaha()
+    {
+        print("boob");
     }
 
 
