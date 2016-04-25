@@ -51,19 +51,22 @@ public class NetworkPlayer : NetworkBehaviour
 			//CalculateVRPos();
 			transform.rotation = _vrController.transform.rotation;
 
-            Vector3 headRotation = new Vector3(1, 1, 0.4f);
-
-            head.transform.Rotate(headRotation);
-            CmdHeadRotation(headRotation);
+            headTilt = Camera.main.transform.rotation.eulerAngles.x;
 
 			CmdUpdateOrientation(transform.rotation);
             CmdUpdatePosition(transform.position);
 
-			ColorId = 1;
+            CmdHeadRotation(headTilt);
+
+            ColorId = 1;
 			ps[0].gameObject.SetActive(true);
 			transform.FindChild("Body").gameObject.SetActive(false);
 			transform.FindChild("Orientation").gameObject.SetActive(false);
 		}
+        if (isClient)
+        {
+            head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
+        }
         if (isServer)
 		{
 			transform.name = "" + connectionToClient.connectionId;
@@ -141,8 +144,8 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    void CmdHeadRotation(Vector3 rot) {
-        head.transform.Rotate(rot);
+    void CmdHeadRotation(float tilt) {
+        headTilt = tilt;
     }
 
 	[ClientRpc]
