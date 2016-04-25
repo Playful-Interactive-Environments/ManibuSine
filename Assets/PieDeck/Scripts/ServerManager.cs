@@ -16,9 +16,11 @@ public class ServerManager : NetworkManager
 	public bool isClient;
 	public Text debugTextServer;
     public GameObject SoundManager;
+    public GameObject NetworkDataManager;
 
 
-	void Awake()
+
+    void Awake()
 	{
 		//Check if instance already exists
 		if (Instance == null)
@@ -50,7 +52,8 @@ public class ServerManager : NetworkManager
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
 	    Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
-		SetPort();
+        Instantiate(NetworkDataManager, new Vector3(0, 0, 0), Quaternion.identity);
+        SetPort();
 		StartServer();
 		isServer = true;
 		NetworkServer.SpawnObjects();

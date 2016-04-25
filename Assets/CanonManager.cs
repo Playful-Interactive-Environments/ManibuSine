@@ -19,7 +19,7 @@ public class CanonManager : NetworkBehaviour {
 
         canon = canonPivot.GetComponentInChildren<Canon>();
 
-        InvokeRepeating("Shoot", 0.2f, 0.2f);
+        //InvokeRepeating("Shoot", 0.2f, 0.2f);
     }
 
 
@@ -39,7 +39,7 @@ public class CanonManager : NetworkBehaviour {
 
     void Shoot()
     {
-        canon.Shoot();
+        NetworkDataManager.Instance.CmdShoot();
     }
 
     void Update()
@@ -48,6 +48,15 @@ public class CanonManager : NetworkBehaviour {
         {
             canonPivot.transform.rotation = gunnerHead.rotation;
             canonPivot.transform.position = new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z);
+            if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Shoot();
+                }
+            }
         }
+        
+
     }
 }

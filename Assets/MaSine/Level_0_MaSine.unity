@@ -6274,6 +6274,10 @@ Prefab:
       propertyPath: m_SpawnPrefabs.Array.data[4]
       value: 
       objectReference: {fileID: 183972, guid: 2bd219deebd05cb48afcbbf398ce33e6, type: 2}
+    - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
+      propertyPath: NetworkDataManager
+      value: 
+      objectReference: {fileID: 118702, guid: 11a381ea28f9e34449c49d2f20c3cd4d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
   m_IsPrefabParent: 0

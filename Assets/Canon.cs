@@ -6,13 +6,12 @@ public class Canon : MonoBehaviour {
 
     public GameObject bulletPrefab;
 
-    public void Shoot()
+    void Start()
     {
-        CmdFire();
+        NetworkDataManager.Instance.EventShoot += Shoot;
     }
-
-    //[Command]
-    void CmdFire()
+    
+    void Shoot()
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
 
