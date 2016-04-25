@@ -180,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 141434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.13, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 200, y: 100, z: 200}
   m_Children: []
   m_Father: {fileID: 484286}
   m_RootOrder: 7
@@ -470,22 +470,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
+    i0: 105
+    i1: 174
+    i2: 39
+    i3: 20
+    i4: 77
     i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
+    i6: 84
+    i7: 212
+    i8: 186
+    i9: 93
+    i10: 13
+    i11: 13
+    i12: 251
+    i13: 238
+    i14: 37
+    i15: 223
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &11427394
@@ -5222,6 +5222,18 @@ Prefab:
       propertyPath: head
       value: 
       objectReference: {fileID: 141434}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 198404}

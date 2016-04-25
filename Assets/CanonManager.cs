@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class CanonManager : NetworkBehaviour {
 
-    [SyncVar]
+    //[SyncVar]
     public GameObject canonPivot;
 
     public Transform gunner;

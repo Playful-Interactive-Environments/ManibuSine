@@ -9,7 +9,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar]
     private float headTilt;
 
-    [SyncVar]
+    //[SyncVar]
     public GameObject head;
 
 	public GameObject ControllingPlayer;
