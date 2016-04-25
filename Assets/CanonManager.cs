@@ -44,6 +44,10 @@ public class CanonManager : NetworkBehaviour {
 
     void Update()
     {
+        if (ServerManager.Instance.isServer)
+        {
+            NetworkServer.Spawn(gameObject);
+        }
         if (gunner != null)
         {
             canonPivot.transform.rotation = gunnerHead.rotation;
