@@ -10,7 +10,7 @@ public class NetworkPlayer : NetworkBehaviour
     private float headTilt;
 
     [SyncVar]
-    public Transform head;
+    public GameObject head;
 
 	public GameObject ControllingPlayer;
 	[SyncVar]
@@ -53,7 +53,7 @@ public class NetworkPlayer : NetworkBehaviour
 
             Vector3 headRotation = new Vector3(1, 1, 0.4f);
 
-            head.Rotate(headRotation);
+            head.transform.Rotate(headRotation);
             CmdHeadRotation(headRotation);
 
 			CmdUpdateOrientation(transform.rotation);
@@ -142,7 +142,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     [Command]
     void CmdHeadRotation(Vector3 rot) {
-        head.Rotate(rot);
+        head.transform.Rotate(rot);
     }
 
 	[ClientRpc]
