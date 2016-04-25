@@ -8,6 +8,7 @@ public class CanonManager : NetworkBehaviour {
     public GameObject canonPivot;
 
     public Transform gunner;
+    private Transform gunnerHead;
 
     private Camera mainCamera;
     private Canon canon;
@@ -26,12 +27,14 @@ public class CanonManager : NetworkBehaviour {
     void PlayerAssigned(Transform gunner)
     {
         this.gunner = gunner;
+        this.gunnerHead = gunner.GetComponentInChildren<Head>().transform;
 	}
 
     // PlayerGone Msg sent in cannon trigger
     void PlayerGone ()
     {
         gunner = null;
+        gunnerHead = null;
 	}
 
     void Shoot()
@@ -43,8 +46,7 @@ public class CanonManager : NetworkBehaviour {
     {
         if (gunner != null)
         {
-            canonPivot.transform.rotation = mainCamera.transform.rotation;
-
+            canonPivot.transform.rotation = gunnerHead.rotation;
             canonPivot.transform.position = new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z);
         }
     }
