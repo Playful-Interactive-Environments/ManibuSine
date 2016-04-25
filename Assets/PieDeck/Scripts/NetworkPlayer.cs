@@ -88,18 +88,26 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
     }
+    //----------------------------------------------------------------
+    // 
+    //----------------------------------------------------------------
+    public delegate void SimpleEvent();
 
-
+    //SYNCEVENTS
+    [SyncEvent]
+    public event SimpleEvent EventShoot;
 
     [Command]
     public void CmdShoot()
     {
         print("PLAYER: CmdShoot");
-        //if (EventShoot != null)
-        //{
-        //    EventShoot();
-        //}
+        if (EventShoot != null)
+        {
+            EventShoot();
+        }
     }
+    //----------------------------------------------------------------
+    //----------------------------------------------------------------
 
 
     void LocalPlayerMovement()

@@ -13,7 +13,7 @@ public class CanonManager : NetworkBehaviour {
     private Camera mainCamera;
     private Canon canon;
 
-    NetworkDataManager networkDataManager;
+    NetworkPlayer networkPlayer;
 
     void Start()
     {
@@ -27,11 +27,11 @@ public class CanonManager : NetworkBehaviour {
 
     void RegisterAtNetworDataManager()
     {
-        NetworkDataManager nwd = FindObjectOfType<NetworkDataManager>();
-        if (nwd.GetComponent<NetworkIdentity>().isLocalPlayer)
-            networkDataManager = nwd;
+        NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
+        if (nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
+            networkPlayer = nwp;
 
-        if (networkDataManager != null)
+        if (networkPlayer != null)
             CancelInvoke("RegisterAtNetworDataManager");
     }
 
@@ -52,7 +52,7 @@ public class CanonManager : NetworkBehaviour {
 
     void Shoot()
     {
-        networkDataManager.CmdShoot();
+        networkPlayer.CmdShoot();
     }
 
     void Update()

@@ -6,7 +6,7 @@ public class Canon : MonoBehaviour {
 
     public GameObject bulletPrefab;
 
-    NetworkDataManager networkDataManager;
+    NetworkPlayer networkPlayer;
 
     void Start()
     {
@@ -15,11 +15,14 @@ public class Canon : MonoBehaviour {
 
     void RegisterAtNetworDataManager()
     {
-        NetworkDataManager nwd = FindObjectOfType<NetworkDataManager>();
-        if (nwd.GetComponent<NetworkIdentity>().isLocalPlayer)
-            networkDataManager = nwd;
+        NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
+        if (nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
+        {
+            networkPlayer = nwp;
+            networkPlayer.EventShoot += Shoot;
+        }
 
-        if (networkDataManager != null)
+        if (networkPlayer != null)
             CancelInvoke("RegisterAtNetworDataManager");
     }
 
@@ -30,7 +33,7 @@ public class Canon : MonoBehaviour {
         bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
         Destroy(bullet, 10.0f);
 
-        print("canon: shoot :)");
+        print("canon: shoot =)");
 
         //NetworkServer.Spawn(bullet);
     }

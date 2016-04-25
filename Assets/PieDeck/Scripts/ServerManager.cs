@@ -16,7 +16,7 @@ public class ServerManager : NetworkManager
 	public bool isClient;
 	public Text debugTextServer;
     public GameObject SoundManager;
-    public GameObject NetworkDataManager, CanonStation;
+    public GameObject CanonStation;
 
 
 
@@ -52,7 +52,6 @@ public class ServerManager : NetworkManager
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
 	    Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
-        //Instantiate(NetworkDataManager, new Vector3(0, 0, 0), Quaternion.identity);
         Instantiate(CanonStation);
         SetPort();
 		StartServer();
