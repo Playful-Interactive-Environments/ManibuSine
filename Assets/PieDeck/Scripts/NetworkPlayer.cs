@@ -103,7 +103,8 @@ public class NetworkPlayer : NetworkBehaviour
         //if (EventShoot != null)
         //{
             print("PLAYER: CmdShoot");
-            EventShoot();
+        //EventShoot();
+        FindObjectOfType<Canon>().Shoot();
         //}
     }
     //----------------------------------------------------------------
