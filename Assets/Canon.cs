@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Canon : MonoBehaviour {
+public class Canon : NetworkBehaviour {
 
     public GameObject bulletPrefab;
 
@@ -28,15 +28,11 @@ public class Canon : MonoBehaviour {
 
     public void Shoot()
     {
-
-        RpcSpawnBullet();
-    }
-
-    [ClientRpc]
-    public void RpcSpawnBullet()
-    {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
 
         bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
+
     }
+
+    
 }

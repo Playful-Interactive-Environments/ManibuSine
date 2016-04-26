@@ -104,8 +104,14 @@ public class NetworkPlayer : NetworkBehaviour
         //{
             print("PLAYER: CmdShoot");
         //EventShoot();
-        FindObjectOfType<Canon>().Shoot();
+        RpcSpawnBullet();
         //}
+    }
+
+    [ClientRpc]
+    public void RpcSpawnBullet()
+    {
+        FindObjectOfType<Canon>().Shoot();
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
