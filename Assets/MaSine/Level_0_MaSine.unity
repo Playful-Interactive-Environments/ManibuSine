@@ -4184,10 +4184,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 402bb4a1938902b438ca4fc86a1c236f, type: 3}
   m_PrefabInternal: {fileID: 1808625552}
---- !u!4 &686741127 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 402bb4a1938902b438ca4fc86a1c236f, type: 3}
-  m_PrefabInternal: {fileID: 1808625552}
 --- !u!1 &751130509
 GameObject:
   m_ObjectHideFlags: 0
@@ -6210,7 +6206,7 @@ Prefab:
       objectReference: {fileID: 476508450}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.29.17.177
+      value: 10.29.18.166
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -6235,7 +6231,7 @@ Prefab:
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: m_SpawnPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 118702, guid: 11a381ea28f9e34449c49d2f20c3cd4d, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: CanonStation
       value: 
@@ -6647,7 +6643,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 686741127}
+  - {fileID: 1808625553}
   m_Father: {fileID: 760534893}
   m_RootOrder: 0
 --- !u!114 &1237457673
@@ -10661,6 +10657,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 402bb4a1938902b438ca4fc86a1c236f, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &1808625553 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1808625552}
 --- !u!1 &1818255711
 GameObject:
   m_ObjectHideFlags: 0

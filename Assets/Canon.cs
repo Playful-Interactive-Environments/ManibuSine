@@ -26,7 +26,7 @@ public class Canon : MonoBehaviour {
             CancelInvoke("RegisterAtNetworDataManager");
     }
 
-    void Shoot()
+    public void Shoot()
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
 
@@ -35,6 +35,6 @@ public class Canon : MonoBehaviour {
 
         print("canon: shoot =)");
 
-        //NetworkServer.Spawn(bullet);
+        NetworkServer.Spawn(bullet);
     }
 }
