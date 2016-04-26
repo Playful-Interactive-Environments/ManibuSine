@@ -30,7 +30,7 @@ public class Canon : NetworkBehaviour {
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
 
-        bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
+        bullet.GetComponent<Rigidbody>().velocity = transform.up * 10000.0f;
 
     }
 
