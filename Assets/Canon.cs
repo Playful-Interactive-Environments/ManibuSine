@@ -8,30 +8,27 @@ public class Canon : NetworkBehaviour {
 
     NetworkPlayer networkPlayer;
 
-    void Start()
-    {
-        InvokeRepeating("RegisterAtNetworDataManager", 2.5f, 0.5f);
-    }
+    //void Start()
+    //{
+    //    InvokeRepeating("RegisterAtNetworDataManager", 2.5f, 0.5f);
+    //}
 
-    void RegisterAtNetworDataManager()
-    {
-        NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
-        if (nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
-        {
-            networkPlayer = nwp;
-            networkPlayer.EventShoot += Shoot;
-        }
+    //void RegisterAtNetworDataManager()
+    //{
+    //    NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
+    //    if (nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
+    //    {
+    //        networkPlayer = nwp;
+    //        networkPlayer.EventShoot += Shoot;
+    //    }
 
-        if (networkPlayer != null)
-            CancelInvoke("RegisterAtNetworDataManager");
-    }
+    //    if (networkPlayer != null)
+    //        CancelInvoke("RegisterAtNetworDataManager");
+    //}
 
     public void Shoot()
     {
-        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
-
-        bullet.GetComponent<Rigidbody>().velocity = transform.up * 10000.0f;
-
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position , transform.rotation);
     }
 
     

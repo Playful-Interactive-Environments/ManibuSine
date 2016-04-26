@@ -8,8 +8,7 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar]
     private float headTilt;
-
-    //[SyncVar]
+    
     public GameObject head;
 
 	public GameObject ControllingPlayer;
@@ -89,23 +88,12 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
     //----------------------------------------------------------------
-    // 
+    // STUFF WE DID
     //----------------------------------------------------------------
-    public delegate void SimpleEvent();
-
-    //SYNCEVENTS
-    [SyncEvent]
-    public event SimpleEvent EventShoot;
-
     [Command]
     public void CmdShoot()
     {
-        //if (EventShoot != null)
-        //{
-            print("PLAYER: CmdShoot");
-        //EventShoot();
         RpcSpawnBullet();
-        //}
     }
 
     [ClientRpc]

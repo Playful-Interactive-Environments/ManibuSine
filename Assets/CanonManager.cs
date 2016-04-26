@@ -2,24 +2,23 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class CanonManager : NetworkBehaviour {
+public class CanonManager : NetworkBehaviour
+{
 
     public GameObject canonPivot;
 
     public Transform gunner;
     private Transform gunnerHead;
-
-    private Camera mainCamera;
     private Canon canon;
+
+    NetworkPlayer networkPlayer;
 
     private float rotationSpeed = 10;
     private float translationSpeed = 10;
 
-    NetworkPlayer networkPlayer;
 
     void Start()
     {
-        mainCamera = Camera.main;
 
         canon = canonPivot.GetComponentInChildren<Canon>();
 
@@ -33,16 +32,10 @@ public class CanonManager : NetworkBehaviour {
         if (nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             networkPlayer = nwp;
-            networkPlayer.EventShoot += BoobsHaha;
         }
 
         if (networkPlayer != null)
             CancelInvoke("RegisterAtNetworDataManager");
-    }
-
-    private void BoobsHaha()
-    {
-        print("boob");
     }
 
 
@@ -51,14 +44,14 @@ public class CanonManager : NetworkBehaviour {
     {
         this.gunner = gunner;
         this.gunnerHead = gunner.GetComponentInChildren<Head>().transform;
-	}
+    }
 
     // PlayerGone Msg sent in cannon trigger
-    void PlayerGone ()
+    void PlayerGone()
     {
         gunner = null;
         gunnerHead = null;
-	}
+    }
 
     void Shoot()
     {
@@ -75,19 +68,18 @@ public class CanonManager : NetworkBehaviour {
         {
             // rotate canon
             canonPivot.transform.rotation =
-                Quaternion.Lerp(canonPivot.transform.rotation,
-                gunnerHead.rotation, 
-                rotationSpeed * Time.deltaTime);
+            Quaternion.Lerp(canonPivot.transform.rotation,
+            gunnerHead.rotation,
+            rotationSpeed * Time.deltaTime);
             // move canon
-            canonPivot.transform.position = 
-                Vector3.Lerp(canonPivot.transform.position,
-                new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z), 
-                translationSpeed * Time.deltaTime);
+            canonPivot.transform.position =
+            Vector3.Lerp(canonPivot.transform.position,
+            new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z),
+        translationSpeed * Time.deltaTime);
             if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    print("canonMNGR: try shoot");
                     Shoot();
                 }
             }
