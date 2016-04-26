@@ -28,13 +28,15 @@ public class Canon : MonoBehaviour {
 
     public void Shoot()
     {
-        //GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
 
-        //bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
-        //Destroy(bullet, 10.0f);
+        RpcSpawnBullet();
+    }
 
-        print("canon: shoot =)");
+    [ClientRpc]
+    public void RpcSpawnBullet()
+    {
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
 
-        NetworkServer.Spawn(bulletPrefab);
+        bullet.GetComponent<Rigidbody>().velocity = transform.up * 1000.0f;
     }
 }

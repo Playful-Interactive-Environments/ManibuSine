@@ -51,7 +51,7 @@ public class ServerManager : NetworkManager
 	{
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
-	    Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
+	    //Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
         Instantiate(CanonStation);
         SetPort();
 		StartServer();
