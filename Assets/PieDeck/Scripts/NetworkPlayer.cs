@@ -46,15 +46,15 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            LocalPlayerMovement();
+            //LocalPlayerMovement();
             //Update Position and Rotation
-            //CalculateVRPos();
+            CalculateVRPos(); // used to update vr camera position
             transform.rotation = _vrController.transform.rotation;
 
             headTilt = Camera.main.transform.rotation.eulerAngles.x;
 
             CmdUpdateOrientation(transform.rotation);
-            CmdUpdatePosition(transform.position);
+            //CmdUpdatePosition(transform.position);
 
             CmdHeadRotation(headTilt);
 
@@ -82,8 +82,8 @@ public class NetworkPlayer : NetworkBehaviour
             }
             if (ControllingPlayer != null)
             {
-                //transform.position = ControllingPlayer.transform.position;
-                //position = transform.position;
+                transform.position = ControllingPlayer.transform.position;
+                position = transform.position;
             }
         }
     }
