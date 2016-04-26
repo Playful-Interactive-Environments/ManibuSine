@@ -4,7 +4,6 @@ using UnityEngine.Networking;
 
 public class CanonManager : NetworkBehaviour {
 
-    //[SyncVar]
     public GameObject canonPivot;
 
     public Transform gunner;
@@ -12,6 +11,9 @@ public class CanonManager : NetworkBehaviour {
 
     private Camera mainCamera;
     private Canon canon;
+
+    private float rotationSpeed = 10;
+    private float translationSpeed = 10;
 
     NetworkPlayer networkPlayer;
 
@@ -71,8 +73,16 @@ public class CanonManager : NetworkBehaviour {
         }
         if (gunner != null)
         {
-            canonPivot.transform.rotation = gunnerHead.rotation;
-            canonPivot.transform.position = new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z);
+            // rotate canon
+            canonPivot.transform.rotation =
+                Quaternion.Lerp(canonPivot.transform.rotation,
+                gunnerHead.rotation, 
+                rotationSpeed * Time.deltaTime);
+            // move canon
+            canonPivot.transform.position = 
+                Vector3.Lerp(canonPivot.transform.position,
+                new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z), 
+                translationSpeed * Time.deltaTime);
             if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
                 if (Input.GetMouseButtonDown(0))
