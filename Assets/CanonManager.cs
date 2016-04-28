@@ -14,7 +14,7 @@ public class CanonManager : NetworkBehaviour
     NetworkPlayer networkPlayer;
 
     private float rotationSpeed = 10;
-    private float translationSpeed = 10;
+    private float translationSpeed = 5;
 
 
     void Start()
