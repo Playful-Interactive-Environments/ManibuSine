@@ -47,6 +47,15 @@ public class ServerManager : NetworkManager
 	{
 	   
 	}
+
+
+    public void SpawnEntity(GameObject prefab)
+    {
+        GameObject obj = Instantiate(prefab);
+
+        NetworkServer.Spawn(obj);
+    }
+
 	public void StartupHost()
 	{
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);

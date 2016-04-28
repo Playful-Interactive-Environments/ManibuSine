@@ -329,6 +329,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -705,6 +706,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 399382221}
+--- !u!1 &405948582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1144311196}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 405948583}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &405948583
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1144311196}
+  m_GameObject: {fileID: 405948582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &478060597
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +793,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &622270721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1124,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 945819550}
+--- !u!1 &978001872 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 177230, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
+  m_PrefabInternal: {fileID: 1850602323}
+--- !u!114 &978001873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 978001872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa110586558f984aa9bb806336ef8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefab: {fileID: 189012, guid: c328d8402a362cd48aabede999ebfd47, type: 2}
 --- !u!1 &1063769310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2353,7 @@ Transform:
   - {fileID: 702877941}
   - {fileID: 1098865082}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1752594294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,7 +2526,7 @@ Prefab:
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: m_SpawnPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 118702, guid: 11a381ea28f9e34449c49d2f20c3cd4d, type: 2}
+      objectReference: {fileID: 189012, guid: c328d8402a362cd48aabede999ebfd47, type: 2}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: NetworkDataManager
       value: 
@@ -2959,4 +3003,4 @@ Transform:
   - {fileID: 52853782}
   - {fileID: 1438886647}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
