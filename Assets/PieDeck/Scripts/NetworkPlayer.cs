@@ -28,8 +28,10 @@ public class NetworkPlayer : NetworkBehaviour
 	private bool _staticPos;
 
 	private ParticleSystem[] ps;
+    [SyncVar]
+    private bool laserTrackingActivated;
 
-	void Start () {
+    void Start () {
 		ps = GetComponentsInChildren<ParticleSystem>(true);
 
 		if (!isServer)
@@ -44,17 +46,31 @@ public class NetworkPlayer : NetworkBehaviour
 	// Update is called once per frame
     void Update()
     {
+        if (isServer)
+        {
+            if(ControllingPlayer != null)
+            {
+                laserTrackingActivated = true;
+            }
+            else
+            {
+                laserTrackingActivated = false;
+            }
+        }
         if (isLocalPlayer)
         {
-            //LocalPlayerMovement();
+            if(!laserTrackingActivated)
+                LocalPlayerMovement(); // this pos = vrCtrl pos
             //Update Position and Rotation
-            CalculateVRPos(); // used to update vr camera position
+            if(laserTrackingActivated)
+                CalculateVRPos(); // used to update vr camera position
             transform.rotation = _vrController.transform.rotation;
 
             headTilt = Camera.main.transform.rotation.eulerAngles.x;
 
             CmdUpdateOrientation(transform.rotation);
-            //CmdUpdatePosition(transform.position);
+            if (!laserTrackingActivated)
+                CmdUpdatePosition(transform.position); 
 
             CmdHeadRotation(headTilt);
 
