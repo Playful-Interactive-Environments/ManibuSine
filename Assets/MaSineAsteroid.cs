@@ -10,7 +10,8 @@ public class MaSineAsteroid : NetworkBehaviour {
         //    Invoke("KillMe", 3);
 	}
 
-    void KillMe()
+    [Command]
+    void CmdKillMe()
     {
         NetworkServer.Destroy(gameObject);
     }
@@ -18,7 +19,7 @@ public class MaSineAsteroid : NetworkBehaviour {
     void OnTriggerEnter(Collider other)
     {
         print("KillMe");
-        KillMe();
+        CmdKillMe();
     }
 
 
