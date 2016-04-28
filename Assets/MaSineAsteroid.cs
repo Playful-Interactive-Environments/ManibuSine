@@ -17,6 +17,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        print("KillMe");
         KillMe();
     }
 
