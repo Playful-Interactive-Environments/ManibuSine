@@ -22,7 +22,7 @@ public class CanonManager : NetworkBehaviour
 
         canon = canonPivot.GetComponentInChildren<Canon>();
 
-        //InvokeRepeating("Shoot", 0.2f, 0.2f);
+        InvokeRepeating("Shoot", 5.0f, 0.77642f);
         InvokeRepeating("RegisterAtNetworDataManager", 2.5f, 0.5f);
     }
 
@@ -78,7 +78,7 @@ public class CanonManager : NetworkBehaviour
         translationSpeed * Time.deltaTime);
             if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     Shoot();
                 }
