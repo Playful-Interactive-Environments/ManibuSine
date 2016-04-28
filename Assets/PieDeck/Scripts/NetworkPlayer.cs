@@ -104,7 +104,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
     //----------------------------------------------------------------
-    // STUFF WE DID
+    // STUFF WE DID - we are forced to :(
     //----------------------------------------------------------------
     [Command]
     public void CmdShoot()
@@ -116,6 +116,12 @@ public class NetworkPlayer : NetworkBehaviour
     public void RpcSpawnBullet()
     {
         FindObjectOfType<Canon>().Shoot();
+    }
+
+    [Command]
+    public void CmdDestroyEntity(GameObject obj)
+    {
+        NetworkServer.Destroy(obj);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
