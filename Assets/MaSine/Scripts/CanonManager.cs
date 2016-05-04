@@ -20,6 +20,9 @@ public class CanonManager : NetworkBehaviour
     private float targetingSpeed = 1.0f;
     private Quaternion startQuat;
 
+    private float shootSpeed = 1.0f;
+    private float shootCooldown = 0.0f;
+
 
     void Start()
     {
@@ -59,11 +62,22 @@ public class CanonManager : NetworkBehaviour
 
     void Shoot()
     {
-        networkPlayer.CmdShoot();
+        if (shootCooldown <= 0.0f)
+        {
+            networkPlayer.CmdShoot();
+            shootCooldown = shootSpeed;
+        }
+            
     }
 
     void Update()
     {
+        if (shootCooldown > 0.0f)
+        {
+            shootCooldown -= Time.deltaTime;
+        }
+        
+
         if (ServerManager.Instance.isServer)
         {
             NetworkServer.Spawn(gameObject);
@@ -81,6 +95,11 @@ public class CanonManager : NetworkBehaviour
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.target.transform.position - canonPivot.transform.position);
 
                 canonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
+
+                if (targetedTime >= 1.0f)
+                {
+                    Shoot();
+                }
             }
             else
             {
