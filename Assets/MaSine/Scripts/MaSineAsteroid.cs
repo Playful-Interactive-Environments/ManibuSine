@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class MaSineAsteroid : NetworkBehaviour {
 
     NetworkPlayer player;
-    private float speed = 100.0f;
+    private float speed = 1000.0f;
 
 	// Use this for initialization
 	void Start () {
