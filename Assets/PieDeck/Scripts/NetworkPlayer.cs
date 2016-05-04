@@ -109,7 +109,8 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdShoot()
     {
-        RpcSpawnBullet();
+        FindObjectOfType<Canon>().Shoot();
+        //RpcSpawnBullet();
     }
 
     [ClientRpc]

@@ -29,6 +29,7 @@ public class Canon : NetworkBehaviour {
     public void Shoot()
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position , transform.rotation);
+        NetworkServer.Spawn(bullet);
     }
 
     
