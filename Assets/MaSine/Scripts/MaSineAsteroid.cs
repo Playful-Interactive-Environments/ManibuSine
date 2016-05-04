@@ -8,18 +8,19 @@ public class MaSineAsteroid : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        NetworkPlayer[] players = FindObjectsOfType<NetworkPlayer>();
+        //NetworkPlayer[] players = FindObjectsOfType<NetworkPlayer>();
 
-        foreach (NetworkPlayer item in players)
-        {
-            if (item.isLocalPlayer)
-                player = item;
-        }
+        //foreach (NetworkPlayer item in players)
+        //{
+        //    if (item.isLocalPlayer)
+        //        player = item;
+        //}
 	}
 
     void OnTriggerEnter(Collider other)
     {
-        player.CmdDestroyEntity(gameObject);
+        //player.CmdDestroyEntity(gameObject);
+        Network.Destroy(gameObject);
     }
 
 	// Update is called once per frame
