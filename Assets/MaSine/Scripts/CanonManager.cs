@@ -78,7 +78,7 @@ public class CanonManager : NetworkBehaviour
         translationSpeed * Time.deltaTime);
             if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))
+                if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"))
                 {
                     Shoot();
                 }
