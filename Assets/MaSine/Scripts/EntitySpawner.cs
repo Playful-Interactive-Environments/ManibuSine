@@ -12,7 +12,7 @@ public class EntitySpawner : MonoBehaviour {
 	void Start () {
         serverManager = GetComponent<ServerManager>();
 
-        InvokeRepeating("SpawnThat", 6, 5);
+        InvokeRepeating("SpawnThat", 6, 2);
 	}
 
     void SpawnThat()
