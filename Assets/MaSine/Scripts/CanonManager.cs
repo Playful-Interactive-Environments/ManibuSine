@@ -16,6 +16,10 @@ public class CanonManager : NetworkBehaviour
     private float rotationSpeed = 3;
     private float translationSpeed = 5;
 
+    private float targetedTime = 0.0f;
+    private float targetingSpeed = 1.0f;
+    private Quaternion startQuat;
+
 
     void Start()
     {
@@ -70,7 +74,13 @@ public class CanonManager : NetworkBehaviour
             // rotate canon
             if (gunnerHead.target != null)
             {
-                canonPivot.transform.LookAt(gunnerHead.target);
+                if (targetedTime == 0)
+                    startQuat = canonPivot.transform.rotation;
+                targetedTime += Time.deltaTime/targetingSpeed;
+
+                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.target.transform.position - canonPivot.transform.position);
+
+                canonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
             }
             else
             {
@@ -78,6 +88,8 @@ public class CanonManager : NetworkBehaviour
                 Quaternion.Lerp(canonPivot.transform.rotation,
                 gunnerHead.transform.rotation,
                 rotationSpeed * Time.deltaTime);
+
+                targetedTime = 0.0f;
             }
             
 

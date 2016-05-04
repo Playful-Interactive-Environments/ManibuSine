@@ -5,16 +5,11 @@ using UnityEngine.Networking;
 public class MaSineAsteroid : NetworkBehaviour {
 
     NetworkPlayer player;
+    private float speed = 100.0f;
 
 	// Use this for initialization
 	void Start () {
-        //NetworkPlayer[] players = FindObjectsOfType<NetworkPlayer>();
-
-        //foreach (NetworkPlayer item in players)
-        //{
-        //    if (item.isLocalPlayer)
-        //        player = item;
-        //}
+        GetComponent<Rigidbody>().velocity = Random.onUnitSphere * speed;
 	}
 
     void OnTriggerEnter(Collider other)
