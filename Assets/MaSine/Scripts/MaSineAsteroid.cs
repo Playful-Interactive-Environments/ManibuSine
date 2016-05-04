@@ -20,7 +20,10 @@ public class MaSineAsteroid : NetworkBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //player.CmdDestroyEntity(gameObject);
-        Network.Destroy(gameObject);
+        if (isServer)
+        {
+            Destroy(gameObject);
+        }  
     }
 
 	// Update is called once per frame

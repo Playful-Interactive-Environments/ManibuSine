@@ -12,4 +12,12 @@ public class Bullet : NetworkBehaviour {
         GetComponent<Rigidbody>().velocity = transform.up * speed;
         Destroy(gameObject, lifeTime);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (isServer)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
