@@ -8,12 +8,12 @@ public class CanonManager : NetworkBehaviour
     public GameObject canonPivot;
 
     public Transform gunner;
-    private Transform gunnerHead;
+    private Head gunnerHead;
     private Canon canon;
 
     NetworkPlayer networkPlayer;
 
-    private float rotationSpeed = 10;
+    private float rotationSpeed = 3;
     private float translationSpeed = 5;
 
 
@@ -43,7 +43,7 @@ public class CanonManager : NetworkBehaviour
     void PlayerAssigned(Transform gunner)
     {
         this.gunner = gunner;
-        this.gunnerHead = gunner.GetComponentInChildren<Head>().transform;
+        this.gunnerHead = gunner.GetComponentInChildren<Head>();
     }
 
     // PlayerGone Msg sent in cannon trigger
@@ -66,11 +66,22 @@ public class CanonManager : NetworkBehaviour
         }
         if (gunner != null)
         {
+
             // rotate canon
-            canonPivot.transform.rotation =
-            Quaternion.Lerp(canonPivot.transform.rotation,
-            gunnerHead.rotation,
-            rotationSpeed * Time.deltaTime);
+            if (gunnerHead.target != null)
+            {
+                canonPivot.transform.LookAt(gunnerHead.target);
+            }
+            else
+            {
+                canonPivot.transform.rotation =
+                Quaternion.Lerp(canonPivot.transform.rotation,
+                gunnerHead.transform.rotation,
+                rotationSpeed * Time.deltaTime);
+            }
+            
+
+
             // move canon
             canonPivot.transform.position =
             Vector3.Lerp(canonPivot.transform.position,

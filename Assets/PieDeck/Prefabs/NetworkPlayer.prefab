@@ -63,7 +63,7 @@ GameObject:
   - 65: {fileID: 6594590}
   - 23: {fileID: 2390056}
   - 114: {fileID: 11461554}
-  - 114: {fileID: 11418150}
+  - 114: {fileID: 11404324}
   m_Layer: 14
   m_Name: Head
   m_TagString: Untagged
@@ -408,6 +408,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11404324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b5957aaacbc9479a9d323383f36be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11416800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,38 +467,6 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0, w: 0}
   position: {x: 0, y: 0, z: 0}
   ColorId: 2
---- !u!114 &11418150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 105
-    i1: 174
-    i2: 39
-    i3: 20
-    i4: 77
-    i5: 0
-    i6: 84
-    i7: 212
-    i8: 186
-    i9: 93
-    i10: 13
-    i11: 13
-    i12: 251
-    i13: 238
-    i14: 37
-    i15: 223
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11427394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,6 +531,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0435e17aaa4941640bba7f4ad05e1523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 524288
 --- !u!136 &13653496
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -5163,6 +5146,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
