@@ -4,6 +4,10 @@ using UnityEngine.Networking;
 
 public class CanonManager : NetworkBehaviour
 {
+    public delegate void CanonDelegateTransform(CanonManager canonManager);
+    public CanonDelegateTransform GotTarget;
+    public delegate void CanonDelegateSimple();
+    public CanonDelegateSimple LostTarget;
 
     public GameObject canonPivot;
 
@@ -26,11 +30,8 @@ public class CanonManager : NetworkBehaviour
 
     void Start()
     {
-
         canon = canonPivot.GetComponentInChildren<Canon>();
-        
-        //InvokeRepeating("Shoot", 5.0f, 0.77642f);
-        InvokeRepeating("RegisterAtNetworDataManager", 2.5f, 0.5f);
+        InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
     }
 
     void RegisterAtNetworDataManager()
@@ -77,7 +78,6 @@ public class CanonManager : NetworkBehaviour
             shootCooldown -= Time.deltaTime;
         }
         
-
         if (ServerManager.Instance.isServer)
         {
             NetworkServer.Spawn(gameObject);
@@ -88,8 +88,14 @@ public class CanonManager : NetworkBehaviour
             // rotate canon
             if (gunnerHead.target != null)
             {
+                // got new target
                 if (targetedTime == 0)
+                {
                     startQuat = canonPivot.transform.rotation;
+                    if (GotTarget != null)
+                        GotTarget(this);
+                }
+
                 targetedTime += Time.deltaTime/targetingSpeed;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.target.transform.position - canonPivot.transform.position);
