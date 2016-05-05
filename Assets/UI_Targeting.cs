@@ -68,6 +68,10 @@ public class UI_Targeting : MonoBehaviour {
 
                 rectTransform.anchoredPosition = WorldObject_ScreenPosition;
             }
+            else
+            {
+                ShowGraphics(false);
+            }
         }
 	}
 

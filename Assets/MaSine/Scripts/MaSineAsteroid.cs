@@ -10,6 +10,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        
         audioManager = AudioManager.Instance;
         if (isServer)
             GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * speed);
@@ -18,11 +19,17 @@ public class MaSineAsteroid : NetworkBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //player.CmdDestroyEntity(gameObject);
-        GetComponent<AudioSource>().PlayOneShot(audioManager.clips[0]);
+
         if (isServer)
         {
             Destroy(gameObject);
-        }  
+
+        }
+    }
+
+    public override void OnNetworkDestroy()
+    {
+        audioManager.PlayClipAt(audioManager.clips[0], transform.position);
     }
 
 	// Update is called once per frame

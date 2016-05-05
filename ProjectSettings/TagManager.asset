@@ -12,6 +12,7 @@ TagManager:
   - Bubble
   - areaEffect
   - Environment
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - FPSWeapon
   - player
   - object
-  - bubbles
+  - PlayerBullet
   - Communicator
   - Environment
   - Targetable

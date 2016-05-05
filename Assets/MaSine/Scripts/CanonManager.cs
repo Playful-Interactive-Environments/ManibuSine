@@ -15,7 +15,12 @@ public class CanonManager : NetworkBehaviour
     private Head gunnerHead;
     public Transform TargetTransform
     {
-        get { return gunnerHead.target; }
+        get
+        {
+            if (gunnerHead == null) 
+                return null;
+            return gunnerHead.target;
+        }
     }
     private Canon canon;
 
