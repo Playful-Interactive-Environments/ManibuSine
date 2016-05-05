@@ -21,6 +21,7 @@ public class CanonManager : NetworkBehaviour
     private float translationSpeed = 5;
 
     private float targetedTime = 0.0f;
+    public float TargetedTime { get { return targetedTime; } }
     private float targetingSpeed = 1.0f;
     private Quaternion startQuat;
 
