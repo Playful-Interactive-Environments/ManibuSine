@@ -44,6 +44,7 @@ public class UI_Targeting : MonoBehaviour {
         {
             CancelInvoke("GetCanonManager");
             canonManager.GotTarget += GotTarget;
+            canonManager.LostTarget += LostTarget;
         }
     }
 	
@@ -51,7 +52,7 @@ public class UI_Targeting : MonoBehaviour {
 	void Update () {
         if (hasTarget)
         {
-            float size = (1 - t) * maxSize;
+            float size = (1 - canonManager.TargetedTime) * maxSize;
             rectTransform.sizeDelta = new Vector2(targetSize + size, targetSize + size);
         }
 	}
@@ -71,6 +72,6 @@ public class UI_Targeting : MonoBehaviour {
     void Dispose()
     {
         canonManager.GotTarget -= GotTarget;
+        canonManager.LostTarget -= LostTarget;
     }
-
 }

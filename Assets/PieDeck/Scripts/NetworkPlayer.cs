@@ -77,7 +77,7 @@ public class NetworkPlayer : NetworkBehaviour
             ColorId = 1;
             ps[0].gameObject.SetActive(true);
             transform.FindChild("Body").gameObject.SetActive(false);
-            transform.FindChild("Orientation").gameObject.SetActive(false);
+            //transform.FindChild("Orientation").gameObject.SetActive(false);
         }
 
         head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
