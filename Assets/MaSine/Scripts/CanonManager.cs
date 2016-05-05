@@ -13,6 +13,10 @@ public class CanonManager : NetworkBehaviour
 
     public Transform gunner;
     private Head gunnerHead;
+    public Transform TargetTransform
+    {
+        get { return gunnerHead.target; }
+    }
     private Canon canon;
 
     NetworkPlayer networkPlayer;
@@ -100,7 +104,6 @@ public class CanonManager : NetworkBehaviour
                 targetedTime += Time.deltaTime/targetingSpeed;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.target.transform.position - canonPivot.transform.position);
-
                 canonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
 
                 if (targetedTime >= 1.0f)

@@ -12,14 +12,18 @@ public class UI_Targeting : MonoBehaviour {
     private bool hasTarget = false;
 
     private CanonManager canonManager;
+
     private Image[] graphics;
 
     private RectTransform rectTransform;
+    RectTransform CanvasRect;
 
 	// Use this for initialization
 	void Start () {
         InitializeUI();
         InvokeRepeating("GetCanonManager", 0.5f, 0.5f);
+
+        CanvasRect = transform.parent.GetComponent<RectTransform>();
 	}
 
     void InitializeUI()
@@ -52,8 +56,18 @@ public class UI_Targeting : MonoBehaviour {
 	void Update () {
         if (hasTarget)
         {
-            float size = (1 - canonManager.TargetedTime) * maxSize;
+            float size = (1 - Mathf.Clamp01(canonManager.TargetedTime)) * maxSize;
             rectTransform.sizeDelta = new Vector2(targetSize + size, targetSize + size);
+
+            if (canonManager.TargetTransform != null) {
+                Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(canonManager.TargetTransform.position);
+
+                Vector2 WorldObject_ScreenPosition = new Vector2(
+                                                        ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
+                                                        ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
+
+                rectTransform.anchoredPosition = WorldObject_ScreenPosition;
+            }
         }
 	}
 
