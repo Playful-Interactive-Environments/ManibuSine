@@ -52,7 +52,7 @@ public class UI_Targeting : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
+    // TODO: change position calculation - because now we are using world canvas
 	void Update () {
         if (hasTarget)
         {
