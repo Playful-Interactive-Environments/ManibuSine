@@ -43,12 +43,14 @@ public class CanonManager : NetworkBehaviour
 
     private float shootSpeed = 1.0f;
     private float shootCooldown = 0.0f;
-
+    private AudioSource asource;
+    private AudioManager audioManager;
 
     void Start()
     {
         canon = canonPivot.GetComponentInChildren<Canon>();
         InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
+        audioManager = AudioManager.Instance;
     }
 
     void RegisterAtNetworDataManager()
@@ -120,6 +122,13 @@ public class CanonManager : NetworkBehaviour
 
                 //Debugray to show where the canon is aiming
                 Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
+
+                //Play sound targeting sound
+                
+                if (asource == null)
+                {
+                    asource = audioManager.PlayClipAt(audioManager.clips[1], audioManager.sources[1], transform.position);
+                }
 
                 if (targetedTime >= 1.0f)
                 {

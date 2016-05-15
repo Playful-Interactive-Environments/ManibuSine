@@ -6,9 +6,13 @@ public class Head : MonoBehaviour {
     public Transform target;
     public Vector3 aimPoint;
     public LayerMask mask;
-	// Use this for initialization
-	void Start () {
-	}
+    private AudioManager audioManager;
+    private AudioSource asource;
+
+    // Use this for initialization
+    void Start () {
+        audioManager = AudioManager.Instance;
+    }
 	
 	// Update is called once per frame
 	void Update () {
