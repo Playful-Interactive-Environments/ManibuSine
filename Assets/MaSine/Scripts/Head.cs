@@ -4,6 +4,7 @@ using System.Collections;
 public class Head : MonoBehaviour {
 
     public Transform target;
+    public Vector3 aimPoint;
     public LayerMask mask;
 	// Use this for initialization
 	void Start () {
@@ -18,5 +19,6 @@ public class Head : MonoBehaviour {
         Physics.Raycast(ray, out hit, 10000, mask);
 
         target = hit.transform;
+        aimPoint = hit.point;
 	}
 }

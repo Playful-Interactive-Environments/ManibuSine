@@ -22,6 +22,13 @@ public class CanonManager : NetworkBehaviour
             return gunnerHead.target;
         }
     }
+    public Vector3 aimPoint
+    {
+        get
+        {
+            return gunnerHead.aimPoint;
+        }
+    }
     private Canon canon;
 
     NetworkPlayer networkPlayer;
@@ -108,8 +115,11 @@ public class CanonManager : NetworkBehaviour
 
                 targetedTime += Time.deltaTime/targetingSpeed;
 
-                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.target.transform.position - canonPivot.transform.position);
+                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - canonPivot.transform.position);
                 canonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
+
+                //Debugray to show where the canon is aiming
+                Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
 
                 if (targetedTime >= 1.0f)
                 {
