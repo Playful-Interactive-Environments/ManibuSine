@@ -22,6 +22,13 @@ public class CanonManager : NetworkBehaviour
             return gunnerHead.target;
         }
     }
+    public Vector3 aimPoint
+    {
+        get
+        {
+            return gunnerHead.aimPoint;
+        }
+    }
     private Canon canon;
 
     NetworkPlayer networkPlayer;
@@ -36,12 +43,14 @@ public class CanonManager : NetworkBehaviour
 
     private float shootSpeed = 1.0f;
     private float shootCooldown = 0.0f;
-
+    private AudioSource asource;
+    private AudioManager audioManager;
 
     void Start()
     {
         canon = canonPivot.GetComponentInChildren<Canon>();
         InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
+        audioManager = AudioManager.Instance;
     }
 
     void RegisterAtNetworDataManager()
@@ -108,8 +117,18 @@ public class CanonManager : NetworkBehaviour
 
                 targetedTime += Time.deltaTime/targetingSpeed;
 
-                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.target.transform.position - canonPivot.transform.position);
+                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - canonPivot.transform.position);
                 canonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
+
+                //Debugray to show where the canon is aiming
+                Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
+
+                //Play sound targeting sound
+                
+                if (asource == null)
+                {
+                    asource = audioManager.PlayClipAt(audioManager.clips[1], audioManager.sources[1], transform.position);
+                }
 
                 if (targetedTime >= 1.0f)
                 {

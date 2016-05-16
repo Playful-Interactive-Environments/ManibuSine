@@ -8,8 +8,7 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager Instance { get { return instance; } }
 
     public List<AudioClip> clips;
-
-    public GameObject prefab;
+    public List<GameObject> sources;
 
     void Awake()
     {
@@ -25,14 +24,16 @@ public class AudioManager : MonoBehaviour {
 	
 	}
 
-    public void PlayClipAt(AudioClip clip, Vector3 pos)
+    public AudioSource PlayClipAt(AudioClip clip, GameObject source, Vector3 pos)
     {
-        GameObject tempGO = Instantiate(prefab); // create the temp object
+        GameObject tempGO = Instantiate(source); // create the temp object
         tempGO.transform.position = pos; // set its position
         AudioSource aSource = tempGO.GetComponent<AudioSource>(); // add an audio source
         aSource.clip = clip; // define the clip
         // set other aSource properties here, if desired
         aSource.Play(); // start the sound
         Destroy(tempGO, clip.length); // destroy object after clip duration
+
+        return aSource;
     }
 }
