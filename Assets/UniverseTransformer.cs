@@ -28,6 +28,6 @@ public class UniverseTransformer : MonoBehaviour {
 
     public void RotateUniverse(float a)
     {
-        this.transform.rotation = Quaternion.Euler(0, this.transform.rotation.eulerAngles.y - a, 0);
+        this.transform.RotateAround(transform.parent.position, Vector3.up, -a);
     }
 }
