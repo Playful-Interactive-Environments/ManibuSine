@@ -21,8 +21,8 @@ public class UniverseTransformer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.position = Vector3.Lerp(transform.position, transformTarget.position, lerpSpeed *Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, transformTarget.rotation, lerpSpeed *Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.localPosition, transformTarget.localPosition, lerpSpeed *Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.localRotation, transformTarget.localRotation, lerpSpeed *Time.deltaTime);
 	
 	}
 
