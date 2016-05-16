@@ -11,9 +11,10 @@ public class UI_Targeting : MonoBehaviour {
 
     private bool hasTarget = false;
 
-    private CanonManager canonManager;
+    private CannonManager canonManager;
 
-    private Image[] graphics;
+    private Image[] targetGraphics;
+    public Image dotGraphic;
 
     private RectTransform rectTransform;
     RectTransform CanvasRect;
@@ -30,25 +31,26 @@ public class UI_Targeting : MonoBehaviour {
     {
         rectTransform = GetComponent<RectTransform>();
         targetSize = rectTransform.sizeDelta.x;
-        graphics = GetComponentsInChildren<Image>();
         ShowGraphics(false);
     }
 
     void ShowGraphics(bool enable)
     {
-        foreach (Image item in graphics)
+        foreach (Image item in targetGraphics)
             item.enabled = enable;
     }
 
     // assigns the canon manager
     void GetCanonManager()
     {
-        canonManager = FindObjectOfType<CanonManager>();
+        canonManager = FindObjectOfType<CannonManager>();
         if (canonManager != null)
         {
             CancelInvoke("GetCanonManager");
             canonManager.GotTarget += GotTarget;
             canonManager.LostTarget += LostTarget;
+            canonManager.EnteredCannon += EnteredCannon;
+            canonManager.ExitCannon += ExitCannon;
         }
     }
 	
@@ -75,8 +77,22 @@ public class UI_Targeting : MonoBehaviour {
         }
 	}
 
-    private void GotTarget(CanonManager canonManager)
+    private void EnteredCannon(CannonManager canonManager)
     {
+        if (canonManager.IsGunnerLocalPlayer())
+            dotGraphic.enabled = true;
+    }
+    private void ExitCannon(CannonManager cannonManager)
+    {
+        if (canonManager.IsGunnerLocalPlayer())
+            dotGraphic.enabled = false;
+    }
+
+    private void GotTarget(CannonManager canonManager)
+    {
+        if (!canonManager.IsGunnerLocalPlayer())
+            return;
+
         hasTarget = true;
         ShowGraphics(true);
     }

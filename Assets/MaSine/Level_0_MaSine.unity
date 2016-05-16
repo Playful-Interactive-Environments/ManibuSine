@@ -959,7 +959,7 @@ RectTransform:
   m_LocalScale: {x: 0.503125, y: 0.503125, z: 1}
   m_Children: []
   m_Father: {fileID: 993589524}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1603,6 +1603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9199e0dde75784a90110c0103d0c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dotGraphic: {fileID: 736813996}
 --- !u!1001 &1698461654
 Prefab:
   m_ObjectHideFlags: 0
@@ -2345,7 +2346,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449246, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}

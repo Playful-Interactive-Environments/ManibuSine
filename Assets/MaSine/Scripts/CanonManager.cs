@@ -2,14 +2,14 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class CanonManager : NetworkBehaviour
+public class CannonManager : NetworkBehaviour
 {
-    public delegate void CanonDelegateTransform(CanonManager canonManager);
-    public CanonDelegateTransform GotTarget;
+    public delegate void CanonDelegateTransform(CannonManager canonManager);
+    public CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
     public delegate void CanonDelegateSimple();
     public CanonDelegateSimple LostTarget;
 
-    public GameObject canonPivot;
+    public GameObject cannonPivot;
 
     public Transform gunner;
     private Head gunnerHead;
@@ -48,7 +48,7 @@ public class CanonManager : NetworkBehaviour
 
     void Start()
     {
-        canon = canonPivot.GetComponentInChildren<Canon>();
+        canon = cannonPivot.GetComponentInChildren<Canon>();
         InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
         audioManager = AudioManager.Instance;
     }
@@ -65,12 +65,23 @@ public class CanonManager : NetworkBehaviour
             CancelInvoke("RegisterAtNetworDataManager");
     }
 
+    public bool IsGunnerLocalPlayer()
+    {
+        if (networkPlayer != null)
+            return networkPlayer.isLocalPlayer;
+
+        return false;
+    }
+
 
     // PlayerAssigned Msg sent in cannon trigger
     void PlayerAssigned(Transform gunner)
     {
         this.gunner = gunner;
         this.gunnerHead = gunner.GetComponentInChildren<Head>();
+
+        if (EnteredCannon != null)
+            EnteredCannon(this);
     }
 
     // PlayerGone Msg sent in cannon trigger
@@ -78,6 +89,9 @@ public class CanonManager : NetworkBehaviour
     {
         gunner = null;
         gunnerHead = null;
+
+        if (ExitCannon != null)
+            ExitCannon(this);
     }
 
     void Shoot()
@@ -110,15 +124,15 @@ public class CanonManager : NetworkBehaviour
                 // got new target
                 if (targetedTime == 0)
                 {
-                    startQuat = canonPivot.transform.rotation;
+                    startQuat = cannonPivot.transform.rotation;
                     if (GotTarget != null)
                         GotTarget(this);
                 }
 
                 targetedTime += Time.deltaTime/targetingSpeed;
 
-                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - canonPivot.transform.position);
-                canonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
+                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
+                cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
 
                 //Debugray to show where the canon is aiming
                 Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
@@ -137,8 +151,8 @@ public class CanonManager : NetworkBehaviour
             }
             else
             {
-                canonPivot.transform.rotation =
-                Quaternion.Lerp(canonPivot.transform.rotation,
+                cannonPivot.transform.rotation =
+                Quaternion.Lerp(cannonPivot.transform.rotation,
                 gunnerHead.transform.rotation,
                 rotationSpeed * Time.deltaTime);
 
@@ -148,9 +162,9 @@ public class CanonManager : NetworkBehaviour
 
 
             // move canon
-            canonPivot.transform.position =
-            Vector3.Lerp(canonPivot.transform.position,
-            new Vector3(canonPivot.transform.position.x, canonPivot.transform.position.y, gunner.transform.position.z),
+            cannonPivot.transform.position =
+            Vector3.Lerp(cannonPivot.transform.position,
+            new Vector3(cannonPivot.transform.position.x, cannonPivot.transform.position.y, gunner.transform.position.z),
         translationSpeed * Time.deltaTime);
             if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
