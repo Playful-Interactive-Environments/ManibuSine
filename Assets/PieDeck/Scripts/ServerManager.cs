@@ -17,6 +17,7 @@ public class ServerManager : NetworkManager
 	public Text debugTextServer;
     public GameObject SoundManager;
     public GameObject CanonStation;
+    public GameObject TargetTransform;
 
     private UniverseTransformer universeTransformer;
 
@@ -63,6 +64,7 @@ public class ServerManager : NetworkManager
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
 	    //Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
         Instantiate(CanonStation);
+        Instantiate(TargetTransform);
         SetPort();
 		StartServer();
 		isServer = true;

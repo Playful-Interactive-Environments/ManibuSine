@@ -16,23 +16,24 @@ public class UniverseTransformer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
-        transform.localPosition = Vector3.Lerp(transform.localPosition, transformTarget.localPosition, lerpSpeed *Time.deltaTime);
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, transformTarget.rotation, lerpSpeed *Time.deltaTime);
-	
-	}
+        this.transform.position = transformTarget.position;
+        this.transform.rotation = transformTarget.rotation;
+
+    }
 
     public void MoveForward(float s)
     {
-        transformTarget.Translate(transform.forward * -s * Time.deltaTime * 100);
+        transformTarget.Translate(transform.forward * -s * Time.deltaTime);
     }
 
     public void RotateUniverse(float a)
     {
-        transformTarget.RotateAround(transform.parent.parent.position, Vector3.up, -a *Time.deltaTime * 100);
+        transformTarget.RotateAround(transform.parent.position, Vector3.up, -a * Time.deltaTime);
     }
 }
