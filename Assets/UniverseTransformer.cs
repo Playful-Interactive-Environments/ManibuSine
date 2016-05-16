@@ -21,6 +21,8 @@ public class UniverseTransformer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (transformTarget == null)
+            return;
 
         this.transform.position = transformTarget.position;
         this.transform.rotation = transformTarget.rotation;
