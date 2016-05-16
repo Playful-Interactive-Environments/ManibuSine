@@ -18,6 +18,8 @@ public class ServerManager : NetworkManager
     public GameObject SoundManager;
     public GameObject CanonStation;
 
+    private UniverseTransformer universeTransformer;
+
 
 
     void Awake()
@@ -41,7 +43,7 @@ public class ServerManager : NetworkManager
 	
 	void Start()
 	{
-
+        universeTransformer = UniverseTransformer.Instance;
 	}
 	void Update()
 	{
@@ -52,7 +54,7 @@ public class ServerManager : NetworkManager
     public void SpawnEntity(GameObject prefab)
     {
         GameObject obj = Instantiate(prefab, new Vector3(4000, Random.Range(800, 1200), Random.Range(-500, 500)), Quaternion.identity) as GameObject;
-
+        obj.transform.parent = universeTransformer.transform;
         NetworkServer.Spawn(obj);
     }
 

@@ -78,6 +78,16 @@ public class NetworkPlayer : NetworkBehaviour
             ps[0].gameObject.SetActive(true);
             transform.FindChild("Body").gameObject.SetActive(false);
             //transform.FindChild("Orientation").gameObject.SetActive(false);
+
+            //UNIVERSE MOVING INPUT
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                CmdMoveShipForward();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                CmdMoveShipBackward();
+            }
         }
 
         head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
@@ -123,6 +133,18 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdDestroyEntity(GameObject obj)
     {
         NetworkServer.Destroy(obj);
+    }
+
+    [Command]
+    public void CmdMoveShipForward()
+    {
+        UniverseTransformer.Instance.MoveForward(10);
+    }
+
+    [Command]
+    public void CmdMoveShipBackward()
+    {
+        UniverseTransformer.Instance.MoveForward(-10);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
