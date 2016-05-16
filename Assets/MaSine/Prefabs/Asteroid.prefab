@@ -136,7 +136,7 @@ MonoBehaviour:
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
-  m_SnapThreshold: 100
+  m_SnapThreshold: 1000
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
 --- !u!114 &11461874

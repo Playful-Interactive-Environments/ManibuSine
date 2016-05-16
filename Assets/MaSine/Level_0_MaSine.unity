@@ -1082,7 +1082,7 @@ Prefab:
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: TargetTransform
       value: 
-      objectReference: {fileID: 154934, guid: 8b213f0bc22d50e4daee84e5dfc5ae65, type: 2}
+      objectReference: {fileID: 112588, guid: 0d6c3d81a847f174d99f368d8dc60bf0, type: 2}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: m_SpawnPrefabs.Array.data[6]
       value: 
