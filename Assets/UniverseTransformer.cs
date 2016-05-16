@@ -6,6 +6,9 @@ public class UniverseTransformer : MonoBehaviour {
     private static UniverseTransformer instance;
     public static UniverseTransformer Instance { get { return instance; } }
 
+    public Transform transformTarget;
+    private float lerpSpeed = 1000;
+
     void Awake()
     {
         instance = this;
@@ -13,21 +16,23 @@ public class UniverseTransformer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        transform.position = Vector3.Lerp(transform.position, transformTarget.position, lerpSpeed *Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, transformTarget.rotation, lerpSpeed *Time.deltaTime);
 	
 	}
 
     public void MoveForward(float s)
     {
-        this.transform.Translate(transform.forward * -s);
+        transformTarget.Translate(transform.forward * -s * Time.deltaTime);
     }
 
     public void RotateUniverse(float a)
     {
-        this.transform.RotateAround(transform.parent.position, Vector3.up, -a);
+        transformTarget.RotateAround(transform.parent.parent.position, Vector3.up, -a *Time.deltaTime);
     }
 }

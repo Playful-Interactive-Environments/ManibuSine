@@ -19,6 +19,8 @@ public class MaSineAsteroid : NetworkBehaviour {
             GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * speed);
             rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f;
         }
+
+        transform.parent = UniverseTransformer.Instance.transform;
 	}
 
     void OnTriggerEnter(Collider other)
