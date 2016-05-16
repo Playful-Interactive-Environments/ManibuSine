@@ -2,15 +2,21 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class UniverseTransformTarget : NetworkBehaviour {
+public class UniverseTransformTarget : NetworkBehaviour
+{
 
-	// Use this for initialization
+    // Use this for initialization
     void OnStartClient()
     {
         AssignTargetToUniverse();
-	}
+    }
 
     void OnStartServer()
+    {
+        AssignTargetToUniverse();
+    }
+
+    void Start()
     {
         AssignTargetToUniverse();
     }
