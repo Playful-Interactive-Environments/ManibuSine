@@ -31,6 +31,7 @@ public class UI_Targeting : MonoBehaviour {
     {
         rectTransform = GetComponent<RectTransform>();
         targetSize = rectTransform.sizeDelta.x;
+        targetGraphics = GetComponentsInChildren<Image>();
         ShowGraphics(false);
     }
 
