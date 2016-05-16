@@ -146,25 +146,25 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdMoveShipForward()
     {
-        UniverseTransformer.Instance.MoveForward(10);
+        UniverseTransformer.Instance.MoveForward(7);
     }
 
     [Command]
     public void CmdMoveShipBackward()
     {
-        UniverseTransformer.Instance.MoveForward(-10);
+        UniverseTransformer.Instance.MoveForward(-7);
     }
 
     [Command]
     public void CmdRotateShipCW()
     {
-        UniverseTransformer.Instance.RotateUniverse(10);
+        UniverseTransformer.Instance.RotateUniverse(.7f);
     }
 
     [Command]
     public void CmdRotateShipCCW()
     {
-        UniverseTransformer.Instance.RotateUniverse(-10);
+        UniverseTransformer.Instance.RotateUniverse(-.7f);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
