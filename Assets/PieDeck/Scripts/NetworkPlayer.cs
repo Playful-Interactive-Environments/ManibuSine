@@ -80,13 +80,21 @@ public class NetworkPlayer : NetworkBehaviour
             //transform.FindChild("Orientation").gameObject.SetActive(false);
 
             //UNIVERSE MOVING INPUT
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.I))
             {
                 CmdMoveShipForward();
             }
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKey(KeyCode.K))
             {
                 CmdMoveShipBackward();
+            }
+            if (Input.GetKey(KeyCode.J))
+            {
+                CmdRotateShipCCW();
+            }
+            if (Input.GetKey(KeyCode.L))
+            {
+                CmdRotateShipCW();
             }
         }
 
@@ -145,6 +153,18 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdMoveShipBackward()
     {
         UniverseTransformer.Instance.MoveForward(-10);
+    }
+
+    [Command]
+    public void CmdRotateShipCW()
+    {
+        UniverseTransformer.Instance.RotateUniverse(10);
+    }
+
+    [Command]
+    public void CmdRotateShipCCW()
+    {
+        UniverseTransformer.Instance.RotateUniverse(-10);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
