@@ -11,7 +11,7 @@ public class UI_Targeting : MonoBehaviour {
 
     private bool hasTarget = false;
 
-    private CannonManager canonManager;
+    private CanonManager canonManager;
 
     private Image[] targetGraphics;
     public Image dotGraphic;
@@ -44,7 +44,7 @@ public class UI_Targeting : MonoBehaviour {
     // assigns the canon manager
     void GetCanonManager()
     {
-        canonManager = FindObjectOfType<CannonManager>();
+        canonManager = FindObjectOfType<CanonManager>();
         if (canonManager != null)
         {
             CancelInvoke("GetCanonManager");
@@ -78,18 +78,18 @@ public class UI_Targeting : MonoBehaviour {
         }
 	}
 
-    private void EnteredCannon(CannonManager canonManager)
+    private void EnteredCannon(CanonManager canonManager)
     {
         if (canonManager.IsGunnerLocalPlayer())
             dotGraphic.enabled = true;
     }
-    private void ExitCannon(CannonManager cannonManager)
+    private void ExitCannon(CanonManager cannonManager)
     {
         if (canonManager.IsGunnerLocalPlayer())
             dotGraphic.enabled = false;
     }
 
-    private void GotTarget(CannonManager canonManager)
+    private void GotTarget(CanonManager canonManager)
     {
         if (!canonManager.IsGunnerLocalPlayer())
             return;

@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class CannonManager : NetworkBehaviour
+public class CanonManager : NetworkBehaviour
 {
-    public delegate void CanonDelegateTransform(CannonManager canonManager);
+    public delegate void CanonDelegateTransform(CanonManager canonManager);
     public CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
     public delegate void CanonDelegateSimple();
     public CanonDelegateSimple LostTarget;
