@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43702c7ca283e74c854331d7cbaa782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canonPivot: {fileID: 187394}
+  cannonPivot: {fileID: 187394}
   gunner: {fileID: 0}
 --- !u!114 &11449972
 MonoBehaviour:
