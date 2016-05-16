@@ -13,14 +13,16 @@ public class MaSineAsteroid : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
+
+        transform.parent = UniverseTransformer.Instance.transform;
+
         audioManager = AudioManager.Instance;
         if (isServer) {
             GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * speed);
             rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f;
         }
 
-        transform.parent = UniverseTransformer.Instance.transform;
+        
 	}
 
     void OnTriggerEnter(Collider other)
@@ -43,7 +45,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (isServer)
-            transform.Rotate(rotSpeed, rotSpeed, rotSpeed);
+        if (isServer) ;
+            //transform.Rotate(rotSpeed, rotSpeed, rotSpeed);
 	}
 }
