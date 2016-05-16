@@ -5,6 +5,13 @@ public class CurserLocker : MonoBehaviour
 {
     CursorLockMode wantedMode;
 
+    void Start()
+    {
+#if UNITY_ANDROID
+    Destroy(this.gameObject);
+#endif
+    }
+
     // Apply requested cursor state
     void SetCursorState()
     {

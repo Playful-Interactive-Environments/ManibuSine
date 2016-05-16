@@ -1049,7 +1049,7 @@ Prefab:
       objectReference: {fileID: 476508450}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 192.168.0.242
+      value: 10.29.16.19
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -1938,7 +1938,7 @@ GameObject:
   - 4: {fileID: 2044824596}
   - 114: {fileID: 2044824595}
   m_Layer: 0
-  m_Name: curser test
+  m_Name: CurserLocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
