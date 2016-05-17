@@ -19,17 +19,20 @@ public class UI_Targeting : MonoBehaviour {
     private RectTransform rectTransform;
     RectTransform CanvasRect;
 
+    private Vector2 originalScale;
+
 	// Use this for initialization
 	void Start () {
         InitializeUI();
         InvokeRepeating("GetCanonManager", 0.5f, 0.5f);
 
         CanvasRect = transform.parent.GetComponent<RectTransform>();
-	}
+    }
 
-    void InitializeUI()
-    {
+    void InitializeUI() {
         rectTransform = GetComponent<RectTransform>();
+        originalScale = rectTransform.localScale;
+
         targetSize = rectTransform.sizeDelta.x;
         targetGraphics = GetComponentsInChildren<Image>();
         ShowGraphics(false);
@@ -63,13 +66,22 @@ public class UI_Targeting : MonoBehaviour {
             rectTransform.sizeDelta = new Vector2(targetSize + size, targetSize + size);
 
             if (canonManager.TargetTransform != null) {
-                Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(canonManager.TargetTransform.position);
+                // this works perfectly fine for a screen space overlay canvas
+                //Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(canonManager.TargetTransform.position);
+                //Vector2 WorldObject_ScreenPosition = new Vector2(
+                //                                        ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
+                //                                        ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
+                //rectTransform.anchoredPosition = WorldObject_ScreenPosition;
 
-                Vector2 WorldObject_ScreenPosition = new Vector2(
-                                                        ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
-                                                        ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
-
-                rectTransform.anchoredPosition = WorldObject_ScreenPosition;
+                // works for world canva
+                // set position to target
+                transform.position = canonManager.TargetTransform.position /*- transform.forward * 360*/;
+                // calculate distance
+                float distance = Vector3.Distance(transform.parent.position, canonManager.TargetTransform.position);
+                // wheight scaling factor on distance
+                float scaleFactor = Mathf.Pow(distance, .8f) / 100;
+                // apply scaling 
+                rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
             }
             else
             {
