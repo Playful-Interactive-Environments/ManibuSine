@@ -6,15 +6,15 @@ public class UniverseTransformTarget : NetworkBehaviour
 {
 
     // Use this for initialization
-    void OnStartClient()
-    {
-        AssignTargetToUniverse();
-    }
+    //void OnStartClient()
+    //{
+    //    AssignTargetToUniverse();
+    //}
 
-    void OnStartServer()
-    {
-        AssignTargetToUniverse();
-    }
+    //void OnStartServer()
+    //{
+    //    AssignTargetToUniverse();
+    //}
 
     void Start()
     {
@@ -24,6 +24,6 @@ public class UniverseTransformTarget : NetworkBehaviour
     private void AssignTargetToUniverse()
     {
         print("Start");
-        UniverseTransformer.Instance.transformTarget = this.transform;
+        UniverseTransformer.Instance.targetTransfrom = this.transform;
     }
 }
