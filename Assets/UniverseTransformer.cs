@@ -25,8 +25,8 @@ public class UniverseTransformer : MonoBehaviour {
         if (targetTransfrom == null)
             return;
 
-        this.transform.position = targetTransfrom.position;
-        this.transform.rotation = targetTransfrom.rotation;
+        transform.position = Vector3.Lerp(transform.position, targetTransfrom.position, lerpSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetTransfrom.rotation, lerpSpeed * Time.deltaTime);
 
     }
 
