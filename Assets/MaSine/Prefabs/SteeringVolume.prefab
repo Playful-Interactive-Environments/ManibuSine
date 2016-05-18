@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3330866}
   - 136: {fileID: 13607912}
   - 23: {fileID: 2347484}
-  - 114: {fileID: 11418110}
   - 114: {fileID: 11475232}
   m_Layer: 0
   m_Name: SteeringTrigger
@@ -131,38 +130,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139436}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11418110
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 63
-    i1: 38
-    i2: 246
-    i3: 191
-    i4: 159
-    i5: 235
-    i6: 149
-    i7: 228
-    i8: 232
-    i9: 70
-    i10: 225
-    i11: 17
-    i12: 41
-    i13: 253
-    i14: 4
-    i15: 55
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11434328
 MonoBehaviour:
   m_ObjectHideFlags: 1
