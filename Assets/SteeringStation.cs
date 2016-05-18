@@ -49,7 +49,7 @@ public class SteeringStation : NetworkBehaviour {
             return;
         }
             
-        speedInput = (this.transform.lossyScale.x / 2 - steeringTrigger.transform.lossyScale.x / 2) / (distance - steeringTrigger.transform.lossyScale.x / 2); 
+        speedInput = (distance - steeringTrigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - steeringTrigger.transform.lossyScale.x / 2); 
     }
 
     // PlayerAssigned Msg sent in cannon trigger
