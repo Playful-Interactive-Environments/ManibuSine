@@ -18,6 +18,7 @@ public class ServerManager : NetworkManager
     public GameObject SoundManager;
     public GameObject CanonStation;
     public GameObject TargetTransform;
+    public GameObject SteeringStation;
 
     private UniverseTransformer universeTransformer;
 
@@ -65,6 +66,7 @@ public class ServerManager : NetworkManager
 	    //Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
         Instantiate(CanonStation);
         Instantiate(TargetTransform);
+        Instantiate(SteeringStation);
         SetPort();
 		StartServer();
 		isServer = true;
