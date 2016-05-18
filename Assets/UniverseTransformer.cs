@@ -6,8 +6,11 @@ public class UniverseTransformer : MonoBehaviour {
     private static UniverseTransformer instance;
     public static UniverseTransformer Instance { get { return instance; } }
 
-    public Transform targetTransfrom;
+    private Transform targetTransfrom;
     public Transform shipTransform;
+
+    private Rigidbody targetBody;
+
     private float lerpSpeed = 10;
 
     void Awake()
@@ -16,8 +19,9 @@ public class UniverseTransformer : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-        
+    public void SetTargetTransform(Transform target) {
+        targetTransfrom = target;
+        targetBody = target.GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -33,10 +37,12 @@ public class UniverseTransformer : MonoBehaviour {
     public void MoveForward(float s)
     {
         targetTransfrom.Translate(shipTransform.right * -s * Time.deltaTime, Space.World);
+        //targetBody.AddForce(0, 0, s);
     }
 
     public void RotateUniverse(float a)
     {
         targetTransfrom.RotateAround(shipTransform.position, Vector3.up, -a * Time.deltaTime);
+        //targetBody.AddTorque(0, a, 0);
     }
 }

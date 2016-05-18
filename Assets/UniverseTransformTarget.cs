@@ -24,6 +24,6 @@ public class UniverseTransformTarget : NetworkBehaviour
     private void AssignTargetToUniverse()
     {
         print("Start");
-        UniverseTransformer.Instance.targetTransfrom = this.transform;
+        UniverseTransformer.Instance.SetTargetTransform(transform);
     }
 }

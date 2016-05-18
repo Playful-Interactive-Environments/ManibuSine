@@ -19,10 +19,6 @@ public class ServerManager : NetworkManager
     public GameObject CanonStation;
     public GameObject TargetTransform;
 
-    private UniverseTransformer universeTransformer;
-
-
-
     void Awake()
 	{
 		//Check if instance already exists
@@ -41,11 +37,6 @@ public class ServerManager : NetworkManager
 		DontDestroyOnLoad(gameObject);
 	}
 
-	
-	void Start()
-	{
-        universeTransformer = UniverseTransformer.Instance;
-	}
 	void Update()
 	{
 	   
