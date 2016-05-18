@@ -51,8 +51,9 @@ public class SteeringStation : NetworkBehaviour {
                 angleInput = 90;
             else if (angleInput < -90)
                 angleInput = -90;
+
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
-            networkPlayer.CmdRotateShipCW(angleInput * angleInput);
+            networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
         }
 	
 	}
