@@ -19,19 +19,34 @@ public class SteeringStation : NetworkBehaviour {
     private float speedMulti = 1500;
     private float angleMulti = 0.1f;
 
+    private NetworkPlayer networkPlayer;
+    private 
+
     // Use this for initialization
     void Start () {
-        universeTransformer = UniverseTransformer.Instance;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
+    }
+
+    void RegisterAtNetworDataManager()
+    {
+        NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
+        if (nwp != null && nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
+        {
+            networkPlayer = nwp;
+        }
+
+        if (networkPlayer != null)
+            CancelInvoke("RegisterAtNetworDataManager");
+    }
+
+    // Update is called once per frame
+    void Update () {
         if(navigator != null)
         {
             CalculateSpeedInput();
             CalculateAngleInput();
-            UniverseTransformer.Instance.MoveForward(speedInput * speedMulti);
-            UniverseTransformer.Instance.RotateUniverse(angleInput * angleInput);
+            networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
+            networkPlayer.CmdRotateShipCW(angleInput * angleInput);
         }
 	
 	}

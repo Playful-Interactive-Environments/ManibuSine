@@ -83,19 +83,19 @@ public class NetworkPlayer : NetworkBehaviour
             //UNIVERSE MOVING INPUT
             if (Input.GetKey(KeyCode.I))
             {
-                CmdMoveShipForward();
+                CmdMoveShipForward(500 * shipSpeed);
             }
             if (Input.GetKey(KeyCode.K))
             {
-                CmdMoveShipBackward();
+                CmdMoveShipBackward(-500 * shipSpeed);
             }
             if (Input.GetKey(KeyCode.J))
             {
-                CmdRotateShipCCW();
+                CmdRotateShipCCW(7 * shipSpeed);
             }
             if (Input.GetKey(KeyCode.L))
             {
-                CmdRotateShipCW();
+                CmdRotateShipCW(-7 * shipSpeed);
             }
         }
 
@@ -145,27 +145,27 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdMoveShipForward()
+    public void CmdMoveShipForward(float speed)
     {
-        UniverseTransformer.Instance.MoveForward(500 * shipSpeed);
+        UniverseTransformer.Instance.MoveForward(speed);
     }
 
     [Command]
-    public void CmdMoveShipBackward()
+    public void CmdMoveShipBackward(float speed)
     {
-        UniverseTransformer.Instance.MoveForward(-500 * shipSpeed);
+        UniverseTransformer.Instance.MoveForward(speed);
     }
 
     [Command]
-    public void CmdRotateShipCW()
+    public void CmdRotateShipCW(float rot)
     {
-        UniverseTransformer.Instance.RotateUniverse(7.0f * shipSpeed);
+        UniverseTransformer.Instance.RotateUniverse(rot);
     }
 
     [Command]
-    public void CmdRotateShipCCW()
+    public void CmdRotateShipCCW(float rot)
     {
-        UniverseTransformer.Instance.RotateUniverse(-7.0f * shipSpeed);
+        UniverseTransformer.Instance.RotateUniverse(rot);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
