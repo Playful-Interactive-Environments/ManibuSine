@@ -36,7 +36,11 @@ public class SteeringStation : NetworkBehaviour {
 
     private void CalculateAngleInput()
     {
-        return; // throw new NotImplementedException();
+        float x = assignedPlayer.transform.position.x - transform.position.x;
+        float y = assignedPlayer.transform.position.y - transform.position.y;
+
+        angleInput = Mathf.Rad2Deg * Mathf.Atan2(y, x);
+        Debug.DrawRay(this.transform.position, new Vector3(Mathf.Sin(angleInput), 0,  Mathf.Cos(angleInput)), Color.blue);
     }
 
     private void CalculateSpeedInput()
