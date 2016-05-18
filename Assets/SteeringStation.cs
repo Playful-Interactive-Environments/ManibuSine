@@ -72,7 +72,7 @@ public class SteeringStation : NetworkBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "NetworkPlayer" && other.GetComponent<NetworkIdentity>().playerControllerId == assignedPlayer.GetComponent<NetworkIdentity>().playerControllerId)
+        if (assignedPlayer !=null && other.tag == "NetworkPlayer" && other.GetComponent<NetworkIdentity>().playerControllerId == assignedPlayer.GetComponent<NetworkIdentity>().playerControllerId)
         {
             PlayerGone();
         }
