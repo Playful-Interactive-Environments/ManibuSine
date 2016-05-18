@@ -16,8 +16,8 @@ public class SteeringStation : NetworkBehaviour {
 
     public UniverseTransformer universeTransformer;
 
-    private float speedMulti = 150;
-    private float angleMulti = 0.5f;
+    private float speedMulti = 100;
+    private float angleMulti = 0.25f;
 
     private NetworkPlayer networkPlayer;
     private 
@@ -47,10 +47,9 @@ public class SteeringStation : NetworkBehaviour {
         {
             CalculateSpeedInput();
             CalculateAngleInput();
-            if (angleInput > 90)
-                angleInput = 90;
-            else if (angleInput < -90)
-                angleInput = -90;
+            if (angleInput > 90 || angleInput < -90)
+                return;
+                
 
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
             networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
