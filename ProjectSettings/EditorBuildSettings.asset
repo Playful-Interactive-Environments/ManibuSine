@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PieDeck/Scenes/Server_Admin.unity
+    path: Assets/MaSine/Scenes/Server_Admin.unity
   - enabled: 0
     path: Assets/PieDeck/Scenes/Level_0_Profiler.unity
   - enabled: 0
     path: Assets/PieDeck/Scenes/Level_0_Particle.unity
   - enabled: 0
-    path: Assets/MaSine/Level_0_MaSine.unity
+    path: Assets/MaSine/Scenes/Level_0_MaSine.unity
