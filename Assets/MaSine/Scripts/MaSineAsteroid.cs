@@ -45,7 +45,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (isServer) ;
-            //transform.Rotate(rotSpeed, rotSpeed, rotSpeed);
+        if (isServer) 
+            transform.Rotate(rotSpeed, rotSpeed, rotSpeed);
 	}
 }

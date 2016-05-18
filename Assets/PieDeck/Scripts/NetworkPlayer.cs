@@ -30,6 +30,7 @@ public class NetworkPlayer : NetworkBehaviour
 	private ParticleSystem[] ps;
     [SyncVar]
     private bool laserTrackingActivated;
+    private float shipSpeed = 3;
 
     void Start () {
 		ps = GetComponentsInChildren<ParticleSystem>(true);
@@ -146,25 +147,25 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdMoveShipForward()
     {
-        UniverseTransformer.Instance.MoveForward(500);
+        UniverseTransformer.Instance.MoveForward(500 * shipSpeed);
     }
 
     [Command]
     public void CmdMoveShipBackward()
     {
-        UniverseTransformer.Instance.MoveForward(-500);
+        UniverseTransformer.Instance.MoveForward(-500 * shipSpeed);
     }
 
     [Command]
     public void CmdRotateShipCW()
     {
-        UniverseTransformer.Instance.RotateUniverse(7.0f);
+        UniverseTransformer.Instance.RotateUniverse(7.0f * shipSpeed);
     }
 
     [Command]
     public void CmdRotateShipCCW()
     {
-        UniverseTransformer.Instance.RotateUniverse(-7.0f);
+        UniverseTransformer.Instance.RotateUniverse(-7.0f * shipSpeed);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
