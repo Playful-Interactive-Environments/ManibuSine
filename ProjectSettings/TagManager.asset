@@ -35,7 +35,7 @@ TagManager:
   - Environment
   - Targetable
   - Destroyable
-  - 
+  - StationTrigger
   - 
   - 
   - 
