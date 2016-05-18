@@ -23,8 +23,8 @@ public class SteeringStation : NetworkBehaviour {
 	void Update () {
         if(navigator != null)
         {
-            calculateSpeedInput();
-            calculateAngleInput();
+            CalculateSpeedInput();
+            CalculateAngleInput();
         }
 	
 	}
@@ -34,16 +34,16 @@ public class SteeringStation : NetworkBehaviour {
         assignedPlayer = player;
     }
 
-    private void calculateAngleInput()
+    private void CalculateAngleInput()
     {
-        throw new NotImplementedException();
+        return; // throw new NotImplementedException();
     }
 
-    private void calculateSpeedInput()
+    private void CalculateSpeedInput()
     {
         SteeringTrigger steeringTrigger = GetComponentInChildren<SteeringTrigger>();
         float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
-        if (distance >= 0.00001)
+        if (distance <= 0.00001)
         {
             speedInput = 0.0f;
             return;
