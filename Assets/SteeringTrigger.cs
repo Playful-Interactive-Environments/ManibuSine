@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class SteeringTrigger : NetworkBehaviour
+public class SteeringTrigger : MonoBehaviour
 {
 
     public GameObject assignedPlayer;
