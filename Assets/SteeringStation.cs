@@ -14,9 +14,14 @@ public class SteeringStation : NetworkBehaviour {
     public Transform navigator;
     public GameObject assignedPlayer;
 
+    public UniverseTransformer universeTransformer;
+
+    public float speedMulti = 1500;
+    public float angleMulti = 3;
+
     // Use this for initialization
     void Start () {
-	
+        universeTransformer = UniverseTransformer.Instance;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +30,8 @@ public class SteeringStation : NetworkBehaviour {
         {
             CalculateSpeedInput();
             CalculateAngleInput();
+            universeTransformer.MoveForward(speedInput * speedMulti);
+            universeTransformer.RotateUniverse(angleInput * angleInput);
         }
 	
 	}
@@ -41,9 +48,9 @@ public class SteeringStation : NetworkBehaviour {
 
         angleInput = Mathf.Rad2Deg * Mathf.Atan2(y, x);
         Debug.DrawRay(this.transform.position, 
-            new Vector3(Mathf.Sin(Mathf.Atan2(y, x)), 
+            new Vector3(Mathf.Cos(Mathf.Atan2(y, x)), 
             0,  
-            Mathf.Cos(Mathf.Atan2(y, x))) * 10000, Color.blue);
+            Mathf.Sin(Mathf.Atan2(y, x))) * 10000, Color.blue);
     }
 
     private void CalculateSpeedInput()
