@@ -16,8 +16,8 @@ public class SteeringStation : NetworkBehaviour {
 
     public UniverseTransformer universeTransformer;
 
-    public float speedMulti = 1500;
-    public float angleMulti = 0.5f;
+    private float speedMulti = 1500;
+    private float angleMulti = 0.1f;
 
     // Use this for initialization
     void Start () {
