@@ -17,7 +17,7 @@ public class SteeringStation : NetworkBehaviour {
     public UniverseTransformer universeTransformer;
 
     public float speedMulti = 1500;
-    public float angleMulti = 3;
+    public float angleMulti = 0.5f;
 
     // Use this for initialization
     void Start () {
@@ -30,8 +30,8 @@ public class SteeringStation : NetworkBehaviour {
         {
             CalculateSpeedInput();
             CalculateAngleInput();
-            universeTransformer.MoveForward(speedInput * speedMulti);
-            universeTransformer.RotateUniverse(angleInput * angleInput);
+            UniverseTransformer.Instance.MoveForward(speedInput * speedMulti);
+            UniverseTransformer.Instance.RotateUniverse(angleInput * angleInput);
         }
 	
 	}
