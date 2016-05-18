@@ -11,8 +11,8 @@ public class SteeringStation : NetworkBehaviour {
     public float speedInput;
     public float angleInput;
 
-    private Transform navigator;
-    private GameObject assignedPlayer;
+    public Transform navigator;
+    public GameObject assignedPlayer;
 
     // Use this for initialization
     void Start () {

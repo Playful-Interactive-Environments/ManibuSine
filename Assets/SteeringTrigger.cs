@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class SteeringTrigger : NetworkBehaviour
 {
 
-    private GameObject assignedPlayer;
+    public GameObject assignedPlayer;
 
     void OnTriggerEnter(Collider other)
     {
