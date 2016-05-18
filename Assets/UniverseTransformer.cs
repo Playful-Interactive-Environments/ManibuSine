@@ -32,7 +32,7 @@ public class UniverseTransformer : MonoBehaviour {
 
     public void MoveForward(float s)
     {
-        targetTransfrom.Translate(shipTransform.forward * -s * Time.deltaTime);
+        targetTransfrom.Translate(shipTransform.forward * -s * Time.deltaTime, Space.World);
     }
 
     public void RotateUniverse(float a)
