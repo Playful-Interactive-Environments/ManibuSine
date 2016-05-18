@@ -57,7 +57,8 @@ public class SteeringStation : NetworkBehaviour {
     {
         SteeringTrigger steeringTrigger = GetComponentInChildren<SteeringTrigger>();
         float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
-        if (distance <= 0.00001)
+
+        if (distance < steeringTrigger.transform.lossyScale.x / 2) 
         {
             speedInput = 0.0f;
             return;
