@@ -47,7 +47,7 @@ Transform:
   m_GameObject: {fileID: 139436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 960, y: 203, z: 540}
-  m_LocalScale: {x: 500, y: 199.71678, z: 500}
+  m_LocalScale: {x: 750, y: 199.71678, z: 750}
   m_Children:
   - {fileID: 499464}
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 126512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 1, z: 0.3}
+  m_LocalScale: {x: 0.25, y: 1, z: 0.25}
   m_Children: []
   m_Father: {fileID: 484336}
   m_RootOrder: 0
@@ -177,6 +177,9 @@ MonoBehaviour:
   angleInput: 0
   navigator: {fileID: 0}
   assignedPlayer: {fileID: 0}
+  universeTransformer: {fileID: 0}
+  speedMulti: 1500
+  angleMulti: 3
 --- !u!114 &11475232
 MonoBehaviour:
   m_ObjectHideFlags: 1
