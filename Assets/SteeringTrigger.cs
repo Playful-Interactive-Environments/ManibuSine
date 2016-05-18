@@ -16,4 +16,12 @@ public class SteeringTrigger : NetworkBehaviour
             SendMessageUpwards("SetAssignedPlayer", assignedPlayer);
         }
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (assignedPlayer != null && other.tag == "NetworkPlayer" && other.GetComponent<NetworkIdentity>().playerControllerId == assignedPlayer.GetComponent<NetworkIdentity>().playerControllerId)
+        {
+            assignedPlayer = null;
+        }
+    }
 }
