@@ -32,8 +32,12 @@ public class UI_Steering : MonoBehaviour {
         if (steeringManager == null || steeringManager.navigator == null)
             return;
 
-        if (Mathf.Abs(steeringManager.angleInput) > 90)
+        if (Mathf.Abs(steeringManager.angleInput) > 90) {
+            ShowGraphics(false);
             return;
+        }
+
+        ShowGraphics(true);
 
         float clampedSpeed = Mathf.Clamp01(steeringManager.speedInput);
 

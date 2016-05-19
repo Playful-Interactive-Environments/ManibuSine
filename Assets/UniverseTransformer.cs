@@ -43,7 +43,7 @@ public class UniverseTransformer : MonoBehaviour {
     }
 
     private void RotateSkyBox(float rot) {
-        sky.SetFloat("_Rotation", rot);
+        sky.SetFloat("_Rotation", -rot);
     }
 
     public void MoveForward(float s)

@@ -16,8 +16,8 @@ public class SteeringStation : NetworkBehaviour {
 
     public UniverseTransformer universeTransformer;
 
-    private float speedMulti = 100;
-    private float angleMulti = 0.25f;
+    private float speedMulti = 1000;
+    private float angleMulti = 0.2f;
 
     private NetworkPlayer networkPlayer;
     private 
@@ -41,14 +41,14 @@ public class SteeringStation : NetworkBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!isLocalPlayer)
+        if (isServer)
             return;
         if(navigator != null)
         {
             CalculateSpeedInput();
             CalculateAngleInput();
             if (angleInput > 90 || angleInput < -90)
-                return;
+                return; 
                 
 
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
