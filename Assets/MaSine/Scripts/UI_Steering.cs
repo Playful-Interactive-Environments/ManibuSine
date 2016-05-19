@@ -9,8 +9,11 @@ public class UI_Steering : MonoBehaviour {
 
     private RectTransform rectSteeringCircle;
     public RectTransform rectArrow;
+
     private Vector2 originalScale;
     private Image[] allGraphics;
+
+    private float lerpSpeed = 10;
 
     void Start() {
         InitializeUI();
@@ -29,8 +32,13 @@ public class UI_Steering : MonoBehaviour {
         if (steeringManager == null || steeringManager.navigator == null)
             return;
 
-        rectArrow.localRotation = Quaternion.Euler(0, 0, -steeringManager.angleInput);
-        rectArrow.localScale = new Vector3(1, Mathf.Clamp01(steeringManager.speedInput), 1);
+        if (Mathf.Abs(steeringManager.angleInput) > 90)
+            return;
+
+        float clampedSpeed = Mathf.Clamp01(steeringManager.speedInput);
+
+        rectArrow.localRotation = Quaternion.Lerp(rectArrow.localRotation, Quaternion.Euler(0, 0, -steeringManager.angleInput), lerpSpeed * Time.deltaTime);
+        rectArrow.localScale = Vector3.Lerp(rectArrow.localScale, new Vector3(1, clampedSpeed, 1), lerpSpeed * Time.deltaTime);
     }
 
     private void EnteredSteering(SteeringStation steeringStation) {

@@ -41,7 +41,7 @@ public class SteeringStation : NetworkBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (isServer)
+        if (!isLocalPlayer)
             return;
         if(navigator != null)
         {
