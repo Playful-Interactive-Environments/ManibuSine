@@ -20,7 +20,7 @@ public class Head : MonoBehaviour {
 
         RaycastHit hit;
 
-        Physics.Raycast(ray, out hit, 10000, mask);
+        Physics.Raycast(ray, out hit, 20000, mask);
 
         target = hit.transform;
         aimPoint = hit.point;
