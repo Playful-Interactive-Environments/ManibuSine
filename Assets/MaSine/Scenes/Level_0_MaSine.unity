@@ -1306,7 +1306,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0fc702a95c161c347ad15e43d3d3b428, type: 2}
+  - {fileID: 2100000, guid: 08b96057f8979b447bbc4787f020e7e5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1979,7 +1979,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: -71
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2021,6 +2021,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: b13eb761756e87c449a34e4c9a8ef9af, type: 3}
+    - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1226.8866
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
   m_IsPrefabParent: 0
