@@ -1049,7 +1049,7 @@ Prefab:
       objectReference: {fileID: 476508450}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 192.168.1.2
+      value: 10.0.0.95
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -1662,6 +1662,10 @@ Prefab:
     - target: {fileID: 446850, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463850, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: rot
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
