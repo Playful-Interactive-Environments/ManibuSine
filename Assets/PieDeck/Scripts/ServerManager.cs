@@ -43,10 +43,14 @@ public class ServerManager : NetworkManager
 	   
 	}
 
+    public void SpawnEntityAtPrfabPosition(GameObject prefab) {
+        GameObject obj = Instantiate(prefab) as GameObject;
+        NetworkServer.Spawn(obj);
+    }
 
     public void SpawnEntity(GameObject prefab)
     {
-        GameObject obj = Instantiate(prefab, new Vector3(4000, Random.Range(800, 1200), Random.Range(-500, 500)), Quaternion.identity) as GameObject;
+        GameObject obj = Instantiate(prefab, new Vector3(-6000, Random.Range(200, 2000), Random.Range(-1500, 1500)), Quaternion.identity) as GameObject;
         NetworkServer.Spawn(obj);
     }
 
@@ -56,12 +60,17 @@ public class ServerManager : NetworkManager
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
 	    //Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
         Instantiate(CanonStation);
-        Instantiate(TargetTransform);
-        Instantiate(SteeringStation);
+
+        // TODO: check why this doesn't work
+        //Instantiate(TargetTransform);
+        //Instantiate(SteeringStation);
         SetPort();
 		StartServer();
 		isServer = true;
 		NetworkServer.SpawnObjects();
+
+        SpawnEntityAtPrfabPosition(SteeringStation);
+        SpawnEntityAtPrfabPosition(TargetTransform);
 	}
 
 	public void StopHosting()
