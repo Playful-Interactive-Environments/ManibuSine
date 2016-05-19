@@ -54,7 +54,7 @@ public class UniverseTransformer : MonoBehaviour {
 
     public void RotateUniverse(float a)
     {
-        targetTransfrom.RotateAround(shipTransform.position, Vector3.up, -a * Time.deltaTime);
+        targetTransfrom.RotateAround(shipTransform.position, Vector3.up, a * Time.deltaTime);
         //targetBody.AddTorque(0, a, 0);
     }
 }
