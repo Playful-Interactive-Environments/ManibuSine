@@ -39,7 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8490cf84deb734e95cad0808de3789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformTarget: {fileID: 0}
+  shipTransform: {fileID: 0}
+  rot: -10.53
+  sky: {fileID: 2100000, guid: cd499b8769ff6024ea2f29b709aafdb4, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

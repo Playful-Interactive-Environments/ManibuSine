@@ -13,9 +13,15 @@ public class UniverseTransformer : MonoBehaviour {
 
     private float lerpSpeed = 10;
 
+    private Material sky;
+
     void Awake()
     {
         instance = this;
+    }
+
+    void Start() {
+        sky = RenderSettings.skybox;
     }
 
     // Use this for initialization
@@ -32,6 +38,12 @@ public class UniverseTransformer : MonoBehaviour {
         transform.position = Vector3.Lerp(transform.position, targetTransfrom.position, lerpSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetTransfrom.rotation, lerpSpeed * Time.deltaTime);
 
+        RotateSkyBox(transform.rotation.eulerAngles.y);
+
+    }
+
+    private void RotateSkyBox(float rot) {
+        sky.SetFloat("_Rotation", -rot);
     }
 
     public void MoveForward(float s)
@@ -42,7 +54,7 @@ public class UniverseTransformer : MonoBehaviour {
 
     public void RotateUniverse(float a)
     {
-        targetTransfrom.RotateAround(shipTransform.position, Vector3.up, -a * Time.deltaTime);
+        targetTransfrom.RotateAround(shipTransform.position, Vector3.up, a * Time.deltaTime);
         //targetBody.AddTorque(0, a, 0);
     }
 }
