@@ -21,12 +21,12 @@ public class ShipMovement : MonoBehaviour {
 	
 	}
 
-    void MoveForward(float speed)
+    public void MoveForward(float speed)
     {
         this.transform.Translate(this.transform.forward * speed);
     }
 
-    void RotateRight(float rot)
+    public void RotateRight(float rot)
     {
         this.transform.Rotate(transform.up, rot);
     }
