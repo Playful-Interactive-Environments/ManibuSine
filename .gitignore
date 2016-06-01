@@ -18,6 +18,7 @@ ExportedObj/
 *.booproj
 *.svd
 !*.obj
+!*.dll
 
 
 # Unity3D generated meta files
