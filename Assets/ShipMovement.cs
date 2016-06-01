@@ -37,7 +37,7 @@ public class ShipMovement : MonoBehaviour {
 
     public void MoveForward(float speed)
     {
-        targetTransform.Translate(this.transform.right * speed * Time.deltaTime);
+        targetTransform.Translate(this.transform.right * speed * Time.deltaTime, Space.Self);
     }
 
     public void RotateRight(float rot)
