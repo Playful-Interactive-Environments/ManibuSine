@@ -31,16 +31,17 @@ public class ShipMovement : MonoBehaviour {
             return;
 
         this.transform.position = targetTransform.position;
+        this.transform.rotation = targetTransform.rotation;
 
     }
 
     public void MoveForward(float speed)
     {
-        targetTransform.Translate(this.transform.forward * speed * Time.deltaTime);
+        targetTransform.Translate(-this.transform.forward * speed * Time.deltaTime);
     }
 
     public void RotateRight(float rot)
     {
-        targetTransform.Rotate(transform.up, rot * Time.deltaTime);
+        targetTransform.Rotate(transform.up, -rot * Time.deltaTime);
     }
 }
