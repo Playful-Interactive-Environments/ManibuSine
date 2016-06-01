@@ -42,6 +42,8 @@ public class NetworkPlayer : NetworkBehaviour
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
 
 		}
+
+        transform.parent = ShipMovement.Instance.transform;
 	}
 	
 	// Update is called once per frame
