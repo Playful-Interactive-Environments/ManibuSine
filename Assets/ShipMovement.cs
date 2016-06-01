@@ -42,6 +42,6 @@ public class ShipMovement : MonoBehaviour {
 
     public void RotateRight(float rot)
     {
-        targetTransform.Rotate(transform.up, -rot * Time.deltaTime);
+        targetTransform.Rotate(transform.up, rot * Time.deltaTime);
     }
 }
