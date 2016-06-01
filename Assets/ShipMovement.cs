@@ -6,6 +6,8 @@ public class ShipMovement : MonoBehaviour {
     private static ShipMovement instance;
     public static ShipMovement Instance { get { return instance; } }
 
+    public Transform targetTransform;
+
     void Awake()
     {
         instance = this;
@@ -15,19 +17,30 @@ public class ShipMovement : MonoBehaviour {
     void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Use this for initialization
+    public void SetTargetTransform(Transform target)
+    {
+        targetTransform = target;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (targetTransform == null)
+            return;
+
+        this.transform.position = targetTransform.position;
+
+    }
 
     public void MoveForward(float speed)
     {
-        this.transform.Translate(this.transform.forward * speed);
+        targetTransform.Translate(this.transform.forward * speed * Time.deltaTime);
     }
 
     public void RotateRight(float rot)
     {
-        this.transform.Rotate(transform.up, rot);
+        targetTransform.Rotate(transform.up, rot * Time.deltaTime);
     }
 }
