@@ -90,6 +90,8 @@ public class CanonManager : NetworkBehaviour
 
     void Shoot()
     {
+        if (isServer)
+            return;
         if (shootCooldown <= 0.0f)
         {
             networkPlayer.CmdShoot();
