@@ -17,7 +17,7 @@ public class CanonManager : NetworkBehaviour
     {
         get
         {
-            if (gunnerHead == null) 
+            if (gunnerHead == null)
                 return null;
             return gunnerHead.target;
         }
@@ -65,6 +65,10 @@ public class CanonManager : NetworkBehaviour
     // PlayerAssigned Msg sent in cannon trigger
     void PlayerAssigned(Transform gunner)
     {
+
+        if (gunner != null)
+            return;
+
         this.gunner = gunner;
         this.gunnerHead = gunner.GetComponentInChildren<Head>();
 
@@ -91,7 +95,7 @@ public class CanonManager : NetworkBehaviour
             networkPlayer.CmdShoot();
             shootCooldown = shootSpeed;
         }
-            
+
     }
 
     void Update()
@@ -100,7 +104,7 @@ public class CanonManager : NetworkBehaviour
         {
             shootCooldown -= Time.deltaTime;
         }
-        
+
         if (ServerManager.Instance.isServer)
         {
             NetworkServer.Spawn(gameObject);
@@ -111,18 +115,14 @@ public class CanonManager : NetworkBehaviour
             // rotate canon
             if (gunnerHead.target != null)
             {
-                // got new target
-                //if (IsGunnerLocalPlayer())
-                //{
-                    if (targetedTime == 0)
-                    {
-                        startQuat = cannonPivot.transform.rotation;
-                        if (GotTarget != null)
-                            GotTarget(this);
-                    }
+                if (targetedTime == 0)
+                {
+                    startQuat = cannonPivot.transform.rotation;
+                    if (GotTarget != null)
+                        GotTarget(this);
+                }
 
-                    targetedTime += Time.deltaTime / targetingSpeed; 
-                //}
+                targetedTime += Time.deltaTime / targetingSpeed;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
                 cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
@@ -131,7 +131,7 @@ public class CanonManager : NetworkBehaviour
                 Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
 
                 //Play sound targeting sound
-                
+
                 if (asource == null)
                 {
                     asource = audioManager.PlayClipAt(audioManager.clips[1], audioManager.sources[1], transform.position);
@@ -151,7 +151,7 @@ public class CanonManager : NetworkBehaviour
 
                 targetedTime = 0.0f;
             }
-            
+
 
 
             // move canon
