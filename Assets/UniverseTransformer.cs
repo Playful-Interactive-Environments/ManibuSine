@@ -7,12 +7,14 @@ public class UniverseTransformer : MonoBehaviour {
     public static UniverseTransformer Instance { get { return instance; } }
 
     private Transform targetTransfrom;
+    private Transform targetRotator;
     public Transform shipTransform;
 
     private Rigidbody targetBody;
+    private Rigidbody targetRotatorBody;
 
     private float lerpSpeed = 10;
-
+    private Quaternion oldRot = new Quaternion();
     private Material sky;
 
     void Awake()
@@ -29,14 +31,20 @@ public class UniverseTransformer : MonoBehaviour {
         targetTransfrom = target;
         targetBody = target.GetComponent<Rigidbody>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (targetTransfrom == null)
+    // Use this for initialization
+    public void SetTargetRotator(Transform target)
+    {
+        targetRotator = target;
+        targetRotatorBody = target.GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (targetTransfrom == null && targetRotator == null)
             return;
 
         transform.position = Vector3.Lerp(transform.position, targetTransfrom.position, lerpSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetTransfrom.rotation, lerpSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotator.rotation, lerpSpeed * Time.deltaTime);
 
         RotateSkyBox(transform.rotation.eulerAngles.y);
 
@@ -48,13 +56,14 @@ public class UniverseTransformer : MonoBehaviour {
 
     public void MoveForward(float s)
     {
-        targetTransfrom.Translate(shipTransform.right * -s * Time.deltaTime, Space.World);
-        //targetBody.AddForce(0, 0, s);
+        //targetTransfrom.Translate(shipTransform.right * -s * Time.deltaTime, Space.World);
+        targetBody.AddForce(shipTransform.right * -s * Time.deltaTime);
     }
 
     public void RotateUniverse(float a)
     {
+        //targetRotatorBody.AddTorque(Vector3.up * a * Time.deltaTime);
         targetTransfrom.RotateAround(shipTransform.position, Vector3.up, a * Time.deltaTime);
-        //targetBody.AddTorque(0, a, 0);
+        
     }
 }

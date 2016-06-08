@@ -96,7 +96,7 @@ public class CanonManager : NetworkBehaviour
 
     void Shoot()
     {
-        if (shootCooldown <= 0.0f)
+        if (shootCooldown <= 0.0f && IsGunnerLocalPlayer())
         {
             networkPlayer.CmdShoot();
             shootCooldown = shootSpeed;
