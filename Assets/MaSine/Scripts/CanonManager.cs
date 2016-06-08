@@ -49,21 +49,21 @@ public class CanonManager : NetworkBehaviour
     void Start()
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
-        InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
+        //InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
         audioManager = AudioManager.Instance;
     }
 
-    void RegisterAtNetworDataManager()
-    {
-        NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
-        if (nwp != null && nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
-        {
-            networkPlayer = nwp;
-        }
+    //void RegisterAtNetworDataManager()
+    //{
+    //    NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
+    //    if (nwp != null && nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
+    //    {
+    //        networkPlayer = nwp;
+    //    }
 
-        if (networkPlayer != null)
-            CancelInvoke("RegisterAtNetworDataManager");
-    }
+    //    if (networkPlayer != null)
+    //        CancelInvoke("RegisterAtNetworDataManager");
+    //}
 
     public bool IsGunnerLocalPlayer()
     {
@@ -77,11 +77,10 @@ public class CanonManager : NetworkBehaviour
     // PlayerAssigned Msg sent in cannon trigger
     void PlayerAssigned(Transform gunner)
     {
-        if (gunner != null)
-            return;
-
         this.gunner = gunner;
         this.gunnerHead = gunner.GetComponentInChildren<Head>();
+
+        this.networkPlayer = gunner.GetComponent<NetworkPlayer>();
 
         if (EnteredCannon != null)
             EnteredCannon(this);
@@ -99,7 +98,7 @@ public class CanonManager : NetworkBehaviour
 
     void Shoot()
     {
-        if (shootCooldown <= 0.0f && isLocalPlayer)
+        if (shootCooldown <= 0.0f)
         {
             networkPlayer.CmdShoot();
             shootCooldown = shootSpeed;
@@ -125,14 +124,17 @@ public class CanonManager : NetworkBehaviour
             if (gunnerHead.target != null)
             {
                 // got new target
-                if (targetedTime == 0)
+                if (IsGunnerLocalPlayer())
                 {
-                    startQuat = cannonPivot.transform.rotation;
-                    if (GotTarget != null)
-                        GotTarget(this);
-                }
+                    if (targetedTime == 0)
+                    {
+                        startQuat = cannonPivot.transform.rotation;
+                        if (GotTarget != null)
+                            GotTarget(this);
+                    }
 
-                targetedTime += Time.deltaTime/targetingSpeed;
+                    targetedTime += Time.deltaTime / targetingSpeed; 
+                }
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
                 cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
@@ -147,7 +149,7 @@ public class CanonManager : NetworkBehaviour
                     asource = audioManager.PlayClipAt(audioManager.clips[1], audioManager.sources[1], transform.position);
                 }
 
-                if (targetedTime >= 1.0f)
+                if (IsGunnerLocalPlayer() && targetedTime >= 1.0f)
                 {
                     Shoot();
                 }
