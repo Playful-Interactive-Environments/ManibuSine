@@ -44,7 +44,7 @@ public class UniverseTransformer : MonoBehaviour {
             return;
 
         transform.position = Vector3.Lerp(transform.position, targetTransfrom.position, lerpSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotator.rotation, lerpSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetTransfrom.rotation, lerpSpeed * Time.deltaTime);
 
         RotateSkyBox(transform.rotation.eulerAngles.y);
 

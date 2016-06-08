@@ -16,7 +16,7 @@ public class SteeringStation : NetworkBehaviour {
 
     public UniverseTransformer universeTransformer;
 
-    private float speedMulti = 100;
+    private float speedMulti = 1000;
     private float angleMulti = 0.2f;
 
     private NetworkPlayer networkPlayer;
