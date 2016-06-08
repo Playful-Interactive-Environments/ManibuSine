@@ -115,7 +115,7 @@ public class CanonManager : NetworkBehaviour
         {
             NetworkServer.Spawn(gameObject);
         }
-        if (gunner != null && IsGunnerLocalPlayer())
+        if (gunner != null)
         {
 
             // rotate canon
