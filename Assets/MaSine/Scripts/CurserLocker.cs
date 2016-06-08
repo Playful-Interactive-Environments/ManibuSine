@@ -22,7 +22,6 @@ public class CurserLocker : MonoBehaviour
 
     void OnGUI()
     {
-        print("rennt?");
         GUILayout.BeginVertical();
         // Release cursor on escape keypress
         if (Input.GetKeyDown(KeyCode.Escape))

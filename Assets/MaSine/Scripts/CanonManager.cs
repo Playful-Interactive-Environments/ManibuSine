@@ -49,21 +49,9 @@ public class CanonManager : NetworkBehaviour
     void Start()
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
-        //InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
         audioManager = AudioManager.Instance;
     }
 
-    //void RegisterAtNetworDataManager()
-    //{
-    //    NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
-    //    if (nwp != null && nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
-    //    {
-    //        networkPlayer = nwp;
-    //    }
-
-    //    if (networkPlayer != null)
-    //        CancelInvoke("RegisterAtNetworDataManager");
-    //}
 
     public bool IsGunnerLocalPlayer()
     {
@@ -124,8 +112,8 @@ public class CanonManager : NetworkBehaviour
             if (gunnerHead.target != null)
             {
                 // got new target
-                if (IsGunnerLocalPlayer())
-                {
+                //if (IsGunnerLocalPlayer())
+                //{
                     if (targetedTime == 0)
                     {
                         startQuat = cannonPivot.transform.rotation;
@@ -134,7 +122,7 @@ public class CanonManager : NetworkBehaviour
                     }
 
                     targetedTime += Time.deltaTime / targetingSpeed; 
-                }
+                //}
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
                 cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
@@ -149,7 +137,7 @@ public class CanonManager : NetworkBehaviour
                     asource = audioManager.PlayClipAt(audioManager.clips[1], audioManager.sources[1], transform.position);
                 }
 
-                if (IsGunnerLocalPlayer() && targetedTime >= 1.0f)
+                if (targetedTime >= 1.0f)
                 {
                     Shoot();
                 }
