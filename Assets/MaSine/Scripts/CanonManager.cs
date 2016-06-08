@@ -77,6 +77,9 @@ public class CanonManager : NetworkBehaviour
     // PlayerAssigned Msg sent in cannon trigger
     void PlayerAssigned(Transform gunner)
     {
+        if (gunner != null)
+            return;
+
         this.gunner = gunner;
         this.gunnerHead = gunner.GetComponentInChildren<Head>();
 
@@ -96,7 +99,7 @@ public class CanonManager : NetworkBehaviour
 
     void Shoot()
     {
-        if (shootCooldown <= 0.0f && IsGunnerLocalPlayer())
+        if (shootCooldown <= 0.0f && isLocalPlayer)
         {
             networkPlayer.CmdShoot();
             shootCooldown = shootSpeed;

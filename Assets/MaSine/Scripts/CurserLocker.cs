@@ -7,7 +7,7 @@ public class CurserLocker : MonoBehaviour
 
     void Start()
     {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
     Destroy(this.gameObject);
 #endif
     }
@@ -22,6 +22,7 @@ public class CurserLocker : MonoBehaviour
 
     void OnGUI()
     {
+        print("rennt?");
         GUILayout.BeginVertical();
         // Release cursor on escape keypress
         if (Input.GetKeyDown(KeyCode.Escape))
