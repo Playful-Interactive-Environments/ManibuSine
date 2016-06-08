@@ -18,6 +18,7 @@ public class ServerManager : NetworkManager
     public GameObject SoundManager;
     public GameObject CanonStation;
     public GameObject TargetTransform;
+    public GameObject RotationTransform;
     public GameObject SteeringStation;
 
     void Awake()
@@ -71,7 +72,8 @@ public class ServerManager : NetworkManager
 
         SpawnEntityAtPrfabPosition(SteeringStation);
         SpawnEntityAtPrfabPosition(TargetTransform);
-	}
+        SpawnEntityAtPrfabPosition(RotationTransform);
+    }
 
 	public void StopHosting()
 	{

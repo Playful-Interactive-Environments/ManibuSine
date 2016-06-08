@@ -31,6 +31,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
         if (isServer)
         {
+            audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
             Destroy(gameObject);
         }
     }
