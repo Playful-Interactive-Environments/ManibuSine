@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 497066}
   - 114: {fileID: 11469294}
   - 114: {fileID: 11410056}
-  - 114: {fileID: 11442228}
   - 54: {fileID: 5488202}
+  - 114: {fileID: 11458672}
   m_Layer: 0
-  m_Name: TransformTarget
+  m_Name: RotationTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1057, y: -57.31006, z: 754}
   m_LocalScale: {x: 2000, y: 10, z: 1275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_SnapThreshold: 1000
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11442228
+--- !u!114 &11458672
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -74,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 112588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c095802258447df4985605280f243782, type: 3}
+  m_Script: {fileID: 11500000, guid: 32693edce035d124aac838a85f8562d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11469294
@@ -91,22 +92,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 13
-    i1: 108
-    i2: 61
-    i3: 129
-    i4: 168
-    i5: 71
-    i6: 241
-    i7: 116
-    i8: 217
-    i9: 159
-    i10: 54
-    i11: 141
-    i12: 141
-    i13: 198
-    i14: 11
-    i15: 240
+    i0: 19
+    i1: 222
+    i2: 163
+    i3: 94
+    i4: 252
+    i5: 193
+    i6: 150
+    i7: 36
+    i8: 248
+    i9: 174
+    i10: 249
+    i11: 36
+    i12: 50
+    i13: 200
+    i14: 188
+    i15: 127
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!1001 &100100000
