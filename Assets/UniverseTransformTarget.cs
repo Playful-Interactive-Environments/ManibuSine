@@ -23,6 +23,6 @@ public class UniverseTransformTarget : NetworkBehaviour
 
     private void AssignTargetToUniverse()
     {
-        ShipMovement.Instance.SetTargetTransform(transform);
+        UniverseTransformer.Instance.SetTargetTransform(transform);
     }
 }
