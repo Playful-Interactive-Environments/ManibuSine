@@ -20,7 +20,6 @@ public class SteeringStation : NetworkBehaviour {
     private float angleMulti = 0.2f;
 
     private NetworkPlayer networkPlayer;
-    private 
 
     // Use this for initialization
     void Start () {
