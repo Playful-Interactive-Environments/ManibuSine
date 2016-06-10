@@ -550,6 +550,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 289796291}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &296463262 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
+  m_PrefabInternal: {fileID: 1824600566}
 --- !u!1 &381839503
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +944,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2122855531}
   m_RootOrder: 0
+--- !u!1 &689401892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 689401894}
+  - 65: {fileID: 689401893}
+  m_Layer: 0
+  m_Name: Ship
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &689401893
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689401892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &689401894
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689401892}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 1173, y: -237, z: 526}
+  m_LocalScale: {x: 2220.464, y: 644.1103, z: 2570.3362}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_Children:
+  - {fileID: 296463262}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &736813994
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,19 +2105,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 689401894}
     m_Modifications:
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 711
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -71
+      value: 0.25771984
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 526
+      value: 0.179743
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2079,7 +2125,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalRotation.z
@@ -2087,11 +2133,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5060848
+      objectReference: {fileID: 0}
+    - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.9047772
+      objectReference: {fileID: 0}
+    - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.4129926
+      objectReference: {fileID: 0}
+    - target: {fileID: 465576, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11444302, guid: 8981d7938bd3186488bfdae8c57eafff, type: 2}

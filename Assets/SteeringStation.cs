@@ -16,7 +16,7 @@ public class SteeringStation : NetworkBehaviour {
 
     public UniverseTransformer universeTransformer;
 
-    private float speedMulti = 1000;
+    private float speedMulti = 10000;
     private float angleMulti = 0.2f;
 
     private NetworkPlayer networkPlayer;
@@ -39,7 +39,7 @@ public class SteeringStation : NetworkBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         if (isServer)
             return;
         if(navigator != null)
