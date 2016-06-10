@@ -28,10 +28,12 @@ public class SpawnVolume : MonoBehaviour {
     // Use this for initialization
     void Start () {
         entitySpawner = GetComponent<EntitySpawner>();
+        EventTrigger.ShipEnteredEvent += VolumeEntered;
+        EventTrigger.ShipLeftEvent += VolumeExited;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (!spawning)
             return;
 
@@ -46,6 +48,12 @@ public class SpawnVolume : MonoBehaviour {
         }
     }
 
+    void Dispose()
+    {
+        EventTrigger.ShipEnteredEvent -= VolumeEntered;
+        EventTrigger.ShipLeftEvent -= VolumeExited;
+    }
+
     void SpawnObjectInVolume()
     {
         Vector3 spawnPosition = transform.position;
@@ -56,5 +64,17 @@ public class SpawnVolume : MonoBehaviour {
         Quaternion spawnRotation = transform.rotation * Quaternion.Euler(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
 
         entitySpawner.SpawnAt(spawnObject, spawnPosition, spawnRotation);
+    }
+
+    private void VolumeExited(IEventTrigger waypoint)
+    {
+        if (waypoint is AsteroidEventTrigger)
+            Spawning = false;
+    }
+
+    private void VolumeEntered(IEventTrigger waypoint)
+    {
+        if (waypoint is AsteroidEventTrigger)
+            Spawning = true;
     }
 }
