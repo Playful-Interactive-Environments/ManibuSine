@@ -18,7 +18,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
         audioManager = AudioManager.Instance;
         if (isServer) {
-            GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * speed);
+            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
             rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f;
         }
 

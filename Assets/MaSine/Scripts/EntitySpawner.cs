@@ -9,25 +9,16 @@ public class EntitySpawner : MonoBehaviour {
     public float spawnRate = 4;
     public bool doSpawn = true;
 
-    public GameObject asteroidPrefab;
-
 	// Use this for initialization
 	void Start () {
-        serverManager = GetComponent<ServerManager>();
-
-        InvokeRepeating("SpawnThat", 6, spawnRate);
+        serverManager = FindObjectOfType<ServerManager>();
 	}
 
-    void SpawnThat()
+    public void SpawnAt(GameObject entityToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         if (!doSpawn)
             return;
 
-        serverManager.SpawnEntity(asteroidPrefab);
+        serverManager.SpawnEntityAt(entityToSpawn, spawnPosition, spawnRotation);
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
