@@ -4,23 +4,32 @@ using System.Collections.Generic;
 
 public class WaypointLevel : MonoBehaviour {
     [SerializeField]
-    public Waypoint[] waypoints;
+    public EventTrigger[] eventTriggers;
 	// Use this for initialization
 	void Start () {
-        waypoints = GetComponentsInChildren<Waypoint>();
+        eventTriggers = GetComponentsInChildren<EventTrigger>();
 
-        Waypoint.ShipEnteredEvent += ShipEnteredWaypoint;
-        Waypoint.ShipLeftEvent += ShipLeftWaypoint;
+        int id = 1;
+        foreach (EventTrigger item in eventTriggers)
+        {
+            item.SetID(id++);
+        }
+
+        EventTrigger.ShipEnteredEvent += ShipEnteredWaypoint;
+        EventTrigger.ShipLeftEvent += ShipLeftWaypoint;
 	}
 
-    void ShipEnteredWaypoint(IWaypoint waypoint)
+    void ShipEnteredWaypoint(IEventTrigger waypoint)
     {
-        print("WP entered " + waypoint.GetID());
+        if (waypoint is MajorEventTrigger)
+        {
+            print("major");
+        }
     }
 
-    private void ShipLeftWaypoint(IWaypoint waypoint)
+    private void ShipLeftWaypoint(IEventTrigger waypoint)
     {
-        print("WP exit " + waypoint.GetID());
+
     }
 	
 	// Update is called once per frame

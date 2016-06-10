@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-public delegate void ShipInteracted(IWaypoint waypoint);
+public delegate void ShipInteracted(IEventTrigger waypoint);
 
-public interface IWaypoint {
+public interface IEventTrigger {
     int GetID();
     void SetID(int id);
     void ShipEntered();
