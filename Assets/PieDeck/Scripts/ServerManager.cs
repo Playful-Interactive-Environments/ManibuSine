@@ -59,12 +59,13 @@ public class ServerManager : NetworkManager
 	{
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
-	    //Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
-        Instantiate(CanonStation);
+        //Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
+
 
         // TODO: check why this doesn't work
         //Instantiate(TargetTransform);
         //Instantiate(SteeringStation);
+        //Instantiate(CanonStation);
         SetPort();
 		StartServer();
 		isServer = true;
@@ -73,6 +74,7 @@ public class ServerManager : NetworkManager
         SpawnEntityAtPrfabPosition(SteeringStation);
         SpawnEntityAtPrfabPosition(TargetTransform);
         SpawnEntityAtPrfabPosition(RotationTransform);
+        SpawnEntityAtPrfabPosition(CanonStation);
     }
 
 	public void StopHosting()

@@ -107,9 +107,10 @@ public class CanonManager : NetworkBehaviour
             shootCooldown -= Time.deltaTime;
         }
 
-        if (ServerManager.Instance.isServer)
+        if (false)//ServerManager.Instance.isServer)
         {
             NetworkServer.Spawn(gameObject);
+            print("spawn cannon manager");
         }
         if (gunner != null)
         {
