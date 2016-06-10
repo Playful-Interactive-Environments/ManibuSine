@@ -32,8 +32,8 @@ public class WaypointLevel : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
-	void Update () {
-	
+	void Dispose () {
+        EventTrigger.ShipEnteredEvent -= ShipEnteredWaypoint;
+        EventTrigger.ShipLeftEvent -= ShipLeftWaypoint;
 	}
 }

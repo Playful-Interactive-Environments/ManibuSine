@@ -1,4 +1,4 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AsteroidEventTrigger : EventTrigger {}
+public class AsteroidEventTrigger : EventTrigger { }
