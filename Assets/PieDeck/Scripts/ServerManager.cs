@@ -55,7 +55,13 @@ public class ServerManager : NetworkManager
         NetworkServer.Spawn(obj);
     }
 
-	public void StartupHost()
+    public void SpawnEntityAt(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        GameObject obj = Instantiate(prefab, spawnPosition, spawnRotation) as GameObject;
+        NetworkServer.Spawn(obj);
+    }
+
+    public void StartupHost()
 	{
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
