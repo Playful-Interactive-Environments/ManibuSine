@@ -18,7 +18,7 @@ public class CanonTrigger : NetworkBehaviour {
     {
         if (other.tag == "NetworkPlayer" && other.GetComponent<NetworkIdentity>().playerControllerId == assignedPlayer.GetComponent<NetworkIdentity>().playerControllerId)
         {
-            SendMessageUpwards("PlayerGone");
+            SendMessageUpwards("PlayerGone", other.transform);
         }
     }
 }

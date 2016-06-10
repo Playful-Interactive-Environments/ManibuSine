@@ -76,9 +76,9 @@ public class CanonManager : NetworkBehaviour
     }
 
     // PlayerGone Msg sent in cannon trigger
-    void PlayerGone()
+    void PlayerGone(Transform other)
     {
-        if (!IsGunnerLocalPlayer())
+        if (other != networkPlayer.transform)
             return;
 
         gunner = null;
