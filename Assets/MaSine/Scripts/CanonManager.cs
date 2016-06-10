@@ -52,7 +52,6 @@ public class CanonManager : NetworkBehaviour
         audioManager = AudioManager.Instance;
     }
 
-
     public bool IsGunnerLocalPlayer()
     {
         if (networkPlayer != null)
@@ -61,12 +60,10 @@ public class CanonManager : NetworkBehaviour
         return false;
     }
 
-
     // PlayerAssigned Msg sent in cannon trigger
     void PlayerAssigned(Transform gunner)
     {
-
-        if (gunner != null)
+        if (this.gunner != null)
             return;
 
         this.gunner = gunner;
@@ -81,6 +78,9 @@ public class CanonManager : NetworkBehaviour
     // PlayerGone Msg sent in cannon trigger
     void PlayerGone()
     {
+        if (!IsGunnerLocalPlayer())
+            return;
+
         gunner = null;
         gunnerHead = null;
 
@@ -105,11 +105,6 @@ public class CanonManager : NetworkBehaviour
         if (shootCooldown > 0.0f)
         {
             shootCooldown -= Time.deltaTime;
-        }
-
-        if (ServerManager.Instance.isServer)
-        {
-            NetworkServer.Spawn(gameObject);
         }
         if (gunner != null)
         {
