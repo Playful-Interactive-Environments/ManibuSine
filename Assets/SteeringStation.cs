@@ -56,11 +56,6 @@ public class SteeringStation : NetworkBehaviour {
 	
 	}
 
-    public void SetAssignedPlayer(GameObject player)
-    {
-        assignedPlayer = player;
-    }
-
     private void CalculateAngleInput()
     {
         float x = assignedPlayer.transform.position.x - transform.position.x;
@@ -75,30 +70,39 @@ public class SteeringStation : NetworkBehaviour {
 
     private void CalculateSpeedInput()
     {
-        SteeringTrigger steeringTrigger = GetComponentInChildren<SteeringTrigger>();
+        PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
 
-        if (distance < steeringTrigger.transform.lossyScale.x / 2) 
+        if (distance < trigger.transform.lossyScale.x / 2) 
         {
             speedInput = 0.0f;
             return;
         }
             
-        speedInput = (distance - steeringTrigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - steeringTrigger.transform.lossyScale.x / 2); 
+        speedInput = (distance - trigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - trigger.transform.lossyScale.x / 2); 
     }
 
     // PlayerAssigned Msg sent in cannon trigger
-    void PlayerAssigned(Transform navigator)
+    void MsgPlayerAssigned(Transform navigator)
     {
+        if (this.navigator != null)
+            return;
+
         this.navigator = navigator;
+
+        assignedPlayer = navigator.gameObject;
 
         if (EnteredSteering != null)
             EnteredSteering(this);
     }
 
     // PlayerGone Msg sent in cannon trigger
-    void PlayerGone()
+    void PlayerGone(Transform leavingPlayer)
     {
+        if (this.navigator == null)
+            return;
+        if (leavingPlayer != this.navigator)
+            return;
         navigator = null;
 
         if (ExitedSteering != null)
@@ -107,9 +111,9 @@ public class SteeringStation : NetworkBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (assignedPlayer !=null && other.tag == "NetworkPlayer" && other.GetComponent<NetworkIdentity>().playerControllerId == assignedPlayer.GetComponent<NetworkIdentity>().playerControllerId)
+        if (other.tag == "NetworkPlayer")
         {
-            PlayerGone();
+            PlayerGone(other.transform);
         }
     }
 }

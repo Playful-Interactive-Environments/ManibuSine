@@ -8,7 +8,7 @@ public class PlayerAssignmentTrigger : NetworkBehaviour
     {
         if (other.tag == "NetworkPlayer")
         {
-            SendMessageUpwards("PlayerAssigned", other.transform);
+            SendMessageUpwards("MsgPlayerAssigned", other.transform, SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -16,7 +16,7 @@ public class PlayerAssignmentTrigger : NetworkBehaviour
     {
         if (other.tag == "NetworkPlayer")
         {
-            SendMessageUpwards("PlayerGone", other.transform);
+            SendMessageUpwards("MsgPlayerGone", other.transform, SendMessageOptions.DontRequireReceiver);
         }
     }
 }

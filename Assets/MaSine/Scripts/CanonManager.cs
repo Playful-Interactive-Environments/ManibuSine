@@ -61,7 +61,7 @@ public class CanonManager : NetworkBehaviour
     }
 
     // PlayerAssigned Msg sent in cannon trigger
-    void PlayerAssigned(Transform gunner)
+    void MsgPlayerAssigned(Transform gunner)
     {
         if (this.gunner != null)
             return;
@@ -76,7 +76,7 @@ public class CanonManager : NetworkBehaviour
     }
 
     // PlayerGone Msg sent in cannon trigger
-    void PlayerGone(Transform leavingGunner)
+    void MsgPlayerGone(Transform leavingGunner)
     {
         if (gunner == null)
             return;
