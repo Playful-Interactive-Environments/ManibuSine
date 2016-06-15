@@ -272,7 +272,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0da7ad3cca721de4dbc04df17faaca06, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonPivot: {fileID: 112944}
   gunner: {fileID: 0}
-  targetingClip: {fileID: 0}
+  targetingClip: {fileID: 8300000, guid: 0da7ad3cca721de4dbc04df17faaca06, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
