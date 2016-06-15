@@ -36,6 +36,7 @@ public class CanonManager : NetworkBehaviour
     private float rotationSpeed = 3;
     private float translationSpeed = 5;
 
+    private float targetingDuration = 1.0f;
     private float targetedTime = 0.0f;
     public float TargetedTime { get { return targetedTime; } }
     private float targetingSpeed = 1.0f;
@@ -44,12 +45,12 @@ public class CanonManager : NetworkBehaviour
     private float shootSpeed = 1.0f;
     private float shootCooldown = 0.0f;
     private AudioSource asource;
-    private AudioManager audioManager;
+    public AudioClip targetingClip;
 
     void Start()
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
-        audioManager = AudioManager.Instance;
+        asource = GetComponent<AudioSource>();
     }
 
     public bool IsGunnerLocalPlayer()
@@ -118,6 +119,12 @@ public class CanonManager : NetworkBehaviour
                 if (targetedTime == 0)
                 {
                     startQuat = cannonPivot.transform.rotation;
+
+                    // start targeting sound
+                    asource.clip = targetingClip;
+                    asource.pitch = 1.0f;
+                    asource.Play();
+
                     if (GotTarget != null)
                         GotTarget(this);
                 }
@@ -130,16 +137,14 @@ public class CanonManager : NetworkBehaviour
                 //Debugray to show where the canon is aiming
                 Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
 
-                //Play sound targeting sound
-
-                if (asource == null)
-                {
-                    asource = audioManager.PlayClipAt(audioManager.clips[1], audioManager.sources[1], transform.position);
-                }
-
-                if (targetedTime >= 1.0f)
+                if (targetedTime >= targetingDuration)
                 {
                     Shoot();
+                }
+                else
+                {
+                    // pitch sound
+                    asource.pitch = (targetedTime + 0.8f) / 2 + 1.0f;
                 }
             }
             else
@@ -148,6 +153,10 @@ public class CanonManager : NetworkBehaviour
                 Quaternion.Lerp(cannonPivot.transform.rotation,
                 gunnerHead.transform.rotation,
                 rotationSpeed * Time.deltaTime);
+
+                // stop targeting sound
+                if (asource.isPlaying)
+                    asource.Stop();
 
                 targetedTime = 0.0f;
             }
