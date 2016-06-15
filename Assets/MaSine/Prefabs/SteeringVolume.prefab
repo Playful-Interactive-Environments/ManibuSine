@@ -46,8 +46,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1270, y: 48, z: 528}
-  m_LocalScale: {x: 750, y: 32.163914, z: 750}
+  m_LocalPosition: {x: 3.14, y: 0.58, z: 1.24}
+  m_LocalScale: {x: 1.5, y: 0.064, z: 1.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 499464}
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedInput: 0
   angleInput: 0
+  uiArrowLength: 0
   navigator: {fileID: 0}
   assignedPlayer: {fileID: 0}
   universeTransformer: {fileID: 0}
