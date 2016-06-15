@@ -8,7 +8,6 @@ public class Waypoint : MonoBehaviour
 
     void Start()
     {
-        print("start");
         EventTrigger.ShipEnteredEvent += ShipEnteredWaypoint;
     }
 

@@ -23,7 +23,7 @@ public class WaypointLevel : MonoBehaviour {
     {
         if (waypoint is MajorEventTrigger)
         {
-            print("major");
+
         }
     }
 

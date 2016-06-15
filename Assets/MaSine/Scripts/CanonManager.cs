@@ -152,8 +152,6 @@ public class CanonManager : NetworkBehaviour
                 targetedTime = 0.0f;
             }
 
-
-
             // move canon
             cannonPivot.transform.position =
             Vector3.Lerp(cannonPivot.transform.position,
