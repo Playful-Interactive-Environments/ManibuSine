@@ -10,6 +10,7 @@ public class SteeringStation : NetworkBehaviour {
 
     public float speedInput;
     public float angleInput;
+    public float uiArrowLength;
 
     public Transform navigator;
     public GameObject assignedPlayer;
@@ -71,15 +72,20 @@ public class SteeringStation : NetworkBehaviour {
     private void CalculateSpeedInput()
     {
         PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
-        float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
+        //UI VARIABLES
+        float uiDistance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
+        uiArrowLength = (uiDistance - trigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - trigger.transform.lossyScale.x / 2);
 
+        //STEERING VARIABLES
+        float distance = navigator.position.x - transform.position.x;
         if (distance < trigger.transform.lossyScale.x / 2) 
         {
             speedInput = 0.0f;
             return;
         }
             
-        speedInput = (distance - trigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - trigger.transform.lossyScale.x / 2); 
+        speedInput = (distance - trigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - trigger.transform.lossyScale.x / 2);
+        
     }
 
     // PlayerAssigned Msg sent in cannon trigger

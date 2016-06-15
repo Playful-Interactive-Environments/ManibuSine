@@ -39,7 +39,7 @@ public class UI_Steering : MonoBehaviour {
 
         ShowGraphics(true);
 
-        float clampedSpeed = Mathf.Clamp01(steeringManager.speedInput);
+        float clampedSpeed = Mathf.Clamp01(steeringManager.uiArrowLength);
 
         rectArrow.localRotation = Quaternion.Lerp(rectArrow.localRotation, Quaternion.Euler(0, 0, -steeringManager.angleInput), lerpSpeed * Time.deltaTime);
         rectArrow.localScale = Vector3.Lerp(rectArrow.localScale, new Vector3(1, clampedSpeed, 1), lerpSpeed * Time.deltaTime);
