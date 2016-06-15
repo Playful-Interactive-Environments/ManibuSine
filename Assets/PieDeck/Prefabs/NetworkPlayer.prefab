@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 121980}
+  compasPrefab: {fileID: 11495252, guid: 4fc16369331e1954994f89e25202a498, type: 2}
   ControllingPlayer: {fileID: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
   position: {x: 0, y: 0, z: 0}

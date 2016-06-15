@@ -7,4 +7,5 @@ public interface IEventTrigger {
     void SetID(int id);
     void ShipEntered();
     void ShipLeft();
+    Transform GetTransform();
 }

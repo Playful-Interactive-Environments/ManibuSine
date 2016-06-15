@@ -10,6 +10,7 @@ public class NetworkPlayer : NetworkBehaviour
     private float headTilt;
     
     public GameObject head;
+    public UI_HeasUpCompas compasPrefab;
 
 	public GameObject ControllingPlayer;
 	[SyncVar]
@@ -40,6 +41,10 @@ public class NetworkPlayer : NetworkBehaviour
 			_vrController = GameObject.Find("OVRPlayerController");
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
+
+
+            UI_HeasUpCompas compas = Instantiate(compasPrefab);
+            compas.GetComponent<UI_HeasUpCompas>().SetPlayer(this.transform);
 
 		}
 	}
