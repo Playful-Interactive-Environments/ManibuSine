@@ -26,14 +26,12 @@ public class NetworkPlayer : NetworkBehaviour
 	private float distance;
 	private float _timePassed;
 	private bool _staticPos;
-
-	private ParticleSystem[] ps;
+    
     [SyncVar]
     private bool laserTrackingActivated;
     private float shipSpeed = 3;
 
     void Start () {
-		ps = GetComponentsInChildren<ParticleSystem>(true);
 
 		if (!isServer)
 		{
@@ -76,7 +74,6 @@ public class NetworkPlayer : NetworkBehaviour
             CmdHeadRotation(headTilt);
 
             ColorId = 1;
-            ps[0].gameObject.SetActive(true);
             transform.FindChild("Body").gameObject.SetActive(false);
             //transform.FindChild("Orientation").gameObject.SetActive(false);
 
