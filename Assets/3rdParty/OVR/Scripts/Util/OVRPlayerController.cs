@@ -160,10 +160,10 @@ public class OVRPlayerController : MonoBehaviour
 				};
 			}
 
-			var p = CameraRig.transform.localPosition;
-			p.y = OVRManager.profile.eyeHeight - 0.5f * Controller.height
-				+ Controller.center.y;
-			CameraRig.transform.localPosition = p;
+			//var p = CameraRig.transform.localPosition;
+			//p.y = OVRManager.profile.eyeHeight - 0.5f * Controller.height
+			//	+ Controller.center.y;
+			//CameraRig.transform.localPosition = p;
 		}
 		else if (InitialPose != null)
 		{
