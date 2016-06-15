@@ -57,13 +57,13 @@ public class MaSineAsteroid : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (isServer)
-        {
             transform.Rotate(rotSpeed, rotSpeed, rotSpeed);
-            if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
-            {
-                silentDestruction = true;
+
+        if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
+        {
+            silentDestruction = true;
+            if (isServer)
                 Destroy(gameObject);
-            }
-        }  
+        }
     }
 }
