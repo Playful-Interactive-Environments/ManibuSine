@@ -144,7 +144,7 @@ public class CanonManager : NetworkBehaviour
                 else
                 {
                     // pitch sound
-                    asource.pitch = (targetedTime + 0.8f) / 2 + 1.0f;
+                    asource.pitch = (targetedTime + 0.8f) / 2 + targetingDuration;
                 }
             }
             else
