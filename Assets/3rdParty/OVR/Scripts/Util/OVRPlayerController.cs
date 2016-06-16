@@ -162,9 +162,9 @@ public class OVRPlayerController : MonoBehaviour
 
             //TODO calculat position propperly to get offset
 			var p = CameraRig.transform.localPosition;
-            Debug.Log("profile eyeheight: " + OVRManager.profile.eyeHeight);
+            //Debug.Log("profile eyeheight: " + OVRManager.profile.eyeHeight);
 			p.y = OVRManager.profile.eyeHeight - 0.5f * Controller.height + Controller.center.y;
-			CameraRig.transform.localPosition = p;
+			//CameraRig.transform.localPosition = p;
 		}
 		else if (InitialPose != null)
 		{
