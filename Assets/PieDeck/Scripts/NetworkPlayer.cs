@@ -175,6 +175,7 @@ public class NetworkPlayer : NetworkBehaviour
 
 	void CalculateVRPos()
 	{
+        float minMoveDistance = 0.002f;
 		_timePassed += Time.deltaTime;
 		if (_timePassed > 3f)
 		{
@@ -183,17 +184,17 @@ public class NetworkPlayer : NetworkBehaviour
 		}
 		_currentPos = transform.position;
 		distance = Vector3.Distance(_previousPos, _currentPos);
-		if (distance < 25f)
+		if (distance < minMoveDistance)
 		{
 			_vrController.transform.position = _previousPos;
 			_staticPos = true;
 
 		}
-		if (distance >= 25f && !_staticPos)
+		if (distance >= minMoveDistance && !_staticPos)
 		{
 			_vrController.transform.position = transform.position;
 		}
-		if (distance >= 25f && _staticPos)
+		if (distance >= minMoveDistance && _staticPos)
 		{
 			_vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, 1f);
 			_staticPos = false;
