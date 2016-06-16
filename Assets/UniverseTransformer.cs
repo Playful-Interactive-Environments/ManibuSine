@@ -57,7 +57,7 @@ public class UniverseTransformer : MonoBehaviour {
     public void MoveForward(float s)
     {
         //targetTransfrom.Translate(shipTransform.right * -s * Time.deltaTime, Space.World);
-        targetBody.AddForce(shipTransform.right * -s * Time.fixedDeltaTime);
+        targetBody.AddForce(shipTransform.forward * s * Time.fixedDeltaTime);
     }
 
     public void RotateUniverse(float a)
