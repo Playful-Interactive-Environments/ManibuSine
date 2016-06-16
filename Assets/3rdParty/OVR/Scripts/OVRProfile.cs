@@ -174,9 +174,9 @@ public class OVRProfile : Object
 		locale = "en_US";
 
 		ipd = 0.06f;
-		eyeHeight = 1.675f;
+        eyeHeight = 1.675f;
 		eyeDepth = 0.0805f;
-		neckHeight = eyeHeight - 0.075f;
+        neckHeight = eyeHeight - 0.075f;
 
 		state = State.NOT_TRIGGERED;
 	}
