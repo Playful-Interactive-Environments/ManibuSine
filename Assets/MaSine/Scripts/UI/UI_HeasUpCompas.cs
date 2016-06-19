@@ -4,7 +4,7 @@ using System.Collections;
 public class UI_HeasUpCompas : MonoBehaviour {
 
     private Transform playerTransform;
-    public Transform waypointTransform;
+    private Transform waypointTransform = null;
     private MeshRenderer mRenderer;
 
     public void SetPlayer(Transform player)
@@ -23,11 +23,12 @@ public class UI_HeasUpCompas : MonoBehaviour {
     {
         if (waypoint == null)
         {
-            mRenderer.enabled = true;
+            mRenderer.enabled = false;
             waypointTransform = null;
         }
         else
         {
+            mRenderer.enabled = true;
             waypointTransform = waypoint.GetTransform();
         }
     }
@@ -35,16 +36,16 @@ public class UI_HeasUpCompas : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (playerTransform == null || waypointTransform == null)
-        {
-            if (mRenderer.enabled)
-                mRenderer.enabled = false;
+        //if (playerTransform == null || waypointTransform == null)
+        //{
+        //    //if (mRenderer.enabled)
+        //    //    mRenderer.enabled = false;
 
-            return;
-        }
+        //    return;
+        //}
 
 
-        transform.position = playerTransform.transform.position;
+        //transform.position = playerTransform.transform.position;
         transform.LookAt(waypointTransform);
 	}
 

@@ -9,9 +9,12 @@ public class UI_Steering : MonoBehaviour {
 
     private RectTransform rectSteeringCircle;
     public RectTransform rectArrow;
+    public RectTransform speedBar;
 
     private Vector2 originalScale;
     private Image[] allGraphics;
+
+    private Transform unitverseTransTarget;
 
     private float lerpSpeed = 10;
 
@@ -28,6 +31,8 @@ public class UI_Steering : MonoBehaviour {
         }
     }
 
+
+    Vector3 oldPos;
     void Update() {
         if (steeringManager == null || steeringManager.navigator == null)
             return;
@@ -39,10 +44,25 @@ public class UI_Steering : MonoBehaviour {
 
         ShowGraphics(true);
 
+        float ls = lerpSpeed * Time.deltaTime;
+
+        // speed indicator
+        //if (speedBar != null) {
+        //    Transform tt = UniverseTransformer.Instance.GetTargetTransform();
+        //    if (tt != null) {
+        //        float speed = Vector3.Distance(oldPos, tt.position) * 100;
+        //        speedBar.localScale = Vector3.Lerp(speedBar.localScale, new Vector3(1, speed, 1), ls);
+        //        print("SPEED " + speed);
+        //        oldPos = tt.position;
+        //    }
+
+        //}
+
+
         float clampedSpeed = Mathf.Clamp01(steeringManager.uiArrowLength);
 
-        rectArrow.localRotation = Quaternion.Lerp(rectArrow.localRotation, Quaternion.Euler(0, 0, -steeringManager.angleInput), lerpSpeed * Time.deltaTime);
-        rectArrow.localScale = Vector3.Lerp(rectArrow.localScale, new Vector3(1, clampedSpeed, 1), lerpSpeed * Time.deltaTime);
+        rectArrow.localRotation = Quaternion.Lerp(rectArrow.localRotation, Quaternion.Euler(0, 0, -steeringManager.angleInput), ls);
+        rectArrow.localScale = Vector3.Lerp(rectArrow.localScale, new Vector3(1, clampedSpeed, 1), ls);
     }
 
     private void EnteredSteering(SteeringStation steeringStation) {

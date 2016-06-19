@@ -38,4 +38,9 @@ public class EventTrigger : MonoBehaviour, IEventTrigger
         // TODO check if tag = ship (ship has no tag yet)
         ShipLeft();
     }
+
+    public Transform GetTransform()
+    {
+        return transform;
+    }
 }
