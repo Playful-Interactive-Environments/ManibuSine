@@ -23,13 +23,14 @@ public class SpawnVolume : MonoBehaviour {
 
     public float cooldown;
     private float currentCooldown = 0f;
+    public int id;
 
 
     // Use this for initialization
     void Start () {
         entitySpawner = GetComponent<EntitySpawner>();
-        EventTrigger.ShipEnteredEvent += VolumeEntered;
-        EventTrigger.ShipLeftEvent += VolumeExited;
+        AsteroidEventTrigger.ShipEnteredEventID += VolumeEntered;
+        AsteroidEventTrigger.ShipLeftEventID += VolumeExited;
     }
 
     // Update is called once per frame
@@ -50,8 +51,8 @@ public class SpawnVolume : MonoBehaviour {
 
     void Dispose()
     {
-        EventTrigger.ShipEnteredEvent -= VolumeEntered;
-        EventTrigger.ShipLeftEvent -= VolumeExited;
+        AsteroidEventTrigger.ShipEnteredEventID -= VolumeEntered;
+        AsteroidEventTrigger.ShipLeftEventID -= VolumeExited;
     }
 
     void SpawnObjectInVolume()
@@ -66,15 +67,27 @@ public class SpawnVolume : MonoBehaviour {
         entitySpawner.SpawnAt(spawnObject, spawnPosition, spawnRotation);
     }
 
-    private void VolumeExited(IEventTrigger waypoint)
+    private void VolumeExited(IEventTrigger waypoint, int[] spawnerId)
     {
         if (waypoint is AsteroidEventTrigger)
-            Spawning = false;
+        {
+            for(int i = 0; i < spawnerId.Length; i++)
+            {
+                if (spawnerId[i] == id)
+                    Spawning = false;
+            }
+        }   
     }
 
-    private void VolumeEntered(IEventTrigger waypoint)
+    private void VolumeEntered(IEventTrigger waypoint, int[] spawnerId)
     {
         if (waypoint is AsteroidEventTrigger)
-            Spawning = true;
+        {
+            for (int i = 0; i < spawnerId.Length; i++)
+            {
+                if (spawnerId[i] == id)
+                    Spawning = true;
+            }
+        }
     }
 }
