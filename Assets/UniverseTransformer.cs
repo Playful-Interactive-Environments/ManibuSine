@@ -62,7 +62,6 @@ public class UniverseTransformer : MonoBehaviour {
     {
         //targetTransfrom.Translate(shipTransform.right * -s * Time.deltaTime, Space.World);
         targetBody.AddForce(shipTransform.forward * s * Time.fixedDeltaTime);
-        print("s= " + s + " vel= " + targetBody.velocity);
     }
 
     public void RotateUniverse(float a)
