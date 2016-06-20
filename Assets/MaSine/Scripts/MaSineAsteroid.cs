@@ -35,8 +35,12 @@ public class MaSineAsteroid : NetworkBehaviour {
 
         if (isServer)
         {
-            if(!silentDestruction)
+            if (!silentDestruction)
+            {
+                Instantiate(explosionParticles, transform.position, Quaternion.identity);
                 audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
+
+            }
 
             Destroy(gameObject);
         }
@@ -48,7 +52,7 @@ public class MaSineAsteroid : NetworkBehaviour {
         {
             audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
 
-            if (!isServer)
+            //if (!isServer)
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
         }
         
