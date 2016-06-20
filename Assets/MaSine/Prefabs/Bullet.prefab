@@ -30,7 +30,8 @@ Transform:
   m_GameObject: {fileID: 134134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +45,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 814bdfa43ace9344cb739afddf37928a, type: 2}
+  - {fileID: 2100000, guid: 08b96057f8979b447bbc4787f020e7e5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -93,8 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9db7082df2d6a428d13dff70d0a08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10000
-  lifeTime: 10
+  speed: 30
+  lifeTime: 5
 --- !u!114 &11493906
 MonoBehaviour:
   m_ObjectHideFlags: 1
