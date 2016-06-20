@@ -6,12 +6,12 @@ public class MaSineAsteroid : NetworkBehaviour {
 
     NetworkPlayer player;
     Transform ship;
-    private float speed = 30000.0f;
+    private float speed = 60.0f;
     private AudioManager audioManager;
     private float rotSpeed;
 
     public GameObject explosionParticles;
-    private float destroyDistance = 20000;
+    private float destroyDistance = 1000;
     bool silentDestruction = false;
 
 
