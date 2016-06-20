@@ -57,6 +57,9 @@ public class ServerManager : NetworkManager
 
     public void SpawnEntityAt(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation)
     {
+        if (!isServer)
+            return;
+
         GameObject obj = Instantiate(prefab, spawnPosition, spawnRotation) as GameObject;
         NetworkServer.Spawn(obj);
     }
