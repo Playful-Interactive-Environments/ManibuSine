@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Waypoint : MonoBehaviour
 {
+    [SerializeField]
     private int triggerID = 0;
+    [SerializeField]
     private int activateOn = 0;
 
     void Start()
@@ -22,8 +24,9 @@ public class Waypoint : MonoBehaviour
     {
         MeshRenderer mr = GetComponent<MeshRenderer>();
         if (mr != null)
+        {
             mr.enabled = false;
-
+        }
         Collider c = GetComponent<Collider>();
         if (c != null) // only use once - therefore deactivate
             c.enabled = false;
@@ -37,6 +40,7 @@ public class Waypoint : MonoBehaviour
         }
         else if (waypoint.GetID() == triggerID)
         {
+
             DisableWaypoint();
         }
     }
