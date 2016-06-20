@@ -35,6 +35,7 @@ public class WaypointLevel : MonoBehaviour {
         }
     }
 
+
     void ShipEnteredWaypoint(IEventTrigger waypoint)
     {
         if (waypoint is MajorEventTrigger)
@@ -61,4 +62,12 @@ public class WaypointLevel : MonoBehaviour {
         EventTrigger.ShipEnteredEvent -= ShipEnteredWaypoint;
         EventTrigger.ShipLeftEvent -= ShipLeftWaypoint;
 	}
+
+    public void SyncLevelProgress(int currentLevelState)
+    {
+        for (int i = 0; i < currentLevelState; i++)
+        {
+            NextWaypoint(eventTriggers[i]);
+        }
+    }
 }

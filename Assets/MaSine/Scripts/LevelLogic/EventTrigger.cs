@@ -17,12 +17,12 @@ public class EventTrigger : MonoBehaviour, IEventTrigger
         this.id = id;
     }
 
-    public void ShipEntered()
+    public virtual void ShipEntered()
     {
         if (ShipEnteredEvent != null)
             ShipEnteredEvent(this);
     }
-    public void ShipLeft()
+    public virtual void ShipLeft()
     {
         if (ShipLeftEvent != null)
             ShipLeftEvent(this);

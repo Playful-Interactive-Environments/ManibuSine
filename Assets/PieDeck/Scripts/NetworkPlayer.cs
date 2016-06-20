@@ -8,6 +8,8 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar]
     private float headTilt;
+    [SyncVar]
+    public int levelState;
     
     public GameObject head;
 
@@ -32,15 +34,44 @@ public class NetworkPlayer : NetworkBehaviour
     private float shipSpeed = 3;
 
     void Start () {
-
 		if (!isServer)
 		{
 			_vrController = GameObject.Find("OVRPlayerController");
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
-
 		}
+
+        // disable renderer of head on local player
+        if (isLocalPlayer)
+        {
+            Head h = GetComponentInChildren<Head>();
+            if (h == null)
+                return;
+
+            MeshRenderer[] hRenderer = h.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer item in hRenderer)
+            {
+                item.enabled = false;
+            }
+
+            EventTrigger.ShipEnteredEvent += ShipEnteredEvent;
+            WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+            if (wpl != null)
+            {
+                wpl.SyncLevelProgress(levelState);
+            }
+        }
 	}
+
+    private void ShipEnteredEvent(IEventTrigger waypoint)
+    {
+        if (!isLocalPlayer)
+            return;
+
+        levelState = waypoint.GetID();
+    }
+
+
 	
 	// Update is called once per frame
     void Update()
@@ -164,6 +195,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         UniverseTransformer.Instance.RotateUniverse(rot);
     }
+
+
     //----------------------------------------------------------------
     //----------------------------------------------------------------
 
