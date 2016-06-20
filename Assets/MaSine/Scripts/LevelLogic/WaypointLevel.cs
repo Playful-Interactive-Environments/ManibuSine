@@ -23,7 +23,7 @@ public class WaypointLevel : MonoBehaviour {
         EventTrigger.ShipEnteredEvent += ShipEnteredWaypoint;
         EventTrigger.ShipLeftEvent += ShipLeftWaypoint;
 
-        Invoke("StartGame", gameStartsInXSeconds);
+        //Invoke("StartGame", gameStartsInXSeconds);
 	}
 
     void StartGame()
@@ -65,9 +65,16 @@ public class WaypointLevel : MonoBehaviour {
 
     public void SyncLevelProgress(int currentLevelState)
     {
+        StartCoroutine(SyncDelayed(currentLevelState));
+    }
+
+    IEnumerator SyncDelayed(int currentLevelState)
+    {
+        yield return 0;
         for (int i = 0; i <= currentLevelState; i++)
         {
             NextWaypoint(eventTriggers[i]);
         }
     }
+
 }
