@@ -14,7 +14,7 @@ public class WaypointLevel : MonoBehaviour {
 	void Start () {
         eventTriggers = GetComponentsInChildren<EventTrigger>();
 
-        int id = 0;
+        int id = 1;
         foreach (EventTrigger item in eventTriggers)
         {
             item.SetID(id++);

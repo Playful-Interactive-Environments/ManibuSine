@@ -125,6 +125,8 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 CmdRotateShipCW(-7 * shipSpeed);
             }
+
+            print("levelstate " + levelState);
         }
 
         head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
