@@ -65,7 +65,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void ShipEnteredEvent(IEventTrigger waypoint)
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer && waypoint != null)
             return;
 
         levelState = waypoint.GetID();

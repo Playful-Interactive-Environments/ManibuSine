@@ -65,7 +65,7 @@ public class WaypointLevel : MonoBehaviour {
 
     public void SyncLevelProgress(int currentLevelState)
     {
-        for (int i = 0; i < currentLevelState; i++)
+        for (int i = 0; i <= currentLevelState; i++)
         {
             NextWaypoint(eventTriggers[i]);
         }
