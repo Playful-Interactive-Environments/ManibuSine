@@ -13,6 +13,7 @@ public class UniverseTransformer : MonoBehaviour {
     private Rigidbody targetBody;
     private Rigidbody targetRotatorBody;
 
+    // TODO: check and ajdust lerp speed - could reduce jittering
     private float lerpSpeed = 10;
     private Quaternion oldRot = new Quaternion();
     private Material sky;
