@@ -12,11 +12,14 @@ public class Head : MonoBehaviour {
     UI_TargetingDot targetingDot;
     RectTransform targetingDotRect;
 
+    NetworkPlayer player;
+
     // Use this for initialization
     void Start () {
         audioManager = AudioManager.Instance;
         targetingDot = FindObjectOfType<UI_TargetingDot>();
         targetingDotRect = targetingDot.GetComponent<RectTransform>();
+        player = GetComponentInParent<NetworkPlayer>();
     }
 	
 	// Update is called once per frame
@@ -29,6 +32,10 @@ public class Head : MonoBehaviour {
 
         target = hit.transform;
         aimPoint = hit.point;
+
+        // only network player
+        if (!player.isLocalPlayer)
+            return;
 
         if (aimPoint != Vector3.zero)
         {
