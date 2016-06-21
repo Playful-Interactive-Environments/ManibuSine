@@ -52,7 +52,7 @@ public class TrackedPlayerNetworkBehaviour : NetworkBehaviour {
 	}
 	void OnMouseDown()
 	{
-		Admin.Instance.CurrentTrackedPlayer = gameObject;
+        Admin.Instance.CurrentTrackedPlayer = gameObject;
 			StartCoroutine("ChangeColor");
 	}
 
