@@ -17,9 +17,12 @@ public class Head : MonoBehaviour {
     // Use this for initialization
     void Start () {
         audioManager = AudioManager.Instance;
+        player = GetComponentInParent<NetworkPlayer>();
+        if (!player.isLocalPlayer)
+            return;
         targetingDot = FindObjectOfType<UI_TargetingDot>();
         targetingDotRect = targetingDot.GetComponent<RectTransform>();
-        player = GetComponentInParent<NetworkPlayer>();
+
     }
 	
 	// Update is called once per frame
