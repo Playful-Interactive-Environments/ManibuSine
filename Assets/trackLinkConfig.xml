@@ -20,12 +20,12 @@
 			<Value>44345</Value>
 		</ConfigNode>
 		<ConfigNode name="targetResolutionX">
-			<!-- in pixel -->
-			<Value>1920</Value>
+			<!-- in cm -->
+			<Value>435</Value>
 		</ConfigNode>
 		<ConfigNode name="targetResolutionY">
-			<!-- in pixel -->
-			<Value>1080</Value>
+			<!-- in cm -->
+			<Value>300</Value>
 		</ConfigNode>
 		<ConfigNode name="stageX">
 			<!-- horizontal in centimeter -->
