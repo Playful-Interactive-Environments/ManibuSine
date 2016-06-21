@@ -126,7 +126,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 1
+        second: 0.6
     m_Colors:
       data:
         first:
@@ -135,4 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.7921713, g: 0.8122032, b: 0.8161765, a: 1}
+        second: {r: 0.57093424, g: 0.76944894, b: 0.8088235, a: 1}

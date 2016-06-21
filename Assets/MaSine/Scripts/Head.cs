@@ -9,9 +9,14 @@ public class Head : MonoBehaviour {
     private AudioManager audioManager;
     private AudioSource asource;
 
+    UI_TargetingDot targetingDot;
+    RectTransform targetingDotRect;
+
     // Use this for initialization
     void Start () {
         audioManager = AudioManager.Instance;
+        targetingDot = FindObjectOfType<UI_TargetingDot>();
+        targetingDotRect = targetingDot.GetComponent<RectTransform>();
     }
 	
 	// Update is called once per frame
@@ -20,9 +25,21 @@ public class Head : MonoBehaviour {
 
         RaycastHit hit;
 
-        Physics.Raycast(ray, out hit, 60000, mask);
+        Physics.Raycast(ray, out hit, 1000, mask);
 
         target = hit.transform;
         aimPoint = hit.point;
+
+        if (aimPoint != Vector3.zero)
+        {
+            float scaleFactor = Mathf.Pow(hit.distance, .83f) / 100;
+            // apply scaling 
+            targetingDotRect.localScale = Vector2.one * scaleFactor;
+            targetingDotRect.position = aimPoint - transform.forward;
+        }
+        else
+        {
+            targetingDot.ResetDot();
+        }
 	}
 }
