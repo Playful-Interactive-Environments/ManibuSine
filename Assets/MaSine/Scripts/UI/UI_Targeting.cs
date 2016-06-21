@@ -7,7 +7,7 @@ public class UI_Targeting : MonoBehaviour {
     //[Range(0,1)]
     private float t = 0;
     private float targetSize;
-    private float maxSize = 200.0f;
+    private float maxSize = 80.0f;
 
     private bool hasTarget = false;
 
