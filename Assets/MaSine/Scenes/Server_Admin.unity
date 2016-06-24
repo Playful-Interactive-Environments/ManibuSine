@@ -2461,12 +2461,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistent: 0
-  CurrentPlayerText: {fileID: 0}
+  CurrentPlayerText: {fileID: 2056789182}
   CurrentTrackedPlayer: {fileID: 0}
-  ButtonPlayerOne: {fileID: 0}
-  ButtonPlayerTwo: {fileID: 0}
-  ButtonDisconnect: {fileID: 0}
-  ButtonRecalibrate: {fileID: 0}
+  ButtonPlayerOne: {fileID: 1660431540}
+  ButtonPlayerTwo: {fileID: 299664315}
+  ButtonDisconnect: {fileID: 1894646205}
+  ButtonRecalibrate: {fileID: 1077163086}
   ButtonToggleChaperone: {fileID: 0}
   PlayerOne: {fileID: 0}
   PlayerTwo: {fileID: 0}
