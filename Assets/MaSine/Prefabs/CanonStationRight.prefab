@@ -82,7 +82,7 @@ GameObject:
   - 114: {fileID: 11406474}
   - 82: {fileID: 8252682}
   m_Layer: 0
-  m_Name: CanonStation
+  m_Name: CanonStationRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,10 +94,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112944}
-  m_LocalRotation: {x: 0.07145762, y: 0.70348674, z: 0.07145758, w: -0.7034871}
-  m_LocalPosition: {x: -0, y: -0.46, z: -0.7}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0.05, y: -0.25, z: -1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -11.599999, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 495988}
   - {fileID: 470370}
@@ -122,10 +122,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183972}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0.29, y: 0.13, z: 1.24}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.13, y: 0.13, z: 0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 431406}
   - {fileID: 471558}
@@ -356,22 +356,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 43
-    i1: 210
-    i2: 25
-    i3: 222
-    i4: 235
-    i5: 208
-    i6: 92
-    i7: 180
-    i8: 138
-    i9: 252
-    i10: 187
-    i11: 243
-    i12: 152
-    i13: 206
-    i14: 51
-    i15: 230
+    i0: 73
+    i1: 246
+    i2: 74
+    i3: 113
+    i4: 139
+    i5: 172
+    i6: 218
+    i7: 4
+    i8: 186
+    i9: 78
+    i10: 46
+    i11: 192
+    i12: 187
+    i13: 44
+    i14: 165
+    i15: 96
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &11430510
@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43702c7ca283e74c854331d7cbaa782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotation: 0
   cannonPivot: {fileID: 11469340}
   gunner: {fileID: 0}
   targetingClip: {fileID: 8300000, guid: 0da7ad3cca721de4dbc04df17faaca06, type: 3}
@@ -422,8 +423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cae05ab50f59ea48a450e3df3317633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalLimit: 0
-  verticalLimit: 0
+  horizontalLimit: -59
+  verticalLimit: -59
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
