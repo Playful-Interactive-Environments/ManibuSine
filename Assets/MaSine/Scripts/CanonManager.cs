@@ -168,7 +168,9 @@ public class CanonManager : NetworkBehaviour
             // move canon
             cannonPivot.transform.position =
             Vector3.Lerp(cannonPivot.transform.position,
-            new Vector3(cannonPivot.transform.position.x, cannonPivot.transform.position.y, gunner.transform.position.z),
+            new Vector3(gunner.transform.position.x, 
+                        cannonPivot.transform.position.y, 
+                        cannonPivot.transform.position.z),
         translationSpeed * Time.deltaTime);
             if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
