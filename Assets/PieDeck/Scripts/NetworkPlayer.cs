@@ -154,18 +154,12 @@ public class NetworkPlayer : NetworkBehaviour
     // STUFF WE DID - we are forced to :(
     //----------------------------------------------------------------
     [Command]
-    public void CmdShoot()
+    public void CmdShoot(CanonManager cm)
     {
-        FindObjectOfType<Canon>().Shoot();
+        cm.GetComponentInChildren<Canon>().Shoot();
         //RpcSpawnBullet();
     }
-
-    [ClientRpc]
-    public void RpcSpawnBullet()
-    {
-        FindObjectOfType<Canon>().Shoot();
-    }
-
+    
     [Command]
     public void CmdDestroyEntity(GameObject obj)
     {

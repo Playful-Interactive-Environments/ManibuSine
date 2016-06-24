@@ -101,7 +101,7 @@ public class CanonManager : NetworkBehaviour
             return;
         if (shootCooldown <= 0.0f)
         {
-            networkPlayer.CmdShoot();
+            networkPlayer.CmdShoot(this);
             shootCooldown = shootSpeed;
         }
 
