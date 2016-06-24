@@ -51,6 +51,8 @@ public class CanonManager : NetworkBehaviour
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
         asource = GetComponent<AudioSource>();
+        transform.rotation = Quaternion.Euler(0, 90, 0);
+
     }
 
     public bool IsGunnerLocalPlayer()

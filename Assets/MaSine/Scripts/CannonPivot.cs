@@ -19,8 +19,15 @@ public class CannonPivot : MonoBehaviour {
 
     public void SetRotation(Quaternion rotation)
     {
+        float rotX = rotation.eulerAngles.x;
+        float rotZ = rotation.eulerAngles.z;
+        if (rotation.eulerAngles.y > 270.0f + horizontalLimit) rotation = Quaternion.Euler(rotX, 270.0f + horizontalLimit, rotZ);
+        if (rotation.eulerAngles.y < 90.0f - horizontalLimit) rotation = Quaternion.Euler(rotX, 90.0f - horizontalLimit, rotZ);
+        float rotY = rotation.y;
+        if (rotation.eulerAngles.x > 270.0f + verticalLimit) rotation = Quaternion.Euler(270.0f + verticalLimit, rotY, rotZ);
+        if (rotation.eulerAngles.x < 90.0f - verticalLimit) rotation = Quaternion.Euler(90.0f - verticalLimit, rotY, rotZ);
         transform.rotation = rotation;
-        LimitRotation();
+        //LimitRotation();
     }
 
     private void LimitRotation()
