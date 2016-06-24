@@ -44,7 +44,7 @@ public class ServerManager : NetworkManager
 	   
 	}
 
-    public void SpawnEntityAtPrfabPosition(GameObject prefab) {
+    public void SpawnEntityAtPrefabPosition(GameObject prefab) {
         GameObject obj = Instantiate(prefab) as GameObject;
         NetworkServer.Spawn(obj);
     }
@@ -80,10 +80,10 @@ public class ServerManager : NetworkManager
 		isServer = true;
 		NetworkServer.SpawnObjects();
 
-        SpawnEntityAtPrfabPosition(SteeringStation);
-        SpawnEntityAtPrfabPosition(TargetTransform);
-        SpawnEntityAtPrfabPosition(RotationTransform);
-        SpawnEntityAtPrfabPosition(CanonStation);
+        SpawnEntityAtPrefabPosition(SteeringStation);
+        SpawnEntityAtPrefabPosition(TargetTransform);
+        SpawnEntityAtPrefabPosition(RotationTransform);
+        SpawnEntityAt(CanonStation, new Vector3(0.29f, 0.13f, 1.24f), Quaternion.Euler(0,-90, 0));
     }
 
 	public void StopHosting()
