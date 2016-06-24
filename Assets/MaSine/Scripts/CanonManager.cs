@@ -9,7 +9,7 @@ public class CanonManager : NetworkBehaviour
     public delegate void CanonDelegateSimple();
     public CanonDelegateSimple LostTarget;
 
-    public GameObject cannonPivot;
+    public CannonPivot cannonPivot;
 
     public Transform gunner;
     private Head gunnerHead;
@@ -132,7 +132,8 @@ public class CanonManager : NetworkBehaviour
                 targetedTime += Time.deltaTime / targetingSpeed;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
-                cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
+                cannonPivot.setRotation(Quaternion.Lerp(startQuat, targetRot, targetedTime));
+
 
                 //Debugray to show where the canon is aiming
                 Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);

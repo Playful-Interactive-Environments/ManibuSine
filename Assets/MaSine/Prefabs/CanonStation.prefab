@@ -27,6 +27,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431406}
+  - 114: {fileID: 11469340}
   m_Layer: 0
   m_Name: CanonPivot
   m_TagString: Untagged
@@ -407,9 +408,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43702c7ca283e74c854331d7cbaa782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonPivot: {fileID: 112944}
+  cannonPivot: {fileID: 11469340}
   gunner: {fileID: 0}
   targetingClip: {fileID: 8300000, guid: 0da7ad3cca721de4dbc04df17faaca06, type: 3}
+--- !u!114 &11469340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cae05ab50f59ea48a450e3df3317633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalLimit: 0
+  verticalLimit: 0
+  lerpSpeed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
