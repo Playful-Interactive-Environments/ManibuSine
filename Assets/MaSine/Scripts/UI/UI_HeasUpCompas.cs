@@ -5,6 +5,7 @@ public class UI_HeasUpCompas : MonoBehaviour {
 
     private Transform playerTransform;
     private Transform waypointTransform = null;
+    private ShipManager ship;
     private MeshRenderer mRenderer;
 
     public void SetPlayer(Transform player)
@@ -16,6 +17,7 @@ public class UI_HeasUpCompas : MonoBehaviour {
     {
         mRenderer = GetComponentInChildren<MeshRenderer>();
         mRenderer.enabled = false;
+        ship = FindObjectOfType<ShipManager>();
         WaypointLevel.NextWaypoint += GetNextWaypoint;
     }
 
@@ -30,12 +32,17 @@ public class UI_HeasUpCompas : MonoBehaviour {
         {
             mRenderer.enabled = true;
             waypointTransform = waypoint.GetTransform();
+            transform.parent = waypoint.GetTransform();
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (ship == null)
+            return;
 
+
+        transform.LookAt(ship.transform);
         //if (playerTransform == null || waypointTransform == null)
         //{
         //    //if (mRenderer.enabled)
@@ -46,7 +53,7 @@ public class UI_HeasUpCompas : MonoBehaviour {
 
 
         //transform.position = playerTransform.transform.position;
-        transform.LookAt(waypointTransform);
+
 	}
 
     void Dispose()

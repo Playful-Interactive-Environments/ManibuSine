@@ -12,8 +12,6 @@ public class UI_TargetingDot : MonoBehaviour {
         rectTransform = GetComponent<RectTransform>();
         initialDistance = rectTransform.position.z;
         initialScale = rectTransform.localScale.x;
-
-        print(initialScale);
 	}
 
     public void ResetDot()
