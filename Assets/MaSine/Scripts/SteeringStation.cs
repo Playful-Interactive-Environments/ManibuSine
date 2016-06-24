@@ -6,11 +6,19 @@ using System;
 public class SteeringStation : NetworkBehaviour {
 
     public delegate void SteeringDelegateTransform(SteeringStation steeringStation);
-    public SteeringDelegateTransform  EnteredSteering, ExitedSteering;
+    public SteeringDelegateTransform  EnteredSteering, ExitedSteering, StepedOutSteering;
 
-    public float speedInput;
+
+    private MeshRenderer mRenderer;
+    private Color originalColor;
+    public Color assignedColor;
+
+    private float speedInput;
     public float angleInput;
     public float uiArrowLength;
+
+    public float playerDropOutDelay = 3.0f;
+    private IEnumerator dropPlayerCoroutine;
 
     public Transform navigator;
     public GameObject assignedPlayer;
@@ -24,6 +32,8 @@ public class SteeringStation : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
+        mRenderer = GetComponent<MeshRenderer>();
+        originalColor = mRenderer.material.color;
         InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
     }
 
@@ -54,7 +64,6 @@ public class SteeringStation : NetworkBehaviour {
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
             networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
         }
-	
 	}
 
     private void CalculateAngleInput()
@@ -91,25 +100,49 @@ public class SteeringStation : NetworkBehaviour {
     // PlayerAssigned Msg sent in cannon trigger
     void MsgPlayerAssigned(Transform navigator)
     {
+        if (navigator == this.navigator)
+        {
+            if (dropPlayerCoroutine != null)
+            {
+                StopCoroutine(dropPlayerCoroutine);
+            }
+        }
+
+        mRenderer.material.color = assignedColor;
+
+        if (EnteredSteering != null)
+            EnteredSteering(this);
+
         if (this.navigator != null)
             return;
 
         this.navigator = navigator;
-
         assignedPlayer = navigator.gameObject;
-
-        if (EnteredSteering != null)
-            EnteredSteering(this);
     }
 
     // PlayerGone Msg sent in cannon trigger
-    void PlayerGone(Transform leavingPlayer)
+    void PlayerLeftStation(Transform leavingPlayer)
     {
-        if (this.navigator == null)
-            return;
         if (leavingPlayer != this.navigator)
             return;
+
+        dropPlayerCoroutine = UnassignPlayer();
+        StartCoroutine(dropPlayerCoroutine);
+
+        if (StepedOutSteering != null)
+            StepedOutSteering(this);
+    }
+
+    IEnumerator UnassignPlayer()
+    {
+        yield return new WaitForSeconds(playerDropOutDelay);
+
+        if (this.navigator == null)
+            yield break;
+
         navigator = null;
+
+        mRenderer.material.color = originalColor;
 
         if (ExitedSteering != null)
             ExitedSteering(this);
@@ -119,7 +152,7 @@ public class SteeringStation : NetworkBehaviour {
     {
         if (other.tag == "NetworkPlayer")
         {
-            PlayerGone(other.transform);
+            PlayerLeftStation(other.transform);
         }
     }
 }
