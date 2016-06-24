@@ -16,7 +16,8 @@ public class ServerManager : NetworkManager
 	public bool isClient;
 	public Text debugTextServer;
     public GameObject SoundManager;
-    public GameObject CanonStation;
+    public GameObject CanonStationLeft;
+    public GameObject CanonStationRight;
     public GameObject TargetTransform;
     public GameObject RotationTransform;
     public GameObject SteeringStation;
@@ -83,7 +84,8 @@ public class ServerManager : NetworkManager
         SpawnEntityAtPrefabPosition(SteeringStation);
         SpawnEntityAtPrefabPosition(TargetTransform);
         SpawnEntityAtPrefabPosition(RotationTransform);
-        SpawnEntityAt(CanonStation, new Vector3(0.29f, 0.13f, 1.24f), Quaternion.Euler(0,-90, 0));
+        SpawnEntityAtPrefabPosition(CanonStationLeft);
+        SpawnEntityAtPrefabPosition(CanonStationRight);
     }
 
 	public void StopHosting()
