@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 
 public class CanonManager : NetworkBehaviour
 {
+    public float rotation;
     public delegate void CanonDelegateTransform(CanonManager canonManager);
     public CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
     public delegate void CanonDelegateSimple();
@@ -51,6 +52,8 @@ public class CanonManager : NetworkBehaviour
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
         asource = GetComponent<AudioSource>();
+        transform.rotation = Quaternion.Euler(0, rotation, 0);
+
     }
 
     public bool IsGunnerLocalPlayer()
@@ -132,7 +135,7 @@ public class CanonManager : NetworkBehaviour
                 targetedTime += Time.deltaTime / targetingSpeed;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
-                cannonPivot.SetRotation(Quaternion.Lerp(startQuat, targetRot, targetedTime));
+                cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
 
 
                 //Debugray to show where the canon is aiming
@@ -150,10 +153,10 @@ public class CanonManager : NetworkBehaviour
             }
             else
             {
-                cannonPivot.SetRotation(
+                cannonPivot.transform.rotation = 
                 Quaternion.Lerp(cannonPivot.transform.rotation,
                 gunnerHead.transform.rotation,
-                rotationSpeed * Time.deltaTime));
+                rotationSpeed * Time.deltaTime);
 
                 // stop targeting sound
                 if (asource.isPlaying)
