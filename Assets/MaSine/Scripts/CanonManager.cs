@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 
 public class CanonManager : NetworkBehaviour
 {
+    public int id;
     public float rotation;
     public delegate void CanonDelegateTransform(CanonManager canonManager);
     public CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
@@ -101,7 +102,7 @@ public class CanonManager : NetworkBehaviour
             return;
         if (shootCooldown <= 0.0f)
         {
-            networkPlayer.CmdShoot(this);
+            networkPlayer.CmdShoot(this.netId.Value);
             shootCooldown = shootSpeed;
         }
 

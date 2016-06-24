@@ -154,9 +154,17 @@ public class NetworkPlayer : NetworkBehaviour
     // STUFF WE DID - we are forced to :(
     //----------------------------------------------------------------
     [Command]
-    public void CmdShoot(CanonManager cm)
+    public void CmdShoot(uint id)
     {
-        cm.GetComponentInChildren<Canon>().Shoot();
+        CanonManager[] cannon = FindObjectsOfType<CanonManager>();
+        for(int i = 0; i < cannon.Length; i++)
+        {
+            if(id == cannon[i].netId.Value)
+            {
+                cannon[i].GetComponentInChildren<Canon>().Shoot();
+                return;
+            }
+        }
         //RpcSpawnBullet();
     }
     
