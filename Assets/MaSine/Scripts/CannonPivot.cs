@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class CannonPivot : MonoBehaviour {
-
+    [Range(-89, 89)]
     public float horizontalLimit;
+    [Range(-89, 89)]
     public float verticalLimit;
 
 	// Use this for initialization
@@ -16,7 +17,7 @@ public class CannonPivot : MonoBehaviour {
 	
 	}
 
-    public void setRotation(Quaternion rotation)
+    public void SetRotation(Quaternion rotation)
     {
         transform.rotation = rotation;
         LimitRotation();
@@ -26,10 +27,10 @@ public class CannonPivot : MonoBehaviour {
     {
         float rotX = transform.rotation.x;
         float rotZ = transform.rotation.z;
-        if (transform.rotation.y > 0 + horizontalLimit) transform.rotation = Quaternion.Euler(rotX, 0.0f + horizontalLimit, rotZ);
-        if (transform.rotation.y < -180 - horizontalLimit) transform.rotation = Quaternion.Euler(rotX, -180.0f - horizontalLimit, rotZ);
+        if (transform.rotation.y > 90.0f + horizontalLimit) transform.rotation = Quaternion.Euler(rotX, 90.0f + horizontalLimit, rotZ);
+        if (transform.rotation.y < -90.0f + horizontalLimit) transform.rotation = Quaternion.Euler(rotX, -90.0f - horizontalLimit, rotZ);
         float rotY = transform.rotation.y;
-        if (transform.rotation.x > 90 + verticalLimit) transform.rotation = Quaternion.Euler(90.0f + verticalLimit, rotY, rotZ);
-        if (transform.rotation.x < -90 - verticalLimit) transform.rotation = Quaternion.Euler(-90.0f - verticalLimit, rotY, rotZ);
+        if (transform.rotation.x > 90.0f + verticalLimit) transform.rotation = Quaternion.Euler(90.0f + verticalLimit, rotY, rotZ);
+        if (transform.rotation.x < -90.0f - verticalLimit) transform.rotation = Quaternion.Euler(-90.0f - verticalLimit, rotY, rotZ);
     }
 }

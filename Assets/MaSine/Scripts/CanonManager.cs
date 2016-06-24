@@ -132,7 +132,7 @@ public class CanonManager : NetworkBehaviour
                 targetedTime += Time.deltaTime / targetingSpeed;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
-                cannonPivot.setRotation(Quaternion.Lerp(startQuat, targetRot, targetedTime));
+                cannonPivot.SetRotation(Quaternion.Lerp(startQuat, targetRot, targetedTime));
 
 
                 //Debugray to show where the canon is aiming
@@ -150,10 +150,10 @@ public class CanonManager : NetworkBehaviour
             }
             else
             {
-                cannonPivot.transform.rotation =
+                cannonPivot.SetRotation(
                 Quaternion.Lerp(cannonPivot.transform.rotation,
                 gunnerHead.transform.rotation,
-                rotationSpeed * Time.deltaTime);
+                rotationSpeed * Time.deltaTime));
 
                 // stop targeting sound
                 if (asource.isPlaying)
