@@ -42,7 +42,7 @@ public class Head : MonoBehaviour {
 
         if (aimPoint != Vector3.zero)
         {
-            float scaleFactor = Mathf.Pow(hit.distance, .83f) / 100;
+            float scaleFactor = Mathf.Pow(hit.distance, 0.7f) / 100;
             // apply scaling 
             targetingDotRect.localScale = Vector2.one * scaleFactor;
             targetingDotRect.position = aimPoint - transform.forward;
