@@ -60,7 +60,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 	void Update () {
         if (isServer)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
             graphicTransform.Rotate(rotSpeed, rotSpeed, rotSpeed);
 
             if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
