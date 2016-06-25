@@ -97,7 +97,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0.05, y: -0.25, z: -1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 495988}
   - {fileID: 470370}
@@ -112,7 +111,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 431406}
   m_RootOrder: 1
@@ -125,7 +123,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 1.13, y: 0.13, z: 2.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 431406}
   - {fileID: 471558}
@@ -140,7 +137,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.49, y: 0.1624564, z: 0.64}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 471468}
   m_RootOrder: 1
@@ -153,7 +149,6 @@ Transform:
   m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: 0, z: 0.56}
   m_LocalScale: {x: 0.24, y: 0.74, z: 0.24}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
   m_Children: []
   m_Father: {fileID: 431406}
   m_RootOrder: 0
@@ -286,8 +281,8 @@ AudioSource:
   Spatialize: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 400
-  MaxDistance: 500
+  MinDistance: 1.7
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -296,15 +291,15 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0.8
+    - time: 0.75957453
       value: 1
       inSlope: 0
-      outSlope: -5.0000005
+      outSlope: -6.666668
       tangentMode: 0
-    - time: 0.8244681
+    - time: 1
       value: 0
-      inSlope: -5.0000005
-      outSlope: 0
+      inSlope: -2.1805701
+      outSlope: -2.1805701
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
