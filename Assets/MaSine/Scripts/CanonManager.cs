@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
 public delegate void CanonDelegateSimple();
 public delegate void CanonDelegateTransform(CanonManager canonManager);
@@ -51,12 +52,26 @@ public class CanonManager : NetworkBehaviour
     private AudioSource asource;
     public AudioClip targetingClip;
 
+    private bool isTargetingEnabled = true;
+
     void Start()
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
         asource = GetComponent<AudioSource>();
         transform.rotation = Quaternion.Euler(0, rotation, 0);
+        CannonPivot.OutOfRange += OnOutOfRange;
+        CannonPivot.InRange += OnInRange;
 
+    }
+
+    private void OnInRange(uint id)
+    {
+        isTargetingEnabled = true;
+    }
+
+    private void OnOutOfRange(uint id)
+    {
+        isTargetingEnabled = false;
     }
 
     public bool IsGunnerLocalPlayer()
@@ -102,13 +117,14 @@ public class CanonManager : NetworkBehaviour
     {
         if (isServer)
             return;
-        if (shootCooldown <= 0.0f)
+        if (shootCooldown <= 0.0f && isTargetingEnabled)
         {
             networkPlayer.CmdShoot(this.netId.Value);
             shootCooldown = shootSpeed;
         }
 
     }
+    
 
     void Update()
     {
@@ -124,15 +140,19 @@ public class CanonManager : NetworkBehaviour
             {
                 if (targetedTime == 0)
                 {
-                    startQuat = cannonPivot.transform.rotation;
+                    if (isTargetingEnabled)
+                    {
+                        startQuat = cannonPivot.transform.rotation;
 
-                    // start targeting sound
-                    asource.clip = targetingClip;
-                    asource.pitch = 1.0f;
-                    asource.Play();
+                        // start targeting sound
+                        asource.clip = targetingClip;
+                        asource.pitch = 1.0f;
+                        asource.Play();
 
-                    if (GotTarget != null)
-                        GotTarget(this);
+                        if (GotTarget != null)
+                            GotTarget(this);
+                    }
+                    
                 }
 
                 targetedTime += Time.deltaTime / targetingSpeed;

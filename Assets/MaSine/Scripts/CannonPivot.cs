@@ -25,13 +25,11 @@ public class CannonPivot : MonoBehaviour {
         {
             if (OutOfRange != null) OutOfRange(canonManager.netId.Value);
             wasSentOut = true;
-            print("OutarangeSent");
         }
         if (!isRotationLimitHit && !wasSentIn)
         {
             if(InRange != null) InRange(canonManager.netId.Value);
             wasSentIn = true;
-            print("InnarangeSent");
         }
 
     }

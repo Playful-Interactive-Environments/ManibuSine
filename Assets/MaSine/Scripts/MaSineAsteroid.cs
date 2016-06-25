@@ -13,6 +13,7 @@ public class MaSineAsteroid : NetworkBehaviour {
     public Transform graphicTransform;
     public GameObject explosionParticles;
     private float destroyDistance = 350;
+    [SyncVar]
     bool silentDestruction = false;
 
 
@@ -52,7 +53,7 @@ public class MaSineAsteroid : NetworkBehaviour {
         {
             audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
 
-            if (!isServer)
+            //if (!isServer)
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
         }
         
