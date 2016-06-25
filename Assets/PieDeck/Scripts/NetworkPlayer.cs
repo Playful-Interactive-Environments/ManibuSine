@@ -68,7 +68,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (!isLocalPlayer && waypoint != null)
             return;
 
-        levelState = waypoint.GetID();
+        CmdSetLevelState(waypoint.GetID());
     }
 
 
@@ -153,6 +153,13 @@ public class NetworkPlayer : NetworkBehaviour
     //----------------------------------------------------------------
     // STUFF WE DID - we are forced to :(
     //----------------------------------------------------------------
+
+    [Command]
+    public void CmdSetLevelState(int id)
+    {
+        levelState = id;
+    }
+
     [Command]
     public void CmdShoot(uint id)
     {
