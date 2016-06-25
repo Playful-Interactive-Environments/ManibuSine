@@ -3,11 +3,13 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public delegate void CanonDelegateSimple();
+public delegate void CanonDelegateTransform(CanonManager canonManager);
+public delegate void CanonDelegateID(uint id);
+
 public class CanonManager : NetworkBehaviour
 {
     public int id;
     public float rotation;
-    public delegate void CanonDelegateTransform(CanonManager canonManager);
     public static CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
     public static CanonDelegateSimple LostTarget;
 
