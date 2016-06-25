@@ -22,8 +22,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
         audioManager = AudioManager.Instance;
         if (isServer) {
-            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-            rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f;
+            rotSpeed = Random.Range(-0.05f, 0.05f) * 2.0f;
         }
 
         
@@ -61,7 +60,11 @@ public class MaSineAsteroid : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (isServer)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
             transform.Rotate(rotSpeed, rotSpeed, rotSpeed);
+        }
+            
 
         if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
         {
