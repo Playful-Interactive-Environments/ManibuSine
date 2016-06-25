@@ -66,13 +66,13 @@ public class MaSineAsteroid : NetworkBehaviour {
             if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
             {
                 silentDestruction = true;
-                SetClientSilent();
+                RpcSetClientSilent();
                 Destroy(gameObject);
             }
         }
     }
     [ClientRpc]
-    void SetClientSilent()
+    void RpcSetClientSilent()
     {
         silentDestruction = true;
     }
