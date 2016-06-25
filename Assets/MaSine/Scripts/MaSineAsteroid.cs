@@ -6,7 +6,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
     NetworkPlayer player;
     Transform ship;
-    private float speed = 60.0f;
+    private float speed = 80.0f;
     private AudioManager audioManager;
     private float rotSpeed;
 

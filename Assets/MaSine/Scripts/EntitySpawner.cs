@@ -5,8 +5,7 @@ using UnityEngine.Networking;
 public class EntitySpawner : MonoBehaviour {
 
     ServerManager serverManager;
-
-    public float spawnRate = 4;
+    
     public bool doSpawn = true;
 
 	// Use this for initialization
