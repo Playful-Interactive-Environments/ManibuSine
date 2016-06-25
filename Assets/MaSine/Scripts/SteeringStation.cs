@@ -31,7 +31,7 @@ public class SteeringStation : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
-        mRenderer = GetComponent<MeshRenderer>();
+        mRenderer = GetComponentInChildren<MeshRenderer>();
         originalColor = mRenderer.material.color;
     }
 
@@ -46,7 +46,6 @@ public class SteeringStation : NetworkBehaviour {
             if (angleInput > 90 || angleInput < -90)
                 return; 
                 
-
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
             networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
         }
@@ -69,7 +68,7 @@ public class SteeringStation : NetworkBehaviour {
         PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
         float uiDistance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
-        uiArrowLength = (uiDistance - trigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - trigger.transform.lossyScale.x / 2);
+        uiArrowLength = uiDistance / (this.transform.lossyScale.x / 2);
 
         //STEERING VARIABLES
         float distance = navigator.position.x - transform.position.x;
@@ -79,8 +78,8 @@ public class SteeringStation : NetworkBehaviour {
             return;
         }
             
-        speedInput = (distance - trigger.transform.lossyScale.x / 2) / (this.transform.lossyScale.x / 2 - trigger.transform.lossyScale.x / 2);
-        
+        speedInput = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2));
+        print("speed " + speedInput);
     }
 
     // PlayerAssigned Msg sent in cannon trigger
@@ -134,11 +133,8 @@ public class SteeringStation : NetworkBehaviour {
             ExitedSteering(this);
     }
 
-    void OnTriggerExit(Collider other)
+    void MsgPlayerGone(Transform leavingPlayer)
     {
-        if (other.tag == "NetworkPlayer")
-        {
-            PlayerLeftStation(other.transform);
-        }
+        PlayerLeftStation(leavingPlayer);
     }
 }

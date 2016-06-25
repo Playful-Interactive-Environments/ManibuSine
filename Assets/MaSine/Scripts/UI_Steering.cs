@@ -53,7 +53,7 @@ public class UI_Steering : MonoBehaviour {
 
     private void CountDown()
     {
-        if (!doCountDown)
+        if (!doCountDown || stepOutCountdownText == null)
             return;
 
         stepOutDuration -= Time.deltaTime;
@@ -62,6 +62,9 @@ public class UI_Steering : MonoBehaviour {
 
     private void AnimateArrow()
     {
+        if (doCountDown)
+            return;
+
         float ls = lerpSpeed * Time.deltaTime;
         float clampedSpeed = Mathf.Clamp01(steeringManager.uiArrowLength);
 
@@ -71,18 +74,18 @@ public class UI_Steering : MonoBehaviour {
 
     private void StartCountdown()
     {
+        doCountDown = true;
         if (stepOutCountdownText == null)
             return;
         stepOutCountdownText.enabled = true;
-        doCountDown = true;
     }
 
     private void StopCountdown()
     {
+        doCountDown = false;
         if (stepOutCountdownText == null)
             return;
         stepOutCountdownText.enabled = false;
-        doCountDown = false;
     }
 
     private void EnteredSteering(SteeringStation steeringStation) {
@@ -93,12 +96,9 @@ public class UI_Steering : MonoBehaviour {
 
     private void StepedOutSteering(SteeringStation steeringStation)
     {
-        if (stepOutCountdownText != null)
-        {
-            StartCountdown();
-            stepOutDuration = steeringStation.playerDropOutDelay;
-            rectArrow.localScale = new Vector3(1, 0, 1);
-        }
+        StartCountdown();
+        stepOutDuration = steeringStation.playerDropOutDelay;
+        rectArrow.localScale = new Vector3(1, 0, 1);
     }
 
     private void ExitedSteering(SteeringStation steeringStation) {
