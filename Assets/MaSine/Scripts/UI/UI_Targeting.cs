@@ -80,15 +80,16 @@ public class UI_Targeting : MonoBehaviour {
 
     private void EnteredCannon(CanonManager canonManager)
     {
-        if (canonManager.IsGunnerLocalPlayer())
-            targetingDot.Show(canonManager.netId.Value);
+        if (!canonManager.IsGunnerLocalPlayer())
+            return;
 
+        targetingDot.Show(canonManager.netId.Value);
         this.canonManager = canonManager;
     }
     private void ExitCannon(CanonManager cannonManager)
     {
         if (canonManager.IsGunnerLocalPlayer())
-            targetingDot.Hide();
+            targetingDot.Hide(cannonManager.netId.Value);
     }
 
     private void GotTarget(CanonManager canonManager)

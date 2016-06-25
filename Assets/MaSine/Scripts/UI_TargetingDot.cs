@@ -31,11 +31,18 @@ public class UI_TargetingDot : MonoBehaviour {
     public void Show(uint cannonID)
     {
         this.cannonID = cannonID;
+
+        image.sprite = dot;
+        image.color = originalColor;
+
         image.enabled = true;
     }
 
-    public void Hide()
+    public void Hide(uint cannonID)
     {
+        if (this.cannonID != cannonID)
+            return;
+
         image.enabled = false;
     }
 
@@ -53,6 +60,8 @@ public class UI_TargetingDot : MonoBehaviour {
             return;
         image.color = denyColor;
         image.sprite = cross;
+
+        ResetDot();
     }
 
     public void ResetDot()
