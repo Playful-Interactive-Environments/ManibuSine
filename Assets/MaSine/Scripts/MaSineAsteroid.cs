@@ -52,9 +52,7 @@ public class MaSineAsteroid : NetworkBehaviour {
         if (!silentDestruction)
         {
             audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
-
-            //if (!isServer)
-                Instantiate(explosionParticles, transform.position, Quaternion.identity);
+            Instantiate(explosionParticles, transform.position, Quaternion.identity);
         }
         
     }
@@ -65,14 +63,15 @@ public class MaSineAsteroid : NetworkBehaviour {
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
             graphicTransform.Rotate(rotSpeed, rotSpeed, rotSpeed);
+
+            if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
+            {
+                silentDestruction = true;
+                Destroy(gameObject);
+            }
         }
             
 
-        if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
-        {
-            silentDestruction = true;
-            if (isServer)
-                Destroy(gameObject);
-        }
+        
     }
 }

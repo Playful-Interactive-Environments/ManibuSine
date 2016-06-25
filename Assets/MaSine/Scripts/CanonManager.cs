@@ -157,7 +157,8 @@ public class CanonManager : NetworkBehaviour
                     
                 }
 
-                if(isTargetingEnabled) targetedTime += Time.deltaTime / targetingSpeed;
+                if (isTargetingEnabled) targetedTime += Time.deltaTime / targetingSpeed;
+                //else targetedTime = 0.1f;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
                 cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
