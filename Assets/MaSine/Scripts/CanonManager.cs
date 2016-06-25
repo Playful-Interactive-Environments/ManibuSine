@@ -2,14 +2,14 @@
 using System.Collections;
 using UnityEngine.Networking;
 
+public delegate void CanonDelegateSimple();
 public class CanonManager : NetworkBehaviour
 {
     public int id;
     public float rotation;
     public delegate void CanonDelegateTransform(CanonManager canonManager);
-    public CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
-    public delegate void CanonDelegateSimple();
-    public CanonDelegateSimple LostTarget;
+    public static CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
+    public static CanonDelegateSimple LostTarget;
 
     public CannonPivot cannonPivot;
 
