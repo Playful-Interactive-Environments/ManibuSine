@@ -22,13 +22,13 @@ public class CannonPivot : MonoBehaviour {
 
         if (isRotationLimitHit && !wasSentOut)
         {
-            OutOfRange();
+            if (OutOfRange != null) OutOfRange();
             wasSentOut = true;
             print("OutarangeSent");
         }
         if (!isRotationLimitHit && !wasSentIn)
         {
-            OutOfRange();
+            if(InRange != null) InRange();
             wasSentIn = true;
             print("InnarangeSent");
         }
