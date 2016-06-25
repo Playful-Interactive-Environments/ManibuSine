@@ -1453,6 +1453,22 @@ Prefab:
       propertyPath: denyColor.a
       value: 0.666
       objectReference: {fileID: 0}
+    - target: {fileID: 22389804, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 482949586}
+    - target: {fileID: 22447934, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 22447934, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 22447934, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
   m_IsPrefabParent: 0
