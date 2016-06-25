@@ -11,7 +11,7 @@ public class MaSineAsteroid : NetworkBehaviour {
     private float rotSpeed;
 
     public GameObject explosionParticles;
-    private float destroyDistance = 1000;
+    private float destroyDistance = 250;
     bool silentDestruction = false;
 
 
