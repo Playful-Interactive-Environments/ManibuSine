@@ -994,7 +994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa110586558f984aa9bb806336ef8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 4
   doSpawn: 1
 --- !u!1 &1063769310
 GameObject:
@@ -1431,6 +1430,22 @@ Prefab:
     - target: {fileID: 11463850, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
       propertyPath: lerpSpeed
       value: 2.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 11466004, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: cooldown
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401130, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: cooldown
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432046, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: cooldown
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11454262, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: cooldown
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
