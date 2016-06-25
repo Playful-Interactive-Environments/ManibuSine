@@ -112,7 +112,7 @@ public class CanonManager : NetworkBehaviour
         if (ExitCannon != null)
             ExitCannon(this);
 
-        gunnerHead.target = null;
+        if(gunnerHead != null) gunnerHead.target = null;
     }
 
     void Shoot()
