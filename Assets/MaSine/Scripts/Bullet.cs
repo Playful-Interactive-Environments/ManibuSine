@@ -9,6 +9,7 @@ public class Bullet : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
+        transform.parent = UniverseTransformer.Instance.transform;
         GetComponent<Rigidbody>().velocity = transform.up * speed;
         Destroy(gameObject, lifeTime);
     }
