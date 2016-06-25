@@ -79,7 +79,6 @@ public class SteeringStation : NetworkBehaviour {
         }
             
         speedInput = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2));
-        print("speed " + speedInput);
     }
 
     // PlayerAssigned Msg sent in cannon trigger
