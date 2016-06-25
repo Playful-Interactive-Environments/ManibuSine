@@ -14,7 +14,7 @@ public class UI_Targeting : MonoBehaviour {
     private CanonManager canonManager;
 
     private Image[] targetGraphics;
-    public Image dotGraphic;
+    public UI_TargetingDot targetingDot;
 
     private RectTransform rectTransform;
     RectTransform CanvasRect;
@@ -80,14 +80,14 @@ public class UI_Targeting : MonoBehaviour {
     private void EnteredCannon(CanonManager canonManager)
     {
         if (canonManager.IsGunnerLocalPlayer())
-            dotGraphic.enabled = true;
+            targetingDot.Show(canonManager.netId.Value);
 
         this.canonManager = canonManager;
     }
     private void ExitCannon(CanonManager cannonManager)
     {
         if (canonManager.IsGunnerLocalPlayer())
-            dotGraphic.enabled = false;
+            targetingDot.Hide();
     }
 
     private void GotTarget(CanonManager canonManager)

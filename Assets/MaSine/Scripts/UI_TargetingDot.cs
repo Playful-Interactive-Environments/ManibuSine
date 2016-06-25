@@ -13,6 +13,8 @@ public class UI_TargetingDot : MonoBehaviour {
     public Color denyColor;
     public Sprite dot, cross;
 
+    private uint cannonID;
+
 	// Use this for initialization
 	void Start () {
         rectTransform = GetComponent<RectTransform>();
@@ -25,6 +27,17 @@ public class UI_TargetingDot : MonoBehaviour {
         CannonPivot.OutOfRange += OnOutOfRange;
         CannonPivot.InRange += OnInRange;
 	}
+
+    public void Show(uint cannonID)
+    {
+        this.cannonID = cannonID;
+        image.enabled = true;
+    }
+
+    public void Hide()
+    {
+        image.enabled = false;
+    }
 
     private void OnInRange()
     {
