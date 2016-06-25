@@ -10,6 +10,7 @@ public class MaSineAsteroid : NetworkBehaviour {
     private AudioManager audioManager;
     private float rotSpeed;
 
+    public Transform graphicTransform;
     public GameObject explosionParticles;
     private float destroyDistance = 350;
     bool silentDestruction = false;
@@ -62,7 +63,7 @@ public class MaSineAsteroid : NetworkBehaviour {
         if (isServer)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            transform.Rotate(rotSpeed, rotSpeed, rotSpeed);
+            graphicTransform.Rotate(rotSpeed, rotSpeed, rotSpeed);
         }
             
 
