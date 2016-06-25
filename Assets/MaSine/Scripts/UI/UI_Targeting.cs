@@ -32,6 +32,7 @@ public class UI_Targeting : MonoBehaviour {
     void InitializeUI() {
         rectTransform = GetComponent<RectTransform>();
         originalScale = rectTransform.localScale;
+        targetingDot = transform.parent.GetComponentInChildren<UI_TargetingDot>();
 
         targetSize = rectTransform.sizeDelta.x;
         targetGraphics = GetComponentsInChildren<Image>();

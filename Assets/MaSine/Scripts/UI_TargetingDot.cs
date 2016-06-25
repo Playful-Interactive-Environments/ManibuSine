@@ -39,14 +39,18 @@ public class UI_TargetingDot : MonoBehaviour {
         image.enabled = false;
     }
 
-    private void OnInRange()
+    private void OnInRange(uint cannonID)
     {
+        if (this.cannonID != cannonID)
+            return;
         image.color = originalColor;
         image.sprite = dot;
     }
 
-    private void OnOutOfRange()
+    private void OnOutOfRange(uint cannonID)
     {
+        if (this.cannonID != cannonID)
+            return;
         image.color = denyColor;
         image.sprite = cross;
     }
