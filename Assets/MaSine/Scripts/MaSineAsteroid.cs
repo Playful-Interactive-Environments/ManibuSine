@@ -6,7 +6,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
     NetworkPlayer player;
     Transform ship;
-    private float speed = 50.0f;
+    private float speed = 35.0f;
     private AudioManager audioManager;
     private float rotSpeed;
 
@@ -23,7 +23,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
         audioManager = AudioManager.Instance;
         if (isServer) {
-            rotSpeed = Random.Range(-0.05f, 0.05f) * 2.0f;
+            rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f;
         }
 
         
