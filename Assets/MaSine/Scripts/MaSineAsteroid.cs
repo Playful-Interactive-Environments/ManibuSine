@@ -6,12 +6,12 @@ public class MaSineAsteroid : NetworkBehaviour {
 
     NetworkPlayer player;
     Transform ship;
-    private float speed = 80.0f;
+    private float speed = 50.0f;
     private AudioManager audioManager;
     private float rotSpeed;
 
     public GameObject explosionParticles;
-    private float destroyDistance = 250;
+    private float destroyDistance = 350;
     bool silentDestruction = false;
 
 
@@ -51,7 +51,7 @@ public class MaSineAsteroid : NetworkBehaviour {
         {
             audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
 
-            //if (!isServer)
+            if (!isServer)
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
         }
         
