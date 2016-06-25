@@ -21,7 +21,6 @@ public class SteeringStation : NetworkBehaviour {
     private IEnumerator dropPlayerCoroutine;
 
     public Transform navigator;
-    public GameObject assignedPlayer;
 
     public UniverseTransformer universeTransformer;
 
@@ -34,19 +33,6 @@ public class SteeringStation : NetworkBehaviour {
     void Start () {
         mRenderer = GetComponent<MeshRenderer>();
         originalColor = mRenderer.material.color;
-        InvokeRepeating("RegisterAtNetworDataManager", 0.5f, 0.5f);
-    }
-
-    void RegisterAtNetworDataManager()
-    {
-        NetworkPlayer nwp = FindObjectOfType<NetworkPlayer>();
-        if (nwp != null && nwp.GetComponent<NetworkIdentity>().isLocalPlayer)
-        {
-            networkPlayer = nwp;
-        }
-
-        if (networkPlayer != null)
-            CancelInvoke("RegisterAtNetworDataManager");
     }
 
     // Update is called once per frame
@@ -68,14 +54,14 @@ public class SteeringStation : NetworkBehaviour {
 
     private void CalculateAngleInput()
     {
-        float x = assignedPlayer.transform.position.x - transform.position.x;
-        float y = assignedPlayer.transform.position.z - transform.position.z;
+        float x = navigator.position.x - transform.position.x;
+        float y = navigator.position.z - transform.position.z;
 
         angleInput = Mathf.Rad2Deg * Mathf.Atan2(y, x);
-        Debug.DrawRay(this.transform.position, 
-            new Vector3(Mathf.Cos(Mathf.Atan2(y, x)), 
-            0,  
-            Mathf.Sin(Mathf.Atan2(y, x))) * 10000, Color.blue);
+        //Debug.DrawRay(this.transform.position, 
+        //    new Vector3(Mathf.Cos(Mathf.Atan2(y, x)), 
+        //    0,  
+        //    Mathf.Sin(Mathf.Atan2(y, x))) * 10000, Color.blue);
     }
 
     private void CalculateSpeedInput()
@@ -117,7 +103,7 @@ public class SteeringStation : NetworkBehaviour {
             return;
 
         this.navigator = navigator;
-        assignedPlayer = navigator.gameObject;
+        networkPlayer = navigator.GetComponent<NetworkPlayer>();
     }
 
     // PlayerGone Msg sent in cannon trigger
