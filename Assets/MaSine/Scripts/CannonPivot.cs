@@ -6,14 +6,15 @@ public class CannonPivot : MonoBehaviour {
     public float horizontalLimit;
     [Range(-89, 89)]
     public float verticalLimit;
-    public static CanonDelegateSimple OutOfRange;
-    public static CanonDelegateSimple InRange;
+    public static CanonDelegateID OutOfRange;
+    public static CanonDelegateID InRange;
     bool isRotationLimitHit = false;
     bool wasSentOut = false;
     bool wasSentIn = false;
+    CanonManager canonManager;
     // Use this for initialization
     void Start () {
-	    
+        canonManager = GetComponentInParent<CanonManager>();
 	}
 	
 	// Update is called once per frame
@@ -22,13 +23,13 @@ public class CannonPivot : MonoBehaviour {
 
         if (isRotationLimitHit && !wasSentOut)
         {
-            if (OutOfRange != null) OutOfRange();
+            if (OutOfRange != null) OutOfRange(canonManager.netId.Value);
             wasSentOut = true;
             print("OutarangeSent");
         }
         if (!isRotationLimitHit && !wasSentIn)
         {
-            if(InRange != null) InRange();
+            if(InRange != null) InRange(canonManager.netId.Value);
             wasSentIn = true;
             print("InnarangeSent");
         }
