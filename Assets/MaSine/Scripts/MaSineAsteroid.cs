@@ -13,7 +13,6 @@ public class MaSineAsteroid : NetworkBehaviour {
     public Transform graphicTransform;
     public GameObject explosionParticles;
     private float destroyDistance = 350;
-    [SyncVar]
     bool silentDestruction = false;
 
 
@@ -67,11 +66,14 @@ public class MaSineAsteroid : NetworkBehaviour {
             if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
             {
                 silentDestruction = true;
+                SetClientSilent();
                 Destroy(gameObject);
             }
         }
-            
-
-        
+    }
+    [ClientRpc]
+    void SetClientSilent()
+    {
+        silentDestruction = true;
     }
 }
