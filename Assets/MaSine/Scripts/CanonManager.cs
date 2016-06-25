@@ -111,6 +111,8 @@ public class CanonManager : NetworkBehaviour
 
         if (ExitCannon != null)
             ExitCannon(this);
+
+        gunnerHead.target = null;
     }
 
     void Shoot()
@@ -140,22 +142,22 @@ public class CanonManager : NetworkBehaviour
             {
                 if (targetedTime == 0)
                 {
+                    
+                    startQuat = cannonPivot.transform.rotation;
                     if (isTargetingEnabled)
                     {
-                        startQuat = cannonPivot.transform.rotation;
-
                         // start targeting sound
                         asource.clip = targetingClip;
                         asource.pitch = 1.0f;
                         asource.Play();
-
-                        if (GotTarget != null)
-                            GotTarget(this);
                     }
+                    if (GotTarget != null)
+                            GotTarget(this);
+                    
                     
                 }
 
-                targetedTime += Time.deltaTime / targetingSpeed;
+                if(isTargetingEnabled) targetedTime += Time.deltaTime / targetingSpeed;
 
                 Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
                 cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
