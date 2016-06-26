@@ -51,7 +51,10 @@ public class NetworkPlayer : NetworkBehaviour
                 laserTrackingActivated = false;
             }
 
-            //ShipManager.Instance.
+            ShipCollider.ShipHit += OnShipHit;
+
+            currentHP = ShipManager.Instance.currentHP;
+            UI_Ship.Instance.SetHP(currentHP);
         }
 
         // disable renderer of head on local player
@@ -77,6 +80,11 @@ public class NetworkPlayer : NetworkBehaviour
         }
 	}
 
+    private void OnShipHit(int damage)
+    {
+        currentHP -= damage;
+    }
+
     private void ShipEnteredEvent(IEventTrigger waypoint)
     {
         if (!isLocalPlayer && waypoint != null)
@@ -85,22 +93,9 @@ public class NetworkPlayer : NetworkBehaviour
         CmdSetLevelState(waypoint.GetID());
     }
 
-
-	
 	// Update is called once per frame
     void Update()
     {
-        //if (isServer)
-        //{
-        //    if (ControllingPlayer != null)
-        //    {
-        //        laserTrackingActivated = true;
-        //    }
-        //    else
-        //    {
-        //        laserTrackingActivated = false;
-        //    }
-        //}
         if (isLocalPlayer)
         {
             if(!laserTrackingActivated)
@@ -163,7 +158,6 @@ public class NetworkPlayer : NetworkBehaviour
                 return;
             }
         }
-        //RpcSpawnBullet();
     }
     
     [Command]
@@ -195,9 +189,21 @@ public class NetworkPlayer : NetworkBehaviour
     {
         UniverseTransformer.Instance.RotateUniverse(rot);
     }
+
+    [ClientRpc]
+    public void RpcTakeDamage(int damage)
+    {
+        currentHP -= damage;
+        ShipManager.Instance.SetHP(currentHP);
+        UI_Ship.Instance.SetHP(currentHP);
+    }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
 
+    void Dispose()
+    {
+        ShipCollider.ShipHit -= OnShipHit;
+    }
 
     void LocalPlayerMovement()
     {
