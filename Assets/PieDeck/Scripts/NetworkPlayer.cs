@@ -54,6 +54,7 @@ public class NetworkPlayer : NetworkBehaviour
             ShipCollider.ShipHit += OnShipHit;
 
             currentHP = ShipManager.Instance.currentHP;
+            UI_Ship.Instance.SetHP(currentHP);
         }
 
         // disable renderer of head on local player
@@ -187,6 +188,14 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdRotateShipCCW(float rot)
     {
         UniverseTransformer.Instance.RotateUniverse(rot);
+    }
+
+    [ClientRpc]
+    public void RpcTakeDamage(int damage)
+    {
+        currentHP -= damage;
+        ShipManager.Instance.SetHP(currentHP);
+        UI_Ship.Instance.SetHP(currentHP);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------

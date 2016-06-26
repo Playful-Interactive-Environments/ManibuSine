@@ -23,8 +23,8 @@ public class ShipManager : MonoBehaviour {
         currentHP = maxHP;
     }
 
-    private void TakeDamage(int damage)
+    public void SetHP(int hp)
     {
-        
+        currentHP = hp;
     }
 }
