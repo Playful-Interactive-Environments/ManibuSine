@@ -51,6 +51,7 @@ public class NetworkPlayer : NetworkBehaviour
                 laserTrackingActivated = false;
             }
 
+            currentHP = ShipManager.Instance.maxHP;
             ShipCollider.ShipHit += OnShipHit;
 
             UI_Ship.Instance.SetHP(currentHP);
