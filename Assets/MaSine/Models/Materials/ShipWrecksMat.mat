@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mat_asteroidStatic
+  m_Name: ShipWrecksMat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -102,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.012
+        second: 0.374
       data:
         first:
           name: _BumpScale
@@ -126,13 +126,13 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0.393
+        second: 0.484
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 0.30147058, g: 0.2766436, b: 0.2394031, a: 1}
+        second: {r: 0.32115054, g: 0.35617766, b: 0.4044118, a: 1}
