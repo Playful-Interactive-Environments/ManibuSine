@@ -53,7 +53,6 @@ public class NetworkPlayer : NetworkBehaviour
 
             ShipCollider.ShipHit += OnShipHit;
 
-            currentHP = ShipManager.Instance.currentHP;
             UI_Ship.Instance.SetHP(currentHP);
         }
 
@@ -82,13 +81,13 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnShipHit(int damage)
     {
-        print("ship hit");
+        currentHP -= damage;
 
-        if (isServer)
-        {
-            currentHP -= damage;
-            RpcSetHP(currentHP);
-        }
+        ShipManager.Instance.SetHP(currentHP);
+        UI_Ship.Instance.SetHP(currentHP);
+
+        // tell clients
+        RpcSetHP(currentHP);
     }
 
     private void ShipEnteredEvent(IEventTrigger waypoint)
