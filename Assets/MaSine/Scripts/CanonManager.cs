@@ -198,13 +198,6 @@ public class CanonManager : NetworkBehaviour
                         cannonPivot.transform.position.y, 
                         cannonPivot.transform.position.z),
         translationSpeed * Time.deltaTime);
-            if (gunner.GetComponent<NetworkIdentity>().isLocalPlayer)
-            {
-                if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"))
-                {
-                    Shoot();
-                }
-            }
         }
     }
 }

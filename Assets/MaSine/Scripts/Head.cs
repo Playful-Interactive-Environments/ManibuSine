@@ -24,27 +24,27 @@ public class Head : MonoBehaviour {
         targetingDotRect = targetingDot.GetComponent<RectTransform>();
 
     }
-	
+
+    Ray ray;
 	// Update is called once per frame
 	void Update () {
-        Ray ray = new Ray(transform.position, transform.forward);
+        // only network player
+        if (!player.isLocalPlayer)
+            return;
 
+        ray.origin = transform.position;
+        ray.direction = transform.forward;
         RaycastHit hit;
-
+        
         Physics.Raycast(ray, out hit, 1000, mask);
 
         target = hit.transform;
         aimPoint = hit.point;
 
-        // only network player
-        if (!player.isLocalPlayer)
-            return;
-
         if (aimPoint != Vector3.zero)
         {
-            float scaleFactor = Mathf.Pow(hit.distance, 0.7f) / 100;
             // apply scaling 
-            targetingDotRect.localScale = Vector2.one * scaleFactor;
+            targetingDotRect.localScale = Vector2.one * Mathf.Pow(hit.distance, 0.7f) / 100;
             targetingDotRect.position = aimPoint - transform.forward;
         }
         else

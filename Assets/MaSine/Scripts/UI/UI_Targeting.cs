@@ -59,11 +59,11 @@ public class UI_Targeting : MonoBehaviour {
         if (hasTarget)
         {
             float size = (1 - Mathf.Clamp01(canonManager.TargetedTime)) * maxSize;
-            rectTransform.sizeDelta = new Vector2(targetSize + size, targetSize + size);
+            rectTransform.sizeDelta = Vector2.one * (targetSize + size);
 
             if (canonManager.TargetTransform != null) {
                 // set position to target
-                transform.position = canonManager.TargetTransform.position /*- transform.forward * 360*/;
+                transform.position = canonManager.TargetTransform.position - transform.forward * 5;
                 // calculate distance
                 float distance = Vector3.Distance(transform.parent.position, canonManager.TargetTransform.position);
                 // wheight scaling factor on distance
