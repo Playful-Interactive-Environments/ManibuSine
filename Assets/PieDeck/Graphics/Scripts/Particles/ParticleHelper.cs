@@ -63,7 +63,7 @@ public class ParticleHelper : MonoBehaviour {
         {
             Vector3 pos = ap.transform.position;
             pos.y = psTransform.position.y;
-            hitParticlePos.Add(new ParticleHit(pos, ap.ColorId));
+            //hitParticlePos.Add(new ParticleHit(pos, ap.ColorId)); // erased ColorId in nwplayer
         }
 
 //        Profiler.BeginSample("Particle Update");
