@@ -81,16 +81,13 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnShipHit(int damage)
     {
-        if (isServer)
-        {
-            currentHP -= damage;
+        currentHP -= damage;
 
-            ShipManager.Instance.SetHP(currentHP);
-            UI_Ship.Instance.SetHP(currentHP);
+        ShipManager.Instance.SetHP(currentHP);
+        UI_Ship.Instance.SetHP(currentHP);
 
-            // tell clients
-            RpcSetHP(currentHP);
-        }
+        // tell clients
+        RpcSetHP(currentHP);
     }
 
     private void ShipEnteredEvent(IEventTrigger waypoint)
