@@ -82,7 +82,13 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnShipHit(int damage)
     {
-        currentHP -= damage;
+        print("ship hit");
+
+        if (isServer)
+        {
+            currentHP -= damage;
+            RpcSetHP(currentHP);
+        }
     }
 
     private void ShipEnteredEvent(IEventTrigger waypoint)
@@ -191,11 +197,10 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RpcTakeDamage(int damage)
+    public void RpcSetHP(int hp)
     {
-        currentHP -= damage;
-        ShipManager.Instance.SetHP(currentHP);
-        UI_Ship.Instance.SetHP(currentHP);
+        ShipManager.Instance.SetHP(hp);
+        UI_Ship.Instance.SetHP(hp);
     }
     //----------------------------------------------------------------
     //----------------------------------------------------------------
