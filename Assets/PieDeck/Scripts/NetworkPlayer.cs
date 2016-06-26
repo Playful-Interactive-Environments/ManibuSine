@@ -39,7 +39,18 @@ public class NetworkPlayer : NetworkBehaviour
 			_vrController = GameObject.Find("OVRPlayerController");
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
-		}
+        }
+        else
+        {
+            if (ControllingPlayer != null)
+            {
+                laserTrackingActivated = true;
+            }
+            else
+            {
+                laserTrackingActivated = false;
+            }
+        }
 
         // disable renderer of head on local player
         if (isLocalPlayer)
@@ -60,6 +71,7 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 wpl.SyncLevelProgress(levelState);
             }
+            transform.FindChild("Body").gameObject.SetActive(false);
         }
 	}
 
@@ -76,17 +88,17 @@ public class NetworkPlayer : NetworkBehaviour
 	// Update is called once per frame
     void Update()
     {
-        if (isServer)
-        {
-            if(ControllingPlayer != null)
-            {
-                laserTrackingActivated = true;
-            }
-            else
-            {
-                laserTrackingActivated = false;
-            }
-        }
+        //if (isServer)
+        //{
+        //    if (ControllingPlayer != null)
+        //    {
+        //        laserTrackingActivated = true;
+        //    }
+        //    else
+        //    {
+        //        laserTrackingActivated = false;
+        //    }
+        //}
         if (isLocalPlayer)
         {
             if(!laserTrackingActivated)
@@ -105,26 +117,6 @@ public class NetworkPlayer : NetworkBehaviour
             CmdHeadRotation(headTilt);
 
             ColorId = 1;
-            transform.FindChild("Body").gameObject.SetActive(false);
-            //transform.FindChild("Orientation").gameObject.SetActive(false);
-
-            //UNIVERSE MOVING INPUT
-            if (Input.GetKey(KeyCode.I))
-            {
-                CmdMoveShipForward(500 * shipSpeed);
-            }
-            if (Input.GetKey(KeyCode.K))
-            {
-                CmdMoveShipBackward(-500 * shipSpeed);
-            }
-            if (Input.GetKey(KeyCode.J))
-            {
-                CmdRotateShipCCW(7 * shipSpeed);
-            }
-            if (Input.GetKey(KeyCode.L))
-            {
-                CmdRotateShipCW(-7 * shipSpeed);
-            }
         }
 
         head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
@@ -132,7 +124,6 @@ public class NetworkPlayer : NetworkBehaviour
         if (isServer)
         {
             transform.name = "" + connectionToClient.connectionId;
-            //GetComponent<CharacterController>().enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
             if (connectionToClient.connectionId == 1)
             {
@@ -151,7 +142,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
     //----------------------------------------------------------------
-    // STUFF WE DID - we are forced to :(
+    // STUFF WE DO - we are forced to :(
     //----------------------------------------------------------------
 
     [Command]
@@ -204,8 +195,6 @@ public class NetworkPlayer : NetworkBehaviour
     {
         UniverseTransformer.Instance.RotateUniverse(rot);
     }
-
-
     //----------------------------------------------------------------
     //----------------------------------------------------------------
 

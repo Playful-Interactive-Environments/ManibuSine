@@ -9,6 +9,10 @@ namespace VRStandardAssets.Utils
     // This script should be generally be placed on the camera.
     public class VREyeRaycaster : MonoBehaviour
     {
+
+        [SerializeField]
+        private bool activateRaycast;
+
         public event Action<RaycastHit> OnRaycasthit;                   // This event is called every frame that the user's gaze is over a collider.
 
 
@@ -53,6 +57,7 @@ namespace VRStandardAssets.Utils
 
         private void Update()
         {
+            if (activateRaycast)
             EyeRaycast();
         }
 
