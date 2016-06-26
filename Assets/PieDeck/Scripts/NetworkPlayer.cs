@@ -51,7 +51,7 @@ public class NetworkPlayer : NetworkBehaviour
                 laserTrackingActivated = false;
             }
 
-            currentHP = ShipManager.Instance.maxHP;
+            currentHP = ShipManager.Instance.currentHP;
             ShipCollider.ShipHit += OnShipHit;
 
             UI_Ship.Instance.SetHP(currentHP);
@@ -87,8 +87,8 @@ public class NetworkPlayer : NetworkBehaviour
         ShipManager.Instance.SetHP(currentHP);
         UI_Ship.Instance.SetHP(currentHP);
 
-        // tell clients
-        RpcSetHP(currentHP);
+        //// tell clients
+        //RpcSetHP(currentHP);
     }
 
     private void ShipEnteredEvent(IEventTrigger waypoint)
