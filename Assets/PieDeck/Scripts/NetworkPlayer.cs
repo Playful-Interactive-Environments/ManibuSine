@@ -55,6 +55,8 @@ public class NetworkPlayer : NetworkBehaviour
             ShipCollider.ShipHit += OnShipHit;
 
             UI_Ship.Instance.SetHP(currentHP);
+
+            RpcSetHP(currentHP);
         }
 
         // disable renderer of head on local player
@@ -84,6 +86,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (!isServer)
             return;
+
+        print("hit player " + netId.Value);
 
         currentHP -= damage;
 
