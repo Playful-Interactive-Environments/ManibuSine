@@ -15,7 +15,7 @@ public class UI_Ship : MonoBehaviour {
         shipEnergyBars = GetComponentsInChildren<Image>();
     }
 
-    private void OnShipHit()
+    private void OnShipHit(int damage)
     {
         // delay one frame
         StartCoroutine(OnShipHitDelayed());

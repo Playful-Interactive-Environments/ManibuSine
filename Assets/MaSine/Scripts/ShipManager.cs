@@ -10,7 +10,7 @@ public class ShipManager : MonoBehaviour {
     }
 
     public int maxHP = 6;
-    public int currentHP; // sync that
+    public int currentHP;
 
     void Awake()
     {
@@ -18,23 +18,13 @@ public class ShipManager : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
-        currentHP = maxHP; // sync that!!!
-        ShipCollider.ShipHit += OnShipHit;
-	}
-
     public void Initialize()
     {
         currentHP = maxHP;
     }
 
-    private void OnShipHit()
+    private void TakeDamage(int damage)
     {
-        currentHP--;
-    }
-
-    void Dispose()
-    {
-        ShipCollider.ShipHit -= OnShipHit;
+        
     }
 }

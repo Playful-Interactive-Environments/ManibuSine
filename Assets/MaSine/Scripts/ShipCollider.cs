@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public delegate void ShipDelegate();
+public delegate void ShipDelegate(int damage);
 public class ShipCollider : MonoBehaviour {
 
     public static ShipDelegate ShipHit;
@@ -18,6 +18,6 @@ public class ShipCollider : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (ShipHit != null)
-            ShipHit();
+            ShipHit(1);
     }
 }
