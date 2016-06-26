@@ -18,7 +18,6 @@ public class NetworkPlayer : NetworkBehaviour
 	public Quaternion rotation;
 	[SyncVar]
 	public Vector3 position;
-	public int ColorId = 2;
 	private GameObject _vrController;
 	private OVRPlayerController _vrControllerScript;
 	private Chaperone _chaperoneScript;
@@ -31,7 +30,6 @@ public class NetworkPlayer : NetworkBehaviour
     
     [SyncVar]
     private bool laserTrackingActivated;
-    private float shipSpeed = 3;
 
     void Start () {
 		if (!isServer)
@@ -115,8 +113,6 @@ public class NetworkPlayer : NetworkBehaviour
                 CmdUpdatePosition(transform.position); 
 
             CmdHeadRotation(headTilt);
-
-            ColorId = 1;
         }
 
         head.transform.rotation = Quaternion.Euler(headTilt, head.transform.rotation.eulerAngles.y, head.transform.rotation.eulerAngles.z);
@@ -277,46 +273,5 @@ public class NetworkPlayer : NetworkBehaviour
 		}
 
 	}
-	#endregion
-
-	#region Sound Triggers
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.transform.name == "ambienceTrigger")
-		{
-			SoundManager.Instance.PlaySound("ambience", "in", 1f);
-		}
-		if (other.transform.name == "tribalTrigger")
-		{
-			SoundManager.Instance.PlaySound("tribal", "in", 1f);
-		}
-		if (other.transform.name == "trumpetTrigger")
-		{
-			SoundManager.Instance.PlaySound("trumpet", "in", 1f);
-		}
-        if (other.transform.name == "guitarTrigger")
-        {
-            SoundManager.Instance.PlaySound("guitar", "in", 1f);
-        }
-    }
-	void OnTriggerExit(Collider other)
-	{
-		if (other.transform.name == "ambienceTrigger")
-		{
-			SoundManager.Instance.PlaySound("ambience", "out", 0f);
-		}
-		if (other.transform.name == "tribalTrigger")
-		{
-			SoundManager.Instance.PlaySound("tribal", "out", 0f);
-		}
-		if (other.transform.name == "trumpetTrigger")
-		{
-			SoundManager.Instance.PlaySound("trumpet", "out", 0f);
-		}
-        if (other.transform.name == "guitarTrigger")
-        {
-            SoundManager.Instance.PlaySound("guitar", "out", 0f);
-        }
-    }
 	#endregion
 }
