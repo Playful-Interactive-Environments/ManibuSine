@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 134134, guid: 5be50fce690dd304480d086378d88eda, type: 2}
-  barrel: {fileID: 0}
+  barrel: {fileID: 437062}
 --- !u!114 &11411918
 MonoBehaviour:
   m_ObjectHideFlags: 1
