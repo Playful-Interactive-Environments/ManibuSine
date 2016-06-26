@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: b99b9ac7de621e94b94ad8aed04d61d4
-timeCreated: 1466943031
+guid: 778a9f7c372507c468f16f71e5c76add
+timeCreated: 1466945560
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: ship1
+    100002: ship_ship
     400000: //RootNode
-    400002: ship1
-    2300000: ship1
-    3300000: ship1
-    4300000: ship1
+    400002: ship_ship
+    2300000: ship_ship
+    3300000: ship_ship
+    4300000: ship_ship
   materials:
     importMaterials: 1
     materialName: 0

@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 737e1fe06a3d5aa43bbd8a7961a96fdb
-timeCreated: 1466945560
+guid: 7300fcc11d8298a4894208377e9a216f
+timeCreated: 1466944222
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: roof_roof
+    100000: steering
     100002: //RootNode
-    400000: roof_roof
+    400000: steering
     400002: //RootNode
-    2300000: roof_roof
-    3300000: roof_roof
-    4300000: roof_roof
+    2300000: steering
+    3300000: steering
+    4300000: steering
   materials:
     importMaterials: 1
     materialName: 0
