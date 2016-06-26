@@ -10,6 +10,8 @@ public class NetworkPlayer : NetworkBehaviour
     private float headTilt;
     [SyncVar]
     public int levelState = 0;
+    [SyncVar]
+    public int currentHP;
     
     public GameObject head;
 
@@ -39,7 +41,7 @@ public class NetworkPlayer : NetworkBehaviour
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
         }
         else
-        {
+        { // SERVER
             if (ControllingPlayer != null)
             {
                 laserTrackingActivated = true;
@@ -48,6 +50,8 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 laserTrackingActivated = false;
             }
+
+            //ShipManager.Instance.
         }
 
         // disable renderer of head on local player

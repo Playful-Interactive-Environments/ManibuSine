@@ -107,6 +107,8 @@ public class ServerManager : NetworkManager
 	{
 		base.OnStartServer();
 		debugTextServer.text = "Server Started";
+
+        ShipManager.Instance.Initialize();
 	}
 
 	public override void OnStopServer()
