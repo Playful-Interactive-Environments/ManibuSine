@@ -183,10 +183,15 @@ public class CanonManager : NetworkBehaviour
             }
             else
             {
-                cannonPivot.transform.rotation = 
-                Quaternion.Lerp(cannonPivot.transform.rotation,
-                gunnerHead.transform.rotation,
-                rotationSpeed * Time.deltaTime);
+                if (isServer)
+                {// lerping on server causes targeting delay
+                    cannonPivot.transform.rotation = gunnerHead.transform.rotation;
+                }
+                else
+                {
+                    cannonPivot.transform.rotation = Quaternion.Lerp(cannonPivot.transform.rotation, gunnerHead.transform.rotation, rotationSpeed * Time.deltaTime);
+                }
+
 
                 // stop targeting sound
                 if (asource.isPlaying)
