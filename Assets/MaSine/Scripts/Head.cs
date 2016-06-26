@@ -44,7 +44,7 @@ public class Head : MonoBehaviour {
         if (aimPoint != Vector3.zero)
         {
             // apply scaling 
-            targetingDotRect.localScale = Vector2.one * Mathf.Pow(hit.distance, 0.7f) / 100;
+            targetingDotRect.localScale = Vector2.one * Mathf.Pow(hit.distance, 0.6f) / 100;
             targetingDotRect.position = aimPoint - transform.forward;
         }
         else

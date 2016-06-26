@@ -17,16 +17,17 @@ public class UI_Targeting : MonoBehaviour {
     public UI_TargetingDot targetingDot;
 
     private RectTransform rectTransform;
-    RectTransform CanvasRect;
 
     private Vector2 originalScale;
 
 	// Use this for initialization
 	void Start () {
         InitializeUI();
-        GetCanonManager();
 
-        CanvasRect = transform.parent.GetComponent<RectTransform>();
+        CanonManager.GotTarget += GotTarget;
+        CanonManager.LostTarget += LostTarget;
+        CanonManager.EnteredCannon += EnteredCannon;
+        CanonManager.ExitCannon += ExitCannon;
     }
 
     void InitializeUI() {
@@ -45,16 +46,6 @@ public class UI_Targeting : MonoBehaviour {
             item.enabled = enable;
     }
 
-    // assigns the canon manager
-    void GetCanonManager()
-    {
-        CanonManager.GotTarget += GotTarget;
-        CanonManager.LostTarget += LostTarget;
-        CanonManager.EnteredCannon += EnteredCannon;
-        CanonManager.ExitCannon += ExitCannon;
-    }
-	
-    // TODO: change position calculation - because now we are using world canvas
 	void Update () {
         if (hasTarget)
         {
@@ -97,12 +88,11 @@ public class UI_Targeting : MonoBehaviour {
         if (!canonManager.IsGunnerLocalPlayer())
             return;
 
-
         hasTarget = true;
         ShowGraphics(true);
     }
 
-    private void LostTarget()
+    private void LostTarget(uint id)
     {
         hasTarget = false;
         ShowGraphics(false);

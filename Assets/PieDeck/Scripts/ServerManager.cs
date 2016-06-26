@@ -10,7 +10,7 @@ public class ServerManager : NetworkManager
 	public string ConnectionIP;
 	public int ConnectionPort = 7777;
 	public bool ClientConnected = false;
-	public TextMesh debugTextClient;
+    //public TextMesh debugTextClient;
 	public static ServerManager Instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 	public bool isServer;
 	public bool isClient;
@@ -174,19 +174,19 @@ public class ServerManager : NetworkManager
 	public override void OnClientConnect(NetworkConnection conn)
 	{
 		base.OnClientConnect(conn);
-		debugTextClient.text = "ClientConnected";
+		//debugTextClient.text = "ClientConnected";
 	}
 
 	public override void OnStartClient(NetworkClient client)
 	{
 		base.OnStartClient(client);
-		debugTextClient.text = "Client Started";
+		//debugTextClient.text = "Client Started";
 	}
 
 	public override void OnStopClient()
 	{
 		base.OnStopClient();
-		debugTextClient.text = "Server Stopped";
+		//debugTextClient.text = "Server Stopped";
 	}
 
 	public void ReconnectClient()

@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class Bullet : NetworkBehaviour {
 
-    public float speed = 1000.0f;
+    public float speed = 100;
     public float lifeTime = 10.0f;
 
     // Use this for initialization

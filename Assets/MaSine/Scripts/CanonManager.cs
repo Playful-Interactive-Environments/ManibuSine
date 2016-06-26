@@ -12,7 +12,7 @@ public class CanonManager : NetworkBehaviour
     public int id;
     public float rotation;
     public static CanonDelegateTransform GotTarget, EnteredCannon, ExitCannon;
-    public static CanonDelegateSimple LostTarget;
+    public static CanonDelegateID LostTarget;
 
     public CannonPivot cannonPivot;
 
@@ -53,6 +53,8 @@ public class CanonManager : NetworkBehaviour
     public AudioClip targetingClip;
 
     private bool isTargetingEnabled = true;
+
+    private bool hasTarget = false;
 
     void Start()
     {
@@ -140,6 +142,7 @@ public class CanonManager : NetworkBehaviour
             // rotate canon
             if (gunnerHead.target != null)
             {
+                
                 if (targetedTime == 0)
                 {
                     
@@ -150,9 +153,10 @@ public class CanonManager : NetworkBehaviour
                         asource.clip = targetingClip;
                         asource.pitch = 1.0f;
                         asource.Play();
+                        hasTarget = true;
                     }
                     if (GotTarget != null)
-                            GotTarget(this);
+                        GotTarget(this);
                     
                     
                 }
@@ -165,7 +169,7 @@ public class CanonManager : NetworkBehaviour
 
 
                 //Debugray to show where the canon is aiming
-                Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
+                //Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
 
                 if (targetedTime >= targetingDuration)
                 {
@@ -189,6 +193,13 @@ public class CanonManager : NetworkBehaviour
                     asource.Stop();
 
                 targetedTime = 0.0f;
+
+                if (hasTarget)
+                {
+                    hasTarget = false;
+                    if (LostTarget != null)
+                        LostTarget(this.netId.Value);
+                }
             }
 
             // move canon
