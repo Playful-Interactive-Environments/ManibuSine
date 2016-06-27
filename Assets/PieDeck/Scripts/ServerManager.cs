@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class ServerManager : NetworkManager
 {
@@ -42,8 +43,21 @@ public class ServerManager : NetworkManager
 
 	void Update()
 	{
-	   
+	   if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopServer();
+            NetworkServer.Reset();
+            Application.Quit();
+        }
 	}
+
+    public void RestartApplication()
+    {
+        StopServer();
+        NetworkServer.Reset();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
 
     public void SpawnEntityAtPrefabPosition(GameObject prefab) {
         GameObject obj = Instantiate(prefab) as GameObject;

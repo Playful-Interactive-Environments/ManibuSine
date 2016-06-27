@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Admin : AManager<Admin> {
 
@@ -13,6 +14,7 @@ public class Admin : AManager<Admin> {
     public Button ButtonDisconnect;
     public Button ButtonRecalibrate;
     public Button ButtonToggleChaperone;
+    public Button ButtonRestartApplication;
     public GameObject PlayerOne;
 	public GameObject PlayerTwo;
 
@@ -91,6 +93,7 @@ public class Admin : AManager<Admin> {
 			}
 		}
 	}
-	#endregion
+    
+    #endregion
 
 }
