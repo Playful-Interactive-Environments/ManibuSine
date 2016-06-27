@@ -33,8 +33,8 @@ public class ShipManager : MonoBehaviour {
     {
         currentHP = hp;
 
-        //if (currentHP >= 0)
-        //    if (GameOver != null)
-        //        GameOver(0);
+        if (currentHP >= 0)
+            if (GameOver != null)
+                GameOver(0);
     }
 }

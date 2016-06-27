@@ -550,6 +550,10 @@ Prefab:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11460190, guid: a558c70052d03da41848ed655c1a4677, type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a558c70052d03da41848ed655c1a4677, type: 2}
   m_IsPrefabParent: 0
@@ -1131,7 +1135,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.29.16.117
+      value: 10.29.16.113
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -1694,6 +1698,38 @@ Prefab:
     - target: {fileID: 440926, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 414663c70b0c0534283aee741317400c, type: 2}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 414663c70b0c0534283aee741317400c, type: 2}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 414663c70b0c0534283aee741317400c, type: 2}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 414663c70b0c0534283aee741317400c, type: 2}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_UseLightProbes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354086, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6f2699052194f41bf61a50d1503575, type: 2}
