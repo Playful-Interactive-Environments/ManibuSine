@@ -17,15 +17,15 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.0627451, g: 0.0627451, b: 0.0627451, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.00002
+  m_FogDensity: 0.002
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientGroundColor: {r: 1, g: 1, b: 1, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.2
   m_AmbientMode: 3
-  m_SkyboxMaterial: {fileID: 2100000, guid: cd499b8769ff6024ea2f29b709aafdb4, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5cfaabaee3736fe4fa14cb373acb0e96, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -666,6 +666,18 @@ Prefab:
     - target: {fileID: 415038, guid: ae445a943a4dbb94c825fc308507ff91, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 10889150, guid: ae445a943a4dbb94c825fc308507ff91, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10889150, guid: ae445a943a4dbb94c825fc308507ff91, type: 2}
+      propertyPath: m_Range
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 10889150, guid: ae445a943a4dbb94c825fc308507ff91, type: 2}
+      propertyPath: m_Intensity
+      value: 2.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae445a943a4dbb94c825fc308507ff91, type: 2}
@@ -1961,6 +1973,38 @@ Prefab:
       propertyPath: shipTransform
       value: 
       objectReference: {fileID: 882940870}
+    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_Color.r
+      value: 0.26666668
+      objectReference: {fileID: 0}
+    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_Color.g
+      value: 0.5921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_Color.b
+      value: 0.56078434
+      objectReference: {fileID: 0}
+    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351454, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351454, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349016, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349016, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
   m_IsPrefabParent: 0
