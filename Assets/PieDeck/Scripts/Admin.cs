@@ -81,7 +81,7 @@ public class Admin : AManager<Admin> {
 	}
 	public void ToggleChaperone()
 	{
-		if (CurrentTrackedPlayer != null)
+        if (CurrentTrackedPlayer != null)
 		{
 			if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
 			{
@@ -93,7 +93,56 @@ public class Admin : AManager<Admin> {
 			}
 		}
 	}
-    
+
+    public void IncreaseMovementLerpSpeed()
+    {
+        if (CurrentTrackedPlayer == null)
+            return;
+
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
+        {
+            PlayerOne.GetComponent<NetworkPlayer>().IncreaseMovementLerpSpeed();
+        }
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
+        {
+            PlayerTwo.GetComponent<NetworkPlayer>().IncreaseMovementLerpSpeed();
+        }
+    }
+
+    public void DecreaseMovementLerpSpeed()
+    {
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
+        {
+            PlayerOne.GetComponent<NetworkPlayer>().DecreaseMovementLerpSpeed();
+        }
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
+        {
+            PlayerTwo.GetComponent<NetworkPlayer>().DecreaseMovementLerpSpeed();
+        }
+    }
+    public void IncreaseMinMoveDistance()
+    {
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
+        {
+            PlayerOne.GetComponent<NetworkPlayer>().IncreaseMinMoveDistance();
+        }
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
+        {
+            PlayerTwo.GetComponent<NetworkPlayer>().IncreaseMinMoveDistance();
+        }
+    }
+
+    public void DecreaseMinMoveDistance()
+    {
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
+        {
+            PlayerOne.GetComponent<NetworkPlayer>().DecreaseMinMoveDistance();
+        }
+        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
+        {
+            PlayerTwo.GetComponent<NetworkPlayer>().DecreaseMinMoveDistance();
+        }
+    }
     #endregion
 
 }

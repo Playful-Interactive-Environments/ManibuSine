@@ -29,12 +29,21 @@ public class NetworkPlayer : NetworkBehaviour
 	private float distance;
 	private float _timePassed;
 	private bool _staticPos;
-    
+    [SyncVar]
+    public float minMoveDistance;
+    [SyncVar]
+    public float movementLerpSpeed;
+
     [SyncVar]
     private bool laserTrackingActivated;
+    
 
     void Start () {
-		if (!isServer)
+        // Initialize movement lerp values
+        minMoveDistance = 0.05f;
+        movementLerpSpeed = 0.005f;
+
+        if (!isServer)
 		{
 			_vrController = GameObject.Find("OVRPlayerController");
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
@@ -42,6 +51,8 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         { // SERVER
+
+            //TODO FIX THIS SHIT
             //if (ControllingPlayer != null)
             //{
             //    laserTrackingActivated = true;
@@ -225,8 +236,8 @@ public class NetworkPlayer : NetworkBehaviour
 
 	void CalculateVRPos()
 	{
-        float minMoveDistance = 0.05f;
-		_timePassed += Time.deltaTime;
+
+        _timePassed += Time.deltaTime;
 		if (_timePassed > 3f)
 		{
 			_previousPos = transform.position;
@@ -246,12 +257,33 @@ public class NetworkPlayer : NetworkBehaviour
 		}
 		if (distance >= minMoveDistance && _staticPos)
 		{
-			_vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, 0.005f);
+			_vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, movementLerpSpeed);
 			_staticPos = false;
 		}
 	}
 
-	public void ResetOrientation()
+    public void IncreaseMovementLerpSpeed()
+    {
+        this.movementLerpSpeed += 0.001f;
+        print("LerpSpeed: " + this.movementLerpSpeed);
+    }
+    public void IncreaseMinMoveDistance()
+    {
+        this.minMoveDistance += 0.01f;
+        print("MinMoveDistance: " + this.minMoveDistance);
+    }
+    public void DecreaseMovementLerpSpeed()
+    {
+        this.movementLerpSpeed -= 0.01f;
+        print("LerpSpeed: " + this.movementLerpSpeed);
+    }
+    public void DecreaseMinMoveDistance()
+    {
+        this.minMoveDistance -= 0.01f;
+        print("MinMoveDistance: " + this.minMoveDistance);
+    }
+
+    public void ResetOrientation()
 	{
 		RpcRecalibrateDevice();
 	}
