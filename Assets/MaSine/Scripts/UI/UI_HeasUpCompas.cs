@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UI_HeasUpCompas : MonoBehaviour {
 
-    private float height = 1.7f;
+    private float height = 1.0f;
 
     private Transform playerTransform;
     private ShipManager ship;
@@ -46,8 +46,6 @@ public class UI_HeasUpCompas : MonoBehaviour {
 
             transform.parent = waypoint.GetTransform();
             transform.localPosition = Vector3.up * height;
-
-
         }
     }
 	

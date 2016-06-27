@@ -23,7 +23,7 @@ public class WaypointLevel : MonoBehaviour {
         EventTrigger.ShipEnteredEvent += ShipEnteredWaypoint;
         EventTrigger.ShipLeftEvent += ShipLeftWaypoint;
 
-        //Invoke("StartGame", gameStartsInXSeconds);
+        Invoke("StartGame", gameStartsInXSeconds);
 	}
 
     void StartGame()
