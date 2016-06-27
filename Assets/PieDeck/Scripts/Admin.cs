@@ -15,6 +15,8 @@ public class Admin : AManager<Admin> {
     public Button ButtonRecalibrate;
     public Button ButtonToggleChaperone;
     public Button ButtonRestartApplication;
+    public InputField InputFieldLS;
+    public InputField InputFieldMM;
     public GameObject PlayerOne;
 	public GameObject PlayerTwo;
 
@@ -94,8 +96,9 @@ public class Admin : AManager<Admin> {
 		}
 	}
 
-    public void SetMovementLerpSpeed(string s)
+    public void SetMovementLerpSpeed()
     {
+        string s = InputFieldLS.text;
         float val;
         float.TryParse(s, out val);
         if (CurrentTrackedPlayer == null)
@@ -110,8 +113,9 @@ public class Admin : AManager<Admin> {
             PlayerTwo.GetComponent<NetworkPlayer>().SetMovementLerpSpeed(val);
         }
     }
-    public void SetMinMoveDistance(string s)
+    public void SetMinMoveDistance()
     {
+        string s = InputFieldMM.text;
         float val;
         float.TryParse(s, out val);
         if (CurrentTrackedPlayer == null)
