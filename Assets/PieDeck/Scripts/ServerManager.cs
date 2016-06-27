@@ -42,7 +42,10 @@ public class ServerManager : NetworkManager
 
 	void Update()
 	{
-	   
+	   if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 	}
 
     public void SpawnEntityAtPrefabPosition(GameObject prefab) {
