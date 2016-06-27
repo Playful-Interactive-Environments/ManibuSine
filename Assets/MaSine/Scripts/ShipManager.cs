@@ -3,6 +3,12 @@ using System.Collections;
 
 public class ShipManager : MonoBehaviour {
 
+    /// <summary>
+    /// 0 means game lost
+    /// > 0 means game won
+    /// </summary>
+    public static event ShipDelegate GameOver;
+
     private static ShipManager instance;
     public static ShipManager Instance
     {
@@ -26,5 +32,9 @@ public class ShipManager : MonoBehaviour {
     public void SetHP(int hp)
     {
         currentHP = hp;
+
+        if (currentHP >= 0)
+            if (GameOver != null)
+                GameOver(0);
     }
 }
