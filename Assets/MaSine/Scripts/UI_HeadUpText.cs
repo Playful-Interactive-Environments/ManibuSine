@@ -57,7 +57,7 @@ public class UI_HeadUpText : MonoBehaviour {
         text.text = "";
     }
 
-	void Update () {
-	
+	void Dispose () {
+        ShipManager.GameOver -= OnGameOver;
 	}
 }
