@@ -34,6 +34,9 @@ public class Waypoint : MonoBehaviour
 
     private void ShipEnteredWaypoint(IEventTrigger waypoint)
     {
+        if (!(waypoint is MajorEventTrigger))
+            return;
+
         if (waypoint.GetID() == activateOn)
         {
             EnableWaypoint();
