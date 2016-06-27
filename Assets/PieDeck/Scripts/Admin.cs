@@ -93,11 +93,7 @@ public class Admin : AManager<Admin> {
 			}
 		}
 	}
-    public void RestartApplication()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-    }
+    
     #endregion
 
 }
