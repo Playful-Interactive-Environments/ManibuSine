@@ -85,7 +85,7 @@ public class SteeringStation : NetworkBehaviour {
         }
 
         source.pitch = 0.5f + speedInput / 2.0f;
-        source.volume = 0.3f + speedInput / 2.0f;
+        source.volume = speedInput;// / 2.0f;
     }
 
     // PlayerAssigned Msg sent in cannon trigger
@@ -105,7 +105,8 @@ public class SteeringStation : NetworkBehaviour {
         if (EnteredSteering != null)
             EnteredSteering(this);
 
-        //UI_HeadUpText.ShowTextOnHeadUp("Enter Cockpit", 2);
+        //if (!isServer)
+        //    UI_HeadUpText.ShowTextOnHeadUp("Enter Cockpit", 2);
 
         if (this.navigator != null)
             return;
