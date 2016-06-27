@@ -280,7 +280,7 @@ namespace UnityTuio
 				yield break;
 			}
 
-			Screen.SetResolution(m_tuioSettings.TargetScreenWidth, m_tuioSettings.TargetScreenHeight, true);
+			//Screen.SetResolution(m_tuioSettings.TargetScreenWidth, m_tuioSettings.TargetScreenHeight, true);
 
 			m_listener = new UnityTuioListener(m_tuioSettings.UDP_Port);
 			m_eventProcessor = new UnityTuioEventProcessor(m_listener);
