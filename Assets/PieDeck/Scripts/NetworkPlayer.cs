@@ -268,7 +268,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void IncreaseMovementLerpSpeed()
     {
-        this.movementLerpSpeed += 0.001f;
+        this.movementLerpSpeed += 0.01f;
         print("LerpSpeed: " + this.movementLerpSpeed);
     }
     public void IncreaseMinMoveDistance()
