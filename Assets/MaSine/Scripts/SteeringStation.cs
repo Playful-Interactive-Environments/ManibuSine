@@ -97,6 +97,8 @@ public class SteeringStation : NetworkBehaviour {
         if (EnteredSteering != null)
             EnteredSteering(this);
 
+        UI_HeadUpText.ShowTextOnHeadUp("Enter Cockpit", 2);
+
         if (this.navigator != null)
             return;
 
