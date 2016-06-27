@@ -42,14 +42,15 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         { // SERVER
-            if (ControllingPlayer != null)
-            {
-                laserTrackingActivated = true;
-            }
-            else
-            {
-                laserTrackingActivated = false;
-            }
+            //if (ControllingPlayer != null)
+            //{
+            //    laserTrackingActivated = true;
+            //}
+            //else
+            //{
+            //    laserTrackingActivated = false;
+            //}
+            laserTrackingActivated = true;
 
             currentHP = ShipManager.Instance.currentHP;
             ShipCollider.ShipHit += OnShipHit;
@@ -224,7 +225,7 @@ public class NetworkPlayer : NetworkBehaviour
 
 	void CalculateVRPos()
 	{
-        float minMoveDistance = 0.03f;
+        float minMoveDistance = 0.05f;
 		_timePassed += Time.deltaTime;
 		if (_timePassed > 3f)
 		{
@@ -245,7 +246,7 @@ public class NetworkPlayer : NetworkBehaviour
 		}
 		if (distance >= minMoveDistance && _staticPos)
 		{
-			_vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, 0.01f);
+			_vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, 0.005f);
 			_staticPos = false;
 		}
 	}
