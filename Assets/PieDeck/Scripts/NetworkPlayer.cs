@@ -15,8 +15,8 @@ public class NetworkPlayer : NetworkBehaviour
     
     public GameObject head;
 
-	public GameObject ControllingPlayer;
-	[SyncVar]
+    private GameObject controllingPlayer;
+    [SyncVar]
 	public Quaternion rotation;
 	[SyncVar]
 	public Vector3 position;
@@ -36,7 +36,20 @@ public class NetworkPlayer : NetworkBehaviour
 
     [SyncVar]
     private bool laserTrackingActivated;
-    
+
+    public GameObject ControllingPlayer
+    {
+        get
+        {
+            return controllingPlayer;
+        }
+
+        set
+        {
+            controllingPlayer = value;
+            laserTrackingActivated = true;
+        }
+    }
 
     void Start () {
         // Initialize movement lerp values
@@ -52,16 +65,8 @@ public class NetworkPlayer : NetworkBehaviour
         else
         { // SERVER
 
-            //TODO FIX THIS SHIT
-            //if (ControllingPlayer != null)
-            //{
-            //    laserTrackingActivated = true;
-            //}
-            //else
-            //{
-            //    laserTrackingActivated = false;
-            //}
-            laserTrackingActivated = true;
+            laserTrackingActivated = false;
+            
 
             currentHP = ShipManager.Instance.currentHP;
             ShipCollider.ShipHit += OnShipHit;
@@ -157,7 +162,6 @@ public class NetworkPlayer : NetworkBehaviour
             if (ControllingPlayer != null)
             {
                 transform.position = ControllingPlayer.transform.position;
-                position = transform.position;
             }
         }
     }
