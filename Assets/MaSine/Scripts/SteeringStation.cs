@@ -29,10 +29,13 @@ public class SteeringStation : NetworkBehaviour {
 
     private NetworkPlayer networkPlayer;
 
+    private AudioSource source;
+
     // Use this for initialization
     void Start () {
         mRenderer = GetComponentInChildren<MeshRenderer>();
         originalColor = mRenderer.material.color;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -68,22 +71,27 @@ public class SteeringStation : NetworkBehaviour {
         PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
         float uiDistance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
-        uiArrowLength = uiDistance / (this.transform.lossyScale.x / 2);
+        uiArrowLength = uiDistance / (this.transform.lossyScale.x / 2.0f);
 
         //STEERING VARIABLES
         float distance = navigator.position.x - transform.position.x;
-        if (distance < trigger.transform.lossyScale.x / 2) 
+
+        speedInput = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2.0f));
+
+        if (distance < 0.001f) 
         {
             speedInput = 0.0f;
-            return;
+            //return;
         }
-            
-        speedInput = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2));
+
+        source.pitch = 0.5f + speedInput / 2.0f;
+        source.volume = 0.3f + speedInput / 2.0f;
     }
 
     // PlayerAssigned Msg sent in cannon trigger
     void MsgPlayerAssigned(Transform navigator)
     {
+        source.Play();
         if (navigator == this.navigator)
         {
             if (dropPlayerCoroutine != null)
@@ -109,6 +117,7 @@ public class SteeringStation : NetworkBehaviour {
     // PlayerGone Msg sent in cannon trigger
     void PlayerLeftStation(Transform leavingPlayer)
     {
+        source.Stop();
         if (leavingPlayer != this.navigator)
             return;
 

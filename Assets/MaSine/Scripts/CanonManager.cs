@@ -125,8 +125,8 @@ public class CanonManager : NetworkBehaviour
         {
             networkPlayer.CmdShoot(this.netId.Value);
             shootCooldown = shootSpeed;
+            canon.ShootEffects();
         }
-
     }
     
 
