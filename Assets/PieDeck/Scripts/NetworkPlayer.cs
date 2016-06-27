@@ -266,24 +266,14 @@ public class NetworkPlayer : NetworkBehaviour
 		}
 	}
 
-    public void IncreaseMovementLerpSpeed()
+    public void SetMovementLerpSpeed(float val)
     {
-        this.movementLerpSpeed += 0.01f;
+        this.movementLerpSpeed = val;
         print("LerpSpeed: " + this.movementLerpSpeed);
     }
-    public void IncreaseMinMoveDistance()
+    public void SetMinMoveDistance(float val)
     {
-        this.minMoveDistance += 0.01f;
-        print("MinMoveDistance: " + this.minMoveDistance);
-    }
-    public void DecreaseMovementLerpSpeed()
-    {
-        this.movementLerpSpeed -= 0.01f;
-        print("LerpSpeed: " + this.movementLerpSpeed);
-    }
-    public void DecreaseMinMoveDistance()
-    {
-        this.minMoveDistance -= 0.01f;
+        this.minMoveDistance = val;
         print("MinMoveDistance: " + this.minMoveDistance);
     }
 

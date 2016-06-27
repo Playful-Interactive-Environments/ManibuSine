@@ -94,53 +94,35 @@ public class Admin : AManager<Admin> {
 		}
 	}
 
-    public void IncreaseMovementLerpSpeed()
+    public void SetMovementLerpSpeed(string s)
     {
+        float val;
+        float.TryParse(s, out val);
         if (CurrentTrackedPlayer == null)
             return;
 
         if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
         {
-            PlayerOne.GetComponent<NetworkPlayer>().IncreaseMovementLerpSpeed();
+            PlayerOne.GetComponent<NetworkPlayer>().SetMovementLerpSpeed(val);
         }
         if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
         {
-            PlayerTwo.GetComponent<NetworkPlayer>().IncreaseMovementLerpSpeed();
+            PlayerTwo.GetComponent<NetworkPlayer>().SetMovementLerpSpeed(val);
         }
     }
-
-    public void DecreaseMovementLerpSpeed()
+    public void SetMinMoveDistance(string s)
     {
+        float val;
+        float.TryParse(s, out val);
+        if (CurrentTrackedPlayer == null)
+            return;
         if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
         {
-            PlayerOne.GetComponent<NetworkPlayer>().DecreaseMovementLerpSpeed();
+            PlayerOne.GetComponent<NetworkPlayer>().SetMinMoveDistance(val);
         }
         if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
         {
-            PlayerTwo.GetComponent<NetworkPlayer>().DecreaseMovementLerpSpeed();
-        }
-    }
-    public void IncreaseMinMoveDistance()
-    {
-        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
-        {
-            PlayerOne.GetComponent<NetworkPlayer>().IncreaseMinMoveDistance();
-        }
-        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
-        {
-            PlayerTwo.GetComponent<NetworkPlayer>().IncreaseMinMoveDistance();
-        }
-    }
-
-    public void DecreaseMinMoveDistance()
-    {
-        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne)
-        {
-            PlayerOne.GetComponent<NetworkPlayer>().DecreaseMinMoveDistance();
-        }
-        if (CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo)
-        {
-            PlayerTwo.GetComponent<NetworkPlayer>().DecreaseMinMoveDistance();
+            PlayerTwo.GetComponent<NetworkPlayer>().SetMinMoveDistance(val);
         }
     }
     #endregion
