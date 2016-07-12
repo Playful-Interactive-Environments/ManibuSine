@@ -44,6 +44,9 @@ public class UniverseTransformer : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        //Try asteroids
+        MoveForward(40);
+
         if (targetTransfrom == null && targetRotator == null)
             return;
 

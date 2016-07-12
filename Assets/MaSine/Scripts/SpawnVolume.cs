@@ -7,6 +7,9 @@ public class SpawnVolume : MonoBehaviour {
 
     private EntitySpawner entitySpawner;
 
+    [SerializeField]
+    float randomDirectionOffset = 2.0f;
+
     private bool spawning;
     public bool Spawning
     {
@@ -57,12 +60,25 @@ public class SpawnVolume : MonoBehaviour {
 
     void SpawnObjectInVolume()
     {
+        // Aim spawnVolume at ship and ahead
+        ShipManager shipMan = FindObjectOfType<ShipManager>();
+        UniverseTransformTarget transTarget = FindObjectOfType<UniverseTransformTarget>();
+        if(shipMan != null && transTarget != null)
+        {
+            float distance = Vector3.Distance(shipMan.transform.position, transform.position);
+            transform.LookAt(shipMan.transform.position + (-transTarget.GetComponent<Rigidbody>().velocity) * (distance * (1f / MaSineAsteroid.speed)));
+            //Debug.DrawRay(transform.position, transform.forward * 1000, Color.green, 100);
+        }
+        
         Vector3 spawnPosition = transform.position;
         spawnPosition += transform.right * Random.Range(-1f, 1f) * transform.lossyScale.x / 2f;
         spawnPosition += transform.up * Random.Range(-1f, 1f) * transform.lossyScale.y / 2f;
         spawnPosition += transform.forward * Random.Range(-1f, 1f) * transform.lossyScale.z / 2f;
 
-        Quaternion spawnRotation = transform.rotation * Quaternion.Euler(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
+        //Quaternion spawnRotation = Quaternion.Euler(FindObjectOfType<ShipManager>().transform.position - transform.position);
+        Quaternion spawnRotation = transform.rotation * Quaternion.Euler(Random.Range(-randomDirectionOffset, randomDirectionOffset), 
+                                                                        Random.Range(-randomDirectionOffset, randomDirectionOffset), 
+                                                                        Random.Range(-randomDirectionOffset, randomDirectionOffset));
 
         entitySpawner.SpawnAt(spawnObject, spawnPosition, spawnRotation);
     }
@@ -89,5 +105,10 @@ public class SpawnVolume : MonoBehaviour {
                     Spawning = true;
             }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+
     }
 }
