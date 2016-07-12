@@ -11,7 +11,7 @@ public class UI_Targeting : MonoBehaviour {
 
     private bool hasTarget = false;
 
-    private CanonManager canonManager;
+    private CanonManager cannonManager;
 
     private Image[] targetGraphics;
     public UI_TargetingDot targetingDot;
@@ -20,14 +20,14 @@ public class UI_Targeting : MonoBehaviour {
 
     private Vector2 originalScale;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         InitializeUI();
 
-        CanonManager.GotTarget += GotTarget;
-        CanonManager.LostTarget += LostTarget;
-        CanonManager.EnteredCannon += EnteredCannon;
-        CanonManager.ExitCannon += ExitCannon;
+        CanonManager.GotTarget += OnGotTarget;
+        CanonManager.LostTarget += OnLostTarget;
+        CanonManager.EnteredCannon += OnEnteredCannon;
+        CanonManager.ExitCannon += OnExitCannon;
     }
 
     void InitializeUI() {
@@ -46,44 +46,48 @@ public class UI_Targeting : MonoBehaviour {
             item.enabled = enable;
     }
 
-	void Update () {
-        if (hasTarget)
+    void Update()
+    {
+        if (!hasTarget || cannonManager == null)
         {
-            float size = (1 - Mathf.Clamp01(canonManager.TargetedTime)) * maxSize;
-            rectTransform.sizeDelta = Vector2.one * (targetSize + size);
-
-            if (canonManager.TargetTransform != null) {
-                // set position to target
-                transform.position = canonManager.TargetTransform.position - transform.forward * 5;
-                // calculate distance
-                float distance = Vector3.Distance(transform.parent.position, canonManager.TargetTransform.position);
-                // wheight scaling factor on distance
-                float scaleFactor = Mathf.Pow(distance, .8f) / 100;
-                // apply scaling 
-                rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
-            }
-            else
-            {
-                ShowGraphics(false);
-            }
+            ShowGraphics(false);
+            return;
         }
-	}
 
-    private void EnteredCannon(CanonManager canonManager)
+        float size = (1 - Mathf.Clamp01(cannonManager.TargetedTime)) * maxSize;
+        rectTransform.sizeDelta = Vector2.one * (targetSize + size);
+
+        if (cannonManager.TargetTransform != null)
+        {
+            // set position to target
+            transform.position = cannonManager.TargetTransform.position - transform.forward * 5;
+            // calculate distance
+            float distance = Vector3.Distance(transform.parent.position, cannonManager.TargetTransform.position);
+            // wheight scaling factor on distance
+            float scaleFactor = Mathf.Pow(distance, .8f) / 100;
+            // apply scaling 
+            rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
+        }
+    }
+
+    private void OnEnteredCannon(CanonManager canonManager)
     {
         if (!canonManager.IsGunnerLocalPlayer())
             return;
 
         targetingDot.Show(canonManager.netId.Value);
-        this.canonManager = canonManager;
+        this.cannonManager = canonManager;
     }
-    private void ExitCannon(CanonManager cannonManager)
+    private void OnExitCannon(CanonManager cannonManager)
     {
-        if (canonManager.IsGunnerLocalPlayer())
+        if (this.cannonManager.IsGunnerLocalPlayer())
             targetingDot.Hide(cannonManager.netId.Value);
+
+        hasTarget = false;
+        this.cannonManager = null;
     }
 
-    private void GotTarget(CanonManager canonManager)
+    private void OnGotTarget(CanonManager canonManager)
     {
         if (!canonManager.IsGunnerLocalPlayer())
             return;
@@ -92,7 +96,7 @@ public class UI_Targeting : MonoBehaviour {
         ShowGraphics(true);
     }
 
-    private void LostTarget(uint id)
+    private void OnLostTarget(uint id)
     {
         hasTarget = false;
         ShowGraphics(false);
@@ -100,9 +104,9 @@ public class UI_Targeting : MonoBehaviour {
 
     void Dispose()
     {
-        CanonManager.GotTarget -= GotTarget;
-        CanonManager.LostTarget -= LostTarget;
-        CanonManager.EnteredCannon -= EnteredCannon;
-        CanonManager.ExitCannon -= ExitCannon;
+        CanonManager.GotTarget -= OnGotTarget;
+        CanonManager.LostTarget -= OnLostTarget;
+        CanonManager.EnteredCannon -= OnEnteredCannon;
+        CanonManager.ExitCannon -= OnExitCannon;
     }
 }

@@ -9,9 +9,14 @@ public class UI_TargetingDot : MonoBehaviour {
     private RectTransform rectTransform;
     private Image image;
 
-    private Color originalColor;
-    public Color denyColor;
+    public Material originalMaterial;
+    public Material denyMaterial;
+
     public Sprite dot, cross;
+
+    private float dotSlace = 1;
+    private float crossScale = 2;
+
 
     private uint cannonID;
 
@@ -22,8 +27,6 @@ public class UI_TargetingDot : MonoBehaviour {
         initialDistance = rectTransform.position.z;
         initialScale = rectTransform.localScale.x;
 
-        originalColor = image.color;
-
         CannonPivot.OutOfRange += OnOutOfRange;
         CannonPivot.InRange += OnInRange;
 	}
@@ -33,7 +36,8 @@ public class UI_TargetingDot : MonoBehaviour {
         this.cannonID = cannonID;
 
         image.sprite = dot;
-        image.color = originalColor;
+        image.material = originalMaterial;
+        rectTransform.localScale = Vector3.one * initialScale * dotSlace;
 
         image.enabled = true;
     }
@@ -50,25 +54,29 @@ public class UI_TargetingDot : MonoBehaviour {
     {
         if (this.cannonID != cannonID)
             return;
-        image.color = originalColor;
         image.sprite = dot;
+        image.material = originalMaterial;
+
+        rectTransform.localScale = Vector3.one * initialScale * dotSlace;
     }
 
     private void OnOutOfRange(uint cannonID)
     {
         if (this.cannonID != cannonID)
             return;
-        image.color = denyColor;
         image.sprite = cross;
+        image.material = denyMaterial;
+        rectTransform.localScale = Vector3.one * initialScale * crossScale;
 
-        ResetDot();
+
+        //ResetDot();
     }
 
-    public void ResetDot()
-    {
-        rectTransform.localPosition = new Vector3(0, 0, initialDistance);
-        rectTransform.localScale = Vector3.one * initialScale;
-    }
+    //public void ResetDot()
+    //{
+    //    rectTransform.localPosition = new Vector3(0, 0, initialDistance);
+    //    rectTransform.localScale = Vector3.one * initialScale;
+    //}
 
     void Dispose()
     {
