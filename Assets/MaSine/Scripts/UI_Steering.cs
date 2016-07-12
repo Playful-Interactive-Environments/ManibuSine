@@ -29,9 +29,9 @@ public class UI_Steering : MonoBehaviour {
         steeringManager = FindObjectOfType<SteeringStation>();
         if (steeringManager != null) {
             CancelInvoke("GetSteeringManager");
-            steeringManager.EnteredSteering += EnteredSteering;
-            steeringManager.ExitedSteering += ExitedSteering;
-            steeringManager.StepedOutSteering += StepedOutSteering;
+            steeringManager.EnteredSteering += OnEnteredSteering;
+            steeringManager.ExitedSteering += OnExitedSteering;
+            steeringManager.StepedOutSteering += OnStepedOutSteering;
         }
     }
 
@@ -88,20 +88,20 @@ public class UI_Steering : MonoBehaviour {
         stepOutCountdownText.enabled = false;
     }
 
-    private void EnteredSteering(SteeringStation steeringStation) {
+    private void OnEnteredSteering(SteeringStation steeringStation) {
         steeringManager = steeringStation;
         StopCountdown();
         ShowGraphics(true);
     }
 
-    private void StepedOutSteering(SteeringStation steeringStation)
+    private void OnStepedOutSteering(SteeringStation steeringStation)
     {
         StartCountdown();
         stepOutDuration = steeringStation.playerDropOutDelay;
         rectArrow.localScale = new Vector3(1, 0, 1);
     }
 
-    private void ExitedSteering(SteeringStation steeringStation) {
+    private void OnExitedSteering(SteeringStation steeringStation) {
         steeringManager = null;
         StopCountdown();
         ShowGraphics(false);
@@ -123,8 +123,8 @@ public class UI_Steering : MonoBehaviour {
 
     void Dispose()
     {
-        steeringManager.EnteredSteering -= EnteredSteering;
-        steeringManager.ExitedSteering -= ExitedSteering;
-        steeringManager.StepedOutSteering -= StepedOutSteering;
+        steeringManager.EnteredSteering -= OnEnteredSteering;
+        steeringManager.ExitedSteering -= OnExitedSteering;
+        steeringManager.StepedOutSteering -= OnStepedOutSteering;
     }
 }
