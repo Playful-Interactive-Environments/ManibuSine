@@ -90,6 +90,8 @@ public class CanonManager : NetworkBehaviour
         if (this.gunner != null)
             return;
 
+        targetedTime = 0.0f;
+
         this.gunner = gunner;
         this.gunnerHead = gunner.GetComponentInChildren<Head>();
 

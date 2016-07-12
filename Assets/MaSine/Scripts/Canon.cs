@@ -19,7 +19,6 @@ public class Canon : NetworkBehaviour {
     /// </summary>
     public void ShootEffects()
     {
-        print("shoot");
         source.Play();
     }
 
