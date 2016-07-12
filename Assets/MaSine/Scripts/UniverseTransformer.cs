@@ -44,6 +44,8 @@ public class UniverseTransformer : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        
+
         if (targetTransfrom == null && targetRotator == null)
             return;
 
