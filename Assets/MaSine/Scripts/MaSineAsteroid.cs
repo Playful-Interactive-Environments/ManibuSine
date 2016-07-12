@@ -9,15 +9,19 @@ public class MaSineAsteroid : NetworkBehaviour {
     public static float speed = 15.0f;
     private AudioManager audioManager;
     private float rotSpeed;
+    private float originalScale;
 
     public Transform graphicTransform;
     public GameObject explosionParticles;
     private float destroyDistance = 350;
     bool silentDestruction = false;
+    private float growSpeed = 0.3f;
 
 
     // Use this for initialization
     void Start () {
+        originalScale = transform.localScale.x;
+        transform.localScale = Vector3.zero;
         ship = GameObject.Find("Ship").transform;
         transform.parent = UniverseTransformer.Instance.transform;
 
@@ -57,6 +61,11 @@ public class MaSineAsteroid : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (transform.localScale.x < originalScale)
+        {
+            transform.localScale = new Vector3(transform.localScale.x + growSpeed, transform.localScale.y + growSpeed, transform.localScale.z + growSpeed);
+        }
+
         if (isServer)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);

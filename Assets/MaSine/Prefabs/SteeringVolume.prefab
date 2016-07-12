@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 499464}
   - 33: {fileID: 3330866}
-  - 136: {fileID: 13607912}
   - 23: {fileID: 2347484}
   - 114: {fileID: 11468510}
+  - 65: {fileID: 6527970}
   m_Layer: 21
   m_Name: SteeringTrigger
   m_TagString: Untagged
@@ -27,7 +27,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484336}
-  - 33: {fileID: 3361112}
   - 114: {fileID: 11434328}
   - 114: {fileID: 11472156}
   - 82: {fileID: 8249318}
@@ -47,6 +46,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.112, y: 0.08, z: 1.24}
   m_LocalScale: {x: 1.5, y: 0.064, z: 1.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 499464}
   m_Father: {fileID: 0}
@@ -60,6 +60,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 484336}
   m_RootOrder: 0
@@ -96,13 +97,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126512}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &3361112
-MeshFilter:
+--- !u!65 &6527970
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139436}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_GameObject: {fileID: 126512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 15.15, z: 1.8}
+  m_Center: {x: 0.21, y: 0, z: -0.00000008940697}
 --- !u!82 &8249318
 AudioSource:
   m_ObjectHideFlags: 1
@@ -237,19 +243,6 @@ MonoBehaviour:
   playerDropOutDelay: 5
   navigator: {fileID: 0}
   universeTransformer: {fileID: 0}
---- !u!136 &13607912
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126512}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 32
-  m_Direction: 1
-  m_Center: {x: 0, y: 3.98, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

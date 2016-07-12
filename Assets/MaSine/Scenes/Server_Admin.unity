@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2394d4fa6ab87498680abdbd1aac8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
+  _playerPrefab: {fileID: 0}
   _addUnknownPlayerOnUpdate: 1
   _subscribeTuioCursors: 1
   _subscribeTuioObjects: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504bce0a5e9081d418f08a25fe29964b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
+  _playerPrefab: {fileID: 0}
   _addUnknownPlayerOnUpdate: 1
 --- !u!1 &399382221
 GameObject:
@@ -2630,8 +2630,8 @@ MonoBehaviour:
     _tcpLocalPort: 44345
     _udpMulticastIpAddress: 239.1.1.1
     _udpLocalPort: 44345
-    _targetScreenWidth: 435
-    _targetScreenHeight: 300
+    _targetScreenWidth: 1920
+    _targetScreenHeight: 1080
     _stageX: 1600
     _stageY: 900
     _checkServerReconnectIntervall: 5
@@ -2673,8 +2673,8 @@ MonoBehaviour:
   m_tuioSettings:
     _trackingEnabled: 1
     _udpPort: 3333
-    _targetScreenWidth: 435
-    _targetScreenHeight: 300
+    _targetScreenWidth: 1920
+    _targetScreenHeight: 1080
     _stageX: 1600
     _stageY: 900
   canvasControl: {fileID: 0}
@@ -3584,8 +3584,8 @@ MonoBehaviour:
   ButtonPlayerTwo: {fileID: 299664315}
   ButtonDisconnect: {fileID: 1894646205}
   ButtonRecalibrate: {fileID: 1077163086}
-  ButtonToggleChaperone: {fileID: 0}
-  ButtonRestartApplication: {fileID: 0}
+  ButtonToggleChaperone: {fileID: 238014612}
+  ButtonRestartApplication: {fileID: 1981031700}
   InputFieldLS: {fileID: 1427887170}
   InputFieldMM: {fileID: 1057975770}
   PlayerOne: {fileID: 0}

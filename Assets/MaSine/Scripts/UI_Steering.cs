@@ -49,6 +49,7 @@ public class UI_Steering : MonoBehaviour {
         ShowGraphics(true);
 
         AnimateArrow();
+        AnimateSpeed();
     }
 
     private void CountDown()
@@ -69,7 +70,17 @@ public class UI_Steering : MonoBehaviour {
         float clampedSpeed = Mathf.Clamp01(steeringManager.uiArrowLength);
 
         rectArrow.localRotation = Quaternion.Lerp(rectArrow.localRotation, Quaternion.Euler(0, 0, steeringManager.angleInput), ls);
-        rectArrow.localScale = Vector3.Lerp(rectArrow.localScale, new Vector3(1, clampedSpeed, 1), ls);
+        //rectArrow.localScale = Vector3.Lerp(rectArrow.localScale, new Vector3(1, clampedSpeed, 1), ls);
+    }
+
+    private void AnimateSpeed()
+    {
+        if (doCountDown)
+            return;
+
+        float ls = lerpSpeed * Time.deltaTime;
+        float clampedSpeed = Mathf.Clamp01(steeringManager.uiArrowLength);
+        speedBar.localScale = Vector3.Lerp(speedBar.localScale, new Vector3(1, clampedSpeed, 1), ls);
     }
 
     private void StartCountdown()
@@ -98,7 +109,7 @@ public class UI_Steering : MonoBehaviour {
     {
         StartCountdown();
         stepOutDuration = steeringStation.playerDropOutDelay;
-        rectArrow.localScale = new Vector3(1, 0, 1);
+        rectArrow.localScale = new Vector3(1, 1, 1);
     }
 
     private void OnExitedSteering(SteeringStation steeringStation) {

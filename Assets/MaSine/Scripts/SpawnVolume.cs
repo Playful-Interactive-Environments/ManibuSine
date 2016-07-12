@@ -106,9 +106,4 @@ public class SpawnVolume : MonoBehaviour {
             }
         }
     }
-
-    void OnDrawGizmosSelected()
-    {
-
-    }
 }
