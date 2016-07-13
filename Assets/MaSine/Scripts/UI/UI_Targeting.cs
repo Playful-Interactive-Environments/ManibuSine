@@ -80,6 +80,8 @@ public class UI_Targeting : MonoBehaviour {
     }
     private void OnExitCannon(CanonManager cannonManager)
     {
+        if (cannonManager == null)
+            return;
         if (this.cannonManager.IsGunnerLocalPlayer())
             targetingDot.Hide(cannonManager.netId.Value);
 
