@@ -25,9 +25,11 @@ public class UI_Steering : MonoBehaviour {
         InitializeUI();
         InvokeRepeating("GetSteeringManager", 0.5f, 0.5f);
     }
-    void GetSteeringManager() {
+    void GetSteeringManager()
+    {
         steeringManager = FindObjectOfType<SteeringStation>();
-        if (steeringManager != null) {
+        if (steeringManager != null)
+        {
             CancelInvoke("GetSteeringManager");
             steeringManager.EnteredSteering += OnEnteredSteering;
             steeringManager.ExitedSteering += OnExitedSteering;
@@ -100,7 +102,7 @@ public class UI_Steering : MonoBehaviour {
     }
 
     private void OnEnteredSteering(SteeringStation steeringStation) {
-        steeringManager = steeringStation;
+        //steeringManager = steeringStation;
         StopCountdown();
         ShowGraphics(true);
     }
@@ -113,7 +115,7 @@ public class UI_Steering : MonoBehaviour {
     }
 
     private void OnExitedSteering(SteeringStation steeringStation) {
-        steeringManager = null;
+        //steeringManager = null;
         StopCountdown();
         ShowGraphics(false);
     }
@@ -134,6 +136,8 @@ public class UI_Steering : MonoBehaviour {
 
     void OnDestroy()
     {
+        if (steeringManager == null)
+            return;
         steeringManager.EnteredSteering -= OnEnteredSteering;
         steeringManager.ExitedSteering -= OnExitedSteering;
         steeringManager.StepedOutSteering -= OnStepedOutSteering;
