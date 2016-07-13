@@ -25,12 +25,12 @@ public class CurserLocker : MonoBehaviour
     int cnt = 0;
     void OnGUI()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            print("ss");
-            Application.CaptureScreenshot("Screenshot" + cnt++ + "_" + System.DateTime.Now.Hour.ToString()
-                + System.DateTime.Now.Minute.ToString() +
-                 System.DateTime.Now.Second.ToString() + ".png", 2);
-        }
+        //if (Input.GetMouseButtonDown(0)) {
+        //    print("ss");
+        //    Application.CaptureScreenshot("Screenshot" + cnt++ + "_" + System.DateTime.Now.Hour.ToString()
+        //        + System.DateTime.Now.Minute.ToString() +
+        //         System.DateTime.Now.Second.ToString() + ".png", 2);
+        //}
         //GUILayout.BeginVertical();
         //// Release cursor on escape keypress
         //if (Input.GetKeyDown(KeyCode.Escape))
