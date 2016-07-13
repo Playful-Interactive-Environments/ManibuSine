@@ -85,8 +85,9 @@ public class UI_Targeting : MonoBehaviour {
         if (this.cannonManager == null)
             return; // ohter player left a station
 
-        if (!this.cannonManager.IsGunnerLocalPlayer())
+        if (!cannonManager.IsGunnerLocalPlayer())
             return;
+
 
         targetingDot.Hide(cannonManager.netId.Value);
 
