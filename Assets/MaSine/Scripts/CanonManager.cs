@@ -116,11 +116,12 @@ public class CanonManager : NetworkBehaviour
 
         gunner = null;
         gunnerHead = null;
+        this.networkPlayer = null;
 
         if (ExitCannon != null)
             ExitCannon(this);
 
-        if(gunnerHead != null) gunnerHead.target = null;
+        if (gunnerHead != null) gunnerHead.target = null;
     }
 
     void Update()
