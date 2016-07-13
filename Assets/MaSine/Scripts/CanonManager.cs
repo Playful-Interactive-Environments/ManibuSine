@@ -68,11 +68,15 @@ public class CanonManager : NetworkBehaviour
 
     private void OnOverLimits(uint id)
     {
+        if (this.netId.Value != id)
+            return;
         cannonWithinLimits = true;
     }
 
     private void OnWithinLimits(uint id)
     {
+        if (this.netId.Value != id)
+            return;
         cannonWithinLimits = false;
     }
 
@@ -119,7 +123,12 @@ public class CanonManager : NetworkBehaviour
         if(gunnerHead != null) gunnerHead.target = null;
     }
 
-    void Shoot()
+    void Update()
+    {
+        CannonHandling();
+    }
+
+    private void Shoot()
     {
         if (isServer)
             return;
@@ -131,184 +140,195 @@ public class CanonManager : NetworkBehaviour
         }
     }
 
-    void CannonHandling()
+    private void CannonHandling()
     {
         if (gunner == null)
             return;
         // execute only on local player
-        if (isLocalPlayer)
-        {
-            if (shootCooldown > 0.0f)
-                shootCooldown -= Time.deltaTime;
-            // gonner in station
-
-            // has target
-            if (gunnerHead.target != null)
-            {
-                if (cannonWithinLimits)
-                {
-                    // start targeting
-                    if (targetedTime == 0)
-                    {
-                        startQuat = cannonPivot.transform.rotation;
-
-                        hasTarget = true;
-                        // start targeting sound
-                        asource.clip = targetingClip;
-                        asource.pitch = 1.0f;
-                        asource.Play();
-                        if (GotTarget != null)
-                            GotTarget(this);
-                    }
-
-                    // targeting process is running
-                    //if (cannonWithinLimits)
-                    targetedTime += Time.deltaTime / targetingSpeed;
-
-                    //// apply rotation to cannon
-                    //Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
-                    //cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
-
-                    // shoot when time passed
-                    if (targetedTime >= targetingDuration)
-                        Shoot();
-                    else // pitch sound
-                        asource.pitch = (targetedTime + 0.8f) / 2 + targetingDuration;
-                }
-            }
-            else
-            {
-                // reset targeting time
-                targetedTime = 0.0f;
-
-                // lost target
-                if (hasTarget)
-                {
-                    hasTarget = false;
-                    if (LostTarget != null)
-                        LostTarget(this.netId.Value);
-                }
-
-                // stop targeting sound
-                if (asource.isPlaying)
-                    asource.Stop();
-            }
-        }
+        ClientOnlyCannonConrtol();
 
         // move canon (server and client)
-        cannonPivot.transform.position = Vector3.Lerp(
-            cannonPivot.transform.position,
-            new Vector3(gunner.transform.position.x, cannonPivot.transform.position.y, cannonPivot.transform.position.z),
-            translationSpeed * Time.deltaTime);
+        MoveCannon();
 
+        // rotate cannon (server and client)
+        RotateCannon();
+    }
+
+    private void ClientOnlyCannonConrtol()
+    {
+        if (!isClient)
+            return;
+        if (shootCooldown > 0.0f)
+            shootCooldown -= Time.deltaTime;
+
+        // has target
         if (gunnerHead.target != null)
         {
-            // apply rotation to cannon with target
+            if (cannonWithinLimits)
+            {
+                // start targeting
+                ClientStartTargeting();
+
+                // targeting process is running
+                //if (cannonWithinLimits)
+                targetedTime += Time.deltaTime / targetingSpeed;
+
+                // shoot when time passed
+                if (targetedTime >= targetingDuration)
+                    Shoot();
+                else // pitch sound
+                    asource.pitch = (targetedTime + 0.8f) / 2 + targetingDuration;
+            }
+        }
+        else
+        {
+            // reset targeting time
+            targetedTime = 0.0f;
+
+            // lost target
+            if (hasTarget)
+            {
+                hasTarget = false;
+                if (LostTarget != null)
+                    LostTarget(this.netId.Value);
+            }
+
+            // stop targeting sound
+            if (asource.isPlaying)
+                asource.Stop();
+        }
+    }
+
+    private void ClientStartTargeting()
+    {
+        if (targetedTime == 0)
+        {
+            startQuat = cannonPivot.transform.rotation;
+
+            hasTarget = true;
+            // start targeting sound
+            asource.clip = targetingClip;
+            asource.pitch = 1.0f;
+            asource.Play();
+            if (GotTarget != null)
+                GotTarget(this);
+        }
+    }
+
+    private void MoveCannon()
+    {
+        cannonPivot.transform.position = Vector3.Lerp(
+                    cannonPivot.transform.position,
+                    new Vector3(gunner.transform.position.x, cannonPivot.transform.position.y, cannonPivot.transform.position.z),
+                    translationSpeed * Time.deltaTime);
+    }
+
+    private void RotateCannon()
+    {
+        // apply rotation to cannon with target (server and client)
+        if (gunnerHead.target != null && cannonWithinLimits)
+        {
             Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
             cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
         }
-        else
-        {   // rotation without target
-            print("rot");
-            if (isLocalPlayer)
+        else // apply  rotation without target
+        {
+            if (isClient) // CLIENT
                 cannonPivot.transform.rotation = Quaternion.Lerp(cannonPivot.transform.rotation, gunnerHead.transform.rotation, rotationSpeed * Time.deltaTime);
-            else if (isServer)
+            else if (isServer) // SERVER
             {// lerping on server causes targeting delay
                 cannonPivot.transform.rotation = gunnerHead.transform.rotation;
             }
         }
-
-    }
-    void Update()
-    {
-        CannonHandling();
     }
 
 
-    void OldCanonUpdate()
-    {
-        if (shootCooldown > 0.0f)
-        {
-            shootCooldown -= Time.deltaTime;
-        }
-        if (gunner != null)
-        {
 
-            // rotate canon
-            if (gunnerHead.target != null)
-            {
+    // [deprecated] - kept for documentation
+    //void OldCanonUpdate()
+    //{
+    //    if (shootCooldown > 0.0f)
+    //    {
+    //        shootCooldown -= Time.deltaTime;
+    //    }
+    //    if (gunner != null)
+    //    {
 
-                if (targetedTime == 0)
-                {
+    //        // rotate canon
+    //        if (gunnerHead.target != null)
+    //        {
 
-                    startQuat = cannonPivot.transform.rotation;
-                    if (cannonWithinLimits)
-                    {
-                        // start targeting sound
-                        asource.clip = targetingClip;
-                        asource.pitch = 1.0f;
-                        asource.Play();
-                        hasTarget = true;
-                    }
-                    if (GotTarget != null)
-                        GotTarget(this);
+    //            if (targetedTime == 0)
+    //            {
 
-
-                }
-
-                if (cannonWithinLimits) targetedTime += Time.deltaTime / targetingSpeed;
-                //else targetedTime = 0.1f;
-
-                Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
-                cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
+    //                startQuat = cannonPivot.transform.rotation;
+    //                if (cannonWithinLimits)
+    //                {
+    //                    // start targeting sound
+    //                    asource.clip = targetingClip;
+    //                    asource.pitch = 1.0f;
+    //                    asource.Play();
+    //                    hasTarget = true;
+    //                }
+    //                if (GotTarget != null)
+    //                    GotTarget(this);
 
 
-                //Debugray to show where the canon is aiming
-                //Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
+    //            }
 
-                if (targetedTime >= targetingDuration)
-                {
-                    Shoot();
-                }
-                else
-                {
-                    // pitch sound
-                    asource.pitch = (targetedTime + 0.8f) / 2 + targetingDuration;
-                }
-            }
-            else
-            {
-                if (isServer)
-                {// lerping on server causes targeting delay
-                    cannonPivot.transform.rotation = gunnerHead.transform.rotation;
-                }
-                else
-                {
-                    cannonPivot.transform.rotation = Quaternion.Lerp(cannonPivot.transform.rotation, gunnerHead.transform.rotation, rotationSpeed * Time.deltaTime);
-                }
+    //            if (cannonWithinLimits) targetedTime += Time.deltaTime / targetingSpeed;
+    //            //else targetedTime = 0.1f;
+
+    //            Quaternion targetRot = Quaternion.LookRotation(gunnerHead.aimPoint - cannonPivot.transform.position);
+    //            cannonPivot.transform.rotation = Quaternion.Lerp(startQuat, targetRot, targetedTime);
 
 
-                // stop targeting sound
-                if (asource.isPlaying)
-                    asource.Stop();
+    //            //Debugray to show where the canon is aiming
+    //            //Debug.DrawRay(canon.transform.position, (gunnerHead.aimPoint - canon.transform.position), Color.red);
 
-                targetedTime = 0.0f;
+    //            if (targetedTime >= targetingDuration)
+    //            {
+    //                Shoot();
+    //            }
+    //            else
+    //            {
+    //                // pitch sound
+    //                asource.pitch = (targetedTime + 0.8f) / 2 + targetingDuration;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            if (isServer)
+    //            {// lerping on server causes targeting delay
+    //                cannonPivot.transform.rotation = gunnerHead.transform.rotation;
+    //            }
+    //            else
+    //            {
+    //                cannonPivot.transform.rotation = Quaternion.Lerp(cannonPivot.transform.rotation, gunnerHead.transform.rotation, rotationSpeed * Time.deltaTime);
+    //            }
 
-                if (hasTarget)
-                {
-                    hasTarget = false;
-                    if (LostTarget != null)
-                        LostTarget(this.netId.Value);
-                }
-            }
 
-            // move canon
-            cannonPivot.transform.position =
-            Vector3.Lerp(cannonPivot.transform.position,
-            new Vector3(gunner.transform.position.x,
-                        cannonPivot.transform.position.y,
-                        cannonPivot.transform.position.z),
-        translationSpeed * Time.deltaTime);
-        }
-    }
+    //            // stop targeting sound
+    //            if (asource.isPlaying)
+    //                asource.Stop();
+
+    //            targetedTime = 0.0f;
+
+    //            if (hasTarget)
+    //            {
+    //                hasTarget = false;
+    //                if (LostTarget != null)
+    //                    LostTarget(this.netId.Value);
+    //            }
+    //        }
+
+    //        // move canon
+    //        cannonPivot.transform.position =
+    //        Vector3.Lerp(cannonPivot.transform.position,
+    //        new Vector3(gunner.transform.position.x,
+    //                    cannonPivot.transform.position.y,
+    //                    cannonPivot.transform.position.z),
+    //    translationSpeed * Time.deltaTime);
+    //    }
+    //}
 }
