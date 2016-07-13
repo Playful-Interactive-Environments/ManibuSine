@@ -303,7 +303,10 @@ public class OVRPlayerController : MonoBehaviour
         if (!SkipMouseRotation)
         {
             euler.y += Input.GetAxis("Mouse X") * rotateInfluence * 3.25f;
+            //TODO make sure the camera doesnt flip over when using mouse controlls
             euler.x += Input.GetAxis("Mouse Y") * rotateInfluence * -3.25f;
+            
+            
         }
 #endif
 
