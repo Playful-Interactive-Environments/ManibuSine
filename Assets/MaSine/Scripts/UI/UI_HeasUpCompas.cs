@@ -63,7 +63,7 @@ public class UI_HeasUpCompas : MonoBehaviour {
         //}
 	}
 
-    void Dispose()
+    void OnDestroy()
     {
         WaypointLevel.NextWaypoint -= GetNextWaypoint;
     }

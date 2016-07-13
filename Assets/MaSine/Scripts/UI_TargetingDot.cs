@@ -78,7 +78,7 @@ public class UI_TargetingDot : MonoBehaviour {
     //    rectTransform.localScale = Vector3.one * initialScale;
     //}
 
-    void Dispose()
+    void OnDestroy()
     {
         CannonPivot.OutOfRange -= OnOutOfRange;
         CannonPivot.InRange -= OnInRange;

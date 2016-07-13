@@ -58,7 +58,7 @@ public class Waypoint : MonoBehaviour
         }
     }
 
-    void Dispose()
+    void OnDestroy()
     {
         EventTrigger.ShipEnteredEvent -= ShipEnteredWaypoint;
     }

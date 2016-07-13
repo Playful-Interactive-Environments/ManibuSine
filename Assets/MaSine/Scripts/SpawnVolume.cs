@@ -52,7 +52,7 @@ public class SpawnVolume : MonoBehaviour {
         }
     }
 
-    void Dispose()
+    void OnDestroy()
     {
         AsteroidEventTrigger.ShipEnteredEventID -= VolumeEntered;
         AsteroidEventTrigger.ShipLeftEventID -= VolumeExited;

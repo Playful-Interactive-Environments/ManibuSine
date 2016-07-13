@@ -228,7 +228,7 @@ public class NetworkPlayer : NetworkBehaviour
     //----------------------------------------------------------------
     //----------------------------------------------------------------
 
-    void Dispose()
+    void OnDestroy()
     {
         ShipCollider.ShipHit -= OnShipHit;
     }

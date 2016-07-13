@@ -102,7 +102,7 @@ public class UI_Targeting : MonoBehaviour {
         ShowGraphics(false);
     }
 
-    void Dispose()
+    void OnDestroy()
     {
         CanonManager.GotTarget -= OnGotTarget;
         CanonManager.LostTarget -= OnLostTarget;

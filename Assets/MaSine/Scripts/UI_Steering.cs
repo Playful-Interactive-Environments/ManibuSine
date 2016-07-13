@@ -132,7 +132,7 @@ public class UI_Steering : MonoBehaviour {
         ShowGraphics(false);
     }
 
-    void Dispose()
+    void OnDestroy()
     {
         steeringManager.EnteredSteering -= OnEnteredSteering;
         steeringManager.ExitedSteering -= OnExitedSteering;
