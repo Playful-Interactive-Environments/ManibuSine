@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2394d4fa6ab87498680abdbd1aac8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 0}
+  _playerPrefab: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
   _addUnknownPlayerOnUpdate: 1
   _subscribeTuioCursors: 1
   _subscribeTuioObjects: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504bce0a5e9081d418f08a25fe29964b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 0}
+  _playerPrefab: {fileID: 139562, guid: 6d1405e4237898b4d8bfd03e18210637, type: 2}
   _addUnknownPlayerOnUpdate: 1
 --- !u!1 &399382221
 GameObject:
