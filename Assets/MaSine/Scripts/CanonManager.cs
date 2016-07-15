@@ -103,6 +103,14 @@ public class CanonManager : NetworkBehaviour
 
         if (EnteredCannon != null)
             EnteredCannon(this);
+
+        // HUD
+        if (!isServer)
+            UI_HeadUpText.DisplayText(UI_HeadUpText.DisplayArea.TopRight,
+                                       GameColor.Neutral,
+                                       UI_HeadUpText.TextSize.small,
+                                       "Enter Cannon",
+                                       2);
     }
 
     // PlayerGone Msg sent in cannon trigger
@@ -121,6 +129,14 @@ public class CanonManager : NetworkBehaviour
             ExitCannon(this);
 
         if (gunnerHead != null) gunnerHead.target = null;
+
+        // HUD
+        if (!isServer)
+            UI_HeadUpText.DisplayText(UI_HeadUpText.DisplayArea.TopRight,
+                                       GameColor.Neutral,
+                                       UI_HeadUpText.TextSize.small,
+                                       "Exit Cannon",
+                                       2);
     }
 
     void Update()
