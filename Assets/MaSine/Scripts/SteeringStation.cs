@@ -102,9 +102,11 @@ public class SteeringStation : NetworkBehaviour {
 
         mRenderer.material.color = assignedColor;
 
+        UI_DEBUG.AddText("MsgPlayerAssigned");
+
         if (EnteredSteering != null)
             EnteredSteering(this);
-
+        
         //if (!isServer)
         //    UI_HeadUpText.ShowTextOnHeadUp("Enter Cockpit", 2);
 

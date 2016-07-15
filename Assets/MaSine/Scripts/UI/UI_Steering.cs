@@ -48,7 +48,8 @@ public class UI_Steering : MonoBehaviour {
             return;
         }
 
-        ShowGraphics(true);
+        // better not
+        //ShowGraphics(true);
 
         AnimateArrow();
         AnimateSpeed();
@@ -102,7 +103,6 @@ public class UI_Steering : MonoBehaviour {
     }
 
     private void OnEnteredSteering(SteeringStation steeringStation) {
-        //steeringManager = steeringStation;
         StopCountdown();
         ShowGraphics(true);
     }
@@ -115,7 +115,6 @@ public class UI_Steering : MonoBehaviour {
     }
 
     private void OnExitedSteering(SteeringStation steeringStation) {
-        //steeringManager = null;
         StopCountdown();
         ShowGraphics(false);
     }
@@ -123,6 +122,8 @@ public class UI_Steering : MonoBehaviour {
     void ShowGraphics(bool enable) {
         foreach (Image item in allGraphics)
             item.enabled = enable;
+
+        UI_DEBUG.AddText("ShowGraphics " + enable);
     }
 
     void InitializeUI() {
