@@ -26,16 +26,20 @@ public class PublicPlayer : NetworkBehaviour {
             return;
         Destroy(body);
 
+        InvokeRepeating("CheckPlayerGone", 1, 1);
+    }
 
+    void CheckPlayerGone() {
+        if (controllingPlayer != null)
+            return;
+        CancelInvoke("CheckPlayerGone");
+        Network.Destroy(this.gameObject);
     }
 
     // Update is called once per frame
     void Update() {
 
         if (isServer) {
-            if (controllingPlayer == null)
-                Network.Destroy(this.gameObject);
-
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
 
             // set sync vars
