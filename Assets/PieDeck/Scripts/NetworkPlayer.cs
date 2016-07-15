@@ -62,7 +62,8 @@ public class NetworkPlayer : NetworkBehaviour
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
 
-            VRBorberdsTrigger.AssignPlayer(this);
+            if (isLocalPlayer)
+                VRBorberdsTrigger.AssignPlayer(this);
         }
         else
         { // SERVER
