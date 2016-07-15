@@ -6,7 +6,7 @@ using System;
 public class SteeringStation : NetworkBehaviour {
 
     public delegate void SteeringDelegateTransform(SteeringStation steeringStation);
-    public SteeringDelegateTransform  EnteredSteering, ExitedSteering, StepedOutSteering;
+    public SteeringDelegateTransform  EnteredSteering, ExitedSteering;
 
 
     private MeshRenderer mRenderer;
@@ -15,7 +15,7 @@ public class SteeringStation : NetworkBehaviour {
 
     private float speedInput;
     public float angleInput;
-    public float uiArrowLength;
+    public float uiSpeedScale;
 
     public float playerDropOutDelay = 3.0f;
     private IEnumerator dropPlayerCoroutine;
@@ -56,10 +56,11 @@ public class SteeringStation : NetworkBehaviour {
 
     private void CalculateAngleInput()
     {
-        float x = navigator.position.x - transform.position.x;
-        float y = navigator.position.z - transform.position.z;
+        float uiAngleDistance = navigator.position.z - transform.position.z;
+        float clampedPositionZ = Mathf.Clamp(uiAngleDistance / (this.transform.lossyScale.z / 2.0f), -1, 1);
+        print(clampedPositionZ);
 
-        angleInput = Mathf.Rad2Deg * Mathf.Atan2(y, x);
+        angleInput = clampedPositionZ * 90;
         //Debug.DrawRay(this.transform.position, 
         //    new Vector3(Mathf.Cos(Mathf.Atan2(y, x)), 
         //    0,  
@@ -70,8 +71,8 @@ public class SteeringStation : NetworkBehaviour {
     {
         PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
-        float uiDistance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(navigator.position.x, navigator.position.z));
-        uiArrowLength = uiDistance / (this.transform.lossyScale.x / 2.0f);
+        float uiDistance = navigator.position.x - transform.position.x;
+        uiSpeedScale = Mathf.Clamp01(uiDistance / (this.transform.lossyScale.x / 2.0f));
 
         //STEERING VARIABLES
         float distance = navigator.position.x - transform.position.x;
@@ -113,9 +114,6 @@ public class SteeringStation : NetworkBehaviour {
         source.Stop();
         if (leavingPlayer != this.navigator)
             return;
-
-        if (StepedOutSteering != null)
-            StepedOutSteering(this);
 
         navigator = null;
 
