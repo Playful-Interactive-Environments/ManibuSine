@@ -6,7 +6,7 @@ public class PublicPlayer : NetworkBehaviour {
 
     private const float updateRate = 0.2f;
     private float currentUpdate = 0;
-    private float lerpSpeed = 12;
+    private float lerpSpeed = 3;
 
     public TrackedPlayer controllingPlayer;
 
