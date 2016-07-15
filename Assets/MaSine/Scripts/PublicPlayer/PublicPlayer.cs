@@ -4,6 +4,10 @@ using UnityEngine.Networking;
 
 public class PublicPlayer : NetworkBehaviour {
 
+    private const float updateRate = 0.2f;
+    private float currentUpdate = 0;
+    private float lerpSpeed = 12;
+
     public TrackedPlayer controllingPlayer;
 
     [SyncVar]
@@ -30,6 +34,8 @@ public class PublicPlayer : NetworkBehaviour {
         if (body == null)
             return;
 
+        DestroyImmediate(body);
+
     }
 
     void CheckPlayerGone() {
@@ -37,6 +43,19 @@ public class PublicPlayer : NetworkBehaviour {
             return;
         CancelInvoke("CheckPlayerGone");
         DestroyImmediate(this.gameObject);
+    }
+
+    private void UpdatePosition() {
+        if (currentUpdate < updateRate) {
+            currentUpdate += Time.deltaTime;
+        } else {
+            currentUpdate = 0;
+            // set sync vars
+            // TODO: maybe use a sync rate
+            x = transform.position.x;
+            y = transform.position.y;
+            z = transform.position.z;
+        }
     }
 
     // Update is called once per frame
@@ -47,14 +66,11 @@ public class PublicPlayer : NetworkBehaviour {
                 return;
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
 
-            // set sync vars
-            // TODO: maybe use a sync rate
-            x = transform.position.x;
-            y = transform.position.y;
-            z = transform.position.z;
+            UpdatePosition();
+
         }
         else { // movement on clint
-            transform.position = new Vector3(x, y, z);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
 
             // TODO: maybe interpolate (Lerp)
         }
