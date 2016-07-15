@@ -104,7 +104,7 @@ public class SteeringStation : NetworkBehaviour {
 
         if (!isServer)
             UI_HeadUpText.DisplayText(  UI_HeadUpText.DisplayArea.TopRight, 
-                                        GameColor.Success, 
+                                        GameColor.Neutral, 
                                         UI_HeadUpText.TextSize.small,
                                         "Enter Cockpit",
                                         2);
@@ -130,7 +130,7 @@ public class SteeringStation : NetworkBehaviour {
 
         if (!isServer)
             UI_HeadUpText.DisplayText(  UI_HeadUpText.DisplayArea.TopRight,
-                                        GameColor.Alert,
+                                        GameColor.Neutral,
                                         UI_HeadUpText.TextSize.small,
                                         "Exit Cockpit",
                                         2);
