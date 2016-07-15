@@ -25,24 +25,26 @@ public class PublicPlayer : NetworkBehaviour {
         if (isServer) 
             return;
 
-        // clietn version needs no rigidbody
+        // client version needs no rigidbody
         Rigidbody body = GetComponent<Rigidbody>();
         if (body == null)
             return;
-        Destroy(body);
+
     }
 
     void CheckPlayerGone() {
         if (controllingPlayer != null)
             return;
         CancelInvoke("CheckPlayerGone");
-        Destroy(this.gameObject);
+        DestroyImmediate(this.gameObject);
     }
 
     // Update is called once per frame
     void Update() {
-
         if (isServer) {
+
+            if (controllingPlayer == null)
+                return;
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
 
             // set sync vars

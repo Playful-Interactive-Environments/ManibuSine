@@ -27,7 +27,7 @@ public class PublicPlayerManager : MonoBehaviour {
         if (other.GetComponent<PublicPlayer>())
             return;
 
-        other.gameObject.AddComponent<PublicPlayer>();
+        //other.gameObject.AddComponent<PublicPlayer>();
 
         // assign new player and parent it on tracked player
         ServerManager.Instance.SpawnPublicPlayer(trackedPlayer);
