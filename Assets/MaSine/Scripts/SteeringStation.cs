@@ -60,7 +60,6 @@ public class SteeringStation : NetworkBehaviour {
     {
         float uiAngleDistance = navigator.position.z - transform.position.z;
         float clampedPositionZ = Mathf.Clamp(uiAngleDistance / (this.transform.lossyScale.z / 2.0f), -1, 1);
-        print(clampedPositionZ);
 
         angleInput = clampedPositionZ * 90;
         //Debug.DrawRay(this.transform.position, 
@@ -102,9 +101,13 @@ public class SteeringStation : NetworkBehaviour {
 
         if (EnteredSteering != null)
             EnteredSteering(this);
-        
-        //if (!isServer)
-        //    UI_HeadUpText.ShowTextOnHeadUp("Enter Cockpit", 2);
+
+        if (!isServer)
+            UI_HeadUpText.DisplayText(  UI_HeadUpText.DisplayArea.TopRight, 
+                                        GameColor.Success, 
+                                        UI_HeadUpText.TextSize.small,
+                                        "Enter Cockpit",
+                                        2);
 
         this.navigator = navigator;
         networkPlayer = navigator.GetComponent<NetworkPlayer>();
@@ -124,6 +127,13 @@ public class SteeringStation : NetworkBehaviour {
 
         if (ExitedSteering != null)
             ExitedSteering(this);
+
+        if (!isServer)
+            UI_HeadUpText.DisplayText(  UI_HeadUpText.DisplayArea.TopRight,
+                                        GameColor.Alert,
+                                        UI_HeadUpText.TextSize.small,
+                                        "Exit Cockpit",
+                                        2);
     }
 
     void MsgPlayerGone(Transform leavingPlayer)
