@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class UI_Ship : MonoBehaviour {
     private static UI_Ship instance;
@@ -10,6 +11,7 @@ public class UI_Ship : MonoBehaviour {
     }
 
     private Image[] shipEnergyBars;
+    public Text destroyed;
 
     void Awake()
     {
@@ -30,5 +32,8 @@ public class UI_Ship : MonoBehaviour {
                 break;
             shipEnergyBars[i].enabled = false;
         }
+
+        if (damage <= 0)
+            destroyed.enabled = true;
     }
 }

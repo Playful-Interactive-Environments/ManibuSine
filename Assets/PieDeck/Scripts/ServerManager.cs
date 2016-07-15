@@ -22,6 +22,7 @@ public class ServerManager : NetworkManager
     public GameObject TargetTransform;
     public GameObject RotationTransform;
     public GameObject SteeringStation;
+    public GameObject PublicPlayer;
 
     void Awake()
 	{
@@ -78,6 +79,20 @@ public class ServerManager : NetworkManager
         GameObject obj = Instantiate(prefab, spawnPosition, spawnRotation) as GameObject;
         NetworkServer.Spawn(obj);
     }
+
+
+    public void SpawnPublicPlayer(TrackedPlayer tp) {
+        if (!isServer)
+            return;
+
+        print("SPAWN");
+
+        GameObject obj = Instantiate(PublicPlayer, tp.transform.position, Quaternion.identity) as GameObject;
+
+        obj.GetComponent<PublicPlayer>().controllingPlayer = tp;
+        NetworkServer.Spawn(obj);
+    }
+
 
     public void StartupHost()
 	{
