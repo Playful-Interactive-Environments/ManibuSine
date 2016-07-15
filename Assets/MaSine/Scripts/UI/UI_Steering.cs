@@ -75,8 +75,6 @@ public class UI_Steering : MonoBehaviour {
     void ShowGraphics(bool enable) {
         foreach (Image item in allGraphics)
             item.enabled = enable;
-
-        UI_DEBUG.AddText("ShowGraphics " + enable);
     }
 
     void InitializeUI() {

@@ -30,12 +30,14 @@ public class SteeringStation : NetworkBehaviour {
     private NetworkPlayer networkPlayer;
 
     private AudioSource source;
+    private AudioFader audioFader;
 
     // Use this for initialization
     void Start () {
         mRenderer = GetComponentInChildren<MeshRenderer>();
         originalColor = mRenderer.material.color;
         source = GetComponent<AudioSource>();
+        audioFader = GetComponent<AudioFader>();
     }
 
     // Update is called once per frame
@@ -111,7 +113,8 @@ public class SteeringStation : NetworkBehaviour {
     // PlayerGone Msg sent in cannon trigger
     void PlayerLeftStation(Transform leavingPlayer)
     {
-        source.Stop();
+        audioFader.FadeOut(0.333f);
+
         if (leavingPlayer != this.navigator)
             return;
 
