@@ -60,7 +60,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Simple
-    pixelLightCount: 1
+    pixelLightCount: 2
     shadows: 1
     shadowResolution: 0
     shadowProjection: 1
@@ -72,7 +72,7 @@ QualitySettings:
     blendWeights: 2
     textureQuality: 0
     anisotropicTextures: 1
-    antiAliasing: 4
+    antiAliasing: 0
     softParticles: 0
     softVegetation: 0
     realtimeReflectionProbes: 0

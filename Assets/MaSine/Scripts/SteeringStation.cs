@@ -60,7 +60,6 @@ public class SteeringStation : NetworkBehaviour {
     {
         float uiAngleDistance = navigator.position.z - transform.position.z;
         float clampedPositionZ = Mathf.Clamp(uiAngleDistance / (this.transform.lossyScale.z / 2.0f), -1, 1);
-        print(clampedPositionZ);
 
         angleInput = clampedPositionZ * 90;
         //Debug.DrawRay(this.transform.position, 
