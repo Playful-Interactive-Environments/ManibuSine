@@ -17,7 +17,12 @@ public class PublicPlayer : NetworkBehaviour {
 
     // Use this for initialization
     void Start() {
-        if (isServer)
+        if (isServer) // only server
+            InvokeRepeating("CheckPlayerGone", 1, 1);
+
+
+        // only client
+        if (isServer) 
             return;
 
         // clietn version needs no rigidbody
@@ -25,15 +30,13 @@ public class PublicPlayer : NetworkBehaviour {
         if (body == null)
             return;
         Destroy(body);
-
-        InvokeRepeating("CheckPlayerGone", 1, 1);
     }
 
     void CheckPlayerGone() {
         if (controllingPlayer != null)
             return;
         CancelInvoke("CheckPlayerGone");
-        Network.Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     // Update is called once per frame
