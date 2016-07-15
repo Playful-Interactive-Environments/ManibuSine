@@ -91,27 +91,17 @@ public class SteeringStation : NetworkBehaviour {
     // PlayerAssigned Msg sent in cannon trigger
     void MsgPlayerAssigned(Transform navigator)
     {
+        if (this.navigator != null)
+            return;
+
         source.Play();
-        if (navigator == this.navigator)
-        {
-            if (dropPlayerCoroutine != null)
-            {
-                StopCoroutine(dropPlayerCoroutine);
-            }
-        }
-
         mRenderer.material.color = assignedColor;
-
-        UI_DEBUG.AddText("MsgPlayerAssigned");
 
         if (EnteredSteering != null)
             EnteredSteering(this);
         
         //if (!isServer)
         //    UI_HeadUpText.ShowTextOnHeadUp("Enter Cockpit", 2);
-
-        if (this.navigator != null)
-            return;
 
         this.navigator = navigator;
         networkPlayer = navigator.GetComponent<NetworkPlayer>();
@@ -124,19 +114,8 @@ public class SteeringStation : NetworkBehaviour {
         if (leavingPlayer != this.navigator)
             return;
 
-        dropPlayerCoroutine = UnassignPlayer();
-        StartCoroutine(dropPlayerCoroutine);
-
         if (StepedOutSteering != null)
             StepedOutSteering(this);
-    }
-
-    IEnumerator UnassignPlayer()
-    {
-        yield return new WaitForSeconds(playerDropOutDelay);
-
-        if (this.navigator == null)
-            yield break;
 
         navigator = null;
 
