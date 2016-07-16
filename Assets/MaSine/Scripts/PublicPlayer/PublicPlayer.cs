@@ -3,10 +3,13 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PublicPlayer : NetworkBehaviour {
-
-    private const float updateRate = 0.2f;
+    private const float updateRate = 0.491f;
     private float currentUpdate = 0;
-    private float lerpSpeed = 3;
+    private float lerpSpeed = 5;
+    private bool doPosUpdateClient = false;
+
+    PublicPickUp pickUp;
+
 
     private MaSineTrackedPlayer controllingPlayer;
     public MaSineTrackedPlayer ControllingPlayer {
@@ -19,22 +22,17 @@ public class PublicPlayer : NetworkBehaviour {
         }
     }
 
-    [SyncVar]
+    [SyncVar(hook = "FirstPositionDataX")]
     private float x;
     [SyncVar]
     private float y;
     [SyncVar]
     private float z;
 
-
-    // Use this for initialization
     void Start() {
         // only client
-        if (isServer) 
+        if (isServer)
             return;
-
-
-        //transform.position = controllingPlayer.transform.position;
 
         // client version needs no rigidbody - so delete it
         Rigidbody body = GetComponent<Rigidbody>();
@@ -44,20 +42,32 @@ public class PublicPlayer : NetworkBehaviour {
         DestroyImmediate(body);
     }
 
+    private void FirstPositionDataX(float val) {
+        x = val;
+
+        // do not update before first values has been sent from server
+        if (!doPosUpdateClient)
+            doPosUpdateClient = true;
+    }
+
     private void UpdatePosition() {
         if (currentUpdate < updateRate) {
             currentUpdate += Time.deltaTime;
-        } else {
+        }
+        else {
             currentUpdate = 0;
             // set sync vars
-            // TODO: maybe use a sync rate
             x = transform.position.x;
             y = transform.position.y;
             z = transform.position.z;
         }
     }
 
-    // Update is called once per frame
+    private void UpdatePickUpPosition() {
+        if (pickUp == null)
+            return;
+    }
+
     void Update() {
         if (isServer) {
 
@@ -69,9 +79,48 @@ public class PublicPlayer : NetworkBehaviour {
 
         }
         else { // movement on clint
-            transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
-
-            // TODO: maybe interpolate (Lerp)
+            if (doPosUpdateClient)
+                transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
         }
+    }
+
+    [ClientRpc]
+    private void RpcAssignPickUp(int id) {
+        PublicPickUp[] pickUps = FindObjectsOfType<PublicPickUp>();
+
+        foreach (PublicPickUp item in pickUps) {
+            if (item.id == id) {
+                AssignPickUp(item);
+                return;
+            }
+        }
+    }
+
+    private void AssignPickUp(PublicPickUp p) {
+        // allready carries pickup
+        if (pickUp != null)
+            return;
+
+        pickUp = p;
+        p.Player = this;
+
+        RpcAssignPickUp(p.id);
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (!isServer)
+            return;
+
+        PublicPickUp p = other.GetComponent<PublicPickUp>();
+        if (p == null)
+            return;
+
+        AssignPickUp(p);
+    }
+
+
+
+    void OnDestroy() {
+        pickUp.Player = null;
     }
 }

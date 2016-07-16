@@ -86,9 +86,6 @@ public class ServerManager : NetworkManager
             return;
 
         GameObject obj = Instantiate(PublicPlayer, tp.transform.position, Quaternion.identity) as GameObject;
-
-
-
         tp.PublicPlayer = obj.GetComponent<PublicPlayer>();
 
         obj.GetComponent<PublicPlayer>().ControllingPlayer = tp;
