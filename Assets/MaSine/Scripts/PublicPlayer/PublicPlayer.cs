@@ -29,12 +29,12 @@ public class PublicPlayer : NetworkBehaviour {
 
     // Use this for initialization
     void Start() {
-        //if (isServer) // only server
-        //    InvokeRepeating("CheckPlayerGone", 1, 1);
-
         // only client
         if (isServer) 
             return;
+
+
+        //transform.position = controllingPlayer.transform.position;
 
         // client version needs no rigidbody - so delete it
         Rigidbody body = GetComponent<Rigidbody>();
@@ -42,15 +42,7 @@ public class PublicPlayer : NetworkBehaviour {
             return;
 
         DestroyImmediate(body);
-
     }
-
-    //void CheckPlayerGone() {
-    //    if (controllingPlayer != null)
-    //        return;
-    //    CancelInvoke("CheckPlayerGone");
-    //    DestroyImmediate(this.gameObject);
-    //}
 
     private void UpdatePosition() {
         if (currentUpdate < updateRate) {

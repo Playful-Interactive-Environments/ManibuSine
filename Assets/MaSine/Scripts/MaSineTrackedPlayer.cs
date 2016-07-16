@@ -13,7 +13,6 @@ public class MaSineTrackedPlayer : TrackedPlayer {
         }
     }
 
-
     void OnDestroy() {
         if (publicPlayer != null)
             DestroyImmediate(publicPlayer.gameObject);

@@ -975,7 +975,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: m_SpawnPrefabs.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 452534, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1087,6 +1087,10 @@ Prefab:
       objectReference: {fileID: 183972, guid: 49f64a718bacda04ba4e2ec0bb2ca560, type: 2}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: PublicPlayer
+      value: 
+      objectReference: {fileID: 119240, guid: d72a973ce1eed04468016c1fdd03054d, type: 2}
+    - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 119240, guid: d72a973ce1eed04468016c1fdd03054d, type: 2}
     m_RemovedComponents: []
