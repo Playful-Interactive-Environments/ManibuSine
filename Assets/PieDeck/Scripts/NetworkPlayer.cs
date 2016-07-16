@@ -107,8 +107,6 @@ public class NetworkPlayer : NetworkBehaviour
         if (!isServer)
             return;
 
-        print("hit player " + netId.Value);
-
         currentHP -= damage;
 
         ShipManager.Instance.SetHP(currentHP);
