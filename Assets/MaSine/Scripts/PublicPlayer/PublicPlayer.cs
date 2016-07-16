@@ -8,28 +8,35 @@ public class PublicPlayer : NetworkBehaviour {
     private float currentUpdate = 0;
     private float lerpSpeed = 3;
 
-    public TrackedPlayer controllingPlayer;
+    private MaSineTrackedPlayer controllingPlayer;
+    public MaSineTrackedPlayer ControllingPlayer {
+        get {
+            return controllingPlayer;
+        }
+
+        set {
+            controllingPlayer = value;
+        }
+    }
 
     [SyncVar]
-    public float x;
+    private float x;
     [SyncVar]
-    public float y;
+    private float y;
     [SyncVar]
-    public float z;
-
+    private float z;
 
 
     // Use this for initialization
     void Start() {
-        if (isServer) // only server
-            InvokeRepeating("CheckPlayerGone", 1, 1);
-
+        //if (isServer) // only server
+        //    InvokeRepeating("CheckPlayerGone", 1, 1);
 
         // only client
         if (isServer) 
             return;
 
-        // client version needs no rigidbody
+        // client version needs no rigidbody - so delete it
         Rigidbody body = GetComponent<Rigidbody>();
         if (body == null)
             return;
@@ -38,12 +45,12 @@ public class PublicPlayer : NetworkBehaviour {
 
     }
 
-    void CheckPlayerGone() {
-        if (controllingPlayer != null)
-            return;
-        CancelInvoke("CheckPlayerGone");
-        DestroyImmediate(this.gameObject);
-    }
+    //void CheckPlayerGone() {
+    //    if (controllingPlayer != null)
+    //        return;
+    //    CancelInvoke("CheckPlayerGone");
+    //    DestroyImmediate(this.gameObject);
+    //}
 
     private void UpdatePosition() {
         if (currentUpdate < updateRate) {
