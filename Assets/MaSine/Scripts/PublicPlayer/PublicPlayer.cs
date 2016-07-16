@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class PublicPlayer : NetworkBehaviour {
     private const float updateRate = 0.491f;
     private float currentUpdate = 0;
-    private float lerpSpeed = 5;
+    private float lerpSpeed = 1;
     private bool doPosUpdateClient = false;
 
     PublicPickUp pickUp;
@@ -104,7 +104,8 @@ public class PublicPlayer : NetworkBehaviour {
         pickUp = p;
         p.Player = this;
 
-        RpcAssignPickUp(p.id);
+        if (isServer)
+            RpcAssignPickUp(p.id);
     }
 
     void OnTriggerEnter(Collider other) {
