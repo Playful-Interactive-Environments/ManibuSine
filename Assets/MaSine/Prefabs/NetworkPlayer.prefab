@@ -83,7 +83,6 @@ GameObject:
   - 20: {fileID: 2047132}
   - 124: {fileID: 12439912}
   - 92: {fileID: 9226672}
-  - 81: {fileID: 8145496}
   m_Layer: 14
   m_Name: Camera
   m_TagString: Untagged
@@ -361,13 +360,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!81 &8145496
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145022}
-  m_Enabled: 1
 --- !u!92 &9226672
 Behaviour:
   m_ObjectHideFlags: 1
@@ -490,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pickUp: {fileID: 0}
   aimPoint: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
