@@ -23,6 +23,7 @@ public class ServerManager : NetworkManager
     public GameObject RotationTransform;
     public GameObject SteeringStation;
     public GameObject PublicPlayer;
+    public GameObject PickUp;
 
     void Awake()
 	{
@@ -78,6 +79,16 @@ public class ServerManager : NetworkManager
 
         GameObject obj = Instantiate(prefab, spawnPosition, spawnRotation) as GameObject;
         NetworkServer.Spawn(obj);
+    }
+
+
+    public void SpawnPickUp()
+    {
+        SpawnPickUp(new Vector3(Random.Range(0, 9), Random.Range(3, 4), Random.Range(4, 9)));
+    }
+    public void SpawnPickUp(Vector3 position)
+    {
+        ServerManager.Instance.SpawnEntityAt(PickUp.gameObject, position, Quaternion.identity);
     }
 
 
