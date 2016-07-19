@@ -19,6 +19,8 @@ public class Admin : AManager<Admin> {
     public InputField InputFieldMM;
     public GameObject PlayerOne;
 	public GameObject PlayerTwo;
+    public PlayerView P1View;
+    public PlayerView P2View;
 
 	#region ConnectClients
 	public void DisconnectPlayer()
@@ -52,6 +54,12 @@ public class Admin : AManager<Admin> {
 			CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().ControlledPlayer = PlayerOne;
 			ButtonPlayerOne.interactable = false;
 			CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerOne = true;
+
+            // Create Camera and assign this player
+            if (P1View != null)
+            {
+                P1View.ConnectPlayer(PlayerOne.GetComponent<NetworkPlayer>());
+            }
 		}
 
 	}
@@ -64,8 +72,14 @@ public class Admin : AManager<Admin> {
 
 			ButtonPlayerTwo.interactable = false;
 			CurrentTrackedPlayer.GetComponent<TrackedPlayerNetworkBehaviour>().HasPlayerTwo = true;
-		}
-	}
+
+            // Create Camera and assign this player
+            if (P2View != null)
+            {
+                P2View.ConnectPlayer(PlayerTwo.GetComponent<NetworkPlayer>());
+            }
+        }
+    }
 
 	public void RecalibratePlayer()
 	{
