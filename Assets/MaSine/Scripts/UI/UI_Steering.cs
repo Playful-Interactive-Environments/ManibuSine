@@ -11,6 +11,7 @@ public class UI_Steering : MonoBehaviour {
     public RectTransform rectArrow;
     public RectTransform speedBar;
     public Text speedtext;
+    public Text angletext;
 
     private Vector2 originalScale;
     private Image[] allGraphics;
@@ -57,6 +58,7 @@ public class UI_Steering : MonoBehaviour {
         float ls = lerpSpeed * Time.deltaTime;
 
         rectArrow.localRotation = Quaternion.Lerp(rectArrow.localRotation, Quaternion.Euler(0, 0, steeringManager.angleInput), ls);
+        angletext.text = (rectArrow.localRotation.eulerAngles.z.ToString() + "°");
     }
 
     private void AnimateSpeed()
@@ -66,7 +68,7 @@ public class UI_Steering : MonoBehaviour {
         float clampedSpeed = Mathf.Clamp01(steeringManager.uiSpeedScale);
         speedBar.localScale = Vector3.Lerp(speedBar.localScale, new Vector3(1, clampedSpeed, 1), ls);
         if (speedBar.localScale.y > 0.001f)
-            speedtext.text = speedBar.localScale.y.ToString();
+            speedtext.text = (800 * speedBar.localScale.y).ToString();
         else speedtext.text = "0.0";
     }
     
