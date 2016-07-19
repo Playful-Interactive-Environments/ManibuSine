@@ -85,11 +85,11 @@ public class PublicPlayer : NetworkBehaviour {
     }
 
     [ClientRpc]
-    private void RpcAssignPickUp(int id) {
+    private void RpcAssignPickUp(uint id) {
         PublicPickUp[] pickUps = FindObjectsOfType<PublicPickUp>();
 
         foreach (PublicPickUp item in pickUps) {
-            if (item.id == id) {
+            if (item.netId.Value == id) {
                 AssignPickUp(item);
                 return;
             }
@@ -105,7 +105,7 @@ public class PublicPlayer : NetworkBehaviour {
         p.Player = this;
 
         if (isServer)
-            RpcAssignPickUp(p.id);
+            RpcAssignPickUp(p.netId.Value);
     }
 
     void OnTriggerEnter(Collider other) {
@@ -118,8 +118,6 @@ public class PublicPlayer : NetworkBehaviour {
 
         AssignPickUp(p);
     }
-
-
 
     void OnDestroy() {
         if (pickUp == null)

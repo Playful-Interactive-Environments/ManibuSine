@@ -3,9 +3,6 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PublicPickUp : NetworkBehaviour {
-    private static int pickUpCounter = 0;
-
-    public int id;
     private float lerpSpeed = 1;
     private float minDistance = 1.3f;
 
@@ -30,13 +27,11 @@ public class PublicPickUp : NetworkBehaviour {
     }
 
     void Start() {
-        id = ++pickUpCounter;
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
     public void PickIt()
     {
-
         if (player == null)
             return;
         if (isServer)

@@ -5,12 +5,12 @@ public class PickUpRay : MonoBehaviour {
     private Head navigatorHead;
     private SteeringStation steeringStation;
 
-    private PublicPickUp pickUp;
+    public PublicPickUp pickUp;
 
     public int pickUpsInUpCargo = 0;
 
     private float pickUpDuration = 2.0f;
-    private float currentPickUpTime = 0;
+    private float currentPickUpTime = 999;
 
 	void Start () {
         steeringStation = GetComponentInParent<SteeringStation>();
@@ -46,20 +46,16 @@ public class PickUpRay : MonoBehaviour {
             if (currentPickUpTime < pickUpDuration)
             {
                 currentPickUpTime += Time.deltaTime;
-            }
-            else
-            {
-                pickUpsInUpCargo++;
 
-                steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
+                if (currentPickUpTime >= pickUpDuration)
+                {
+                    print("PICK");
+                    pickUpsInUpCargo++;
+                    steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
+                }
             }
         }
-
-
-
-
     }
-
     private void OnEnteredSteering(SteeringStation steeringStation)
     {
         if (steeringStation.navigator != null)
