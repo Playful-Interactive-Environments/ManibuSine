@@ -26,7 +26,7 @@ public class PublicPlayer : NetworkBehaviour {
     [SyncVar]
     private float z;
     [SyncVar]
-    private uint id;
+    public uint id;
 
     private PublicPickUp pickUp;
 
@@ -35,8 +35,7 @@ public class PublicPlayer : NetworkBehaviour {
 
         if (isServer)
         {
-            if (id != 0)
-                RpcAssignPickUp(id);
+            StartCoroutine(StartDelayed());
             return; // only client from here
         }
 
@@ -47,6 +46,13 @@ public class PublicPlayer : NetworkBehaviour {
             return;
 
         DestroyImmediate(body);
+    }
+
+    IEnumerator StartDelayed()
+    {
+        yield return new WaitForSeconds(1);
+        if (id != 0)
+            RpcAssignPickUp(id);
     }
 
     private void FirstPositionDataX(float val) {
