@@ -62,14 +62,20 @@ public class NetworkPlayer : NetworkBehaviour
 			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
 
+            // assign to VR borders
             if (isLocalPlayer)
+            {
+                // assign to border box
                 VRBorberdsTrigger.AssignPlayer(this);
+                // assign to cylinder
+                VR_CylinderBorder cylinder = GetComponentInChildren<VR_CylinderBorder>();
+                if (cylinder != null)
+                    cylinder.AssignPlayer(this);
+            }
         }
         else
         { // SERVER
-
             laserTrackingActivated = false;
-            
 
             currentHP = ShipManager.Instance.currentHP;
             ShipCollider.ShipHit += OnShipHit;
