@@ -8,9 +8,6 @@ public class PublicPlayer : NetworkBehaviour {
     private float lerpSpeed = 1;
     private bool doPosUpdateClient = false;
 
-    PublicPickUp pickUp;
-
-
     private MaSineTrackedPlayer controllingPlayer;
     public MaSineTrackedPlayer ControllingPlayer {
         get {
@@ -28,11 +25,20 @@ public class PublicPlayer : NetworkBehaviour {
     private float y;
     [SyncVar]
     private float z;
+    [SyncVar]
+    public uint id;
+
+    private PublicPickUp pickUp;
+
 
     void Start() {
-        // only client
+
         if (isServer)
-            return;
+        {
+            StartCoroutine(StartDelayed());
+            return; // only client from here
+        }
+
 
         // client version needs no rigidbody - so delete it
         Rigidbody body = GetComponent<Rigidbody>();
@@ -40,6 +46,13 @@ public class PublicPlayer : NetworkBehaviour {
             return;
 
         DestroyImmediate(body);
+    }
+
+    IEnumerator StartDelayed()
+    {
+        yield return new WaitForSeconds(1);
+        if (id != 0)
+            RpcAssignPickUp(id);
     }
 
     private void FirstPositionDataX(float val) {
@@ -105,7 +118,10 @@ public class PublicPlayer : NetworkBehaviour {
         p.Player = this;
 
         if (isServer)
+        {
+            id = p.netId.Value;
             RpcAssignPickUp(p.netId.Value);
+        }
     }
 
     void OnTriggerEnter(Collider other) {
@@ -120,6 +136,7 @@ public class PublicPlayer : NetworkBehaviour {
     }
 
     void OnDestroy() {
+        id = 0;
         if (pickUp == null)
             return;
 
