@@ -79,15 +79,13 @@ public class UI_HeadUpText : MonoBehaviour {
         
         if (won > 0) // game won
         {
-            DisplayText(DisplayArea.Middle, GameColor.Success, TextSize.large, "your delivered the cargo.\ngame won!");
-            DisplayText(DisplayArea.TopRight, GameColor.Neutral, TextSize.large, RandomString(Random.Range(3, 6)));
-            DisplayText(DisplayArea.BottomLeft, GameColor.Neutral, TextSize.large, RandomString(Random.Range(3, 6)));
+            DisplayText(DisplayArea.Middle, GameColor.Success, TextSize.large, "your delivered the cargo.\ngame won!", 2);
+            DisplayText(DisplayArea.BottomLeft, GameColor.Neutral, TextSize.medium, "delivery code: " + RandomString(Random.Range(3, 6)), 2);
         }
         else // game lost
         {
-            DisplayText(DisplayArea.Middle, GameColor.Alert, TextSize.large, "the cargo has been destroyed.\ngame lost!");
-            DisplayText(DisplayArea.TopRight, GameColor.Alert, TextSize.large, RandomString(Random.Range(3, 6)));
-            DisplayText(DisplayArea.BottomLeft, GameColor.Alert, TextSize.large, RandomString(Random.Range(3, 6)));
+            DisplayText(DisplayArea.Middle, GameColor.Alert, TextSize.large, "the cargo has been destroyed.\ngame lost!", 2);
+            DisplayText(DisplayArea.BottomLeft, GameColor.Alert, TextSize.medium, "error code: " + RandomString(Random.Range(3, 6)), 2);
         }
     }
 
