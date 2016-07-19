@@ -109,7 +109,7 @@ public class CanonManager : NetworkBehaviour
             UI_HeadUpText.DisplayText(UI_HeadUpText.DisplayArea.TopRight,
                                        GameColor.Neutral,
                                        UI_HeadUpText.TextSize.small,
-                                       "Enter Cannon",
+                                       "enter cannon",
                                        2);
     }
 
@@ -135,7 +135,7 @@ public class CanonManager : NetworkBehaviour
             UI_HeadUpText.DisplayText(UI_HeadUpText.DisplayArea.TopRight,
                                        GameColor.Neutral,
                                        UI_HeadUpText.TextSize.small,
-                                       "Exit Cannon",
+                                       "exit cannon",
                                        2);
     }
 

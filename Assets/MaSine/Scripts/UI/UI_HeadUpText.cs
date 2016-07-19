@@ -46,9 +46,9 @@ public class UI_HeadUpText : MonoBehaviour {
 
     public enum TextSize
     {
-        small = 18,
-        medium = 24,
-        large = 28
+        small = 10,
+        medium = 12,
+        large = 18
     }
 
     void Awake()
@@ -63,7 +63,7 @@ public class UI_HeadUpText : MonoBehaviour {
 	}
 
     string RandomString(int length) {
-        string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,:;-_#'+*!§$%&/()=?1234567890ß";
+        string chars = "abcdefghijklmnopqrstuvwxyz.,:;-_#'+*!§$%&/()=?1234567890ß";
         string returnString = "";
         char[] arr = chars.ToCharArray();
         for (int i = 0; i < length; i++)
@@ -79,13 +79,13 @@ public class UI_HeadUpText : MonoBehaviour {
         
         if (won > 0) // game won
         {
-            DisplayText(DisplayArea.Middle, GameColor.Success, TextSize.large, "Your delivered the cargo.\nGame won!");
+            DisplayText(DisplayArea.Middle, GameColor.Success, TextSize.large, "your delivered the cargo.\ngame won!");
             DisplayText(DisplayArea.TopRight, GameColor.Neutral, TextSize.large, RandomString(Random.Range(3, 6)));
             DisplayText(DisplayArea.BottomLeft, GameColor.Neutral, TextSize.large, RandomString(Random.Range(3, 6)));
         }
         else // game lost
         {
-            DisplayText(DisplayArea.Middle, GameColor.Alert, TextSize.large, "The cargo has been destroyed.\nGame lost!");
+            DisplayText(DisplayArea.Middle, GameColor.Alert, TextSize.large, "the cargo has been destroyed.\ngame lost!");
             DisplayText(DisplayArea.TopRight, GameColor.Alert, TextSize.large, RandomString(Random.Range(3, 6)));
             DisplayText(DisplayArea.BottomLeft, GameColor.Alert, TextSize.large, RandomString(Random.Range(3, 6)));
         }

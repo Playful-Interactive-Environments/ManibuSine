@@ -164,6 +164,37 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11480948, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 58163ece78f47db4092f482b51cd7d78,
+        type: 3}
+    - target: {fileID: 11418890, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 58163ece78f47db4092f482b51cd7d78,
+        type: 3}
+    - target: {fileID: 11418890, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418890, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430528, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 58163ece78f47db4092f482b51cd7d78,
+        type: 3}
+    - target: {fileID: 11430528, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430528, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2402d88c86f0c54da53b2065944257d, type: 2}
   m_IsPrefabParent: 0
@@ -626,6 +657,14 @@ Prefab:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11445562, guid: a558c70052d03da41848ed655c1a4677, type: 2}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 11460190, guid: a558c70052d03da41848ed655c1a4677, type: 2}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a558c70052d03da41848ed655c1a4677, type: 2}
   m_IsPrefabParent: 0
@@ -1021,7 +1060,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.42.1.28
+      value: 10.29.16.54
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -1557,9 +1596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa74cd2174fd9c44b598263a564cce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {r: 0.40392157, g: 0.9254902, b: 1, a: 0.78431374}
+  neutral: {r: 0.23921569, g: 1, b: 0.30980393, a: 0.78431374}
   alert: {r: 0.827451, g: 0.34509805, b: 0.34509805, a: 0.78431374}
-  success: {r: 0.47843137, g: 1, b: 0.41568628, a: 0.78431374}
+  success: {r: 0.41568625, g: 1, b: 0.9684471, a: 0.78431374}
 --- !u!4 &1752594293
 Transform:
   m_ObjectHideFlags: 0

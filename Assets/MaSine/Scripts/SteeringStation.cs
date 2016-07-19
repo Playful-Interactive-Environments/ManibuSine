@@ -112,7 +112,7 @@ public class SteeringStation : NetworkBehaviour {
             UI_HeadUpText.DisplayText(  UI_HeadUpText.DisplayArea.TopRight, 
                                         GameColor.Neutral, 
                                         UI_HeadUpText.TextSize.small,
-                                        "Enter Cockpit",
+                                        "enter cockpit",
                                         2);
 
 
@@ -138,7 +138,7 @@ public class SteeringStation : NetworkBehaviour {
             UI_HeadUpText.DisplayText(  UI_HeadUpText.DisplayArea.TopRight,
                                         GameColor.Neutral,
                                         UI_HeadUpText.TextSize.small,
-                                        "Exit Cockpit",
+                                        "exit cockpit",
                                         2);
     }
 
