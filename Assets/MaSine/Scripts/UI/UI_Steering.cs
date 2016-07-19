@@ -10,9 +10,11 @@ public class UI_Steering : MonoBehaviour {
     private RectTransform rectSteeringCircle;
     public RectTransform rectArrow;
     public RectTransform speedBar;
+    public Text speedtext;
 
     private Vector2 originalScale;
     private Image[] allGraphics;
+    private Text[] allText;
 
     private Transform unitverseTransTarget;
 
@@ -34,6 +36,7 @@ public class UI_Steering : MonoBehaviour {
     }
 
     Vector3 oldPos;
+
     void Update() {
         if (steeringManager == null || steeringManager.navigator == null)
             return;
@@ -62,6 +65,9 @@ public class UI_Steering : MonoBehaviour {
 
         float clampedSpeed = Mathf.Clamp01(steeringManager.uiSpeedScale);
         speedBar.localScale = Vector3.Lerp(speedBar.localScale, new Vector3(1, clampedSpeed, 1), ls);
+        if (speedBar.localScale.y > 0.001f)
+            speedtext.text = speedBar.localScale.y.ToString();
+        else speedtext.text = "0.0";
     }
     
     private void OnEnteredSteering(SteeringStation steeringStation) {
@@ -75,6 +81,8 @@ public class UI_Steering : MonoBehaviour {
     void ShowGraphics(bool enable) {
         foreach (Image item in allGraphics)
             item.enabled = enable;
+        foreach (Text item in allText)
+            item.enabled = enable;
     }
 
     void InitializeUI() {
@@ -82,6 +90,7 @@ public class UI_Steering : MonoBehaviour {
         originalScale = rectSteeringCircle.localScale;
 
         allGraphics = GetComponentsInChildren<Image>();
+        allText = GetComponentsInChildren<Text>();
         ShowGraphics(false);
     }
 
