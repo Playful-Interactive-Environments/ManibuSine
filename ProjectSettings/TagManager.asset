@@ -13,6 +13,8 @@ TagManager:
   - areaEffect
   - Environment
   - Fire
+  - Asteroid
+  - PickUp
   layers:
   - Default
   - TransparentFX

@@ -24,8 +24,7 @@ public class VRBorberdsTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        // check for parent because VR_Cylinder_Border colides and networkplayer is parent
-        if (other.transform.parent.gameObject != player)
+        if (other.gameObject != player)
             return;
 
         foreach(MeshRenderer mesh in meshes)
@@ -36,8 +35,7 @@ public class VRBorberdsTrigger : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        // check for parent because VR_Cylinder_Border colides and networkplayer is parent
-        if (other.transform.parent.gameObject != player)
+        if (other.gameObject != player)
             return;
         foreach (MeshRenderer mesh in meshes)
         {

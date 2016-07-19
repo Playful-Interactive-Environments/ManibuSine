@@ -15,7 +15,7 @@ GameObject:
   - 136: {fileID: 13687546}
   m_Layer: 25
   m_Name: PickUp
-  m_TagString: Untagged
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bbd27e774e11d408ed6789280090b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   on: {fileID: 2100000, guid: da78a195951abd245b98ff3df33bf20e, type: 2}
   off: {fileID: 2100000, guid: 0c43ff6e286664c42991ff33a8984d05, type: 2}
 --- !u!114 &11464558

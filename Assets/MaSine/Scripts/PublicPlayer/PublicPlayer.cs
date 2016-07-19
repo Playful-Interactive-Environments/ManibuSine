@@ -122,6 +122,9 @@ public class PublicPlayer : NetworkBehaviour {
 
 
     void OnDestroy() {
+        if (pickUp == null)
+            return;
+
         pickUp.Player = null;
     }
 }

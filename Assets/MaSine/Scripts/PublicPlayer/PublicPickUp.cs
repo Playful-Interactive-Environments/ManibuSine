@@ -34,6 +34,15 @@ public class PublicPickUp : NetworkBehaviour {
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
+    public void PickIt()
+    {
+
+        if (player == null)
+            return;
+        if (isServer)
+            return;
+    }
+
     private void PositionUpdate() {
         if (player == null || Vector3.Distance(transform.position, player.transform.position) < minDistance)
             return;

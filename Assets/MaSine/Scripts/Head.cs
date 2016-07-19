@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Head : MonoBehaviour {
+public class Head : MonoBehaviour
+{
 
     public Transform target;
+    public Transform pickUp;
+
     public Vector3 aimPoint;
     public LayerMask mask;
     private AudioManager audioManager;
     private AudioSource asource;
-
     NetworkPlayer player;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         audioManager = AudioManager.Instance;
         player = GetComponentInParent<NetworkPlayer>();
     }
 
     Ray ray;
-	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
         // only network player
         if (!player.isLocalPlayer)
             return;
@@ -27,10 +30,22 @@ public class Head : MonoBehaviour {
         ray.origin = transform.position;
         ray.direction = transform.forward;
         RaycastHit hit;
-        
+
         Physics.Raycast(ray, out hit, 1000, mask);
 
-        target = hit.transform;
+        // nothin hit
+        if (hit.transform == null)
+        {
+            target = null;
+            pickUp = null;
+            return;
+        }
+        // used by cannon station
         aimPoint = hit.point;
-	}
+
+        if (hit.transform.tag == "Asteroid")
+            target = hit.transform;
+        else if (hit.transform.tag == "PickUp")
+            pickUp = hit.transform;
+    }
 }
