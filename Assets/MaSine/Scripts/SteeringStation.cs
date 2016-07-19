@@ -28,6 +28,10 @@ public class SteeringStation : NetworkBehaviour {
     private float angleMulti = 0.1f;
 
     private NetworkPlayer networkPlayer;
+    public NetworkPlayer NetworkPlayer
+    {
+        get { return networkPlayer; }
+    }
 
     private AudioSource source;
     private AudioFader audioFader;
@@ -96,6 +100,8 @@ public class SteeringStation : NetworkBehaviour {
         if (this.navigator != null)
             return;
 
+        this.navigator = navigator;
+
         source.Play();
         mRenderer.material.color = assignedColor;
 
@@ -109,7 +115,7 @@ public class SteeringStation : NetworkBehaviour {
                                         "Enter Cockpit",
                                         2);
 
-        this.navigator = navigator;
+
         networkPlayer = navigator.GetComponent<NetworkPlayer>();
     }
 
