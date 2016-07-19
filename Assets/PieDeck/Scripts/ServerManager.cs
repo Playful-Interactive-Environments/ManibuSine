@@ -81,15 +81,14 @@ public class ServerManager : NetworkManager
     }
 
 
-    public void SpawnPublicPlayer(TrackedPlayer tp) {
+    public void SpawnPublicPlayer(MaSineTrackedPlayer tp) {
         if (!isServer)
             return;
 
-        print("SPAWN");
-
         GameObject obj = Instantiate(PublicPlayer, tp.transform.position, Quaternion.identity) as GameObject;
+        tp.PublicPlayer = obj.GetComponent<PublicPlayer>();
 
-        obj.GetComponent<PublicPlayer>().controllingPlayer = tp;
+        obj.GetComponent<PublicPlayer>().ControllingPlayer = tp;
         NetworkServer.Spawn(obj);
     }
 

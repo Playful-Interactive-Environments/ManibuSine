@@ -3,43 +3,71 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PublicPlayer : NetworkBehaviour {
+    private const float updateRate = 0.491f;
+    private float currentUpdate = 0;
+    private float lerpSpeed = 1;
+    private bool doPosUpdateClient = false;
 
-    public TrackedPlayer controllingPlayer;
+    PublicPickUp pickUp;
 
+
+    private MaSineTrackedPlayer controllingPlayer;
+    public MaSineTrackedPlayer ControllingPlayer {
+        get {
+            return controllingPlayer;
+        }
+
+        set {
+            controllingPlayer = value;
+        }
+    }
+
+    [SyncVar(hook = "FirstPositionDataX")]
+    private float x;
     [SyncVar]
-    public float x;
+    private float y;
     [SyncVar]
-    public float y;
-    [SyncVar]
-    public float z;
+    private float z;
 
-
-
-    // Use this for initialization
     void Start() {
-        if (isServer) // only server
-            InvokeRepeating("CheckPlayerGone", 1, 1);
-
-
         // only client
-        if (isServer) 
+        if (isServer)
             return;
 
-        // client version needs no rigidbody
+        // client version needs no rigidbody - so delete it
         Rigidbody body = GetComponent<Rigidbody>();
         if (body == null)
             return;
 
+        DestroyImmediate(body);
     }
 
-    void CheckPlayerGone() {
-        if (controllingPlayer != null)
+    private void FirstPositionDataX(float val) {
+        x = val;
+
+        // do not update before first values has been sent from server
+        if (!doPosUpdateClient)
+            doPosUpdateClient = true;
+    }
+
+    private void UpdatePosition() {
+        if (currentUpdate < updateRate) {
+            currentUpdate += Time.deltaTime;
+        }
+        else {
+            currentUpdate = 0;
+            // set sync vars
+            x = transform.position.x;
+            y = transform.position.y;
+            z = transform.position.z;
+        }
+    }
+
+    private void UpdatePickUpPosition() {
+        if (pickUp == null)
             return;
-        CancelInvoke("CheckPlayerGone");
-        DestroyImmediate(this.gameObject);
     }
 
-    // Update is called once per frame
     void Update() {
         if (isServer) {
 
@@ -47,16 +75,53 @@ public class PublicPlayer : NetworkBehaviour {
                 return;
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
 
-            // set sync vars
-            // TODO: maybe use a sync rate
-            x = transform.position.x;
-            y = transform.position.y;
-            z = transform.position.z;
+            UpdatePosition();
+
         }
         else { // movement on clint
-            transform.position = new Vector3(x, y, z);
-
-            // TODO: maybe interpolate (Lerp)
+            if (doPosUpdateClient)
+                transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
         }
+    }
+
+    [ClientRpc]
+    private void RpcAssignPickUp(int id) {
+        PublicPickUp[] pickUps = FindObjectsOfType<PublicPickUp>();
+
+        foreach (PublicPickUp item in pickUps) {
+            if (item.id == id) {
+                AssignPickUp(item);
+                return;
+            }
+        }
+    }
+
+    private void AssignPickUp(PublicPickUp p) {
+        // allready carries pickup
+        if (pickUp != null)
+            return;
+
+        pickUp = p;
+        p.Player = this;
+
+        if (isServer)
+            RpcAssignPickUp(p.id);
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (!isServer)
+            return;
+
+        PublicPickUp p = other.GetComponent<PublicPickUp>();
+        if (p == null)
+            return;
+
+        AssignPickUp(p);
+    }
+
+
+
+    void OnDestroy() {
+        pickUp.Player = null;
     }
 }

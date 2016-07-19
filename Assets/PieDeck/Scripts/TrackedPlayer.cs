@@ -9,6 +9,4 @@ public class TrackedPlayer : ATrackingEntity
 	{
 		this.transform.position = new Vector3(coords.x * 0.01f, Height, coords.y * 0.01f);
 	}
-
-	
 }

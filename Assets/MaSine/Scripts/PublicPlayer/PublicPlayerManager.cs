@@ -18,24 +18,16 @@ public class PublicPlayerManager : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other) {
-        TrackedPlayer trackedPlayer = other.GetComponent<TrackedPlayer>();
+        MaSineTrackedPlayer trackedPlayer = other.GetComponent<MaSineTrackedPlayer>();
         // is TrackedPlayer
         if (trackedPlayer == null)
             return;
 
         // allready has public player
-        if (other.GetComponent<PublicPlayer>())
+        if (trackedPlayer.PublicPlayer != null)
             return;
-
-        //other.gameObject.AddComponent<PublicPlayer>();
 
         // assign new player and parent it on tracked player
         ServerManager.Instance.SpawnPublicPlayer(trackedPlayer);
-
-
-        //PublicPlayer newPP = Instantiate(publicPrefab);
-        //newPP.controllingPlayer = trackedPlayer;
-        //newPP.transform.parent = other.transform;
-        //newPP.transform.localPosition = Vector3.zero;
     }
 }
