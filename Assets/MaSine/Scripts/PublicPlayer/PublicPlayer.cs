@@ -31,7 +31,16 @@ public class PublicPlayer : NetworkBehaviour {
     private PublicPickUp pickUp;
 
 
+    // fancy stuff
+    private Material mat;
+    private float animationSpeed = 3;
+    private float animationDistance = 2.5f;
+    private float animationCurrent = 0;
+    private bool animationUp = true;
+
+
     void Start() {
+        mat = GetComponent<MeshRenderer>().material;
         // only client
         if (isServer)
             return; 
@@ -47,12 +56,33 @@ public class PublicPlayer : NetworkBehaviour {
         DestroyImmediate(body);
     }
 
-    //IEnumerator StartDelayed()
-    //{
-    //    yield return new WaitForSeconds(1);
-    //    if (id != 0)
-    //        RpcAssignPickUp(id);
-    //}
+    private void AnimateMaterial()
+    {
+        if (animationUp)
+        {
+            if (animationCurrent < animationDistance)
+            {
+                animationCurrent += Time.deltaTime * animationSpeed;
+            }
+            else
+            {
+                animationUp = false;
+            }
+        }
+        else
+        {
+            if (animationCurrent > 0.5f)
+            {
+                animationCurrent -= Time.deltaTime * animationSpeed;
+            }
+            else
+            {
+                animationUp = true;
+            }
+        }
+
+        mat.mainTextureScale = Vector2.one * animationCurrent;
+    }
 
     private void FirstPositionDataX(float val) {
         x = val;
@@ -94,6 +124,8 @@ public class PublicPlayer : NetworkBehaviour {
             if (doPosUpdateClient)
                 transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
         }
+
+        AnimateMaterial();
     }
 
     [ClientRpc]
