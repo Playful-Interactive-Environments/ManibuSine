@@ -32,13 +32,12 @@ public class PublicPlayer : NetworkBehaviour {
 
 
     void Start() {
-
+        // only client
         if (isServer)
-        {
-            StartCoroutine(StartDelayed());
-            return; // only client from here
-        }
+            return; 
 
+        if (id != 0)
+            GetPickUp(id);
 
         // client version needs no rigidbody - so delete it
         Rigidbody body = GetComponent<Rigidbody>();
@@ -48,12 +47,12 @@ public class PublicPlayer : NetworkBehaviour {
         DestroyImmediate(body);
     }
 
-    IEnumerator StartDelayed()
-    {
-        yield return new WaitForSeconds(1);
-        if (id != 0)
-            RpcAssignPickUp(id);
-    }
+    //IEnumerator StartDelayed()
+    //{
+    //    yield return new WaitForSeconds(1);
+    //    if (id != 0)
+    //        RpcAssignPickUp(id);
+    //}
 
     private void FirstPositionDataX(float val) {
         x = val;
@@ -98,16 +97,25 @@ public class PublicPlayer : NetworkBehaviour {
     }
 
     [ClientRpc]
-    private void RpcAssignPickUp(uint id) {
+    private void RpcGetPickUp(uint id) {
+        GetPickUp(id);
+    }
+
+    private void GetPickUp(uint id)
+    {
         PublicPickUp[] pickUps = FindObjectsOfType<PublicPickUp>();
 
-        foreach (PublicPickUp item in pickUps) {
-            if (item.netId.Value == id) {
+        foreach (PublicPickUp item in pickUps)
+        {
+            if (item.netId.Value == id)
+            {
                 AssignPickUp(item);
                 return;
             }
         }
     }
+
+
 
     private void AssignPickUp(PublicPickUp p) {
         // allready carries pickup
@@ -120,7 +128,7 @@ public class PublicPlayer : NetworkBehaviour {
         if (isServer)
         {
             id = p.netId.Value;
-            RpcAssignPickUp(p.netId.Value);
+            RpcGetPickUp(p.netId.Value);
         }
     }
 
