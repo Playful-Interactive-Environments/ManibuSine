@@ -116,11 +116,14 @@ public class NetworkPlayer : NetworkBehaviour
         }
 	}
 
-    private void OnPickedItem(int totalPicked)
+    private void OnPickedItem(int picked)
     {
         if (!isServer)
             return;
-        currentItems = totalPicked;
+        currentItems = picked;
+
+        UI_Ship.Instance.SetPickedUp(currentItems);
+        RpcSetItems(currentItems);
     }
 
     private void OnShipHit(int damage)
