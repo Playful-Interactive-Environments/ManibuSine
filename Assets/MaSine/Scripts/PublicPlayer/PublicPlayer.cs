@@ -30,7 +30,6 @@ public class PublicPlayer : NetworkBehaviour {
 
     private PublicPickUp pickUp;
 
-
     void Start() {
         // only client
         if (isServer)
@@ -46,13 +45,6 @@ public class PublicPlayer : NetworkBehaviour {
 
         DestroyImmediate(body);
     }
-
-    //IEnumerator StartDelayed()
-    //{
-    //    yield return new WaitForSeconds(1);
-    //    if (id != 0)
-    //        RpcAssignPickUp(id);
-    //}
 
     private void FirstPositionDataX(float val) {
         x = val;

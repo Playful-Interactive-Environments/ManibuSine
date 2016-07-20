@@ -71,6 +71,8 @@ public class NetworkPlayer : NetworkBehaviour
                 VR_CylinderBorder cylinder = GetComponentInChildren<VR_CylinderBorder>();
                 if (cylinder != null)
                     cylinder.AssignPlayer(this);
+
+                PickUpRay.PickedItem += OnPickedItem;
             }
         }
         else
@@ -78,11 +80,14 @@ public class NetworkPlayer : NetworkBehaviour
             laserTrackingActivated = false;
 
             currentHP = ShipManager.Instance.currentHP;
+
             ShipCollider.ShipHit += OnShipHit;
 
             UI_Ship.Instance.SetHP(currentHP);
 
+            // initiate on restart/client reconnect
             RpcSetHP(currentHP);
+            RpcSetItems(PickUpRay.pickUpsInUpCargo);
         }
 
         // disable renderer of head on local player
@@ -107,6 +112,16 @@ public class NetworkPlayer : NetworkBehaviour
             transform.FindChild("Body").gameObject.SetActive(false);
         }
 	}
+
+    private void OnPickedItem(int picked)
+    {
+        if (isServer)
+            return;
+
+        CmdSetItems(picked);
+
+        UI_Ship.Instance.SetPickedUp(picked);
+    }
 
     private void OnShipHit(int damage)
     {
@@ -226,12 +241,28 @@ public class NetworkPlayer : NetworkBehaviour
         UniverseTransformer.Instance.RotateUniverse(rot);
     }
 
+    [Command]
+    private void CmdSetItems(int picked)
+    {
+        // store information on server
+        PickUpRay.pickUpsInUpCargo = picked;
+        UI_Ship.Instance.SetPickedUp(picked);
+    }
+
+    [ClientRpc]
+    private void RpcSetItems(int picked) {
+        PickUpRay.pickUpsInUpCargo = picked;
+        UI_Ship.Instance.SetPickedUp(picked);
+    }
+
     [ClientRpc]
     public void RpcSetHP(int hp)
     {
         ShipManager.Instance.SetHP(hp);
         UI_Ship.Instance.SetHP(hp);
     }
+
+
     //----------------------------------------------------------------
     //----------------------------------------------------------------
 
@@ -276,12 +307,12 @@ public class NetworkPlayer : NetworkBehaviour
     public void SetMovementLerpSpeed(float val)
     {
         this.movementLerpSpeed = val;
-        print("LerpSpeed: " + this.movementLerpSpeed);
+        //print("LerpSpeed: " + this.movementLerpSpeed);
     }
     public void SetMinMoveDistance(float val)
     {
         this.minMoveDistance = val;
-        print("MinMoveDistance: " + this.minMoveDistance);
+        //print("MinMoveDistance: " + this.minMoveDistance);
     }
 
     public void ResetOrientation()

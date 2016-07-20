@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void PickUpDelegate(int picked);
 public class PickUpRay : MonoBehaviour {
+    public static PickUpDelegate PickedItem;
+
     private Head navigatorHead;
     private SteeringStation steeringStation;
 
     public PublicPickUp pickUp;
 
-    public int pickUpsInUpCargo = 0;
+    public static int pickUpsInUpCargo = 0;
 
     private float pickUpDuration = 2.0f;
     private float currentPickUpTime = 999;
@@ -49,8 +52,10 @@ public class PickUpRay : MonoBehaviour {
 
                 if (currentPickUpTime >= pickUpDuration)
                 {
-                    print("PICK");
                     pickUpsInUpCargo++;
+                    if (PickedItem != null)
+                        PickedItem(pickUpsInUpCargo);
+
                     steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
                 }
             }

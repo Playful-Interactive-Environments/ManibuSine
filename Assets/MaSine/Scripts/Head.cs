@@ -3,21 +3,49 @@ using System.Collections;
 
 public class Head : MonoBehaviour
 {
-
     public Transform target;
     public Transform pickUp;
 
     public Vector3 aimPoint;
-    public LayerMask mask;
-    private AudioManager audioManager;
-    private AudioSource asource;
+    public LayerMask cannonMask;
+    public LayerMask steeringMask;
+    private LayerMask mask;
+    //private AudioManager audioManager;
+    //private AudioSource asource;
     NetworkPlayer player;
+
+    
 
     // Use this for initialization
     void Start()
     {
-        audioManager = AudioManager.Instance;
+        //audioManager = AudioManager.Instance;
         player = GetComponentInParent<NetworkPlayer>();
+
+        CanonManager.EnteredCannon += OnEnterCannon;
+        //CanonManager.ExitCannon += OnExitCannon;
+
+        SteeringStation steering = FindObjectOfType<SteeringStation>();
+        steering.EnteredSteering += OnEnteredSteering;
+        steering.ExitedSteering += OnExitSteering;
+    }
+
+
+    private void OnEnterCannon(CanonManager canonManager)
+    {
+        mask = cannonMask;
+    }
+    //private void OnExitCannon(CanonManager canonManager)
+    //{
+        
+    //}
+    private void OnEnteredSteering(SteeringStation steeringStation)
+    {
+        mask = steeringMask;
+    }
+    private void OnExitSteering(SteeringStation steeringStation)
+    {
+        mask = cannonMask;
     }
 
     Ray ray;

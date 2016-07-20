@@ -14,6 +14,7 @@ GameObject:
   - 54: {fileID: 5406972}
   - 114: {fileID: 11445766}
   - 114: {fileID: 11439270}
+  - 114: {fileID: 11473902}
   m_Layer: 25
   m_Name: PublicPlayer
   m_TagString: Untagged
@@ -43,7 +44,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3cf10f030d5187244843ca87e1e488c4, type: 2}
+  - {fileID: 2100000, guid: fefaea04250f7cb4b98f47dab041d285, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -124,6 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3b5c9ab47267a4f83bf9715fc6a54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+--- !u!114 &11473902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a5170fdeddad849885b28c00038b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  style: 0
+  animationSpeed: 1
 --- !u!135 &13581820
 SphereCollider:
   m_ObjectHideFlags: 1
