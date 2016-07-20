@@ -85,9 +85,8 @@ public class NetworkPlayer : NetworkBehaviour
 
             UI_Ship.Instance.SetHP(currentHP);
 
-            RpcSetHP(currentHP);
-            print("INIT " + PickUpRay.pickUpsInUpCargo);
             // initiate on restart/client reconnect
+            RpcSetHP(currentHP);
             RpcSetItems(PickUpRay.pickUpsInUpCargo);
         }
 
@@ -118,8 +117,6 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (isServer)
             return;
-
-        print("OnPickedItem " + picked);
 
         CmdSetItems(picked);
 
@@ -310,12 +307,12 @@ public class NetworkPlayer : NetworkBehaviour
     public void SetMovementLerpSpeed(float val)
     {
         this.movementLerpSpeed = val;
-        print("LerpSpeed: " + this.movementLerpSpeed);
+        //print("LerpSpeed: " + this.movementLerpSpeed);
     }
     public void SetMinMoveDistance(float val)
     {
         this.minMoveDistance = val;
-        print("MinMoveDistance: " + this.minMoveDistance);
+        //print("MinMoveDistance: " + this.minMoveDistance);
     }
 
     public void ResetOrientation()
