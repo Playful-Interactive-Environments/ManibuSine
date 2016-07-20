@@ -12,9 +12,6 @@ public class NetworkPlayer : NetworkBehaviour
     public int levelState = 0;
     [SyncVar]
     public int currentHP;
-    [SyncVar]
-    public int currentItems;
-
     
     public GameObject head;
 
@@ -76,7 +73,6 @@ public class NetworkPlayer : NetworkBehaviour
                     cylinder.AssignPlayer(this);
 
                 PickUpRay.PickedItem += OnPickedItem;
-                UI_Ship.Instance.SetPickedUp(currentItems);
             }
         }
         else
@@ -89,9 +85,10 @@ public class NetworkPlayer : NetworkBehaviour
 
             UI_Ship.Instance.SetHP(currentHP);
 
+            RpcSetHP(currentHP);
+
             // initiate on restart/client reconnect
-            RpcSetHP(PickUpRay.pickUpsInUpCargo);
-            RpcSetItems(currentItems);
+            RpcSetItems(PickUpRay.pickUpsInUpCargo);
         }
 
         // disable renderer of head on local player
@@ -252,8 +249,6 @@ public class NetworkPlayer : NetworkBehaviour
     {
         // store information on server
         PickUpRay.pickUpsInUpCargo = picked;
-
-        currentItems = picked;
         UI_Ship.Instance.SetPickedUp(picked);
     }
 
