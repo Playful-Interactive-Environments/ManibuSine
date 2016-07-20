@@ -105,6 +105,8 @@ public class SteeringStation : NetworkBehaviour {
         source.Play();
         mRenderer.material.color = assignedColor;
 
+        networkPlayer = navigator.GetComponent<NetworkPlayer>();
+
         if (EnteredSteering != null)
             EnteredSteering(this);
 
@@ -114,9 +116,6 @@ public class SteeringStation : NetworkBehaviour {
                                         UI_HeadUpText.TextSize.small,
                                         "enter cockpit",
                                         2);
-
-
-        networkPlayer = navigator.GetComponent<NetworkPlayer>();
     }
 
     // PlayerGone Msg sent in cannon trigger

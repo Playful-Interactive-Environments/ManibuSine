@@ -14,7 +14,7 @@ public class UI_Targeting : MonoBehaviour {
     private CanonManager cannonManager;
 
     private Image[] targetGraphics;
-    public UI_TargetingDot targetingDot;
+    private UI_TargetingDot targetingDot;
 
     private RectTransform rectTransform;
 

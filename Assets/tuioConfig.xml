@@ -8,11 +8,11 @@
 		</ConfigNode>
 		<ConfigNode name="targetResolutionX">
 			<!-- in cm -->
-			<Value>1435</Value>
+			<Value>435</Value>
 		</ConfigNode>
 		<ConfigNode name="targetResolutionY">
 			<!-- in cm -->
-			<Value>1300</Value>
+			<Value>300</Value>
 		</ConfigNode>
 		<ConfigNode name="stageX">
 			<!-- horizontal in centimeter -->

@@ -14,6 +14,6 @@ public class PublicPickUpSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void SpawnPU () {
-        ServerManager.Instance.SpawnPickUp();
+        ServerManager.Instance.SpawnPickUp(new Vector3(3.68f, 1.96f, 1.4f));
 	}
 }
