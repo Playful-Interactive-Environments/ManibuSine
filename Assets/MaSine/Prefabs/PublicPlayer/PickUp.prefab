@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11443914}
   - 114: {fileID: 11464558}
   - 136: {fileID: 13687546}
+  - 114: {fileID: 11447258}
   m_Layer: 25
   m_Name: PickUp
   m_TagString: PickUp
@@ -76,9 +77,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bbd27e774e11d408ed6789280090b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   on: {fileID: 2100000, guid: da78a195951abd245b98ff3df33bf20e, type: 2}
   off: {fileID: 2100000, guid: 0c43ff6e286664c42991ff33a8984d05, type: 2}
+--- !u!114 &11447258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a5170fdeddad849885b28c00038b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  style: 0
+  animationSpeed: 0.2
+  minValue: -1
+  maxValue: 1
+  animationVector: {x: 1, y: 1}
 --- !u!114 &11464558
 MonoBehaviour:
   m_ObjectHideFlags: 1

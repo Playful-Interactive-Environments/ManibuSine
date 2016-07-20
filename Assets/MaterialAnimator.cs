@@ -12,8 +12,8 @@ public class MaterialAnimator : MonoBehaviour {
     public MatAniStyle style = MatAniStyle.UpDown;
     public float animationSpeed = 2;
 
-    public float minValue = 0.4f;
-    public float maxValue = 2.6f;
+    public float minValue = -1.0f;
+    public float maxValue = 1.0f;
 
     public Vector2 animationVector = Vector2.one;
 
@@ -35,7 +35,7 @@ public class MaterialAnimator : MonoBehaviour {
         {
             AnimateUpDown();
         }
-        mat.mainTextureScale = Vector2.one * animationCurrent;
+        mat.mainTextureOffset = animationVector * animationCurrent;
 	}
 
     private void AnimateDown()
@@ -44,7 +44,7 @@ public class MaterialAnimator : MonoBehaviour {
         {
             if (animationCurrent < maxValue)
             {
-                animationCurrent += Time.deltaTime * ((animationCurrent + 0.1f) * animationSpeed);
+                animationCurrent += Time.deltaTime * animationSpeed;
             }
             else
             {
@@ -59,7 +59,7 @@ public class MaterialAnimator : MonoBehaviour {
         {
             if (animationCurrent < maxValue)
             {
-                animationCurrent += Time.deltaTime * ((animationCurrent + 0.1f) * animationSpeed);
+                animationCurrent += Time.deltaTime * animationSpeed;
             }
             else
             {
@@ -70,7 +70,7 @@ public class MaterialAnimator : MonoBehaviour {
         {
             if (animationCurrent > minValue)
             {
-                animationCurrent -= Time.deltaTime * ((animationCurrent + 0.1f) * animationSpeed);
+                animationCurrent -= Time.deltaTime * animationSpeed;
             }
             else
             {
@@ -78,6 +78,6 @@ public class MaterialAnimator : MonoBehaviour {
             }
         }
 
-        mat.mainTextureScale = Vector2.one * animationCurrent;
+        mat.mainTextureScale = animationVector * animationCurrent;
     }
 }
