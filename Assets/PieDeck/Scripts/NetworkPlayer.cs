@@ -77,7 +77,6 @@ public class NetworkPlayer : NetworkBehaviour
 
                 PickUpRay.PickedItem += OnPickedItem;
                 UI_Ship.Instance.SetPickedUp(currentItems);
-                CmdSetItems(currentItems);
             }
         }
         else
@@ -91,6 +90,7 @@ public class NetworkPlayer : NetworkBehaviour
             UI_Ship.Instance.SetHP(currentHP);
 
             RpcSetHP(currentHP);
+            RpcSetItems(currentItems);
         }
 
         // disable renderer of head on local player
@@ -121,9 +121,11 @@ public class NetworkPlayer : NetworkBehaviour
         if (isServer)
             return;
 
-        CmdSetItems(currentItems);
+        print("OnPickedItem " + picked);
 
-        UI_Ship.Instance.SetPickedUp(currentItems);
+        CmdSetItems(picked);
+
+        UI_Ship.Instance.SetPickedUp(picked);
     }
 
     private void OnShipHit(int damage)
@@ -245,9 +247,13 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSetItems(int picked)
+    private void CmdSetItems(int picked)
     {
         currentItems = picked;
+        UI_Ship.Instance.SetPickedUp(picked);
+    }
+
+    private void RpcSetItems(int picked) {
         UI_Ship.Instance.SetPickedUp(picked);
     }
 
