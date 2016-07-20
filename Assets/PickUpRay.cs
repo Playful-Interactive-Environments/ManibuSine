@@ -10,7 +10,7 @@ public class PickUpRay : MonoBehaviour {
 
     public PublicPickUp pickUp;
 
-    public int pickUpsInUpCargo = 0;
+    public static int pickUpsInUpCargo = 0;
 
     private float pickUpDuration = 2.0f;
     private float currentPickUpTime = 999;

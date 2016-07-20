@@ -89,7 +89,8 @@ public class NetworkPlayer : NetworkBehaviour
 
             UI_Ship.Instance.SetHP(currentHP);
 
-            RpcSetHP(currentHP);
+            // initiate on restart/client reconnect
+            RpcSetHP(PickUpRay.pickUpsInUpCargo);
             RpcSetItems(currentItems);
         }
 
