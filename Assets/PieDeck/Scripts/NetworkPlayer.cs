@@ -252,8 +252,8 @@ public class NetworkPlayer : NetworkBehaviour
         UI_Ship.Instance.SetPickedUp(picked);
     }
 
+    [ClientRpc]
     private void RpcSetItems(int picked) {
-        print("picked ");
         PickUpRay.pickUpsInUpCargo = picked;
         UI_Ship.Instance.SetPickedUp(picked);
     }
