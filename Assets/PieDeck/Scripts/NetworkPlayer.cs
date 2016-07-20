@@ -250,6 +250,9 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     private void CmdSetItems(int picked)
     {
+        // store information on server
+        PickUpRay.pickUpsInUpCargo = picked;
+
         currentItems = picked;
         UI_Ship.Instance.SetPickedUp(picked);
     }
