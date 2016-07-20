@@ -74,6 +74,10 @@ public class NetworkPlayer : NetworkBehaviour
                 VR_CylinderBorder cylinder = GetComponentInChildren<VR_CylinderBorder>();
                 if (cylinder != null)
                     cylinder.AssignPlayer(this);
+
+                PickUpRay.PickedItem += OnPickedItem;
+                UI_Ship.Instance.SetPickedUp(currentItems);
+                CmdSetItems(currentItems);
             }
         }
         else
@@ -83,14 +87,10 @@ public class NetworkPlayer : NetworkBehaviour
             currentHP = ShipManager.Instance.currentHP;
 
             ShipCollider.ShipHit += OnShipHit;
-            PickUpRay.PickedItem += OnPickedItem;
 
             UI_Ship.Instance.SetHP(currentHP);
 
             RpcSetHP(currentHP);
-
-            UI_Ship.Instance.SetPickedUp(currentItems);
-            RpcSetItems(currentItems);
         }
 
         // disable renderer of head on local player
@@ -118,12 +118,12 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnPickedItem(int picked)
     {
-        if (!isServer)
+        if (isServer)
             return;
-        currentItems = picked;
+
+        CmdSetItems(currentItems);
 
         UI_Ship.Instance.SetPickedUp(currentItems);
-        RpcSetItems(currentItems);
     }
 
     private void OnShipHit(int damage)
@@ -244,17 +244,20 @@ public class NetworkPlayer : NetworkBehaviour
         UniverseTransformer.Instance.RotateUniverse(rot);
     }
 
+    [Command]
+    public void CmdSetItems(int picked)
+    {
+        currentItems = picked;
+        UI_Ship.Instance.SetPickedUp(picked);
+    }
+
     [ClientRpc]
     public void RpcSetHP(int hp)
     {
         ShipManager.Instance.SetHP(hp);
         UI_Ship.Instance.SetHP(hp);
     }
-    [ClientRpc]
-    public void RpcSetItems(int picked)
-    {
-        UI_Ship.Instance.SetPickedUp(picked);
-    }
+
 
     //----------------------------------------------------------------
     //----------------------------------------------------------------
