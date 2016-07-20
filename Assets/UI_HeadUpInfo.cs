@@ -46,12 +46,17 @@ public class UI_HeadUpInfo : MonoBehaviour {
             else if (hit.transform.gameObject.tag == "Asteroid")
             {
                 head.text = "asteroid";
-                description.text = "danger, asteroids can damage /n your cargo.";
+                description.text = "danger, asteroids can damage your cargo.";
             }
             else if (hit.transform.gameObject.tag == "CannonStation")
             {
                 head.text = "canon station";
-                description.text = "enter to take control over /n a board canon.";
+                description.text = "enter to take control over a board canon.";
+            }
+            else if (hit.transform.gameObject.tag == "PickUp")
+            {
+                head.text = "lost artefact";
+                description.text = "an artefact from prior missions, drones help the navigator to collect them-";
             }
 
             infoObject.GetComponent<RectTransform>().transform.position = hit.transform.gameObject.transform.position;
