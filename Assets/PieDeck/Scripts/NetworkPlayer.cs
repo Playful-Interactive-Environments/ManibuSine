@@ -12,6 +12,9 @@ public class NetworkPlayer : NetworkBehaviour
     public int levelState = 0;
     [SyncVar]
     public int currentHP;
+    [SyncVar]
+    public int currentItems;
+
     
     public GameObject head;
 
@@ -78,11 +81,16 @@ public class NetworkPlayer : NetworkBehaviour
             laserTrackingActivated = false;
 
             currentHP = ShipManager.Instance.currentHP;
+
             ShipCollider.ShipHit += OnShipHit;
+            PickUpRay.PickedItem += OnPickedItem;
 
             UI_Ship.Instance.SetHP(currentHP);
 
             RpcSetHP(currentHP);
+
+            UI_Ship.Instance.SetPickedUp(currentItems);
+            RpcSetItems(currentItems);
         }
 
         // disable renderer of head on local player
@@ -107,6 +115,13 @@ public class NetworkPlayer : NetworkBehaviour
             transform.FindChild("Body").gameObject.SetActive(false);
         }
 	}
+
+    private void OnPickedItem(int totalPicked)
+    {
+        if (!isServer)
+            return;
+        currentItems = totalPicked;
+    }
 
     private void OnShipHit(int damage)
     {
@@ -232,6 +247,12 @@ public class NetworkPlayer : NetworkBehaviour
         ShipManager.Instance.SetHP(hp);
         UI_Ship.Instance.SetHP(hp);
     }
+    [ClientRpc]
+    public void RpcSetItems(int picked)
+    {
+        UI_Ship.Instance.SetPickedUp(picked);
+    }
+
     //----------------------------------------------------------------
     //----------------------------------------------------------------
 

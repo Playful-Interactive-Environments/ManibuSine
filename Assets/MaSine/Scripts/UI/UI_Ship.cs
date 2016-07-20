@@ -12,6 +12,7 @@ public class UI_Ship : MonoBehaviour {
 
     private Image[] shipEnergyBars;
     public Text destroyed;
+    public Text pickedUp;
 
     void Awake()
     {
@@ -21,6 +22,11 @@ public class UI_Ship : MonoBehaviour {
     void Start()
     {
         shipEnergyBars = GetComponentsInChildren<Image>();
+    }
+
+    public void SetPickedUp(int picked)
+    {
+        pickedUp.text = picked.ToString();
     }
 
     public void SetHP(int damage)
