@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  c1: {r: 0, g: 1, b: 0.9172416, a: 1}
+  c2: {r: 0.6544118, g: 1, b: 0.8855984, a: 1}
 --- !u!114 &11473902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   style: 0
   animationSpeed: 1
+  minValue: 0.3
+  maxValue: 3.9
 --- !u!135 &13581820
 SphereCollider:
   m_ObjectHideFlags: 1

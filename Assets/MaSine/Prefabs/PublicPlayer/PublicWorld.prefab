@@ -62,7 +62,7 @@ GameObject:
   - 65: {fileID: 6502016}
   - 23: {fileID: 2336498}
   - 114: {fileID: 11448540}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: PublicPlayerAssignmen
   m_TagString: Untagged
   m_Icon: {fileID: 0}

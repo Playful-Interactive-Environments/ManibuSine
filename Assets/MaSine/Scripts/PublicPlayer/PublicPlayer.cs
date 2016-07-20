@@ -7,6 +7,7 @@ public class PublicPlayer : NetworkBehaviour {
     private float currentUpdate = 0;
     private float lerpSpeed = 1;
     private bool doPosUpdateClient = false;
+    private LineRenderer lindeRender;
 
     private MaSineTrackedPlayer controllingPlayer;
     public MaSineTrackedPlayer ControllingPlayer {
@@ -80,7 +81,7 @@ public class PublicPlayer : NetworkBehaviour {
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
 
             UpdatePosition();
-
+            UpdateLine();
         }
         else { // movement on clint
             if (doPosUpdateClient)
@@ -107,8 +108,6 @@ public class PublicPlayer : NetworkBehaviour {
         }
     }
 
-
-
     private void AssignPickUp(PublicPickUp p) {
         // allready carries pickup
         if (pickUp != null)
@@ -121,6 +120,8 @@ public class PublicPlayer : NetworkBehaviour {
         {
             id = p.netId.Value;
             RpcGetPickUp(p.netId.Value);
+
+            MakeLine();
         }
     }
 
@@ -141,5 +142,29 @@ public class PublicPlayer : NetworkBehaviour {
             return;
 
         pickUp.Player = null;
+    }
+
+
+    // visualize connection
+
+    public Color c1 = Color.yellow;
+    public Color c2 = Color.red;
+    void MakeLine()
+    {
+        LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+        lineRenderer.SetColors(c1, c2);
+        lineRenderer.SetWidth(0.5F, 0.2F);
+        lineRenderer.SetVertexCount(2);
+    }
+    void UpdateLine()
+    {
+        if (pickUp == null)
+            return;
+
+        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+
+        lineRenderer.SetPosition(0, this.transform.position);
+        lineRenderer.SetPosition(1, pickUp.transform.position);
     }
 }

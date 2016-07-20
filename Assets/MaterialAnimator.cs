@@ -12,8 +12,12 @@ public class MaterialAnimator : MonoBehaviour {
     public MatAniStyle style = MatAniStyle.UpDown;
     public float animationSpeed = 2;
 
+    public float minValue = 0.4f;
+    public float maxValue = 2.6f;
+
+    public Vector2 animationVector = Vector2.one;
+
     private Material mat;
-    private float animationDistance = 2.5f;
     private float animationCurrent = 0;
     private bool animationUp = true;
 
@@ -38,13 +42,13 @@ public class MaterialAnimator : MonoBehaviour {
     {
         if (animationUp)
         {
-            if (animationCurrent < animationDistance)
+            if (animationCurrent < maxValue)
             {
                 animationCurrent += Time.deltaTime * ((animationCurrent + 0.1f) * animationSpeed);
             }
             else
             {
-                animationCurrent = 0.4f;
+                animationCurrent = minValue;
             }
         }
     }
@@ -53,7 +57,7 @@ public class MaterialAnimator : MonoBehaviour {
     {
         if (animationUp)
         {
-            if (animationCurrent < animationDistance)
+            if (animationCurrent < maxValue)
             {
                 animationCurrent += Time.deltaTime * ((animationCurrent + 0.1f) * animationSpeed);
             }
@@ -64,7 +68,7 @@ public class MaterialAnimator : MonoBehaviour {
         }
         else
         {
-            if (animationCurrent > 0.4f)
+            if (animationCurrent > minValue)
             {
                 animationCurrent -= Time.deltaTime * ((animationCurrent + 0.1f) * animationSpeed);
             }
