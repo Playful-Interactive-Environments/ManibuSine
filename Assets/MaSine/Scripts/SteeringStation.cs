@@ -14,6 +14,7 @@ public class SteeringStation : NetworkBehaviour {
     public Color assignedColor;
 
     private float speedInput;
+    private float distance;
     public float angleInput;
     public float uiSpeedScale;
 
@@ -46,17 +47,28 @@ public class SteeringStation : NetworkBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        if (isServer)
-            return;
-        if(navigator != null)
+
+        if (navigator != null)
         {
             CalculateSpeedInput();
             CalculateAngleInput();
-            if (angleInput > 90 || angleInput < -90)
-                return; 
-                
+
+
+            //if (distance < 0)
+            //    return;
+
+            if (isServer)
+                return;
+
+            // Send Cmd to server to move ship
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
             networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
+        }
+        
+
+        if(navigator != null)
+        {  
+            
         }
 	}
 
@@ -80,7 +92,7 @@ public class SteeringStation : NetworkBehaviour {
         uiSpeedScale = Mathf.Clamp01(uiDistance / (this.transform.lossyScale.x / 2.0f));
 
         //STEERING VARIABLES
-        float distance = navigator.position.x - transform.position.x;
+        distance = navigator.position.x - transform.position.x;
 
         speedInput = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2.0f));
 
