@@ -52,7 +52,6 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     void Start () {
-        GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
         // Initialize movement lerp values
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
@@ -111,6 +110,7 @@ public class NetworkPlayer : NetworkBehaviour
                 wpl.SyncLevelProgress(levelState);
             }
             transform.FindChild("Body").gameObject.SetActive(false);
+            GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
         }
 	}
 
