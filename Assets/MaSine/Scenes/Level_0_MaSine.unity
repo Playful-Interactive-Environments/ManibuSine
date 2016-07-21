@@ -499,7 +499,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.29.16.42
+      value: 192.168.1.2
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -634,6 +634,14 @@ Prefab:
     - target: {fileID: 11450516, guid: b2db3d7ef7fb0ea4ca8c8364d78c21eb, type: 2}
       propertyPath: whatToCollideWith.m_Bits
       value: 36700160
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484124, guid: b2db3d7ef7fb0ea4ca8c8364d78c21eb, type: 2}
+      propertyPath: m_Text
+      value: dont move
+      objectReference: {fileID: 0}
+    - target: {fileID: 11487422, guid: b2db3d7ef7fb0ea4ca8c8364d78c21eb, type: 2}
+      propertyPath: m_Text
+      value: waiting for setup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2db3d7ef7fb0ea4ca8c8364d78c21eb, type: 2}
