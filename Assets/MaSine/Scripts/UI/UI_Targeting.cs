@@ -74,7 +74,7 @@ public class UI_Targeting : MonoBehaviour {
             // wheight scaling factor on distance
 
             print("DIST " + distance);
-            float scaleFactor = Mathf.Clamp(distance * 0.002f, 0.1f, 0.5f); //Mathf.Pow(distance, .0001f); 
+            float scaleFactor = distance / 50;//Mathf.Clamp(distance * 0.002f, 0.1f, 0.5f); //Mathf.Pow(distance, .0001f); 
             // apply scaling 
             rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
         }
