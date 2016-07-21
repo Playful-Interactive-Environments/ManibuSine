@@ -9,7 +9,8 @@ public class UI_HeadUpInfo : MonoBehaviour {
 
     private Transform[] children;
 
-    GameObject infoObject;
+    public GameObject infoObject;
+    RectTransform infoTransform;
     Text head;
     Text description;
 
@@ -19,6 +20,7 @@ public class UI_HeadUpInfo : MonoBehaviour {
         children = infoObject.GetComponentsInChildren<Transform>();
         head = infoObject.GetComponentsInChildren<Text>()[0];
         description = infoObject.GetComponentsInChildren<Text>()[1];
+        infoTransform = infoObject.GetComponent<RectTransform>();
 
     }
 	
@@ -58,7 +60,7 @@ public class UI_HeadUpInfo : MonoBehaviour {
                 head.text = "lost artefact";
                 description.text = "an artefact from prior missions, drones help the navigator to collect them.";
             }
-            else if (hit.transform.gameObject.tag == "PublicPlayer")
+            else if (hit.transform.gameObject.tag == "PuplicPlayer")
             {
                 head.text = "drone";
                 description.text = "drones help the navigator to collect artefacts.";
@@ -76,7 +78,7 @@ public class UI_HeadUpInfo : MonoBehaviour {
                 }
             }
 
-            infoObject.GetComponent<RectTransform>().transform.position = hit.transform.gameObject.transform.position;
+            infoTransform.transform.position = hit.point;
 
         }
         else
