@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3b5c9ab47267a4f83bf9715fc6a54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineMaterial: {fileID: 2100000, guid: 219a473a0bb4fbe41a1c9ebde7c3c154, type: 2}
   id: 0
   c1: {r: 0, g: 1, b: 0.9172416, a: 0.5882353}
   c2: {r: 0.6544118, g: 1, b: 0.8855984, a: 0.19607843}

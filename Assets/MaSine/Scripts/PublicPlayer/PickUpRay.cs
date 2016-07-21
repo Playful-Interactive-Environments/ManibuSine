@@ -51,7 +51,7 @@ public class PickUpRay : MonoBehaviour {
             // not carried by a player
             if (pickUp.Player == null)
                 return;
-
+            pickUpProgress01 = 0;
             currentPickUpTime = 0;
 
             if (GotTarget != null)

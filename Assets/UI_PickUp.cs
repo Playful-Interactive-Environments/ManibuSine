@@ -65,6 +65,7 @@ public class UI_PickUp : MonoBehaviour {
 
     private void OnEnterSteering(SteeringStation steeringStation)
     {
+        targetingUI.ActivatePickUpUI();
         if (!steeringStation.NetworkPlayer.isLocalPlayer)
             return;
 

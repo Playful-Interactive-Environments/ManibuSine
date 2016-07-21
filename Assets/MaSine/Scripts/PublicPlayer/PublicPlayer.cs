@@ -7,7 +7,9 @@ public class PublicPlayer : NetworkBehaviour {
     private float currentUpdate = 0;
     private float lerpSpeed = 1;
     private bool doPosUpdateClient = false;
-    private LineRenderer lindeRender;
+    public Material lineMaterial;
+    private LineRenderer lineRenderer;
+
 
     private MaSineTrackedPlayer controllingPlayer;
     public MaSineTrackedPlayer ControllingPlayer {
@@ -151,8 +153,10 @@ public class PublicPlayer : NetworkBehaviour {
     public Color c2 = Color.red;
     void MakeLine()
     {
-        LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+        if (lineRenderer == null)
+            lineRenderer = gameObject.AddComponent<LineRenderer>();
+
+        lineRenderer.material = lineMaterial; //new Material(Shader.Find("Particles/Additive"));
         lineRenderer.SetColors(c1, c2);
         lineRenderer.SetWidth(0.5F, 0.2F);
         lineRenderer.SetVertexCount(2);
