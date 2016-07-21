@@ -483,7 +483,7 @@ MonoBehaviour:
     m_Bits: 524288
   steeringMask:
     serializedVersion: 2
-    m_Bits: 524288
+    m_Bits: 33554432
 --- !u!114 &11463244
 MonoBehaviour:
   m_ObjectHideFlags: 1

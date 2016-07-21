@@ -18,6 +18,8 @@ TagManager:
   - SteeringStation
   - CannonStation
   - MajorWaypoint
+  - PickUpCollider
+  - PublicPlayer
   layers:
   - Default
   - TransparentFX
