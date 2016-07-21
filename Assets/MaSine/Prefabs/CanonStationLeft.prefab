@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  rotation: 180
+  rotation: 270
   cannonPivot: {fileID: 11476656}
   gunner: {fileID: 0}
   targetingClip: {fileID: 8300000, guid: 0da7ad3cca721de4dbc04df17faaca06, type: 3}
