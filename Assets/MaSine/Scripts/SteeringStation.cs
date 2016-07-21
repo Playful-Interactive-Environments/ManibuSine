@@ -14,6 +14,7 @@ public class SteeringStation : NetworkBehaviour {
     public Color assignedColor;
 
     private float speedInput;
+    private float distance;
     public float angleInput;
     public float uiSpeedScale;
 
@@ -46,23 +47,34 @@ public class SteeringStation : NetworkBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        if (isServer)
-            return;
-        if(navigator != null)
+
+        if (navigator != null)
         {
             CalculateSpeedInput();
             CalculateAngleInput();
-            if (angleInput > 90 || angleInput < -90)
-                return; 
-                
+
+
+            //if (distance < 0)
+            //    return;
+
+            if (isServer)
+                return;
+
+            // Send Cmd to server to move ship
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
             networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
+        }
+        
+
+        if(navigator != null)
+        {  
+            
         }
 	}
 
     private void CalculateAngleInput()
     {
-        float uiAngleDistance = navigator.position.z - transform.position.z;
+        float uiAngleDistance = (transform.InverseTransformPoint(navigator.position)).z;
         float clampedPositionZ = Mathf.Clamp(uiAngleDistance / (this.transform.lossyScale.z / 2.0f), -1, 1);
 
         angleInput = clampedPositionZ * 90;
@@ -76,22 +88,24 @@ public class SteeringStation : NetworkBehaviour {
     {
         PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
-        float uiDistance = navigator.position.x - transform.position.x;
-        uiSpeedScale = Mathf.Clamp01(uiDistance / (this.transform.lossyScale.x / 2.0f));
+        distance = (transform.InverseTransformPoint(navigator.position)).x;
+
+        uiSpeedScale = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2.0f));
 
         //STEERING VARIABLES
-        float distance = navigator.position.x - transform.position.x;
+        
 
         speedInput = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2.0f));
 
-        if (distance < 0.001f) 
-        {
-            speedInput = 0.0f;
-            //return;
-        }
-
+        // Commented out to fly backwards
+        //if (distance < 0.001f) 
+        //{
+        //    speedInput = 0.0f;
+        //    //return;
+        //}
+        print(speedInput);
         source.pitch = 0.5f + speedInput / 2.0f;
-        source.volume = speedInput;// / 2.0f;
+        source.volume = Mathf.Abs(speedInput);// / 2.0f;
     }
 
     // PlayerAssigned Msg sent in cannon trigger
