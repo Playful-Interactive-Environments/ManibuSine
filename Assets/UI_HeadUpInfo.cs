@@ -26,7 +26,7 @@ public class UI_HeadUpInfo : MonoBehaviour {
 	void Update () {
         
         Ray ray = new Ray(transform.parent.parent.transform.position, transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction* 100, Color.green, 0.1f);
+        //Debug.DrawRay(ray.origin, ray.direction* 100, Color.green, 0.1f);
         RaycastHit hit;
         
         
@@ -56,7 +56,12 @@ public class UI_HeadUpInfo : MonoBehaviour {
             else if (hit.transform.gameObject.tag == "PickUp")
             {
                 head.text = "lost artefact";
-                description.text = "an artefact from prior missions, drones help the navigator to collect them-";
+                description.text = "an artefact from prior missions, drones help the navigator to collect them.";
+            }
+            else if (hit.transform.gameObject.tag == "MajorWaypoint")
+            {
+                head.text = "Waypoint";
+                description.text = "this waypoint shows you where to go.";
             }
 
             infoObject.GetComponent<RectTransform>().transform.position = hit.transform.gameObject.transform.position;
