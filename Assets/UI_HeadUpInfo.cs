@@ -53,10 +53,15 @@ public class UI_HeadUpInfo : MonoBehaviour {
                 head.text = "canon station";
                 description.text = "enter to take control over a board canon.";
             }
-            else if (hit.transform.gameObject.tag == "PickUp")
+            else if (hit.transform.gameObject.tag == "PickUpCollider")
             {
                 head.text = "lost artefact";
                 description.text = "an artefact from prior missions, drones help the navigator to collect them.";
+            }
+            else if (hit.transform.gameObject.tag == "PuplicPlayer")
+            {
+                head.text = "drone";
+                description.text = "drones help the navigator to collect artefacts.";
             }
             else if (hit.transform.gameObject.tag == "MajorWaypoint")
             {
