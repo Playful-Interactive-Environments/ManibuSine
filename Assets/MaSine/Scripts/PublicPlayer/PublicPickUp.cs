@@ -28,6 +28,8 @@ public class PublicPickUp : NetworkBehaviour {
 
     void Start() {
         meshRenderer = GetComponent<MeshRenderer>();
+
+        transform.parent = UniverseTransformer.Instance.transform;
     }
 
     public void PickIt()
