@@ -26,8 +26,13 @@ public class PublicPickUp : NetworkBehaviour {
         }
     }
 
-    void Start() {
+    void Awake()
+    {
         meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    void Start() {
+        //meshRenderer = GetComponent<MeshRenderer>();
 
         transform.parent = UniverseTransformer.Instance.transform;
     }
