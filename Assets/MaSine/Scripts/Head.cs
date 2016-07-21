@@ -75,5 +75,10 @@ public class Head : MonoBehaviour
             target = hit.transform;
         else if (hit.transform.tag == "PickUpCollider")
             pickUp = hit.transform.parent;
+        else
+        {
+            target = null;
+            pickUp = null;
+        }
     }
 }
