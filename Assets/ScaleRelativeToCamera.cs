@@ -7,6 +7,7 @@ public class ScaleRelativeToCamera : MonoBehaviour
     public Camera cam;
     public float objectScale = 1.0f;
     private Vector3 initialScale;
+    private Plane plane;
 
     // set the initial scale, and setup reference camera
     void Start()
@@ -17,12 +18,16 @@ public class ScaleRelativeToCamera : MonoBehaviour
         // if no specific camera, grab the default camera
         if (cam == null)
             cam = Camera.main;
+
+        plane = new Plane();
     }
 
     // scale object relative to distance from camera plane
     void Update()
     {
-        Plane plane = new Plane(cam.transform.forward, cam.transform.position);
+        // Plane plane = new Plane(cam.transform.forward, cam.transform.position);
+
+        plane.SetNormalAndPosition(cam.transform.forward, cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
         transform.localScale = initialScale * dist * objectScale;
     }

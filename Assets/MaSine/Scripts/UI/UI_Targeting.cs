@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class UI_Targeting : MonoBehaviour {
-
     //[Range(0,1)]
     private float t = 0;
     private float targetSize;
@@ -14,6 +13,10 @@ public class UI_Targeting : MonoBehaviour {
     private CanonManager cannonManager;
 
     private Image[] targetGraphics;
+    private Image[] TargetGraphics {
+        get { return targetGraphics; }
+    }
+
     private UI_TargetingDot targetingDot;
 
     private RectTransform rectTransform;
@@ -40,8 +43,9 @@ public class UI_Targeting : MonoBehaviour {
         ShowGraphics(false);
     }
 
-    void ShowGraphics(bool enable)
+    public void ShowGraphics(bool enable)
     {
+        print("SHOW " + enable);
         foreach (Image item in targetGraphics)
             item.enabled = enable;
     }
@@ -50,23 +54,43 @@ public class UI_Targeting : MonoBehaviour {
     {
         if (!hasTarget || cannonManager == null)
         {
-            ShowGraphics(false);
+            //ShowGraphics(false);
             return;
         }
 
-        float size = (1 - Mathf.Clamp01(cannonManager.TargetedTime)) * maxSize;
+        AnimateUI((1 - Mathf.Clamp01(cannonManager.TargetedTime)), cannonManager.TargetTransform);
+
+        //float size = (1 - Mathf.Clamp01(cannonManager.TargetedTime)) * maxSize;
+        //rectTransform.sizeDelta = Vector2.one * (targetSize + size);
+
+        //if (cannonManager.TargetTransform != null)
+        //{
+        //    // set position to target
+        //    transform.position = cannonManager.TargetTransform.position - transform.forward * 5;
+        //    // calculate distance
+        //    float distance = Vector3.Distance(transform.parent.position, cannonManager.TargetTransform.position);
+        //    // wheight scaling factor on distance
+        //    float scaleFactor = Mathf.Pow(distance, .8f) / 100;
+        //    // apply scaling 
+        //    rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
+        //}
+    }
+
+    public void AnimateUI(float t, Transform target)
+    {
+        float size = t * maxSize;
         rectTransform.sizeDelta = Vector2.one * (targetSize + size);
 
-        if (cannonManager.TargetTransform != null)
+        if (target != null)
         {
             // set position to target
-            transform.position = cannonManager.TargetTransform.position - transform.forward * 5;
+            transform.position = target.position;
             // calculate distance
-            float distance = Vector3.Distance(transform.parent.position, cannonManager.TargetTransform.position);
-            // wheight scaling factor on distance
-            float scaleFactor = Mathf.Pow(distance, .8f) / 100;
-            // apply scaling 
-            rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
+            float distance = Vector3.Distance(transform.parent.position, target.position);
+            //// wheight scaling factor on distance
+            //float scaleFactor = Mathf.Clamp(distance * 0.002f, 0.1f, 0.5f); //Mathf.Pow(distance, .0001f); 
+            //// apply scaling 
+            //rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
         }
     }
 
