@@ -17,6 +17,7 @@ public class SteeringStation : NetworkBehaviour {
     private float distance;
     public float angleInput;
     public float uiSpeedScale;
+    public float startRotation;
 
     public float playerDropOutDelay = 3.0f;
     private IEnumerator dropPlayerCoroutine;
@@ -43,6 +44,7 @@ public class SteeringStation : NetworkBehaviour {
         originalColor = mRenderer.material.color;
         source = GetComponent<AudioSource>();
         audioFader = GetComponent<AudioFader>();
+        transform.rotation = Quaternion.Euler(0, startRotation, 0);
     }
 
     // Update is called once per frame

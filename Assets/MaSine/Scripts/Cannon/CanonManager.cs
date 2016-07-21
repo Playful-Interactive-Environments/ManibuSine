@@ -60,7 +60,7 @@ public class CanonManager : NetworkBehaviour
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
         asource = GetComponent<AudioSource>();
-        //transform.rotation = Quaternion.Euler(0, rotation, 0);
+        transform.rotation = Quaternion.Euler(0, rotation, 0);
         CannonPivot.OutOfRange += OnWithinLimits;
         CannonPivot.InRange += OnOverLimits;
 
