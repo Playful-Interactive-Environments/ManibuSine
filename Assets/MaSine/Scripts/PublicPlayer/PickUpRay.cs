@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public delegate void PickUpDelegate(int picked);
+public delegate void PickUpDelegateInt(int picked);
+public delegate void PickUpDelegate(int picked, PickUpRay ray);
+
 public class PickUpRay : MonoBehaviour {
-    public static PickUpDelegate PickedItem;
+    public static PickUpDelegateInt PickedItem, LostTarget;
+    public static PickUpDelegate GotTarget;
+
 
     private Head navigatorHead;
+    public int playerID;
     private SteeringStation steeringStation;
 
     public PublicPickUp pickUp;
@@ -14,6 +19,11 @@ public class PickUpRay : MonoBehaviour {
 
     private float pickUpDuration = 2.0f;
     private float currentPickUpTime = 999;
+    private float pickUpProgress01 = 0;
+    public float PickUpProgress01
+    {
+        get { return pickUpProgress01; }
+    }
 
 	void Start () {
         steeringStation = GetComponentInParent<SteeringStation>();
@@ -43,18 +53,25 @@ public class PickUpRay : MonoBehaviour {
                 return;
 
             currentPickUpTime = 0;
+
+            if (GotTarget != null)
+                GotTarget(playerID, this);
         }
         else
         {
             if (currentPickUpTime < pickUpDuration)
             {
                 currentPickUpTime += Time.deltaTime;
+                pickUpProgress01 = Mathf.Clamp01(currentPickUpTime / pickUpDuration);
 
                 if (currentPickUpTime >= pickUpDuration)
                 {
                     pickUpsInUpCargo++;
                     if (PickedItem != null)
                         PickedItem(pickUpsInUpCargo);
+
+                    if (LostTarget != null)
+                        LostTarget(playerID);
 
                     steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
                 }
@@ -63,13 +80,20 @@ public class PickUpRay : MonoBehaviour {
     }
     private void OnEnteredSteering(SteeringStation steeringStation)
     {
-        if (steeringStation.navigator != null)
-            navigatorHead = steeringStation.navigator.GetComponentInChildren<Head>();
+        if (steeringStation.navigator == null)
+            return;
+
+        navigatorHead = steeringStation.navigator.GetComponentInChildren<Head>();
+        playerID = steeringStation.navigator.gameObject.GetInstanceID();
 
     }
     private void OnExitedSteering(SteeringStation steeringStation)
     {
         navigatorHead = null;
+        if (LostTarget != null)
+            LostTarget(playerID);
+        
+        playerID = 0;
     }
 
 
