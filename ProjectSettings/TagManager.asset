@@ -17,6 +17,7 @@ TagManager:
   - PickUp
   - SteeringStation
   - CannonStation
+  - MajorWaypoint
   layers:
   - Default
   - TransparentFX
