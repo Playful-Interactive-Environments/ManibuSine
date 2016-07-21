@@ -74,7 +74,7 @@ public class SteeringStation : NetworkBehaviour {
 
     private void CalculateAngleInput()
     {
-        float uiAngleDistance = navigator.position.z - transform.position.z;
+        float uiAngleDistance = (transform.InverseTransformPoint(navigator.position)).z;
         float clampedPositionZ = Mathf.Clamp(uiAngleDistance / (this.transform.lossyScale.z / 2.0f), -1, 1);
 
         angleInput = clampedPositionZ * 90;
@@ -88,7 +88,7 @@ public class SteeringStation : NetworkBehaviour {
     {
         PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
-        distance = navigator.position.x - transform.position.x;
+        distance = (transform.InverseTransformPoint(navigator.position)).x;
 
         uiSpeedScale = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2.0f));
 

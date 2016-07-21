@@ -60,7 +60,7 @@ public class CanonManager : NetworkBehaviour
     {
         canon = cannonPivot.GetComponentInChildren<Canon>();
         asource = GetComponent<AudioSource>();
-        transform.rotation = Quaternion.Euler(0, rotation, 0);
+        //transform.rotation = Quaternion.Euler(0, rotation, 0);
         CannonPivot.OutOfRange += OnWithinLimits;
         CannonPivot.InRange += OnOverLimits;
 
@@ -233,9 +233,9 @@ public class CanonManager : NetworkBehaviour
 
     private void MoveCannon()
     {
-        cannonPivot.transform.position = Vector3.Lerp(
-                    cannonPivot.transform.position,
-                    new Vector3(gunner.transform.position.x, cannonPivot.transform.position.y, cannonPivot.transform.position.z),
+        cannonPivot.transform.localPosition = Vector3.Lerp(
+                    cannonPivot.transform.localPosition,
+                    new Vector3(transform.InverseTransformPoint(gunner.transform.position).x, cannonPivot.transform.localPosition.y, cannonPivot.transform.localPosition.z),
                     translationSpeed * Time.deltaTime);
     }
 
