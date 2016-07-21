@@ -103,7 +103,6 @@ public class SteeringStation : NetworkBehaviour {
         //    speedInput = 0.0f;
         //    //return;
         //}
-        print(speedInput);
         source.pitch = 0.5f + speedInput / 2.0f;
         source.volume = Mathf.Abs(speedInput);// / 2.0f;
     }

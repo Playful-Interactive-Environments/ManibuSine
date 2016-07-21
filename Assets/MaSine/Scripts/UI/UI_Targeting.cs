@@ -45,7 +45,6 @@ public class UI_Targeting : MonoBehaviour {
 
     public void ShowGraphics(bool enable)
     {
-        print("SHOW " + enable);
         foreach (Image item in targetGraphics)
             item.enabled = enable;
     }
@@ -59,21 +58,6 @@ public class UI_Targeting : MonoBehaviour {
         }
 
         AnimateUI((1 - Mathf.Clamp01(cannonManager.TargetedTime)), cannonManager.TargetTransform);
-
-        //float size = (1 - Mathf.Clamp01(cannonManager.TargetedTime)) * maxSize;
-        //rectTransform.sizeDelta = Vector2.one * (targetSize + size);
-
-        //if (cannonManager.TargetTransform != null)
-        //{
-        //    // set position to target
-        //    transform.position = cannonManager.TargetTransform.position - transform.forward * 5;
-        //    // calculate distance
-        //    float distance = Vector3.Distance(transform.parent.position, cannonManager.TargetTransform.position);
-        //    // wheight scaling factor on distance
-        //    float scaleFactor = Mathf.Pow(distance, .8f) / 100;
-        //    // apply scaling 
-        //    rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
-        //}
     }
 
     public void AnimateUI(float t, Transform target)
@@ -87,10 +71,12 @@ public class UI_Targeting : MonoBehaviour {
             transform.position = target.position;
             // calculate distance
             float distance = Vector3.Distance(transform.parent.position, target.position);
-            //// wheight scaling factor on distance
-            //float scaleFactor = Mathf.Clamp(distance * 0.002f, 0.1f, 0.5f); //Mathf.Pow(distance, .0001f); 
-            //// apply scaling 
-            //rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
+            // wheight scaling factor on distance
+
+            print("DIST " + distance);
+            float scaleFactor = Mathf.Clamp(distance * 0.002f, 0.1f, 0.5f); //Mathf.Pow(distance, .0001f); 
+            // apply scaling 
+            rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
         }
     }
 

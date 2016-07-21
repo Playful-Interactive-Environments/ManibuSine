@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 2093124}
-  objectScale: 0.3
+  objectScale: 0.1
 --- !u!114 &11441916
 MonoBehaviour:
   m_ObjectHideFlags: 1
