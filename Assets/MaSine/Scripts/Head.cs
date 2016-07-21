@@ -74,6 +74,6 @@ public class Head : MonoBehaviour
         if (hit.transform.tag == "Asteroid")
             target = hit.transform;
         else if (hit.transform.tag == "PickUp")
-            pickUp = hit.transform;
+            pickUp = hit.transform.parent;
     }
 }

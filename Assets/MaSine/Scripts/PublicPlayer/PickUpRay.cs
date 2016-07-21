@@ -32,12 +32,20 @@ public class PickUpRay : MonoBehaviour {
         steeringStation.ExitedSteering += OnExitedSteering;
 	}
 
+    private bool hadTarget;
     void Update()
     {
         if (navigatorHead == null)
             return;
         if (navigatorHead.pickUp == null)
         {
+            if (hadTarget)
+            {
+                hadTarget = false;
+                if (LostTarget != null)
+                    LostTarget(playerID);
+            }
+
             pickUp = null;
             return;
         }
@@ -51,7 +59,7 @@ public class PickUpRay : MonoBehaviour {
             // not carried by a player
             if (pickUp.Player == null)
                 return;
-            pickUpProgress01 = 0;
+            hadTarget = true;
             currentPickUpTime = 0;
 
             if (GotTarget != null)
