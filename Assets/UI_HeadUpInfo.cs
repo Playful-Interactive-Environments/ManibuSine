@@ -16,7 +16,6 @@ public class UI_HeadUpInfo : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        infoObject = GameObject.Find("UI_InfoLine");
         children = infoObject.GetComponentsInChildren<Transform>();
         head = infoObject.GetComponentsInChildren<Text>()[0];
         description = infoObject.GetComponentsInChildren<Text>()[1];
@@ -78,7 +77,7 @@ public class UI_HeadUpInfo : MonoBehaviour {
                 }
             }
 
-            infoTransform.transform.position = hit.point;
+            infoTransform.transform.position = hit.transform.gameObject.transform.position;
 
         }
         else

@@ -52,6 +52,7 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     void Start () {
+        GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
         // Initialize movement lerp values
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
