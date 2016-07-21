@@ -60,7 +60,7 @@ public class UI_HeadUpInfo : MonoBehaviour {
             }
             else if (hit.transform.gameObject.tag == "MajorWaypoint")
             {
-                head.text = "Waypoint";
+                head.text = "waypoint";
                 description.text = "this waypoint shows you where to go.";
             }
 
