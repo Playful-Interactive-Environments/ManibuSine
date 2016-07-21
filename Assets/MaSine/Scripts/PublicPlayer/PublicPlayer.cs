@@ -7,6 +7,9 @@ public class PublicPlayer : NetworkBehaviour {
     private float currentUpdate = 0;
     private float lerpSpeed = 1;
     private bool doPosUpdateClient = false;
+
+    private MeshRenderer mr;
+
     public Material lineMaterial;
     private LineRenderer lineRenderer;
 
@@ -34,9 +37,14 @@ public class PublicPlayer : NetworkBehaviour {
     private PublicPickUp pickUp;
 
     void Start() {
+        mr = GetComponent<MeshRenderer>();
+        Color randomColor = Color.HSVToRGB(Random.Range(0.0f, 0.999f), 0.999f, 0.2f);
+        randomColor = new Color(randomColor.r, randomColor.g, randomColor.b, 0.7f);
+        mr.materials[0].SetColor("_TintColor", randomColor);
+
         // only client
         if (isServer)
-            return; 
+            return;
 
         if (id != 0)
             GetPickUp(id);
@@ -77,7 +85,6 @@ public class PublicPlayer : NetworkBehaviour {
 
     void Update() {
         if (isServer) {
-
             if (controllingPlayer == null)
                 return;
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);

@@ -655,7 +655,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126926}
   m_LocalRotation: {x: 0, y: -0.18126482, z: 0, w: 0.9834343}
-  m_LocalPosition: {x: 17, y: 0, z: -285}
+  m_LocalPosition: {x: 17, y: -7.3, z: -285}
   m_LocalScale: {x: 111.866745, y: 13.164837, z: 63.971394}
   m_Children:
   - {fileID: 415790}
@@ -804,7 +804,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159730}
   m_LocalRotation: {x: 0, y: 0.7962962, z: 0, w: 0.60490704}
-  m_LocalPosition: {x: 145, y: -1.9, z: 132}
+  m_LocalPosition: {x: 77.3, y: 39.7, z: 59.9}
   m_LocalScale: {x: 26.98676, y: 12.029703, z: 77.747375}
   m_Children: []
   m_Father: {fileID: 446850}
@@ -852,7 +852,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123270}
   m_LocalRotation: {x: 0, y: -0.32651028, z: 0, w: 0.9451937}
-  m_LocalPosition: {x: 239, y: 0, z: 33.1}
+  m_LocalPosition: {x: 239, y: -7.3, z: 33.1}
   m_LocalScale: {x: 112.783966, y: 13.164837, z: 86.93969}
   m_Children:
   - {fileID: 489598}
@@ -877,7 +877,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130140}
   m_LocalRotation: {x: 0, y: -0.32651028, z: 0, w: 0.9451937}
-  m_LocalPosition: {x: 219.1, y: 0, z: -192.9}
+  m_LocalPosition: {x: 219.1, y: -7.3, z: -192.9}
   m_LocalScale: {x: 44.688988, y: 13.164837, z: 126.17605}
   m_Children:
   - {fileID: 479778}
@@ -926,7 +926,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 85.9, y: 0, z: 4.7}
+  m_LocalPosition: {x: 40, y: -7.3, z: 4.7}
   m_LocalScale: {x: 134.05867, y: 13.164837, z: 75.86161}
   m_Children:
   - {fileID: 419142}
@@ -1020,7 +1020,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aa980ca27723a094f9e2d20d6fa164dd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1176,7 +1176,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aa980ca27723a094f9e2d20d6fa164dd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1202,7 +1202,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aa980ca27723a094f9e2d20d6fa164dd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1332,7 +1332,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aa980ca27723a094f9e2d20d6fa164dd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1741,8 +1741,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: 0.64705884, g: 0.60204035, b: 0.41392735, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.26705113, g: 0.5921569, b: 0.5622725, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1777,6 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 189012, guid: c328d8402a362cd48aabede999ebfd47, type: 2}
+  randomDirectionOffset: 2
   cooldown: 6
   id: 2
 --- !u!114 &11405226
@@ -1911,6 +1912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 189012, guid: c328d8402a362cd48aabede999ebfd47, type: 2}
+  randomDirectionOffset: 2
   cooldown: 6
   id: 3
 --- !u!114 &11432520
@@ -2000,6 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 189012, guid: c328d8402a362cd48aabede999ebfd47, type: 2}
+  randomDirectionOffset: 2
   cooldown: 6
   id: 4
 --- !u!114 &11463468
@@ -2050,6 +2053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 189012, guid: c328d8402a362cd48aabede999ebfd47, type: 2}
+  randomDirectionOffset: 2
   cooldown: 6
   id: 1
 --- !u!114 &11468978
