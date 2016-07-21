@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724017ed202cf6f46bbc7f10e38151f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   pickUp: {fileID: 0}
 --- !u!114 &11468510
 MonoBehaviour:
@@ -323,6 +324,7 @@ MonoBehaviour:
   assignedColor: {r: 0.4117647, g: 1, b: 0.9647059, a: 0.78431374}
   angleInput: 0
   uiSpeedScale: 0
+  startRotation: 270
   playerDropOutDelay: 5
   navigator: {fileID: 0}
   universeTransformer: {fileID: 0}
