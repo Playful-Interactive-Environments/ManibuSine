@@ -32,8 +32,8 @@ public class UI_HeadUpInfo : MonoBehaviour {
         
         if (Physics.Raycast(ray, out hit, distanceLimit, whatToCollideWith))
         {
-            
-            foreach(Transform obj in children)
+
+            foreach (Transform obj in children)
             {
                 obj.gameObject.SetActive(true);
             }
@@ -62,6 +62,13 @@ public class UI_HeadUpInfo : MonoBehaviour {
             {
                 head.text = "waypoint";
                 description.text = "this waypoint shows you where to go.";
+            }
+            else
+            {
+                foreach (Transform obj in children)
+                {
+                    obj.gameObject.SetActive(false);
+                }
             }
 
             infoObject.GetComponent<RectTransform>().transform.position = hit.transform.gameObject.transform.position;
