@@ -48,8 +48,6 @@ public class UI_PickUp : MonoBehaviour {
 
     private void OnGotTarget(int playerID, PickUpRay ray)
     {
-        //print("GOT" + this.playerID + " = " + playerID);
-
         targetingUI.ShowGraphics(true);
 
         this.ray = ray;
@@ -58,8 +56,6 @@ public class UI_PickUp : MonoBehaviour {
 
     private void OnLostTarget(int playerID)
     {
-        //print("LOST " + this.playerID + " = " + playerID);
-
         targetingUI.ShowGraphics(false);
     }
 
