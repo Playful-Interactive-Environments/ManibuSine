@@ -109,7 +109,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 494252, guid: 4b661c20760f21c419808ed7ccb303ff, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.11
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 494252, guid: 4b661c20760f21c419808ed7ccb303ff, type: 2}
       propertyPath: m_LocalPosition.y
@@ -117,7 +117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494252, guid: 4b661c20760f21c419808ed7ccb303ff, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.19
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 494252, guid: 4b661c20760f21c419808ed7ccb303ff, type: 2}
       propertyPath: m_LocalRotation.x
@@ -346,7 +346,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22466266, guid: a558c70052d03da41848ed655c1a4677, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.22
+      value: 1.53
       objectReference: {fileID: 0}
     - target: {fileID: 22466266, guid: a558c70052d03da41848ed655c1a4677, type: 2}
       propertyPath: m_LocalRotation.x
@@ -366,11 +366,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22466266, guid: a558c70052d03da41848ed655c1a4677, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22466266, guid: a558c70052d03da41848ed655c1a4677, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 2.17
+      value: 2.73
       objectReference: {fileID: 0}
     - target: {fileID: 22466266, guid: a558c70052d03da41848ed655c1a4677, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -448,7 +448,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 410610, guid: 681ade2f4810d6441ba9353c5e0afad6, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 681ade2f4810d6441ba9353c5e0afad6, type: 2}
@@ -632,7 +632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454602, guid: b2db3d7ef7fb0ea4ca8c8364d78c21eb, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11450516, guid: b2db3d7ef7fb0ea4ca8c8364d78c21eb, type: 2}
       propertyPath: whatToCollideWith.m_Bits
@@ -656,7 +656,7 @@ Transform:
   - {fileID: 263077820}
   - {fileID: 206388369}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!4 &926478908 stripped
 Transform:
   m_PrefabParentObject: {fileID: 446850, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
