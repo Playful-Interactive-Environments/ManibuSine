@@ -8,7 +8,11 @@ public class UI_Targeting : MonoBehaviour {
     private float targetSize;
     private float maxSize = 80.0f;
 
+    private float contextScale = 1;
+
     private bool hasTarget = false;
+
+    public Sprite cannonSprite, pickupSprite;
 
     private CanonManager cannonManager;
 
@@ -43,6 +47,20 @@ public class UI_Targeting : MonoBehaviour {
         ShowGraphics(false);
     }
 
+    private void ActivateCannonUI()
+    {
+        contextScale = 1;
+        foreach (Image item in targetGraphics)
+            item.sprite = cannonSprite;
+    }
+
+    public void ActivatePickUpUI()
+    {
+        contextScale = .2f;
+        foreach (Image item in targetGraphics)
+            item.sprite = pickupSprite;
+    }
+
     public void ShowGraphics(bool enable)
     {
         foreach (Image item in targetGraphics)
@@ -72,9 +90,7 @@ public class UI_Targeting : MonoBehaviour {
             // calculate distance
             float distance = Vector3.Distance(transform.parent.position, target.position);
             // wheight scaling factor on distance
-
-            print("DIST " + distance);
-            float scaleFactor = distance / 50;//Mathf.Clamp(distance * 0.002f, 0.1f, 0.5f); //Mathf.Pow(distance, .0001f); 
+            float scaleFactor = distance * 0.001f * target.localScale.x;
             // apply scaling 
             rectTransform.localScale = originalScale + Vector2.one * scaleFactor;
         }
@@ -82,6 +98,7 @@ public class UI_Targeting : MonoBehaviour {
 
     private void OnEnteredCannon(CanonManager canonManager)
     {
+        ActivateCannonUI();
         if (!canonManager.IsGunnerLocalPlayer())
             return;
 
