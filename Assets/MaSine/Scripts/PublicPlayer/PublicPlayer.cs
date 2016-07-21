@@ -8,6 +8,7 @@ public class PublicPlayer : NetworkBehaviour {
     private float lerpSpeed = 1;
     private bool doPosUpdateClient = false;
     public Material lineMaterial;
+    private LineRenderer lineRenderer;
 
 
     private MaSineTrackedPlayer controllingPlayer;
@@ -152,7 +153,9 @@ public class PublicPlayer : NetworkBehaviour {
     public Color c2 = Color.red;
     void MakeLine()
     {
-        LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
+        if (lineRenderer == null)
+            lineRenderer = gameObject.AddComponent<LineRenderer>();
+
         lineRenderer.material = lineMaterial; //new Material(Shader.Find("Particles/Additive"));
         lineRenderer.SetColors(c1, c2);
         lineRenderer.SetWidth(0.5F, 0.2F);

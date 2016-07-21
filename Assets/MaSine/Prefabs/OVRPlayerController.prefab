@@ -583,7 +583,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 22416120}
   - 114: {fileID: 11442790}
-  - 114: {fileID: 11438626}
   m_Layer: 5
   m_Name: Targeting
   m_TagString: Untagged
@@ -1225,19 +1224,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &11438626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db74732e0943abe478768b7812653f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 2093124}
-  objectScale: 0.1
 --- !u!114 &11441916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1262,6 +1248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9199e0dde75784a90110c0103d0c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cannonSprite: {fileID: 21300000, guid: e3465e0265e84d945942abed7d37499e, type: 3}
+  pickupSprite: {fileID: 21300000, guid: 9d98acc9aed0a3d4dbbe4765ed918b6a, type: 3}
 --- !u!114 &11445516
 MonoBehaviour:
   m_ObjectHideFlags: 1
