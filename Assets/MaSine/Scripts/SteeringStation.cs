@@ -88,22 +88,24 @@ public class SteeringStation : NetworkBehaviour {
     {
         PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
-        float uiDistance = navigator.position.x - transform.position.x;
-        uiSpeedScale = Mathf.Clamp01(uiDistance / (this.transform.lossyScale.x / 2.0f));
+        distance = navigator.position.x - transform.position.x;
+
+        uiSpeedScale = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2.0f));
 
         //STEERING VARIABLES
-        distance = navigator.position.x - transform.position.x;
+        
 
         speedInput = Mathf.Clamp01(distance / (this.transform.lossyScale.x / 2.0f));
 
-        if (distance < 0.001f) 
-        {
-            speedInput = 0.0f;
-            //return;
-        }
-
+        // Commented out to fly backwards
+        //if (distance < 0.001f) 
+        //{
+        //    speedInput = 0.0f;
+        //    //return;
+        //}
+        print(speedInput);
         source.pitch = 0.5f + speedInput / 2.0f;
-        source.volume = speedInput;// / 2.0f;
+        source.volume = Mathf.Abs(speedInput);// / 2.0f;
     }
 
     // PlayerAssigned Msg sent in cannon trigger
