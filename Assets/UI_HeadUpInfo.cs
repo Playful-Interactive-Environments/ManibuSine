@@ -58,7 +58,7 @@ public class UI_HeadUpInfo : MonoBehaviour {
                 head.text = "lost artefact";
                 description.text = "an artefact from prior missions, drones help the navigator to collect them.";
             }
-            else if (hit.transform.gameObject.tag == "PuplicPlayer")
+            else if (hit.transform.gameObject.tag == "PublicPlayer")
             {
                 head.text = "drone";
                 description.text = "drones help the navigator to collect artefacts.";
