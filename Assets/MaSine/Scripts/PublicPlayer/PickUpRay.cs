@@ -81,6 +81,8 @@ public class PickUpRay : MonoBehaviour {
                     if (LostTarget != null)
                         LostTarget(playerID);
 
+                    pickUp.PickIt();
+
                     steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
                 }
             }
