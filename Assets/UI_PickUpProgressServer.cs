@@ -10,7 +10,7 @@ public class UI_PickUpProgressServer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        progressCircle = GetComponent<Image>();
+        progressCircle = GetComponentInChildren<Image>();
         InvokeRepeating("GetSteeringManager", 0.5f, 0.5f);
     }
     void GetSteeringManager() {
