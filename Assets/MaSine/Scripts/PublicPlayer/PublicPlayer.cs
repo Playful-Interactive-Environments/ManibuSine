@@ -155,7 +155,7 @@ public class PublicPlayer : NetworkBehaviour {
 
     public void PickedUp()
     {
-                // delete line renderer
+        // delete line renderer
         if (isServer)
         {
             LineRenderer lr = GetComponent<LineRenderer>();
@@ -163,7 +163,6 @@ public class PublicPlayer : NetworkBehaviour {
             if (lr != null)
                 Destroy(lr);
         }
-
     }
 
     // visualize connection

@@ -233,11 +233,21 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
     }
-    
+
+    [Command]
+    public void CmdDestroyEntityDelayed(GameObject obj, float delay = 3) {
+        StartCoroutine(DestroyDelayed(obj, delay));
+    }
+
+    private IEnumerator DestroyDelayed(GameObject obj, float delay) {
+        yield return new WaitForSeconds(delay);
+
+        NetworkServer.Destroy(obj);
+    }
+
     [Command]
     public void CmdDestroyEntity(GameObject obj)
     {
-        print("DESTROY_S");
         NetworkServer.Destroy(obj);
     }
 

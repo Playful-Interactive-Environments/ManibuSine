@@ -59,13 +59,10 @@ public class PublicPickUp : NetworkBehaviour {
 
         // disable rendering and collider (trigger)
         meshRenderer.enabled = false;
-        Collider col = GetComponentInChildren<Collider>();
-        if (col != null)
-            col.enabled = false;
+        Collider[] col = GetComponentsInChildren<Collider>();
+        foreach (Collider item in col)
+            item.enabled = false;
 
-        // delete line renderer
-        if (isServer)
-            return;
     }
 
     private void PositionUpdate() {
