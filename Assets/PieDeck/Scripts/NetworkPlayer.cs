@@ -59,13 +59,18 @@ public class NetworkPlayer : NetworkBehaviour
         if (!isServer)
 		{
 			_vrController = GameObject.Find("OVRPlayerController");
-			_vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
-			_chaperoneScript = _vrController.GetComponent<Chaperone>();
+            if(_vrController != null)
+            {
+                _vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
+                _chaperoneScript = _vrController.GetComponent<Chaperone>();
+            }
+			
 
             // assign to VR borders
             if (isLocalPlayer)  
             {
-                CmdSetClientType(GameObject.Find("ApplicationManager").GetComponent<ClientChooser>().isRenderClient);
+                if(FindObjectOfType<ClientChooser>() != null)
+                CmdSetClientType(FindObjectOfType<ClientChooser>().isRenderClient);
                 SetToRenderClient();
                 // assign to border box
                 VRBorberdsTrigger.AssignPlayer(this);
@@ -158,7 +163,8 @@ public class NetworkPlayer : NetworkBehaviour
             //Update Position and Rotation
             if(laserTrackingActivated)
                 CalculateVRPos(); // used to update vr camera position
-            transform.rotation = _vrController.transform.rotation;
+            if(_vrController != null)
+                transform.rotation = _vrController.transform.rotation;
 
             headTilt = Camera.main.transform.rotation.eulerAngles.x;
 
@@ -288,7 +294,8 @@ public class NetworkPlayer : NetworkBehaviour
         }
         foreach (Transform childTransform in npChildTransforms)
         {
-            childTransform.gameObject.SetActive(false);
+            if(this.transform != childTransform)
+                childTransform.gameObject.SetActive(false);
         }
         
     }
@@ -304,7 +311,8 @@ public class NetworkPlayer : NetworkBehaviour
 
     void LocalPlayerMovement()
     {
-        transform.position = _vrController.transform.position;
+        if(_vrController != null)
+            transform.position = _vrController.transform.position;
     }
 
 	void CalculateVRPos()
@@ -320,17 +328,20 @@ public class NetworkPlayer : NetworkBehaviour
 		distance = Vector3.Distance(_previousPos, _currentPos);
 		if (distance < minMoveDistance)
 		{
-			_vrController.transform.position = _previousPos;
+            if (_vrController != null)
+                _vrController.transform.position = _previousPos;
 			_staticPos = true;
 
 		}
 		if (distance >= minMoveDistance && !_staticPos)
 		{
-			_vrController.transform.position = transform.position;
+            if (_vrController != null)
+                _vrController.transform.position = transform.position;
 		}
 		if (distance >= minMoveDistance && _staticPos)
 		{
-			_vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, movementLerpSpeed);
+            if (_vrController != null)
+                _vrController.transform.position = Vector3.Slerp(_previousPos, transform.position, movementLerpSpeed);
 			_staticPos = false;
 		}
 	}
@@ -378,7 +389,8 @@ public class NetworkPlayer : NetworkBehaviour
 	{
 		if (isLocalPlayer)
 		{
-			_vrControllerScript.ResetOrientation();
+            if (_vrController != null)
+                _vrControllerScript.ResetOrientation();
 		}
 
 	}

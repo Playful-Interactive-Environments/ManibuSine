@@ -104,7 +104,7 @@ public class UI_HeadUpText : MonoBehaviour {
     {
         foreach (UI_HeadUpTextField field in Instance.textFields)
         {
-            if (field.areaName == displayArea)
+            if (field.areaName == displayArea && field != null)
             {
                 field.DisplayText(color, textSize, text, duration);
             }
