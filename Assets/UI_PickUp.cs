@@ -10,11 +10,15 @@ public class UI_PickUp : MonoBehaviour {
     private PickUpRay ray;
     private int playerID;
 
-    public UI_Targeting targetingUI;
+    private Image progressCircle;
+
+    // public UI_Targeting targetingUI;
 
 	void Start () {
         targetingDot = transform.parent.GetComponentInChildren<UI_TargetingDot>();
         dotGfx = targetingDot.GetComponent<Image>();
+
+        progressCircle = GetComponentInChildren<Image>();
 
         PickUpRay.GotTarget += OnGotTarget;
         PickUpRay.LostTarget += OnLostTarget;
@@ -31,7 +35,9 @@ public class UI_PickUp : MonoBehaviour {
         if (ray == null || ray.pickUp == null)
             return;
 
-        targetingUI.AnimateUI(1 - ray.PickUpProgress01, pickUp);
+        progressCircle.fillAmount = ray.PickUpProgress01;
+
+        //targetingUI.AnimateUI(1 - ray.PickUpProgress01, pickUp);
     }
 
 
@@ -48,7 +54,9 @@ public class UI_PickUp : MonoBehaviour {
 
     private void OnGotTarget(int playerID, PickUpRay ray)
     {
-        targetingUI.ShowGraphics(true);
+        //targetingUI.ShowGraphics(true);
+
+        progressCircle.enabled = true;
 
         this.ray = ray;
         this.pickUp = ray.pickUp.transform;
@@ -56,12 +64,13 @@ public class UI_PickUp : MonoBehaviour {
 
     private void OnLostTarget(int playerID)
     {
-        targetingUI.ShowGraphics(false);
+        progressCircle.enabled = false;
+        //targetingUI.ShowGraphics(false);
     }
 
     private void OnEnterSteering(SteeringStation steeringStation)
     {
-        targetingUI.ActivatePickUpUI();
+        //targetingUI.ActivatePickUpUI();
         if (!steeringStation.NetworkPlayer.isLocalPlayer)
             return;
 
@@ -74,7 +83,8 @@ public class UI_PickUp : MonoBehaviour {
         if (!steeringStation.NetworkPlayer.isLocalPlayer)
             return;
 
-        targetingUI.ShowGraphics(false);
+        progressCircle.enabled = false;
+        //targetingUI.ShowGraphics(false);
 
         playerID = 0;
 
