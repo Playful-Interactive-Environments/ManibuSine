@@ -288,10 +288,10 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdSetClientType(bool isRenderClient)
     {
+        this.isRenderClient = isRenderClient;
         if (isRenderClient)
         {
             SetToRenderClient();
-            isRenderClient = true;
         }
 
     }
