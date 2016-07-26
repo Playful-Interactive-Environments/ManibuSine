@@ -69,9 +69,13 @@ public class NetworkPlayer : NetworkBehaviour
             // assign to VR borders
             if (isLocalPlayer)  
             {
-                if(FindObjectOfType<ClientChooser>() != null)
-                CmdSetClientType(FindObjectOfType<ClientChooser>().isRenderClient);
-                SetToRenderClient();
+                ClientChooser cc = FindObjectOfType<ClientChooser>();
+                if (cc != null) {
+                    CmdSetClientType(cc.isRenderClient);
+                    if (cc.isRenderClient)
+                        SetToRenderClient();
+                }
+
                 // assign to border box
                 VRBorberdsTrigger.AssignPlayer(this);
                 // assign to cylinder
