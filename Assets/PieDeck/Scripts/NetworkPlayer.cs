@@ -12,7 +12,9 @@ public class NetworkPlayer : NetworkBehaviour
     public int levelState = 0;
     [SyncVar]
     public int currentHP;
-    
+    [SyncVar]
+    public bool isRenderClient;
+
     public GameObject head;
 
     private GameObject controllingPlayer;
@@ -122,6 +124,14 @@ public class NetworkPlayer : NetworkBehaviour
             }
             transform.FindChild("Body").gameObject.SetActive(false);
             GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
+        }
+
+        if(!isLocalPlayer && isClient)
+        {
+            if (isRenderClient)
+            {
+                SetToRenderClient();
+            }
         }
 	}
 
@@ -281,6 +291,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (isRenderClient)
         {
             SetToRenderClient();
+            isRenderClient = true;
         }
 
     }
