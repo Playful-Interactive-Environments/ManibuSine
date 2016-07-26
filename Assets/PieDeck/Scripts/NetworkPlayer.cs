@@ -63,8 +63,10 @@ public class NetworkPlayer : NetworkBehaviour
 			_chaperoneScript = _vrController.GetComponent<Chaperone>();
 
             // assign to VR borders
-            if (isLocalPlayer)
+            if (isLocalPlayer)  
             {
+                CmdSetClientType(GameObject.Find("ApplicationManager").GetComponent<ClientChooser>().isRenderClient);
+                SetToRenderClient();
                 // assign to border box
                 VRBorberdsTrigger.AssignPlayer(this);
                 // assign to cylinder
@@ -263,6 +265,34 @@ public class NetworkPlayer : NetworkBehaviour
         UI_Ship.Instance.SetHP(hp);
     }
 
+    [Command]
+    public void CmdSetClientType(bool isRenderClient)
+    {
+        if (isRenderClient)
+        {
+            SetToRenderClient();
+        }
+
+    }
+
+    public void SetToRenderClient()
+    {
+        // Do stuff to make it a render client
+        
+        print("This client is set to render client");
+        Collider[] npCollider = GetComponents<Collider>();
+        Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
+        foreach (Collider coll in npCollider)
+        {
+            coll.enabled = false;
+        }
+        foreach (Transform childTransform in npChildTransforms)
+        {
+            childTransform.gameObject.SetActive(false);
+        }
+        
+    }
+
 
     //----------------------------------------------------------------
     //----------------------------------------------------------------
@@ -320,38 +350,6 @@ public class NetworkPlayer : NetworkBehaviour
 	{
 		RpcRecalibrateDevice();
 	}
-
-    [ClientRpc]
-    public void RpcSetToRenderClient()
-    {
-        Collider[] npCollider = GetComponents<Collider>();
-        Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
-        foreach (Collider coll in npCollider)
-        {
-            coll.enabled = false;
-        }
-        foreach (Transform childTransform in npChildTransforms)
-        {
-            childTransform.gameObject.SetActive(false);
-        }
-
-    }
-    public void SetToRenderClient()
-    {
-        print("This client is set to rpc");
-        Collider[] npCollider = GetComponents<Collider>();
-        Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
-        foreach (Collider coll in npCollider)
-        {
-            coll.enabled = false;
-        }
-        foreach (Transform childTransform in npChildTransforms)
-        {
-            childTransform.gameObject.SetActive(false);
-        }
-
-        RpcSetToRenderClient();
-    }
 
     public void ToggleChaperone()
 	{

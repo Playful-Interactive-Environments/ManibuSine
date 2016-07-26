@@ -161,15 +161,6 @@ public class ServerManager : NetworkManager
 		{
 			Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);
 			Admin.Instance.ButtonPlayerOne.interactable = true;
-            NetworkPlayer[] nps = FindObjectsOfType<NetworkPlayer>();
-            foreach (NetworkPlayer np in nps)
-            {
-                print("NetworkConnection id " + np.connectionToServer.connectionId + " connected.");
-                if (np.connectionToServer.connectionId == 1)
-                {
-                    np.SetToRenderClient();
-                }
-            }
         }
 		if (conn.connectionId == 2)
 		{
