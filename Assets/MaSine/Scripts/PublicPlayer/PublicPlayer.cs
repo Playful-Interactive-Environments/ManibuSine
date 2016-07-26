@@ -153,6 +153,18 @@ public class PublicPlayer : NetworkBehaviour {
         pickUp.Player = null;
     }
 
+    public void PickedUp()
+    {
+                // delete line renderer
+        if (isServer)
+        {
+            LineRenderer lr = GetComponent<LineRenderer>();
+
+            if (lr != null)
+                Destroy(lr);
+        }
+
+    }
 
     // visualize connection
 
@@ -170,10 +182,9 @@ public class PublicPlayer : NetworkBehaviour {
     }
     void UpdateLine()
     {
-        if (pickUp == null)
+        if (pickUp == null || lineRenderer == null)
             return;
-
-        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+        //LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
         lineRenderer.SetPosition(0, this.transform.position);
         lineRenderer.SetPosition(1, pickUp.transform.position);
