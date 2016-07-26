@@ -235,7 +235,7 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void DestroyPickUp(GameObject obj) {
+    public void CmdDestroyPickUp(GameObject obj) {
 
         PublicPickUp pickUp = obj.GetComponent<PublicPickUp>();
         if (pickUp == null)
