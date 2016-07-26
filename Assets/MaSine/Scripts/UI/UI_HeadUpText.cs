@@ -91,24 +91,31 @@ public class UI_HeadUpText : MonoBehaviour {
 
     public static void DisplayText(DisplayArea displayArea, Color color, TextSize textSize, string text)
     {
-        foreach (UI_HeadUpTextField field in Instance.textFields)
+        if (Instance != null)
         {
-            if(field.areaName == displayArea)
+            foreach (UI_HeadUpTextField field in Instance.textFields)
             {
-                field.DisplayText(color, textSize, text);
+                if (field.areaName == displayArea)
+                {
+                    field.DisplayText(color, textSize, text);
+                }
             }
         }
     }
 
     public static void DisplayText(DisplayArea displayArea, Color color, TextSize textSize, string text, float duration)
     {
-        foreach (UI_HeadUpTextField field in Instance.textFields)
+        if(Instance != null)
         {
-            if (field.areaName == displayArea && field != null)
+            foreach (UI_HeadUpTextField field in Instance.textFields)
             {
-                field.DisplayText(color, textSize, text, duration);
+                if (field.areaName == displayArea && field != null)
+                {
+                    field.DisplayText(color, textSize, text, duration);
+                }
             }
         }
+        
     }
 
     //public static void ShowTextOnHeadUp(string msg, float duration)
