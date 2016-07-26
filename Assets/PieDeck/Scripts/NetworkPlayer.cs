@@ -321,7 +321,39 @@ public class NetworkPlayer : NetworkBehaviour
 		RpcRecalibrateDevice();
 	}
 
-	public void ToggleChaperone()
+    [ClientRpc]
+    public void RpcSetToRenderClient()
+    {
+        Collider[] npCollider = GetComponents<Collider>();
+        Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
+        foreach (Collider coll in npCollider)
+        {
+            coll.enabled = false;
+        }
+        foreach (Transform childTransform in npChildTransforms)
+        {
+            childTransform.gameObject.SetActive(false);
+        }
+
+    }
+    public void SetToRenderClient()
+    {
+        print("This client is set to rpc");
+        Collider[] npCollider = GetComponents<Collider>();
+        Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
+        foreach (Collider coll in npCollider)
+        {
+            coll.enabled = false;
+        }
+        foreach (Transform childTransform in npChildTransforms)
+        {
+            childTransform.gameObject.SetActive(false);
+        }
+
+        RpcSetToRenderClient();
+    }
+
+    public void ToggleChaperone()
 	{
 		RpcToggleChaperone();
 	}
