@@ -235,8 +235,8 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdDestroyEntityDelayed(GameObject obj, float delay = 3) {
-        StartCoroutine(DestroyDelayed(obj, delay));
+    public void CmdDestroyEntityDelayed(GameObject obj) {
+        StartCoroutine(DestroyDelayed(obj, 3));
     }
 
     private IEnumerator DestroyDelayed(GameObject obj, float delay) {
