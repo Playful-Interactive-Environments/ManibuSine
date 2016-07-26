@@ -235,7 +235,14 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdDestroyEntityDelayed(GameObject obj) {
+    public void DestroyPickUp(GameObject obj) {
+
+        PublicPickUp pickUp = obj.GetComponent<PublicPickUp>();
+        if (pickUp == null)
+            return;
+
+        pickUp.Player.PickedUp();
+
         StartCoroutine(DestroyDelayed(obj, 3));
     }
 
