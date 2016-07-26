@@ -237,6 +237,7 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdDestroyEntity(GameObject obj)
     {
+        print("DESTROY_S");
         NetworkServer.Destroy(obj);
     }
 

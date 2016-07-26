@@ -91,6 +91,7 @@ public class PickUpRay : MonoBehaviour {
     
     private IEnumerator DestroyDelayed() {
         yield return new WaitForSeconds(5);
+        print("DESTROY_C");
         if (steeringStation == null || steeringStation.NetworkPlayer == null)
             steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
     }
