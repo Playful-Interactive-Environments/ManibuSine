@@ -83,11 +83,18 @@ public class PickUpRay : MonoBehaviour {
 
                     pickUp.PickIt();
 
-                    steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
+                    StartCoroutine(DestroyDelayed());
                 }
             }
         }
     }
+    
+    private IEnumerator DestroyDelayed() {
+        yield return new WaitForSeconds(5);
+        if (steeringStation == null || steeringStation.NetworkPlayer == null)
+            steeringStation.NetworkPlayer.CmdDestroyEntity(pickUp.gameObject);
+    }
+
     private void OnEnteredSteering(SteeringStation steeringStation)
     {
         if (steeringStation.navigator == null)

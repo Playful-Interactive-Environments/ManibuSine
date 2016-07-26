@@ -52,12 +52,16 @@ public class PublicPickUp : NetworkBehaviour {
 
         audio.pitch = Random.Range(0.9f, 1.1f);
         audio.Play();
-        //audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
+
         Instantiate(pickUpParticles, transform.position, Quaternion.identity);
 
         player.PickedUp();
 
-
+        // disable rendering and collider (trigger)
+        meshRenderer.enabled = false;
+        Collider col = GetComponentInChildren<Collider>();
+        if (col != null)
+            col.enabled = false;
 
         // delete line renderer
         if (isServer)
