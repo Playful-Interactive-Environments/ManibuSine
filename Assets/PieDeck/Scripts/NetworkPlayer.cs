@@ -55,7 +55,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     void Start () {
 
-        print("Networkplayer " + this.gameObject.name + " has connection ID " + this.connectionToServer.connectionId);
+        
         // Initialize movement lerp values
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
@@ -91,6 +91,10 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         { // SERVER
+            print(this.clientType.ToString() + " has connected with ID " + this.connectionToClient.connectionId);
+
+            ServerManager.Instance.RegisterPlayer(this);
+
             laserTrackingActivated = false;
 
             currentHP = ShipManager.Instance.currentHP;
@@ -347,6 +351,8 @@ public class NetworkPlayer : NetworkBehaviour
     void OnDestroy()
     {
         ShipCollider.ShipHit -= OnShipHit;
+        if (isServer)
+            ServerManager.Instance.UnregisterPlayer(this);
     }
 
     void LocalPlayerMovement()
