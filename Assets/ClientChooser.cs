@@ -3,7 +3,14 @@ using System.Collections;
 
 public class ClientChooser : MonoBehaviour {
 
-    public bool isRenderClient;
+    public enum ClientType
+    {
+        RenderClientFloor,
+        RenderClientWall,
+        VRClient
+    }
+
+    public ClientType clientType;
 	// Use this for initialization
 	void Start () {
 	

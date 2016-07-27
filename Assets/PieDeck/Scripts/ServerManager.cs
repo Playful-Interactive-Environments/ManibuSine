@@ -157,6 +157,15 @@ public class ServerManager : NetworkManager
 	}
 	public override void OnServerConnect(NetworkConnection conn)
 	{
+        NetworkPlayer[] nps = FindObjectsOfType<NetworkPlayer>();
+        foreach(NetworkPlayer np in nps)
+        {
+            if(np.connectionToServer == conn)
+            {
+                print("Networkplayer " + np.gameObject.name + " connected");
+            }
+        }
+
 		if (conn.connectionId == 1)
 		{
 			Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);

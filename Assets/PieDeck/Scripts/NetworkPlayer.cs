@@ -13,7 +13,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar]
     public int currentHP;
     [SyncVar]
-    public bool isRenderClient;
+    public ClientChooser.ClientType clientType;
 
     public GameObject head;
 
@@ -73,9 +73,8 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 ClientChooser cc = FindObjectOfType<ClientChooser>();
                 if (cc != null) {
-                    CmdSetClientType(cc.isRenderClient);
-                    if (cc.isRenderClient)
-                        SetToRenderClient();
+                    CmdSetClientType(cc.clientType);
+                    SetClientType(cc.clientType);
                 }
 
                 // assign to border box
@@ -128,10 +127,7 @@ public class NetworkPlayer : NetworkBehaviour
 
         if(!isLocalPlayer && isClient)
         {
-            if (isRenderClient)
-            {
-                SetToRenderClient();
-            }
+            SetClientType(this.clientType);
         }
 	}
 
@@ -304,21 +300,30 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSetClientType(bool isRenderClient)
+    public void CmdSetClientType(ClientChooser.ClientType clientType)
     {
-        this.isRenderClient = isRenderClient;
-        if (isRenderClient)
+        this.clientType = clientType;
+        if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
-            SetToRenderClient();
+            SetToRenderClientFloor();
         }
 
     }
 
-    public void SetToRenderClient()
+    public void SetClientType(ClientChooser.ClientType clientType)
+    {
+        this.clientType = clientType;
+        if (clientType == ClientChooser.ClientType.RenderClientFloor)
+        {
+            SetToRenderClientFloor();
+        }
+    }
+
+    public void SetToRenderClientFloor()
     {
         // Do stuff to make it a render client
         
-        print("This client is set to render client");
+        print("This client is set to : " + this.clientType.ToString());
         Collider[] npCollider = GetComponents<Collider>();
         Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
         foreach (Collider coll in npCollider)
