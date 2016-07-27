@@ -322,7 +322,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         this.clientType = clientType;
 
-        print(this.clientType.ToString() + " has connected with ID " + this.connectionToServer.connectionId);
+        //print(this.clientType.ToString() + " has connected with ID " + this.connectionToServer.connectionId);
 
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {

@@ -58,14 +58,22 @@ public class TrackedPlayerNetworkBehaviour : NetworkBehaviour {
 	{
 		if (ServerManager.Instance.isServer)
 		{
-			if (HasPlayerOne)
-			{
-				Admin.Instance.ButtonPlayerOne.interactable = true;
-			}
-			if (HasPlayerTwo)
-			{
-				Admin.Instance.ButtonPlayerTwo.interactable = true;
-			}
+            if (ControlledPlayer != null)
+            {
+                // Todo reset networkplayer position
+                print("tracked player gone");
+
+                if (HasPlayerOne)
+                {
+                    Admin.Instance.ButtonPlayerOne.interactable = true;
+                }
+                if (HasPlayerTwo)
+                {
+                    Admin.Instance.ButtonPlayerTwo.interactable = true;
+
+                }
+            }
+            
 		}
 	}
 	void OnMouseDown()
