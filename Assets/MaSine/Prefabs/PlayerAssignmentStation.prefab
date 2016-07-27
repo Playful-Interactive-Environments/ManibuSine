@@ -11,10 +11,9 @@ GameObject:
   - 33: {fileID: 3384274}
   - 65: {fileID: 6539560}
   - 23: {fileID: 2302106}
-  - 114: {fileID: 11493068}
   - 114: {fileID: 11484570}
   m_Layer: 0
-  m_Name: playerAssignmentTrigger
+  m_Name: PlayerAssignmentStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -0.08005333, z: -0.31}
+  m_LocalPosition: {x: 8, y: -0.08005333, z: 0.03}
   m_LocalScale: {x: 2.8924503, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -89,38 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3479df24e6b42b7458d804f92685e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11493068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 120
-    i1: 169
-    i2: 215
-    i3: 172
-    i4: 2
-    i5: 161
-    i6: 87
-    i7: 212
-    i8: 251
-    i9: 157
-    i10: 131
-    i11: 176
-    i12: 113
-    i13: 200
-    i14: 204
-    i15: 181
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

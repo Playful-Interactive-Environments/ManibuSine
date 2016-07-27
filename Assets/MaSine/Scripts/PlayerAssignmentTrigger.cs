@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class PlayerAssignmentTrigger : NetworkBehaviour
+public class PlayerAssignmentTrigger : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
