@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PublicPlayer : NetworkBehaviour {
-    private const float updateRate = 0.491f;
+    private const float updateRate = 0.1f;
     private float currentUpdate = 0;
-    private float lerpSpeed = 1;
-    private bool doPosUpdateClient = false;
+    private float lerpSpeed = 5;
+    //private bool doPosUpdateClient = false;
 
     private MeshRenderer mr;
 
@@ -25,12 +25,12 @@ public class PublicPlayer : NetworkBehaviour {
         }
     }
 
-    [SyncVar(hook = "FirstPositionDataX")]
-    private float x;
-    [SyncVar]
-    private float y;
-    [SyncVar]
-    private float z;
+    //[SyncVar(hook = "FirstPositionDataX")]
+    //private float x;
+    //[SyncVar]
+    //private float y;
+    //[SyncVar]
+    //private float z;
     [SyncVar]
     public uint id;
 
@@ -57,26 +57,26 @@ public class PublicPlayer : NetworkBehaviour {
         DestroyImmediate(body);
     }
 
-    private void FirstPositionDataX(float val) {
-        x = val;
+    //private void FirstPositionDataX(float val) {
+    //    x = val;
 
-        // do not update before first values has been sent from server
-        if (!doPosUpdateClient)
-            doPosUpdateClient = true;
-    }
+    //    // do not update before first values has been sent from server
+    //    if (!doPosUpdateClient)
+    //        doPosUpdateClient = true;
+    //}
 
-    private void UpdatePosition() {
-        if (currentUpdate < updateRate) {
-            currentUpdate += Time.deltaTime;
-        }
-        else {
-            currentUpdate = 0;
-            // set sync vars
-            x = transform.position.x;
-            y = transform.position.y;
-            z = transform.position.z;
-        }
-    }
+    //private void UpdatePosition() {
+    //    if (currentUpdate < updateRate) {
+    //        currentUpdate += Time.deltaTime;
+    //    }
+    //    else {
+    //        currentUpdate = 0;
+    //        // set sync vars
+    //        x = transform.position.x;
+    //        y = transform.position.y;
+    //        z = transform.position.z;
+    //    }
+    //}
 
     private void UpdatePickUpPosition() {
         if (pickUp == null)
@@ -89,13 +89,14 @@ public class PublicPlayer : NetworkBehaviour {
                 return;
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
 
-            UpdatePosition();
-            UpdateLine();
+            //UpdatePosition();
+            //UpdateLine();
         }
         else { // movement on clint
-            if (doPosUpdateClient)
-                transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
+            //if (doPosUpdateClient)
+            //    transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
         }
+        UpdateLine();
     }
 
     [ClientRpc]
@@ -125,13 +126,14 @@ public class PublicPlayer : NetworkBehaviour {
         pickUp = p;
         p.Player = this;
 
+        //if (isServer)
+        //{
+        id = p.netId.Value;
         if (isServer)
-        {
-            id = p.netId.Value;
             RpcGetPickUp(p.netId.Value);
 
-            MakeLine();
-        }
+        MakeLine();
+        //}
     }
 
     void OnTriggerEnter(Collider other) {
@@ -183,6 +185,8 @@ public class PublicPlayer : NetworkBehaviour {
     {
         if (pickUp == null || lineRenderer == null)
             return;
+
+        print("HAS pickup " + pickUp);
         //LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
         lineRenderer.SetPosition(0, this.transform.position);
