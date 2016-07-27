@@ -166,7 +166,13 @@ public class SteeringStation : NetworkBehaviour {
     }
 
     void OnDestroy() {
-        if (!isServer)
-            FindObjectOfType<UI_Steering>().LogOfSteeringStation(this);
+        if (isServer)
+            return;
+
+        UI_Steering sui = FindObjectOfType<UI_Steering>();
+        if (sui == null)
+            return;
+
+        sui.LogOfSteeringStation(this);
     }
 }
