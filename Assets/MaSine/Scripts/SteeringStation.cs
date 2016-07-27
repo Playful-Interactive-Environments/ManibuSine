@@ -63,18 +63,12 @@ public class SteeringStation : NetworkBehaviour {
             //if (distance < 0)
             //    return;
 
-            if (isServer)
+            if (isServer || networkPlayer.clientType != ClientChooser.ClientType.VRClient)
                 return;
 
             // Send Cmd to server to move ship
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
             networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
-        }
-        
-
-        if(navigator != null)
-        {  
-            
         }
 	}
 
@@ -92,7 +86,6 @@ public class SteeringStation : NetworkBehaviour {
 
     private void CalculateSpeedInput()
     {
-        PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
         distance = (transform.InverseTransformPoint(navigator.position)).x;
 
