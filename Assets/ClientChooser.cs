@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class ClientChooser : MonoBehaviour {
+    private ClientChooser instance;
+    public ClientChooser Instance { get { return instance; } }
 
     public enum ClientType
     {
