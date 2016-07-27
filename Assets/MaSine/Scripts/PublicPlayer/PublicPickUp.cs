@@ -69,7 +69,8 @@ public class PublicPickUp : NetworkBehaviour {
         if (player == null || Vector3.Distance(transform.position, player.transform.position) < minDistance)
             return;
 
-        transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
+        transform.position = player.transform.position;
     }
 
 	void Update () {

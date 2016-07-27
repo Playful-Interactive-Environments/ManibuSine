@@ -58,27 +58,6 @@ public class PublicPlayer : NetworkBehaviour {
         }
     }
 
-    //private void FirstPositionDataX(float val) {
-    //    x = val;
-
-    //    // do not update before first values has been sent from server
-    //    if (!doPosUpdateClient)
-    //        doPosUpdateClient = true;
-    //}
-
-    //private void UpdatePosition() {
-    //    if (currentUpdate < updateRate) {
-    //        currentUpdate += Time.deltaTime;
-    //    }
-    //    else {
-    //        currentUpdate = 0;
-    //        // set sync vars
-    //        x = transform.position.x;
-    //        y = transform.position.y;
-    //        z = transform.position.z;
-    //    }
-    //}
-
     private void UpdatePickUpPosition() {
         if (pickUp == null)
             return;
@@ -89,15 +68,9 @@ public class PublicPlayer : NetworkBehaviour {
             if (controllingPlayer == null)
                 return;
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
+        }
 
-            //UpdatePosition();
-            //UpdateLine();
-        }
-        else { // movement on clint
-            //if (doPosUpdateClient)
-            //    transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), lerpSpeed * Time.deltaTime);
-        }
-        UpdateLine();
+        //UpdateLine();
     }
 
     [ClientRpc]
@@ -133,7 +106,7 @@ public class PublicPlayer : NetworkBehaviour {
         if (isServer)
             RpcGetPickUp(p.netId.Value);
 
-        MakeLine();
+        //MakeLine();
         //}
     }
 
@@ -159,38 +132,38 @@ public class PublicPlayer : NetworkBehaviour {
     public void PickedUp()
     {
         // delete line renderer
-        if (isServer)
-        {
-            LineRenderer lr = GetComponent<LineRenderer>();
+        //if (isServer)
+        //{
+        //    LineRenderer lr = GetComponent<LineRenderer>();
 
-            if (lr != null)
-                Destroy(lr);
-        }
+        //    if (lr != null)
+        //        Destroy(lr);
+        //}
     }
 
     // visualize connection
 
     public Color c1 = Color.yellow;
     public Color c2 = Color.red;
-    void MakeLine()
-    {
-        if (lineRenderer == null)
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
+    //void MakeLine()
+    //{
+    //    if (lineRenderer == null)
+    //        lineRenderer = gameObject.AddComponent<LineRenderer>();
 
-        lineRenderer.material = lineMaterial; //new Material(Shader.Find("Particles/Additive"));
-        lineRenderer.SetColors(c1, c2);
-        lineRenderer.SetWidth(0.5F, 0.2F);
-        lineRenderer.SetVertexCount(2);
-    }
-    void UpdateLine()
-    {
-        if (pickUp == null || lineRenderer == null)
-            return;
+    //    lineRenderer.material = lineMaterial; //new Material(Shader.Find("Particles/Additive"));
+    //    lineRenderer.SetColors(c1, c2);
+    //    lineRenderer.SetWidth(0.5F, 0.2F);
+    //    lineRenderer.SetVertexCount(2);
+    //}
+    //void UpdateLine()
+    //{
+    //    if (pickUp == null || lineRenderer == null)
+    //        return;
 
-        print("HAS pickup " + pickUp);
-        //LineRenderer lineRenderer = GetComponent<LineRenderer>();
+    //    print("HAS pickup " + pickUp);
+    //    //LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
-        lineRenderer.SetPosition(0, this.transform.position);
-        lineRenderer.SetPosition(1, pickUp.transform.position);
-    }
+    //    lineRenderer.SetPosition(0, this.transform.position);
+    //    lineRenderer.SetPosition(1, pickUp.transform.position);
+    //}
 }
