@@ -175,7 +175,13 @@ public class ServerManager : NetworkManager
             Admin.Instance.ButtonPlayerTwo.interactable = true;
         }
 
-        debugTextServer.text = "Client " + np.connectionToClient.connectionId + " connected.";
+        if (isServer)
+        {
+            debugTextServer.text = "Client " + np.connectionToClient.connectionId + " connected.";
+            print("Client " + np.connectionToClient.connectionId + " connected.");
+
+        }
+
     }
 
     public void UnregisterPlayer(NetworkPlayer np)
@@ -195,8 +201,13 @@ public class ServerManager : NetworkManager
         }
 
         playerClients.Remove(np);
+        if (isServer)
+        {
+            debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
+            print("Client " + np.connectionToClient.connectionId + " disconnected.");
 
-        debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
+        }
+            
     }
 
 	//public override void OnServerConnect(NetworkConnection conn)
