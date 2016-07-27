@@ -25,7 +25,7 @@ public class UI_PickUp : MonoBehaviour {
 
         
 
-        InvokeRepeating("GetSteeringManager", 0.5f, 0.5f);
+        InvokeRepeating("GetSteeringManager", 0.01f, 0.2f);
 	}
     void Update() {
         AnimateUI();

@@ -45,6 +45,10 @@ public class SteeringStation : NetworkBehaviour {
         source = GetComponent<AudioSource>();
         audioFader = GetComponent<AudioFader>();
         transform.rotation = Quaternion.Euler(0, startRotation, 0);
+
+        // assign at steering UI
+        if (!isServer)
+            FindObjectOfType<UI_Steering>().AssignSteeringStation(this);
     }
 
     // Update is called once per frame
@@ -159,5 +163,10 @@ public class SteeringStation : NetworkBehaviour {
     void MsgPlayerGone(Transform leavingPlayer)
     {
         PlayerLeftStation(leavingPlayer);
+    }
+
+    void OnDestroy() {
+        if (!isServer)
+            FindObjectOfType<UI_Steering>().LogOfSteeringStation(this);
     }
 }
