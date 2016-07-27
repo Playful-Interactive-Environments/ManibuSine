@@ -53,11 +53,9 @@ public class PublicPlayer : NetworkBehaviour {
         Rigidbody body = GetComponent<Rigidbody>();
         if (body == null)
             return;
-
-        //body.useGravity = false;
-
-        //        DestroyImmediate(body);
-
+        if (isClient) {
+            DestroyImmediate(body);
+        }
     }
 
     //private void FirstPositionDataX(float val) {
