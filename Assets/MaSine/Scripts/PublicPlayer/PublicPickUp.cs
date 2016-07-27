@@ -39,10 +39,10 @@ public class PublicPickUp : NetworkBehaviour {
         transform.parent = UniverseTransformer.Instance.transform;
     }
 
-    void OnMouseDown()
+    void OnMouseDrag()
     {
         print(this.GetType().Name + ": " + "simulate pick");
-        PickIt();
+        //PickIt();
     }
 
     public void PickIt()
@@ -66,7 +66,7 @@ public class PublicPickUp : NetworkBehaviour {
     }
 
     private void PositionUpdate() {
-        if (player == null || Vector3.Distance(transform.position, player.transform.position) < minDistance)
+        if (player == null)
             return;
 
         //transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);

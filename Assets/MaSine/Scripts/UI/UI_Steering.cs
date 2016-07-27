@@ -29,6 +29,11 @@ public class UI_Steering : MonoBehaviour {
         steeringManager = station;
         station.EnteredSteering += OnEnteredSteering;
         station.ExitedSteering += OnExitedSteering;
+
+        // also tell pickupRay
+        PickUpRay ray = GetComponentInChildren<PickUpRay>();
+        if (ray == null)
+            return;
     }
     public void LogOfSteeringStation(SteeringStation station) {
         station.EnteredSteering -= OnEnteredSteering;

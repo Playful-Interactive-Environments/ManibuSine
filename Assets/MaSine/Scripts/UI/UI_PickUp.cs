@@ -23,8 +23,6 @@ public class UI_PickUp : MonoBehaviour {
         PickUpRay.GotTarget += OnGotTarget;
         PickUpRay.LostTarget += OnLostTarget;
 
-        
-
         InvokeRepeating("GetSteeringManager", 0.01f, 0.2f);
 	}
     void Update() {
