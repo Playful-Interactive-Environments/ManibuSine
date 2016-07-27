@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class UI_PickUpProgressServer : MonoBehaviour {
+public class UI_PickUpProgressFloor : MonoBehaviour {
 
     private PickUpRay ray;
     private Image progressCircle;

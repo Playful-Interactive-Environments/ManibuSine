@@ -54,7 +54,10 @@ public class PublicPlayer : NetworkBehaviour {
         if (body == null)
             return;
 
-        DestroyImmediate(body);
+        //body.useGravity = false;
+
+        //        DestroyImmediate(body);
+
     }
 
     //private void FirstPositionDataX(float val) {
