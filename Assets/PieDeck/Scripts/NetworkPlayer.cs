@@ -322,7 +322,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         this.clientType = clientType;
 
-        print(this.clientType.ToString() + " has connected with ID " + this.connectionToClient.connectionId);
+        print(this.clientType.ToString() + " has connected with ID " + this.connectionToServer.connectionId);
 
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
@@ -357,12 +357,6 @@ public class NetworkPlayer : NetworkBehaviour
     {
         ShipCollider.ShipHit -= OnShipHit;
         
-    }
-
-    void OnDisconnectedFromServer()
-    {
-        if (isServer)
-            ServerManager.Instance.UnregisterPlayer(this);
     }
 
     void LocalPlayerMovement()

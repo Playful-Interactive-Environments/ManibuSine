@@ -158,6 +158,11 @@ public class ServerManager : NetworkManager
 		debugTextServer.text = "Server Stopped";
 	}
 
+    void OnPlayerDisconnected(NetworkPlayer player)
+    {
+        UnregisterPlayer(player);
+    }
+
     public void RegisterPlayer(NetworkPlayer np)
     {
         if (np.clientType != ClientChooser.ClientType.VRClient)
