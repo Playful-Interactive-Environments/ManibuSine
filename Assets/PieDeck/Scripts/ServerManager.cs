@@ -25,6 +25,8 @@ public class ServerManager : NetworkManager
     public GameObject PublicPlayer;
     public GameObject PickUp;
 
+    private List<NetworkPlayer> playerClients = new List<NetworkPlayer>();
+
     void Awake()
 	{
 		//Check if instance already exists
@@ -155,50 +157,81 @@ public class ServerManager : NetworkManager
 		base.OnStopServer();
 		debugTextServer.text = "Server Stopped";
 	}
-	public override void OnServerConnect(NetworkConnection conn)
-	{
-        print("New connection with id: " + conn.connectionId);
-        NetworkPlayer[] nps = FindObjectsOfType<NetworkPlayer>();
-        foreach(NetworkPlayer np in nps)
+
+    public void RegisterPlayer(NetworkPlayer np)
+    {
+        if (np.clientType != ClientChooser.ClientType.VRClient)
+            return;
+
+        playerClients.Add(np);
+        if (playerClients.IndexOf(np) == 0)
         {
-            print("Networkplayer " + np.gameObject.name + " is connected");
-            if(np.connectionToServer == conn)
-            {
-                print("Networkplayer " + np.gameObject.name + " connected");
-            }
+            Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);
+            Admin.Instance.ButtonPlayerOne.interactable = true;
+        }
+        else if (playerClients.IndexOf(np) == 1)
+        {
+            Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(true);
+            Admin.Instance.ButtonPlayerTwo.interactable = true;
         }
 
-		if (conn.connectionId == 1)
-		{
-			Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);
-			Admin.Instance.ButtonPlayerOne.interactable = true;
-        }
-		if (conn.connectionId == 2)
-		{
+        debugTextServer.text = "Client " + np.connectionToClient.connectionId + " connected.";
+    }
 
-			Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(true);
-			Admin.Instance.ButtonPlayerTwo.interactable = true;
-		}
-		debugTextServer.text = "Client " + conn.connectionId + " connected.";
+    public void UnregisterPlayer(NetworkPlayer np)
+    {
+        if (np.clientType != ClientChooser.ClientType.VRClient)
+            return;
+
+        if (playerClients.IndexOf(np) == 0)
+        {
+            Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
+            Admin.Instance.ButtonPlayerOne.interactable = true;
+        }
+        else if (playerClients.IndexOf(np) == 1)
+        {
+            Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
+            Admin.Instance.ButtonPlayerTwo.interactable = true;
+        }
+
+        playerClients.Remove(np);
+
+        debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
+    }
+
+	//public override void OnServerConnect(NetworkConnection conn)
+	//{
+	//	if (conn.connectionId == 1)
+	//	{
+	//		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);
+	//		Admin.Instance.ButtonPlayerOne.interactable = true;
+ //       }
+	//	if (conn.connectionId == 2)
+	//	{
+
+	//		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(true);
+	//		Admin.Instance.ButtonPlayerTwo.interactable = true;
+	//	}
+	//	debugTextServer.text = "Client " + conn.connectionId + " connected.";
 		
-	}
+	//}
 
-	public override void OnServerDisconnect(NetworkConnection conn)
-	{
-		base.OnServerDisconnect(conn);
-		if (conn.connectionId == 1)
-		{
-			Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
-			Admin.Instance.ButtonPlayerOne.interactable = true;
+	//public override void OnServerDisconnect(NetworkConnection conn)
+	//{
+	//	base.OnServerDisconnect(conn);
+	//	if (conn.connectionId == 1)
+	//	{
+	//		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
+	//		Admin.Instance.ButtonPlayerOne.interactable = true;
             
-		}
-		if (conn.connectionId == 2)
-		{
-			Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
-			Admin.Instance.ButtonPlayerTwo.interactable = true;
-		}
-		debugTextServer.text = "Client " + conn.connectionId + " disconnected.";
-	}
+	//	}
+	//	if (conn.connectionId == 2)
+	//	{
+	//		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
+	//		Admin.Instance.ButtonPlayerTwo.interactable = true;
+	//	}
+	//	debugTextServer.text = "Client " + conn.connectionId + " disconnected.";
+	//}
 
 	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 	{

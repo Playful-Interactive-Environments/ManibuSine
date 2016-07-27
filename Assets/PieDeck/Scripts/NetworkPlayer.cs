@@ -55,7 +55,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     void Start () {
 
-        print("Networkplayer " + this.gameObject.name + " has connection ID " + this.connectionToServer.connectionId);
+        
         // Initialize movement lerp values
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
@@ -91,6 +91,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         { // SERVER
+
             laserTrackingActivated = false;
 
             currentHP = ShipManager.Instance.currentHP;
@@ -305,6 +306,11 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdSetClientType(ClientChooser.ClientType clientType)
     {
         this.clientType = clientType;
+
+        print(this.clientType.ToString() + " has connected with ID " + this.connectionToClient.connectionId);
+
+        ServerManager.Instance.RegisterPlayer(this);
+
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
             SetToRenderClientFloor();
@@ -325,7 +331,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         // Do stuff to make it a render client
         
-        print("This client is set to : " + this.clientType.ToString());
+        print( this.gameObject.name +" is set to : " + this.clientType.ToString());
         Collider[] npCollider = GetComponents<Collider>();
         Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
         foreach (Collider coll in npCollider)
@@ -347,6 +353,8 @@ public class NetworkPlayer : NetworkBehaviour
     void OnDestroy()
     {
         ShipCollider.ShipHit -= OnShipHit;
+        if (isServer)
+            ServerManager.Instance.UnregisterPlayer(this);
     }
 
     void LocalPlayerMovement()
