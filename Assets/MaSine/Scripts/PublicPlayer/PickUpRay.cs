@@ -61,6 +61,7 @@ public class PickUpRay : MonoBehaviour {
                 return;
             hadTarget = true;
             currentPickUpTime = 0;
+            pickUpProgress01 = 0;
 
             if (GotTarget != null)
                 GotTarget(playerID, this);

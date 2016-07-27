@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class UI_PickUpProgressServer : MonoBehaviour {
+public class UI_PickUpProgressFloor : MonoBehaviour {
 
     private PickUpRay ray;
     private Image progressCircle;
@@ -11,18 +11,9 @@ public class UI_PickUpProgressServer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         progressCircle = GetComponentInChildren<Image>();
-        //InvokeRepeating("GetSteeringManager", 0.5f, 0.5f);
         PickUpRay.GotTarget += OnGotTarget;
         PickUpRay.LostTarget += OnLostTarget;
     }
-    //void GetSteeringManager() {
-    //    SteeringStation steeringManager = FindObjectOfType<SteeringStation>();
-    //    if (steeringManager != null) {
-    //        CancelInvoke("GetSteeringManager");
-    //        PickUpRay.GotTarget += OnGotTarget;
-    //        PickUpRay.LostTarget += OnLostTarget;
-    //    }
-    //}
 
     // Update is called once per frame
     void Update() {

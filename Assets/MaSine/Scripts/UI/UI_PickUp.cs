@@ -23,8 +23,6 @@ public class UI_PickUp : MonoBehaviour {
         PickUpRay.GotTarget += OnGotTarget;
         PickUpRay.LostTarget += OnLostTarget;
 
-        
-
         InvokeRepeating("GetSteeringManager", 0.01f, 0.2f);
 	}
     void Update() {
@@ -57,6 +55,7 @@ public class UI_PickUp : MonoBehaviour {
         //targetingUI.ShowGraphics(true);
 
         progressCircle.enabled = true;
+        progressCircle.fillAmount = 0;
 
         this.ray = ray;
         this.pickUp = ray.pickUp.transform;

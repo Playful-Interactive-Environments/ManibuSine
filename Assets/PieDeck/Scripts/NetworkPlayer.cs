@@ -85,7 +85,9 @@ public class NetworkPlayer : NetworkBehaviour
                 VR_CylinderBorder cylinder = GetComponentInChildren<VR_CylinderBorder>();
                 if (cylinder != null)
                     cylinder.AssignPlayer(this);
+            }
 
+            if (isClient) {
                 PickUpRay.PickedItem += OnPickedItem;
             }
         }
