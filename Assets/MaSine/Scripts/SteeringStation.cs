@@ -70,12 +70,6 @@ public class SteeringStation : NetworkBehaviour {
             networkPlayer.CmdMoveShipForward(speedInput * speedMulti);
             networkPlayer.CmdRotateShipCW(angleInput * angleMulti);
         }
-        
-
-        if(navigator != null)
-        {  
-            
-        }
 	}
 
     private void CalculateAngleInput()
@@ -92,7 +86,6 @@ public class SteeringStation : NetworkBehaviour {
 
     private void CalculateSpeedInput()
     {
-        PlayerAssignmentTrigger trigger = GetComponentInChildren<PlayerAssignmentTrigger>();
         //UI VARIABLES
         distance = (transform.InverseTransformPoint(navigator.position)).x;
 
