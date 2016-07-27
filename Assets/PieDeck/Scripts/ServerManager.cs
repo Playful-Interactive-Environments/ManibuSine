@@ -157,9 +157,11 @@ public class ServerManager : NetworkManager
 	}
 	public override void OnServerConnect(NetworkConnection conn)
 	{
+        print("New connection with id: " + conn.connectionId);
         NetworkPlayer[] nps = FindObjectsOfType<NetworkPlayer>();
         foreach(NetworkPlayer np in nps)
         {
+            print("Networkplayer " + np.gameObject.name + " is connected");
             if(np.connectionToServer == conn)
             {
                 print("Networkplayer " + np.gameObject.name + " connected");
