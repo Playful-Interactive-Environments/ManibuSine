@@ -91,9 +91,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         { // SERVER
-            print(this.clientType.ToString() + " has connected with ID " + this.connectionToClient.connectionId);
-
-            ServerManager.Instance.RegisterPlayer(this);
 
             laserTrackingActivated = false;
 
@@ -309,6 +306,11 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdSetClientType(ClientChooser.ClientType clientType)
     {
         this.clientType = clientType;
+
+        print(this.clientType.ToString() + " has connected with ID " + this.connectionToClient.connectionId);
+
+        ServerManager.Instance.RegisterPlayer(this);
+
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
             SetToRenderClientFloor();
@@ -329,7 +331,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         // Do stuff to make it a render client
         
-        print("This client is set to : " + this.clientType.ToString());
+        print( this.gameObject.name +" is set to : " + this.clientType.ToString());
         Collider[] npCollider = GetComponents<Collider>();
         Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
         foreach (Collider coll in npCollider)
