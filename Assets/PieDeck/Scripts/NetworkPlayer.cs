@@ -229,7 +229,25 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
     }
-    
+
+    [Command]
+    public void CmdDestroyPickUp(GameObject obj) {
+
+        PublicPickUp pickUp = obj.GetComponent<PublicPickUp>();
+        if (pickUp == null)
+            return;
+
+        pickUp.Player.PickedUp();
+
+        StartCoroutine(DestroyDelayed(obj, 3));
+    }
+
+    private IEnumerator DestroyDelayed(GameObject obj, float delay) {
+        yield return new WaitForSeconds(delay);
+
+        NetworkServer.Destroy(obj);
+    }
+
     [Command]
     public void CmdDestroyEntity(GameObject obj)
     {
