@@ -63,7 +63,7 @@ public class SteeringStation : NetworkBehaviour {
             //if (distance < 0)
             //    return;
 
-            if (isServer)
+            if (isServer || networkPlayer.clientType != ClientChooser.ClientType.VRClient)
                 return;
 
             // Send Cmd to server to move ship
