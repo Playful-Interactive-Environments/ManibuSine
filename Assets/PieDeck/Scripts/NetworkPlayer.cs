@@ -85,7 +85,9 @@ public class NetworkPlayer : NetworkBehaviour
                 VR_CylinderBorder cylinder = GetComponentInChildren<VR_CylinderBorder>();
                 if (cylinder != null)
                     cylinder.AssignPlayer(this);
+            }
 
+            if (isClient) {
                 PickUpRay.PickedItem += OnPickedItem;
             }
         }
@@ -322,7 +324,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         this.clientType = clientType;
 
-        print(this.clientType.ToString() + " has connected with ID " + this.connectionToServer.connectionId);
+        //print(this.clientType.ToString() + " has connected with ID " + this.connectionToServer.connectionId);
 
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {

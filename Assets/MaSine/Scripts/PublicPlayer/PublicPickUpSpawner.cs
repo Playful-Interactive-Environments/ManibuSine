@@ -9,7 +9,7 @@ public class PublicPickUpSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        InvokeRepeating("SpawnPU", 0.5f, 10);
+        InvokeRepeating("SpawnPU", 0.1f, 20);
 	}
 	
 	// Update is called once per frame

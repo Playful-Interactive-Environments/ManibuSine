@@ -55,6 +55,7 @@ public class UI_PickUp : MonoBehaviour {
         //targetingUI.ShowGraphics(true);
 
         progressCircle.enabled = true;
+        progressCircle.fillAmount = 0;
 
         this.ray = ray;
         this.pickUp = ray.pickUp.transform;
