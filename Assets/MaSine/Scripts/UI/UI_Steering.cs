@@ -23,18 +23,7 @@ public class UI_Steering : MonoBehaviour {
 
     void Start() {
         InitializeUI();
-        //InvokeRepeating("GetSteeringManager", 0.5f, 0.5f);
     }
-    //void GetSteeringManager()
-    //{
-    //    steeringManager = FindObjectOfType<SteeringStation>();
-    //    if (steeringManager != null)
-    //    {
-    //        CancelInvoke("GetSteeringManager");
-    //        steeringManager.EnteredSteering += OnEnteredSteering;
-    //        steeringManager.ExitedSteering += OnExitedSteering;
-    //    }
-    //}
 
     public void AssignSteeringStation(SteeringStation station) {
         steeringManager = station;
@@ -56,9 +45,6 @@ public class UI_Steering : MonoBehaviour {
         if (Mathf.Abs(steeringManager.angleInput) > 90) {
             return;
         }
-
-        // better not
-        //ShowGraphics(true);
 
         AnimateArrow();
         AnimateSpeed();
