@@ -3,30 +3,29 @@ using System.Collections;
 
 public class PlayerAssignmentStation : MonoBehaviour {
     
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-    void MsgPlayerAssigned(Transform other)
+    void OnTriggerEnter(Collider other)
     {
-        Admin.Instance.CurrentTrackedPlayer = other.gameObject;
-        if(Admin.Instance.PlayerOne == null)
+        if(other.tag == "Player")
         {
-            Admin.Instance.ChoosePlayerOne();
+            Admin.Instance.CurrentTrackedPlayer = other.gameObject;
+            if (Admin.Instance.PlayerOne == null)
+            {
+                Admin.Instance.ChoosePlayerOne();
+            }
+            else if (Admin.Instance.PlayerTwo == null)
+            {
+                Admin.Instance.ChoosePlayerTwo();
+            }
         }
-        else if(Admin.Instance.PlayerTwo == null)
-        {
-            Admin.Instance.ChoosePlayerTwo();
-        }
+        
     }
 
 
-    void MsgPlayerGone(Transform other)
+    void OnTriggerExit(Collider other)
     {
-        Admin.Instance.CurrentTrackedPlayer = null;
+        if (other.tag == "Player")
+        {
+            Admin.Instance.CurrentTrackedPlayer = null;
+        }
     }
 }
