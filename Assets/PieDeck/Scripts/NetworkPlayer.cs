@@ -305,7 +305,7 @@ public class NetworkPlayer : NetworkBehaviour
         this.clientType = clientType;
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
-            SetToRenderClient();
+            SetToRenderClientFloor();
         }
 
     }
@@ -315,15 +315,15 @@ public class NetworkPlayer : NetworkBehaviour
         this.clientType = clientType;
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
-            SetToRenderClient();
+            SetToRenderClientFloor();
         }
     }
 
-    public void SetToRenderClient()
+    public void SetToRenderClientFloor()
     {
         // Do stuff to make it a render client
         
-        print("This client is set to render client");
+        print("This client is set to : " + this.clientType.ToString());
         Collider[] npCollider = GetComponents<Collider>();
         Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
         foreach (Collider coll in npCollider)
