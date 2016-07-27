@@ -158,11 +158,6 @@ public class ServerManager : NetworkManager
 		debugTextServer.text = "Server Stopped";
 	}
 
-    void OnPlayerDisconnected(NetworkPlayer player)
-    {
-        UnregisterPlayer(player);
-    }
-
     public void RegisterPlayer(NetworkPlayer np)
     {
         if (np.clientType != ClientChooser.ClientType.VRClient)
@@ -180,7 +175,13 @@ public class ServerManager : NetworkManager
             Admin.Instance.ButtonPlayerTwo.interactable = true;
         }
 
-        debugTextServer.text = "Client " + np.connectionToClient.connectionId + " connected.";
+        if (isServer)
+        {
+            debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
+            print("Client " + np.connectionToClient.connectionId + " disconnected.");
+
+        }
+
     }
 
     public void UnregisterPlayer(NetworkPlayer np)
@@ -200,8 +201,13 @@ public class ServerManager : NetworkManager
         }
 
         playerClients.Remove(np);
+        if (isServer)
+        {
+            debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
+            print("Client " + np.connectionToClient.connectionId + " disconnected.");
 
-        debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
+        }
+            
     }
 
 	//public override void OnServerConnect(NetworkConnection conn)

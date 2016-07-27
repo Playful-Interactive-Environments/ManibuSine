@@ -356,7 +356,9 @@ public class NetworkPlayer : NetworkBehaviour
     void OnDestroy()
     {
         ShipCollider.ShipHit -= OnShipHit;
-        
+        if (isServer)
+            print("NetworkDisconnection");
+            ServerManager.Instance.UnregisterPlayer(this);
     }
 
     void LocalPlayerMovement()
