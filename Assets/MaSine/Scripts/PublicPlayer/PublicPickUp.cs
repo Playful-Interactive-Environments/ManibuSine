@@ -70,7 +70,7 @@ public class PublicPickUp : NetworkBehaviour {
             return;
 
         //transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
-        transform.position = player.transform.position;
+        transform.position = player.transform.position + Vector3.down;
     }
 
 	void Update () {
