@@ -54,6 +54,8 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     void Start () {
+
+        print("Networkplayer " + this.gameObject.name + " has connection ID " + this.connectionToServer.connectionId);
         // Initialize movement lerp values
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
