@@ -149,7 +149,8 @@ public class NetworkPlayer : NetworkBehaviour
                 wpl.SyncLevelProgress(levelState);
             }
             transform.FindChild("Body").gameObject.SetActive(false);
-            GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
+            if(GameObject.Find("Information") != null)
+                GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
         }
 
         
