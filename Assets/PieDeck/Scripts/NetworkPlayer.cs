@@ -262,6 +262,7 @@ public class NetworkPlayer : NetworkBehaviour
             return;
 
         pu.PickIt();
+        RpcPickIt(netId);
         StartCoroutine(DestroyDelayed(pu.gameObject, 3));
     }
     [ClientRpc]

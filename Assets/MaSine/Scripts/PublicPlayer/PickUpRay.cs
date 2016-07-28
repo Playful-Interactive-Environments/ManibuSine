@@ -53,18 +53,13 @@ public class PickUpRay : MonoBehaviour {
         // start with pick up process
         if (pickUp == null)
         {
-            print("1. new one");
             pickUp = navigatorHead.pickUp.GetComponent<PublicPickUp>();
             if (pickUp == null)
                 return;
 
-            print("2. got one");
-
             // not carried by a player
             if (pickUp.Player == null)
                 return;
-
-            print("3. has carrier");
 
             hadTarget = true;
             currentPickUpTime = 0;

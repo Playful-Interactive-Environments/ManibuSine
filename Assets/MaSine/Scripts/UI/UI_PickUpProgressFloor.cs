@@ -21,7 +21,7 @@ public class UI_PickUpProgressFloor : MonoBehaviour {
     }
 
     private void UpdateCircle() {
-        if (ray != null) {
+        if (ray != null && ray.pickUp != null) {
             progressCircle.transform.position = ray.pickUp.transform.position;
             progressCircle.fillAmount = ray.PickUpProgress01;
         }
