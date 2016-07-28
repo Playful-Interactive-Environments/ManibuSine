@@ -8,16 +8,26 @@ public class PlayerAssignmentStation : MonoBehaviour {
         if(other.tag == "Player")
         {
             Admin.Instance.CurrentTrackedPlayer = other.gameObject;
-            if (Admin.Instance.PlayerOne == null)
+            if (Admin.Instance.PlayerOne != null)
             {
-                Admin.Instance.ChoosePlayerOne();
+                if(Admin.Instance.PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer == null)
+                {
+                    Admin.Instance.ChoosePlayerOne();
+                    return;
+                }
             }
-            else if (Admin.Instance.PlayerTwo == null)
+            if (Admin.Instance.PlayerTwo != null)
             {
-                Admin.Instance.ChoosePlayerTwo();
+                if (Admin.Instance.PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer == null)
+                {
+                    if (Admin.Instance.CurrentTrackedPlayer != Admin.Instance.PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer)
+                    {
+                        Admin.Instance.ChoosePlayerTwo();
+                        return;
+                    }
+                }
             }
         }
-        
     }
 
 

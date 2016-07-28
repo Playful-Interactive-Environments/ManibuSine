@@ -160,7 +160,7 @@ public class ServerManager : NetworkManager
 
     public void RegisterPlayer(NetworkPlayer np)
     {
-        if (np.clientType != ClientChooser.ClientType.VRClient)
+        if (np.clientType != ClientChooser.ClientType.VRClient || playerClients.Contains(np))
             return;
 
         playerClients.Add(np);
