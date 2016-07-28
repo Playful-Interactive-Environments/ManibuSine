@@ -69,7 +69,7 @@ public class NetworkPlayer : NetworkBehaviour
         print("Syncvar Client Type set to: " + clientType.ToString());
         SetClientType(clientType);
         print(this.ToString());
-        
+
     }
 
     void Start () {
@@ -118,7 +118,6 @@ public class NetworkPlayer : NetworkBehaviour
         else
         { // SERVER
             print("NetworkPlayer started");
-            ServerManager.Instance.RegisterPlayer(this);
 
             laserTrackingActivated = false;
 
@@ -357,13 +356,21 @@ public class NetworkPlayer : NetworkBehaviour
         {
             SetToRenderClient();
         }
+        else if (clientType == ClientChooser.ClientType.RenderClientWall)
+        {
+            SetToRenderClient();
+        }
+        else if (clientType == ClientChooser.ClientType.VRClient)
+        {
+            SetToVRClient();
+        }
 
     }
 
     public void SetClientType(ClientChooser.ClientType clientType)
     {
         this.clientType = clientType;
-       
+
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
             SetToRenderClient();
