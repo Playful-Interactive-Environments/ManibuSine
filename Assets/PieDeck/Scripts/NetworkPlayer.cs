@@ -12,7 +12,7 @@ public class NetworkPlayer : NetworkBehaviour
     public int levelState = 0;
     [SyncVar]
     public int currentHP;
-    [SyncVar]
+    [SyncVar(hook = "OnSetClientType")]
     public ClientChooser.ClientType clientType;
 
     public GameObject head;
@@ -53,9 +53,26 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    void Start () {
+    override public string ToString()
+    {
+        string s = "";
+        s += "**********" + this.gameObject.name + "**********\n";
+        s += "Client type: " +this.clientType + "\n";
+        s += "is LocalPlayer: " + isLocalPlayer + "\n";
+        s += "is Client: " + isClient + "\n";
+        s += "--------------------------------------------------\n";
 
-        
+        return s;
+    }
+    void OnSetClientType(ClientChooser.ClientType clientType)
+    {
+        print("Syncvar Client Type set to: " + clientType.ToString());
+        print(this.ToString());
+        SetClientType(clientType);
+    }
+
+    void Start () {
+        print(this.ToString());
         // Initialize movement lerp values
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
@@ -68,15 +85,16 @@ public class NetworkPlayer : NetworkBehaviour
                 _vrControllerScript = _vrController.GetComponent<OVRPlayerController>();
                 _chaperoneScript = _vrController.GetComponent<Chaperone>();
             }
-			
+
 
             // assign to VR borders
-            if (isLocalPlayer)  
+            if (isLocalPlayer)
             {
                 ClientChooser cc = FindObjectOfType<ClientChooser>();
-                if (cc != null) {
+                if (cc != null)
+                {
                     CmdSetClientType(cc.clientType);
-                    SetClientType(cc.clientType);
+                    //SetClientType(cc.clientType);
                 }
 
                 // assign to border box
@@ -85,7 +103,11 @@ public class NetworkPlayer : NetworkBehaviour
                 VR_CylinderBorder cylinder = GetComponentInChildren<VR_CylinderBorder>();
                 if (cylinder != null)
                     cylinder.AssignPlayer(this);
-            }
+            }//}else if (isClient)
+            //{
+            //    print("non local client as non local player, type: " + clientType);
+            //    SetClientType(clientType);
+            //}
 
             if (isClient) {
                 PickUpRay.PickedItem += OnPickedItem;
@@ -130,10 +152,7 @@ public class NetworkPlayer : NetworkBehaviour
             GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
         }
 
-        if(!isLocalPlayer && isClient)
-        {
-            SetClientType(this.clientType);
-        }
+        
 	}
 
     private void OnPickedItem(int picked)
