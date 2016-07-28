@@ -372,6 +372,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     void OnDestroy()
     {
+        if (isClient)
+            PickUpRay.PickedItem -= OnPickedItem;
+
         ShipCollider.ShipHit -= OnShipHit;
         if (isServer)
             print("NetworkDisconnection");
