@@ -91,7 +91,7 @@ public class PickUpRay : MonoBehaviour {
 
                     //pickUp.PickIt();
                     
-                    steeringStation.NetworkPlayer.CmdPickItUp(pickUp.gameObject);
+                    steeringStation.NetworkPlayer.CmdPickItUp(pickUp.netId.Value);
                 }
             }
         }
