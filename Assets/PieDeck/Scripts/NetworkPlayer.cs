@@ -118,6 +118,8 @@ public class NetworkPlayer : NetworkBehaviour
         else
         { // SERVER
 
+            ServerManager.Instance.RegisterPlayer(this);
+
             laserTrackingActivated = false;
 
             currentHP = ShipManager.Instance.currentHP;
