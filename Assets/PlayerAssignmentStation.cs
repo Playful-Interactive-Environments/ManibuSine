@@ -12,22 +12,25 @@ public class PlayerAssignmentStation : MonoBehaviour {
             {
                 if(Admin.Instance.PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer == null)
                 {
-                    Admin.Instance.ChoosePlayerOne();
-                    return;
+                    if(Admin.Instance.CurrentTrackedPlayer != Admin.Instance.PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer)
+                    {
+                        Admin.Instance.ChoosePlayerOne();
+                        return;
+                    }  
                 }
-                
             }
             if (Admin.Instance.PlayerTwo != null)
             {
                 if (Admin.Instance.PlayerTwo.GetComponent<NetworkPlayer>().ControllingPlayer == null)
                 {
-                    Admin.Instance.ChoosePlayerTwo();
-                    return;
+                    if (Admin.Instance.CurrentTrackedPlayer != Admin.Instance.PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer)
+                    {
+                        Admin.Instance.ChoosePlayerTwo();
+                        return;
+                    }
                 }
-                
             }
         }
-        
     }
 
 
