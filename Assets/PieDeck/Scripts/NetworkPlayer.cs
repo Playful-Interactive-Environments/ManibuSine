@@ -67,12 +67,13 @@ public class NetworkPlayer : NetworkBehaviour
     void OnSetClientType(ClientChooser.ClientType clientType)
     {
         print("Syncvar Client Type set to: " + clientType.ToString());
-        print(this.ToString());
         SetClientType(clientType);
+        print(this.ToString());
+        
     }
 
     void Start () {
-        print(this.ToString());
+        //print("Start Networkplayer, type: " + clientType.ToString());
         // Initialize movement lerp values
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
@@ -93,8 +94,9 @@ public class NetworkPlayer : NetworkBehaviour
                 ClientChooser cc = FindObjectOfType<ClientChooser>();
                 if (cc != null)
                 {
+                    print(cc);
                     CmdSetClientType(cc.clientType);
-                    //SetClientType(cc.clientType);
+                    SetClientType(cc.clientType);
                 }
 
                 // assign to border box
@@ -351,7 +353,7 @@ public class NetworkPlayer : NetworkBehaviour
 
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
-            SetToRenderClientFloor();
+            SetToRenderClient();
         }
 
     }
@@ -359,16 +361,23 @@ public class NetworkPlayer : NetworkBehaviour
     public void SetClientType(ClientChooser.ClientType clientType)
     {
         this.clientType = clientType;
-
-        //print(this.clientType.ToString() + " has connected with ID " + this.connectionToServer.connectionId);
-
+       
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
-            SetToRenderClientFloor();
+            SetToRenderClient();
         }
+        else if (clientType == ClientChooser.ClientType.RenderClientWall)
+        {
+            SetToRenderClient();
+        }
+        else if (clientType == ClientChooser.ClientType.VRClient)
+        {
+            SetToVRClient();
+        }
+
     }
 
-    public void SetToRenderClientFloor()
+    public void SetToRenderClient()
     {
         // Do stuff to make it a render client
         
@@ -385,6 +394,22 @@ public class NetworkPlayer : NetworkBehaviour
                 childTransform.gameObject.SetActive(false);
         }
         
+    }
+
+    public void SetToVRClient()
+    {
+        print(this.gameObject.name + " is set to : " + this.clientType.ToString());
+        Collider[] npCollider = GetComponents<Collider>();
+        Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
+        foreach (Collider coll in npCollider)
+        {
+            coll.enabled = true;
+        }
+        foreach (Transform childTransform in npChildTransforms)
+        {
+            if (this.transform != childTransform)
+                childTransform.gameObject.SetActive(true);
+        }
     }
 
 
