@@ -39,12 +39,6 @@ public class PublicPickUp : NetworkBehaviour {
         transform.parent = UniverseTransformer.Instance.transform;
     }
 
-    void OnMouseDrag()
-    {
-        print(this.GetType().Name + ": " + "simulate pick");
-        //PickIt();
-    }
-
     public void PickIt()
     {
         if (player == null)

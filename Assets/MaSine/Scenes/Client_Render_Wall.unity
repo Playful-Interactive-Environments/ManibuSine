@@ -851,34 +851,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11463268, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22406728, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.17364784
-      objectReference: {fileID: 0}
-    - target: {fileID: 22406728, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -0.98480785
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463268, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
-      propertyPath: m_Color.a
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 22406728, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 22406728, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 22406728, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
   m_IsPrefabParent: 0
