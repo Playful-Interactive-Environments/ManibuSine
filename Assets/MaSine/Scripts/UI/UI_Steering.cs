@@ -60,7 +60,8 @@ public class UI_Steering : MonoBehaviour {
         float ls = lerpSpeed * Time.deltaTime;
 
         rectArrow.localRotation = Quaternion.Lerp(rectArrow.localRotation, Quaternion.Euler(0, 0, steeringManager.angleInput), ls);
-        angletext.text = (rectArrow.localRotation.eulerAngles.z.ToString() + "°");
+        float a = rectArrow.localRotation.eulerAngles.z;
+        angletext.text = ((a > 180.0f) ? (360 - a + "°") : (a + "°"));
     }
 
     private void AnimateSpeed()
