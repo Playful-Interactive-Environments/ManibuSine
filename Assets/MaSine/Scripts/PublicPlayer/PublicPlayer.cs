@@ -6,7 +6,6 @@ public class PublicPlayer : NetworkBehaviour {
     private const float updateRate = 0.1f;
     private float currentUpdate = 0;
     private float lerpSpeed = 5;
-    //private bool doPosUpdateClient = false;
 
     private MeshRenderer mr;
 
@@ -25,12 +24,6 @@ public class PublicPlayer : NetworkBehaviour {
         }
     }
 
-    //[SyncVar(hook = "FirstPositionDataX")]
-    //private float x;
-    //[SyncVar]
-    //private float y;
-    //[SyncVar]
-    //private float z;
     [SyncVar]
     public uint id;
 
@@ -69,8 +62,6 @@ public class PublicPlayer : NetworkBehaviour {
                 return;
             transform.position = new Vector3(controllingPlayer.transform.position.x, transform.position.y, controllingPlayer.transform.position.z);
         }
-
-        //UpdateLine();
     }
 
     [ClientRpc]
@@ -100,14 +91,9 @@ public class PublicPlayer : NetworkBehaviour {
         pickUp = p;
         p.Player = this;
 
-        //if (isServer)
-        //{
         id = p.netId.Value;
         if (isServer)
             RpcGetPickUp(p.netId.Value);
-
-        //MakeLine();
-        //}
     }
 
     void OnTriggerEnter(Collider other) {
@@ -128,42 +114,4 @@ public class PublicPlayer : NetworkBehaviour {
 
         pickUp.Player = null;
     }
-
-    public void PickedUp()
-    {
-        // delete line renderer
-        //if (isServer)
-        //{
-        //    LineRenderer lr = GetComponent<LineRenderer>();
-
-        //    if (lr != null)
-        //        Destroy(lr);
-        //}
-    }
-
-    // visualize connection
-
-    public Color c1 = Color.yellow;
-    public Color c2 = Color.red;
-    //void MakeLine()
-    //{
-    //    if (lineRenderer == null)
-    //        lineRenderer = gameObject.AddComponent<LineRenderer>();
-
-    //    lineRenderer.material = lineMaterial; //new Material(Shader.Find("Particles/Additive"));
-    //    lineRenderer.SetColors(c1, c2);
-    //    lineRenderer.SetWidth(0.5F, 0.2F);
-    //    lineRenderer.SetVertexCount(2);
-    //}
-    //void UpdateLine()
-    //{
-    //    if (pickUp == null || lineRenderer == null)
-    //        return;
-
-    //    print("HAS pickup " + pickUp);
-    //    //LineRenderer lineRenderer = GetComponent<LineRenderer>();
-
-    //    lineRenderer.SetPosition(0, this.transform.position);
-    //    lineRenderer.SetPosition(1, pickUp.transform.position);
-    //}
 }

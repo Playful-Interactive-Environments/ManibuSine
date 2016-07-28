@@ -138,7 +138,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnPickedItem(int picked)
     {
-        if (isServer)
+        if (!isLocalPlayer)
             return;
 
         CmdSetItems(picked);
@@ -236,15 +236,21 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdDestroyPickUp(GameObject obj) {
+    public void CmdPickItUp(GameObject obj) {
 
         PublicPickUp pickUp = obj.GetComponent<PublicPickUp>();
         if (pickUp == null)
             return;
 
-        pickUp.Player.PickedUp();
+        pickUp.PickIt();
+        
 
         StartCoroutine(DestroyDelayed(obj, 3));
+    }
+
+    [ClientRpc]
+    private void RpcPickIt() {
+
     }
 
     private IEnumerator DestroyDelayed(GameObject obj, float delay) {

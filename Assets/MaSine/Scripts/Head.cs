@@ -52,7 +52,7 @@ public class Head : MonoBehaviour
     void Update()
     {
         // only network player
-        if (!player.isLocalPlayer)
+        if (player.isServer)//if (!player.isLocalPlayer)
             return;
 
         ray.origin = transform.position;

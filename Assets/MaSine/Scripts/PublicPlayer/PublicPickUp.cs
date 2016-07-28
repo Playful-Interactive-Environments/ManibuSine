@@ -55,8 +55,6 @@ public class PublicPickUp : NetworkBehaviour {
 
         Instantiate(pickUpParticles, transform.position, Quaternion.identity);
 
-        player.PickedUp();
-
         // disable rendering and collider (trigger)
         meshRenderer.enabled = false;
         Collider[] col = GetComponentsInChildren<Collider>();
