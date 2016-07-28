@@ -117,7 +117,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         { // SERVER
-
+            print("NetworkPlayer started");
             ServerManager.Instance.RegisterPlayer(this);
 
             laserTrackingActivated = false;

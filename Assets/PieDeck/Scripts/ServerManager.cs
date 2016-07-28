@@ -25,7 +25,7 @@ public class ServerManager : NetworkManager
     public GameObject PublicPlayer;
     public GameObject PickUp;
 
-    private List<NetworkPlayer> playerClients = new List<NetworkPlayer>();
+    public List<NetworkPlayer> playerClients = new List<NetworkPlayer>();
 
     void Awake()
 	{
