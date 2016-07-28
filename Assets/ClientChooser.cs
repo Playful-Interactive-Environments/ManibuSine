@@ -6,6 +6,7 @@ public class ClientChooser : MonoBehaviour {
     public ClientChooser Instance { get { return instance; } }
 
     public enum ClientType {
+        NotSet,
         RenderClientFloor,
         RenderClientWall,
         VRClient

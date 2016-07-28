@@ -353,7 +353,7 @@ public class NetworkPlayer : NetworkBehaviour
 
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
-            SetToRenderClientFloor();
+            SetToRenderClient();
         }
 
     }
@@ -364,15 +364,20 @@ public class NetworkPlayer : NetworkBehaviour
        
         if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
-            SetToRenderClientFloor();
+            SetToRenderClient();
         }
-        else if(clientType == ClientChooser.ClientType.VRClient)
+        else if (clientType == ClientChooser.ClientType.RenderClientWall)
         {
+            SetToRenderClient();
+        }
+        else if (clientType == ClientChooser.ClientType.VRClient)
+        {
+            SetToVRClient();
+        }
 
-        }SetToVRClient();
     }
 
-    public void SetToRenderClientFloor()
+    public void SetToRenderClient()
     {
         // Do stuff to make it a render client
         
