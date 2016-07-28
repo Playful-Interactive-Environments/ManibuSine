@@ -256,21 +256,30 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdPickItUp(GameObject obj) {
-
-        PublicPickUp pickUp = obj.GetComponent<PublicPickUp>();
-        if (pickUp == null)
+    public void CmdPickItUp(uint netId) {
+        PublicPickUp pu = GetItemPerNetId(netId);
+        if (pu == null)
             return;
 
-        pickUp.PickIt();
-        
+        pu.PickIt();
+        StartCoroutine(DestroyDelayed(pu.gameObject, 3));
+    }
+    [ClientRpc]
+    private void RpcPickIt(uint netId) {
+        PublicPickUp pu = GetItemPerNetId(netId);
+        if (pu == null)
+            return;
 
-        StartCoroutine(DestroyDelayed(obj, 3));
+        pu.PickIt();
     }
 
-    [ClientRpc]
-    private void RpcPickIt() {
+    private PublicPickUp GetItemPerNetId(uint netId) {
+        PublicPickUp[] pickUps = FindObjectsOfType<PublicPickUp>();
+        foreach (PublicPickUp item in pickUps)
+            if (item.netId.Value == netId)
+                return item;
 
+        return null;
     }
 
     private IEnumerator DestroyDelayed(GameObject obj, float delay) {
