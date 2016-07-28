@@ -53,12 +53,19 @@ public class PickUpRay : MonoBehaviour {
         // start with pick up process
         if (pickUp == null)
         {
+            print("1. new one");
             pickUp = navigatorHead.pickUp.GetComponent<PublicPickUp>();
             if (pickUp == null)
                 return;
+
+            print("2. got one");
+
             // not carried by a player
             if (pickUp.Player == null)
                 return;
+
+            print("3. has carrier");
+
             hadTarget = true;
             currentPickUpTime = 0;
             pickUpProgress01 = 0;
@@ -82,9 +89,9 @@ public class PickUpRay : MonoBehaviour {
                     if (LostTarget != null)
                         LostTarget(playerID);
 
-                    pickUp.PickIt();
-
-                    steeringStation.NetworkPlayer.CmdDestroyPickUp(pickUp.gameObject);
+                    //pickUp.PickIt();
+                    
+                    steeringStation.NetworkPlayer.CmdPickItUp(pickUp.gameObject);
                 }
             }
         }

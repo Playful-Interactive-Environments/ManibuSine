@@ -55,8 +55,6 @@ public class PublicPickUp : NetworkBehaviour {
 
         Instantiate(pickUpParticles, transform.position, Quaternion.identity);
 
-        player.PickedUp();
-
         // disable rendering and collider (trigger)
         meshRenderer.enabled = false;
         Collider[] col = GetComponentsInChildren<Collider>();
@@ -70,7 +68,7 @@ public class PublicPickUp : NetworkBehaviour {
             return;
 
         //transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
-        transform.position = player.transform.position;
+        transform.position = player.transform.position + Vector3.down;
     }
 
 	void Update () {
