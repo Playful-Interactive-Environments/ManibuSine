@@ -47,8 +47,10 @@ public class PublicPickUp : NetworkBehaviour {
 
     public void PickIt()
     {
+        print("1. PICK");
         if (player == null)
             return;
+        print("2. OK");
 
         audio.pitch = Random.Range(0.9f, 1.1f);
         audio.Play();
