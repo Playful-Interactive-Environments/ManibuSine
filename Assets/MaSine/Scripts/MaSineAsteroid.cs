@@ -26,11 +26,8 @@ public class MaSineAsteroid : NetworkBehaviour {
         transform.parent = UniverseTransformer.Instance.transform;
 
         audioManager = AudioManager.Instance;
-        if (isServer) {
-            rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f;
-        }
 
-        
+        rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f; 
 	}
 
     void OnTriggerEnter(Collider other)
