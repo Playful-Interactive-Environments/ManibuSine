@@ -72,13 +72,6 @@ public class NetworkPlayer : NetworkBehaviour
 
     }
 
-    void StartClient()
-    {
-        print("StartClient Client Type set to: " + clientType.ToString());
-        SetClientType(clientType);
-        print(this.ToString());
-    }
-
     void Start () {
         //print("Start Networkplayer, type: " + clientType.ToString());
         // Initialize movement lerp values
@@ -112,11 +105,12 @@ public class NetworkPlayer : NetworkBehaviour
                 VR_CylinderBorder cylinder = GetComponentInChildren<VR_CylinderBorder>();
                 if (cylinder != null)
                     cylinder.AssignPlayer(this);
-            }//}else if (isClient)
-            //{
-            //    print("non local client as non local player, type: " + clientType);
-            //    SetClientType(clientType);
-            //}
+            }else if (isClient)
+            {
+                print("Start Client Type set to: " + clientType.ToString());
+                CmdSetClientType(clientType);
+                print(this.ToString());
+            }
 
             if (isClient) {
                 PickUpRay.PickedItem += OnPickedItem;
