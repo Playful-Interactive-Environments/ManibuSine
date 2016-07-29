@@ -66,10 +66,11 @@ public class MaSineAsteroid : NetworkBehaviour {
             transform.localScale = new Vector3(transform.localScale.x + growSpeed, transform.localScale.y + growSpeed, transform.localScale.z + growSpeed);
         }
 
+        graphicTransform.Rotate(rotSpeed, rotSpeed, rotSpeed);
+
         if (isServer)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            graphicTransform.Rotate(rotSpeed, rotSpeed, rotSpeed);
 
             if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
             {
