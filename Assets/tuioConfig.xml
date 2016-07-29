@@ -9,13 +9,13 @@
 		<ConfigNode name="targetResolutionX">
 			<!-- in cm -->
       <!-- 545 in PIE -->
-			<Value>1600</Value>
+			<Value>545</Value>
 
 		</ConfigNode>
 		<ConfigNode name="targetResolutionY">
 			<!-- in cm -->
       <!-- 510 in PIE -->
-			<Value>1600</Value>
+			<Value>510</Value>
 		</ConfigNode>
 		<ConfigNode name="stageX">
 			<!-- horizontal in centimeter -->
