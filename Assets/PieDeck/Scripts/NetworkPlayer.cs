@@ -108,7 +108,7 @@ public class NetworkPlayer : NetworkBehaviour
             }else if (isClient)
             {
                 print("Start Client Type set to: " + clientType.ToString());
-                CmdSetClientType(clientType);
+                SetClientType(clientType);
                 print(this.ToString());
             }
 
