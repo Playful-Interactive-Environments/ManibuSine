@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UI_HeasUpCompas : MonoBehaviour {
 
-    private float height = 1.0f;
+    private float height = 0.55f;
 
     private Transform playerTransform;
     private ShipManager ship;
