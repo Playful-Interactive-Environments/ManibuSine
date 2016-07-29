@@ -72,6 +72,13 @@ public class NetworkPlayer : NetworkBehaviour
 
     }
 
+    void StartClient()
+    {
+        print("StartClient Client Type set to: " + clientType.ToString());
+        SetClientType(clientType);
+        print(this.ToString());
+    }
+
     void Start () {
         //print("Start Networkplayer, type: " + clientType.ToString());
         // Initialize movement lerp values
