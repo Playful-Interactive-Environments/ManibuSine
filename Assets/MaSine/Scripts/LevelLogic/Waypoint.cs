@@ -43,7 +43,6 @@ public class Waypoint : MonoBehaviour
         }
         else if (waypoint.GetID() == triggerID)
         {
-
             DisableWaypoint();
         }
     }
