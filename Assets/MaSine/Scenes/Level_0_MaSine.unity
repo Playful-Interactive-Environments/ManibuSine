@@ -709,6 +709,14 @@ Prefab:
       propertyPath: pointAt
       value: 
       objectReference: {fileID: 1635452639}
+    - target: {fileID: 22430656, guid: 28ddf4f0a23e07346afb0534128c4c32, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22430656, guid: 28ddf4f0a23e07346afb0534128c4c32, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -128
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28ddf4f0a23e07346afb0534128c4c32, type: 2}
   m_IsPrefabParent: 0
@@ -883,6 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6645832cc418ba4ca77aa0b1b53c781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToDisable: []
   maxHP: 6
   currentHP: 0
 --- !u!1 &1190071740

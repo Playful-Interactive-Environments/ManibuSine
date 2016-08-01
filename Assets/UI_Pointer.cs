@@ -7,11 +7,11 @@ public class UI_Pointer : MonoBehaviour {
 
     private SteeringStation steeringManager;
     private Transform pointAt;
-    private RectTransform rectTrans;
+    private Transform parentTrans;
     private Image arrow;
 
 	void Start () {
-        rectTrans = GetComponent<RectTransform>();
+        parentTrans = GetComponentInParent<Camera>().transform;
         arrow = GetComponentInChildren<Image>();
 
         WaypointLevel.NextWaypoint += OnGetNextWaypoint;
@@ -20,22 +20,38 @@ public class UI_Pointer : MonoBehaviour {
     private void OnGetNextWaypoint(IEventTrigger waypoint) {
         pointAt = waypoint.GetTransform();
     }
-
+    Vector3 dir, final;
+    float dotProd, a;
     void Update () {
         if (pointAt == null)
             return;
-        Vector3 dir = (pointAt.position - rectTrans.position).normalized;
-        Vector3 final = dir - rectTrans.forward;
+        /*Vector3*/ dir = (pointAt.position - parentTrans.position).normalized;
+        /*Vector3*/ final = (dir - parentTrans.forward).normalized;
 
-        float dotProd = Vector3.Dot(dir, final);
+        //final = new Vector3(final.x, final.y, final.z);
+        /*float*/ dotProd = Vector3.Dot(dir, final);
 
-        if (dotProd > 1.9f || dotProd < 0.22f)
-            arrow.enabled = false;
-        else
-            arrow.enabled = true;
+        //if (dotProd > 1.9f || dotProd < 0.22f)
+        //    arrow.enabled = false;
+        //else
+        //    arrow.enabled = true;
 
-        float a = (Mathf.Atan2(final.z, final.y)) * Mathf.Rad2Deg;
-        rectTrans.localRotation = Quaternion.Euler(0,0,a);
+
+        /*float*/ a = (Mathf.Atan2(final.y, final.x)) * Mathf.Rad2Deg;
+        //if (a <)
+
+        //print("fin " + final);
+        //print("dot " + dotProd);
+        print("ang " + a);
+
+        transform.localRotation = Quaternion.Euler(0,0,a - 90);
+    }
+
+    void OnDrawGizmos() {
+        if (parentTrans == null)
+            return;
+
+        Debug.DrawRay(parentTrans.position, final * 10, Color.yellow);
     }
 
     void OnDestroy() {
