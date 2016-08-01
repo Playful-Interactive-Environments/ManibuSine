@@ -130,6 +130,8 @@ public class CanonManager : NetworkBehaviour
 
         if (gunnerHead != null) gunnerHead.target = null;
 
+        PlayerExitCannon();
+        
         // HUD
         if (!isServer)
             UI_HeadUpText.DisplayText(UI_HeadUpText.DisplayArea.TopRight,
@@ -137,6 +139,21 @@ public class CanonManager : NetworkBehaviour
                                        UI_HeadUpText.TextSize.small,
                                        "exit cannon",
                                        2);
+    }
+
+    private void PlayerExitCannon() {
+        // reset targeting time
+        targetedTime = 0.0f;
+        // lost target
+        if (hasTarget) {
+            hasTarget = false;
+            if (LostTarget != null)
+                LostTarget(this.netId.Value);
+        }
+
+        // stop targeting sound
+        if (asource.isPlaying)
+            asource.Stop();
     }
 
     void Update()
@@ -198,20 +215,7 @@ public class CanonManager : NetworkBehaviour
         }
         else
         {
-            // reset targeting time
-            targetedTime = 0.0f;
-
-            // lost target
-            if (hasTarget)
-            {
-                hasTarget = false;
-                if (LostTarget != null)
-                    LostTarget(this.netId.Value);
-            }
-
-            // stop targeting sound
-            if (asource.isPlaying)
-                asource.Stop();
+            PlayerExitCannon();
         }
     }
 
