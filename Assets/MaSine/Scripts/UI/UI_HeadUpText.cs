@@ -84,7 +84,7 @@ public class UI_HeadUpText : MonoBehaviour {
         }
         else // game lost
         {
-            //DisplayText(DisplayArea.Middle, GameColor.Alert, TextSize.large, "the cargo has been destroyed.\ngame lost!", 2);
+            DisplayText(DisplayArea.Middle, GameColor.Alert, TextSize.large, "game over!");
             DisplayText(DisplayArea.BottomLeft, GameColor.Alert, TextSize.medium, "error code: " + RandomString(Random.Range(3, 6)) + "\nthe cargo has been destroyed.\ngame lost!");
         }
     }
