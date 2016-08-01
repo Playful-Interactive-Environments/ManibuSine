@@ -8,7 +8,6 @@ public class WaypointLevel : MonoBehaviour {
     [SerializeField]
     public EventTrigger[] eventTriggers;
 
-    public int state;
     private float gameStartsInXSeconds = 2f;
 
 
@@ -72,7 +71,6 @@ public class WaypointLevel : MonoBehaviour {
 
     public void SyncLevelProgress(int currentLevelState)
     {
-        state = currentLevelState;
         StartCoroutine(SyncDelayed(currentLevelState));
     }
 
@@ -81,7 +79,9 @@ public class WaypointLevel : MonoBehaviour {
         yield return 0;
         for (int i = 0; i <= currentLevelState; i++)
         {
-            NextWaypoint(eventTriggers[i]);
+            print("sync i " + i);
+            if (NextWaypoint != null)
+                NextWaypoint(eventTriggers[i]);
         }
     }
 
