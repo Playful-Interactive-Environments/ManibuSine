@@ -8,7 +8,7 @@ public class WaypointLevel : MonoBehaviour {
     [SerializeField]
     public EventTrigger[] eventTriggers;
 
-    private float gameStartsInXSeconds = 2f;
+    private float gameStartsInXSeconds = 0f;
 
     public int state;
 
@@ -81,7 +81,9 @@ public class WaypointLevel : MonoBehaviour {
         state = currentLevelState;
         for (int i = 0; i <= currentLevelState; i++)
         {
-            print("sync i " + i);
+            if (i - 1 >= 0)
+                eventTriggers[i-1].ShipEntered();
+
             if (NextWaypoint != null)
                 NextWaypoint(eventTriggers[i]);
         }
