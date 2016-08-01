@@ -10,7 +10,7 @@ public class NetworkPlayer : NetworkBehaviour
     private float headTilt;
     [SyncVar]
     public int levelState = 0;
-    [SyncVar]
+    //[SyncVar]
     public int currentHP;
     [SyncVar(hook = "OnSetClientType")]
     public ClientChooser.ClientType clientType;

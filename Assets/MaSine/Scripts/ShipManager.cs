@@ -32,7 +32,8 @@ public class ShipManager : MonoBehaviour {
 
     public void SetHP(int hp)
     {
-        currentHP = hp;
+        if (!godMode)
+            currentHP = hp;
 
         if (currentHP <= 0)
             if (GameOver != null)
