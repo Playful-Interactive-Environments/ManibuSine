@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class ShipManager : MonoBehaviour {
 
@@ -9,7 +8,6 @@ public class ShipManager : MonoBehaviour {
     /// > 0 means game won
     /// </summary>
     public static event ShipDelegate GameOver;
-    public List<GameObject> objectsToDisable;
 
     private static ShipManager instance;
     public static ShipManager Instance
@@ -23,8 +21,6 @@ public class ShipManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
-        GameOver += OnGameOver;
-        objectsToDisable = new List<GameObject>();
     }
 
 	// Use this for initialization
@@ -40,13 +36,5 @@ public class ShipManager : MonoBehaviour {
         if (currentHP <= 0)
             if (GameOver != null)
                 GameOver(0);
-    }
-
-    public void OnGameOver(int i)
-    {
-        foreach(GameObject go in objectsToDisable)
-        {
-            go.SetActive(false);
-        }
     }
 }
