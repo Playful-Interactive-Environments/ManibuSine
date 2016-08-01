@@ -454,6 +454,8 @@ public class NetworkPlayer : NetworkBehaviour
             PickUpRay.PickedItem -= OnPickedItem;
 
         ShipCollider.ShipHit -= OnShipHit;
+
+        EventTrigger.ShipEnteredEvent -= OnShipEnteredEvent;
     }
 
     void LocalPlayerMovement()
