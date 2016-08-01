@@ -8,15 +8,13 @@ public class WaypointLevel : MonoBehaviour {
     [SerializeField]
     public EventTrigger[] eventTriggers;
 
-    private float gameStartsInXSeconds = 3;
+    private float gameStartsInXSeconds = 2f;
 
 
 	// Use this for initialization
 	void Start () {
         ShipManager.GameOver += OnGameOver;
         eventTriggers = GetComponentsInChildren<EventTrigger>();
-
-
 
         EventTrigger.ShipEnteredEvent += ShipEnteredWaypoint;
         EventTrigger.ShipLeftEvent += ShipLeftWaypoint;

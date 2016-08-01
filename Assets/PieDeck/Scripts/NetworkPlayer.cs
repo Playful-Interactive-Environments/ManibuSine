@@ -146,12 +146,14 @@ public class NetworkPlayer : NetworkBehaviour
                 item.enabled = false;
             }
 
-            EventTrigger.ShipEnteredEvent += ShipEnteredEvent;
-            WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
-            if (wpl != null)
-            {
-                wpl.SyncLevelProgress(levelState);
-            }
+            EventTrigger.ShipEnteredEvent += OnShipEnteredEvent;
+            //WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+            //if (wpl != null)
+            //{
+            //    print("state " + levelState);
+            //    wpl.SyncLevelProgress(levelState);
+            //}
+
             transform.FindChild("Body").gameObject.SetActive(false);
             if(GameObject.Find("Information") != null)
                 GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
@@ -184,7 +186,7 @@ public class NetworkPlayer : NetworkBehaviour
         RpcSetHP(currentHP);
     }
 
-    private void ShipEnteredEvent(IEventTrigger waypoint)
+    private void OnShipEnteredEvent(IEventTrigger waypoint)
     {
         if (!isLocalPlayer && waypoint != null)
             return;
@@ -243,6 +245,16 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdSetLevelState(int state)
     {
         levelState = state;
+
+        WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+        if (wpl != null)
+            wpl.SyncLevelProgress(levelState);
+    }
+    [ClientRpc]
+    private void RpcSyncLevel(int state) {
+        WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+        if (wpl != null)
+            wpl.SyncLevelProgress(state);
     }
 
     [Command]
