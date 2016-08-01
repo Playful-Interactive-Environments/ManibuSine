@@ -168,13 +168,13 @@ public class ServerManager : NetworkManager
         {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);
             Admin.Instance.ButtonPlayerOne.interactable = true;
-            print("activate button p1");
+            Admin.Instance.PlayerOne = np.gameObject;
         }
         else if (playerClients.IndexOf(np) == 1)
         {
             Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(true);
             Admin.Instance.ButtonPlayerTwo.interactable = true;
-            print("activate button p2");
+            Admin.Instance.PlayerTwo = np.gameObject;
         }
 
         if (isServer)
@@ -195,11 +195,13 @@ public class ServerManager : NetworkManager
         {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
             Admin.Instance.ButtonPlayerOne.interactable = true;
+            Admin.Instance.PlayerTwo = null;
         }
         else if (playerClients.IndexOf(np) == 1)
         {
             Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
             Admin.Instance.ButtonPlayerTwo.interactable = true;
+            Admin.Instance.PlayerTwo = null;
         }
 
         playerClients.Remove(np);
