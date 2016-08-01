@@ -428,16 +428,11 @@ public class NetworkPlayer : NetworkBehaviour
 
     void OnDestroy()
     {
-        print("NetworkDisconnection");
+        ServerManager.Instance.UnregisterPlayer(this);
         if (isClient)
             PickUpRay.PickedItem -= OnPickedItem;
 
         ShipCollider.ShipHit -= OnShipHit;
-        if (isServer)
-        {
-            ServerManager.Instance.UnregisterPlayer(this);
-        }
-            
     }
 
     void LocalPlayerMovement()
