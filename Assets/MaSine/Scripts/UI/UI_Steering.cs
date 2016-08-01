@@ -23,21 +23,23 @@ public class UI_Steering : MonoBehaviour {
 
     void Start() {
         InitializeUI();
+        SteeringStation.EnteredSteering += OnEnteredSteering;
+        SteeringStation.ExitedSteering += OnExitedSteering;
     }
 
     public void AssignSteeringStation(SteeringStation station) {
         steeringManager = station;
-        station.EnteredSteering += OnEnteredSteering;
-        station.ExitedSteering += OnExitedSteering;
+        //SteeringStation.EnteredSteering += OnEnteredSteering;
+        //SteeringStation.ExitedSteering += OnExitedSteering;
 
-        // also tell pickupRay
+        // also tell pick up Ray
         PickUpRay ray = GetComponentInChildren<PickUpRay>();
         if (ray == null)
             return;
     }
     public void LogOfSteeringStation(SteeringStation station) {
-        station.EnteredSteering -= OnEnteredSteering;
-        station.ExitedSteering -= OnExitedSteering;
+        //SteeringStation.EnteredSteering -= OnEnteredSteering;
+        //SteeringStation.ExitedSteering -= OnExitedSteering;
         steeringManager = null;
     }
 
@@ -76,6 +78,7 @@ public class UI_Steering : MonoBehaviour {
     }
     
     private void OnEnteredSteering(SteeringStation steeringStation) {
+        steeringManager = steeringStation;
         ShowGraphics(true);
     }
 
@@ -103,7 +106,7 @@ public class UI_Steering : MonoBehaviour {
     {
         if (steeringManager == null)
             return;
-        steeringManager.EnteredSteering -= OnEnteredSteering;
-        steeringManager.ExitedSteering -= OnExitedSteering;
+        SteeringStation.EnteredSteering -= OnEnteredSteering;
+        SteeringStation.ExitedSteering -= OnExitedSteering;
     }
 }

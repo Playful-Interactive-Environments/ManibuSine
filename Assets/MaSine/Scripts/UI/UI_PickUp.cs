@@ -14,7 +14,7 @@ public class UI_PickUp : MonoBehaviour {
 
     // public UI_Targeting targetingUI;
 
-	void Start () {
+    void Start() {
         targetingDot = transform.parent.GetComponentInChildren<UI_TargetingDot>();
         dotGfx = targetingDot.GetComponent<Image>();
 
@@ -23,8 +23,11 @@ public class UI_PickUp : MonoBehaviour {
         PickUpRay.GotTarget += OnGotTarget;
         PickUpRay.LostTarget += OnLostTarget;
 
-        InvokeRepeating("GetSteeringManager", 0.01f, 0.2f);
-	}
+        SteeringStation.EnteredSteering += OnEnterSteering;
+        SteeringStation.ExitedSteering += OnExitSteering;
+
+       // InvokeRepeating("GetSteeringManager", 0.01f, 0.2f);
+    }
     void Update() {
         AnimateUI();
     }
@@ -39,16 +42,16 @@ public class UI_PickUp : MonoBehaviour {
     }
 
 
-    void GetSteeringManager()
-    {
-        SteeringStation steeringManager = FindObjectOfType<SteeringStation>();
-        if (steeringManager != null)
-        {
-            CancelInvoke("GetSteeringManager");
-            steeringManager.EnteredSteering += OnEnterSteering;
-            steeringManager.ExitedSteering += OnExitSteering;
-        }
-    }
+    //void GetSteeringManager()
+    //{
+    //    SteeringStation steeringManager = FindObjectOfType<SteeringStation>();
+    //    if (steeringManager != null)
+    //    {
+    //        CancelInvoke("GetSteeringManager");
+    //        steeringManager.EnteredSteering += OnEnterSteering;
+    //        steeringManager.ExitedSteering += OnExitSteering;
+    //    }
+    //}
 
     private void OnGotTarget(int playerID, PickUpRay ray)
     {
@@ -88,5 +91,12 @@ public class UI_PickUp : MonoBehaviour {
         playerID = 0;
 
         dotGfx.enabled = false;
+    }
+
+    void OnDestroy() {
+        PickUpRay.GotTarget += OnGotTarget;
+        PickUpRay.LostTarget += OnLostTarget;
+        SteeringStation.EnteredSteering += OnEnterSteering;
+        SteeringStation.ExitedSteering += OnExitSteering;
     }
 }

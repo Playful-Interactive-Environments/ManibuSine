@@ -21,7 +21,7 @@ public class UI_HeasUpCompas : MonoBehaviour {
         mRenderer = GetComponentInChildren<MeshRenderer>();
         mRenderer.enabled = false;
         ship = FindObjectOfType<ShipManager>();
-        WaypointLevel.NextWaypoint += GetNextWaypoint;
+        WaypointLevel.NextWaypoint += OnGetNextWaypoint;
 
 	    htArrowBounce.Add("y", 5.2f);
 	    htArrowBounce.Add("time", 2.7f);
@@ -32,7 +32,7 @@ public class UI_HeasUpCompas : MonoBehaviour {
         iTween.MoveBy(gameObject, htArrowBounce);
     }
 
-    private void GetNextWaypoint(IEventTrigger waypoint)
+    private void OnGetNextWaypoint(IEventTrigger waypoint)
     {
         if (waypoint == null)
         {
@@ -65,6 +65,6 @@ public class UI_HeasUpCompas : MonoBehaviour {
 
     void OnDestroy()
     {
-        WaypointLevel.NextWaypoint -= GetNextWaypoint;
+        WaypointLevel.NextWaypoint -= OnGetNextWaypoint;
     }
 }

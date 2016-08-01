@@ -240,9 +240,9 @@ public class NetworkPlayer : NetworkBehaviour
     //----------------------------------------------------------------
 
     [Command]
-    public void CmdSetLevelState(int id)
+    public void CmdSetLevelState(int state)
     {
-        levelState = id;
+        levelState = state;
     }
 
     [Command]

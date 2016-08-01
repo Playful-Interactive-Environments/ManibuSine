@@ -6,8 +6,7 @@ using System;
 public class SteeringStation : NetworkBehaviour {
 
     public delegate void SteeringDelegateTransform(SteeringStation steeringStation);
-    public SteeringDelegateTransform  EnteredSteering, ExitedSteering;
-
+    public static SteeringDelegateTransform  EnteredSteering, ExitedSteering;
 
     private MeshRenderer mRenderer;
     private Color originalColor;
@@ -47,8 +46,10 @@ public class SteeringStation : NetworkBehaviour {
         transform.rotation = Quaternion.Euler(0, startRotation, 0);
 
         // assign at steering UI
-        if (!isServer)
-            FindObjectOfType<UI_Steering>().AssignSteeringStation(this);
+        if (!isServer) {
+            //FindObjectOfType<UI_Steering>().AssignSteeringStation(this);
+            //FindObjectOfType<UI_Pointer>().AssignSteeringStation(this);
+        }
     }
 
     // Update is called once per frame
@@ -162,10 +163,10 @@ public class SteeringStation : NetworkBehaviour {
         if (isServer)
             return;
 
-        UI_Steering sui = FindObjectOfType<UI_Steering>();
-        if (sui == null)
-            return;
+        //UI_Steering sui = FindObjectOfType<UI_Steering>();
+        //if (sui == null)
+        //    return;
 
-        sui.LogOfSteeringStation(this);
+        //sui.LogOfSteeringStation(this);
     }
 }

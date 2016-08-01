@@ -25,9 +25,9 @@ public class Head : MonoBehaviour
         CanonManager.EnteredCannon += OnEnterCannon;
         //CanonManager.ExitCannon += OnExitCannon;
 
-        SteeringStation steering = FindObjectOfType<SteeringStation>();
-        steering.EnteredSteering += OnEnteredSteering;
-        steering.ExitedSteering += OnExitSteering;
+        //SteeringStation steering = FindObjectOfType<SteeringStation>();
+        SteeringStation.EnteredSteering += OnEnteredSteering;
+        SteeringStation.ExitedSteering += OnExitSteering;
     }
 
 

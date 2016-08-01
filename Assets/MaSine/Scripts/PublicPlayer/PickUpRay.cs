@@ -28,8 +28,8 @@ public class PickUpRay : MonoBehaviour {
 	void Start () {
         steeringStation = GetComponentInParent<SteeringStation>();
 
-        steeringStation.EnteredSteering += OnEnteredSteering;
-        steeringStation.ExitedSteering += OnExitedSteering;
+        SteeringStation.EnteredSteering += OnEnteredSteering;
+        SteeringStation.ExitedSteering += OnExitedSteering;
 	}
 
     private bool hadTarget;
@@ -115,7 +115,7 @@ public class PickUpRay : MonoBehaviour {
     void OnDestroy()
     {
         // causes null reference
-        //steeringStation.EnteredSteering -= OnEnteredSteering;
-        //steeringStation.ExitedSteering -= OnExitedSteering;
+        SteeringStation.EnteredSteering -= OnEnteredSteering;
+        SteeringStation.ExitedSteering -= OnExitedSteering;
     }
 }

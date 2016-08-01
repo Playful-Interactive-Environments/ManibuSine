@@ -99,14 +99,17 @@ MonoBehaviour:
   ConnectionIP: 
   ConnectionPort: 7777
   ClientConnected: 0
-  debugTextClient: {fileID: 0}
   isServer: 0
   isClient: 0
   debugTextServer: {fileID: 0}
   SoundManager: {fileID: 167278, guid: 5590410499e38cc4ba1f9b6bfb95e2c4, type: 2}
-  CanonStation: {fileID: 0}
+  CanonStationLeft: {fileID: 0}
+  CanonStationRight: {fileID: 0}
   TargetTransform: {fileID: 0}
+  RotationTransform: {fileID: 0}
   SteeringStation: {fileID: 0}
+  PublicPlayer: {fileID: 0}
+  PickUp: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
