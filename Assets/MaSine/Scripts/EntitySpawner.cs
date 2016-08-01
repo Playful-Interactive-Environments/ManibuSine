@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
 public class EntitySpawner : MonoBehaviour {
 
@@ -10,8 +11,15 @@ public class EntitySpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        ShipManager.GameOver += OnGameOver;
         serverManager = FindObjectOfType<ServerManager>();
 	}
+
+    private void OnGameOver(int damage)
+    {
+        doSpawn = false;
+        this.enabled = false;
+    }
 
     public void SpawnAt(GameObject entityToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
     {

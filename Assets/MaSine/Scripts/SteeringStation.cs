@@ -39,6 +39,7 @@ public class SteeringStation : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
+        ShipManager.GameOver += OnGameOver;
         mRenderer = GetComponentInChildren<MeshRenderer>();
         originalColor = mRenderer.material.color;
         source = GetComponent<AudioSource>();
@@ -50,6 +51,15 @@ public class SteeringStation : NetworkBehaviour {
             //FindObjectOfType<UI_Steering>().AssignSteeringStation(this);
             //FindObjectOfType<UI_Pointer>().AssignSteeringStation(this);
         }
+    }
+
+    private void OnGameOver(int damage)
+    {
+        if (navigator != null)
+        {
+            MsgPlayerGone(navigator);
+        }
+        this.enabled = false;
     }
 
     // Update is called once per frame

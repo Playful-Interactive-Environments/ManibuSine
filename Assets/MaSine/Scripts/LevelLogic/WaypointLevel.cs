@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class WaypointLevel : MonoBehaviour {
     public static event ShipInteracted NextWaypoint;
@@ -12,6 +13,7 @@ public class WaypointLevel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        ShipManager.GameOver += OnGameOver;
         eventTriggers = GetComponentsInChildren<EventTrigger>();
 
         int id = 1;
@@ -25,6 +27,11 @@ public class WaypointLevel : MonoBehaviour {
 
         Invoke("StartGame", gameStartsInXSeconds);
 	}
+
+    private void OnGameOver(int damage)
+    {
+        this.enabled = false;
+    }
 
     void StartGame()
     {
