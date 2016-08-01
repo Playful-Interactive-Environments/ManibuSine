@@ -10,6 +10,7 @@ public class WaypointLevel : MonoBehaviour {
 
     private float gameStartsInXSeconds = 2f;
 
+    public int state;
 
 	// Use this for initialization
 	void Start () {
@@ -77,6 +78,7 @@ public class WaypointLevel : MonoBehaviour {
     IEnumerator SyncDelayed(int currentLevelState)
     {
         yield return 0;
+        state = currentLevelState;
         for (int i = 0; i <= currentLevelState; i++)
         {
             print("sync i " + i);

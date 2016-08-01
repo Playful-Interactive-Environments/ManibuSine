@@ -8,8 +8,8 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar]
     private float headTilt;
-    [SyncVar]
-    public int levelState = 0;
+    //[SyncVar]
+    //public int levelState = 0;
     //[SyncVar]
     public int currentHP;
     [SyncVar(hook = "OnSetClientType")]
@@ -130,7 +130,11 @@ public class NetworkPlayer : NetworkBehaviour
 
             UI_Ship.Instance.SetHP(currentHP);
 
+            WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+            if (wpl != null)
+                RpcSyncLevel(wpl.state);
             // initiate on restart/client reconnect
+
             RpcSetHP(currentHP);
             RpcSetItems(PickUpRay.pickUpsInUpCargo);
         }
