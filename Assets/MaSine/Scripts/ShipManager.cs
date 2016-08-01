@@ -17,6 +17,7 @@ public class ShipManager : MonoBehaviour {
 
     public int maxHP = 6;
     public int currentHP;
+    public bool godMode;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class ShipManager : MonoBehaviour {
 
         if (currentHP <= 0)
             if (GameOver != null)
-                GameOver(0);
+                if(!godMode)
+                    GameOver(0);
     }
 }

@@ -63,7 +63,17 @@ public class CanonManager : NetworkBehaviour
         transform.rotation = Quaternion.Euler(0, rotation, 0);
         CannonPivot.OutOfRange += OnWithinLimits;
         CannonPivot.InRange += OnOverLimits;
+        ShipManager.GameOver += OnGameOver;
 
+    }
+
+    private void OnGameOver(int damage)
+    {
+        if(gunner != null)
+        {
+            MsgPlayerGone(gunner);
+        }
+        this.enabled = false;
     }
 
     private void OnOverLimits(uint id)
