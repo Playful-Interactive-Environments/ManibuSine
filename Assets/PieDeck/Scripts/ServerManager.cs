@@ -168,11 +168,13 @@ public class ServerManager : NetworkManager
         {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);
             Admin.Instance.ButtonPlayerOne.interactable = true;
+            print("activate button p1");
         }
         else if (playerClients.IndexOf(np) == 1)
         {
             Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(true);
             Admin.Instance.ButtonPlayerTwo.interactable = true;
+            print("activate button p2");
         }
 
         if (isServer)
