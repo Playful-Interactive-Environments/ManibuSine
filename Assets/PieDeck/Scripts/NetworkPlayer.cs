@@ -124,6 +124,8 @@ public class NetworkPlayer : NetworkBehaviour
 
             currentHP = ShipManager.Instance.currentHP;
 
+            EventTrigger.ShipEnteredEvent += OnShipEnteredEvent;
+
             ShipCollider.ShipHit += OnShipHit;
 
             UI_Ship.Instance.SetHP(currentHP);
@@ -146,7 +148,6 @@ public class NetworkPlayer : NetworkBehaviour
                 item.enabled = false;
             }
 
-            EventTrigger.ShipEnteredEvent += OnShipEnteredEvent;
             //WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
             //if (wpl != null)
             //{
@@ -188,10 +189,14 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnShipEnteredEvent(IEventTrigger waypoint)
     {
-        if (!isLocalPlayer && waypoint != null)
+        if (!isServer && waypoint != null)
             return;
 
-        CmdSetLevelState(waypoint.GetID());
+        WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+        if (wpl != null)
+            wpl.SyncLevelProgress(waypoint.GetID());
+
+        RpcSyncLevel(waypoint.GetID());
     }
 
 	// Update is called once per frame
@@ -241,15 +246,15 @@ public class NetworkPlayer : NetworkBehaviour
     // STUFF WE DO - we are forced to :(
     //----------------------------------------------------------------
 
-    [Command]
-    public void CmdSetLevelState(int state)
-    {
-        levelState = state;
+    //[Command]
+    //public void CmdSetLevelState(int state)
+    //{
+    //    levelState = state;
 
-        WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
-        if (wpl != null)
-            wpl.SyncLevelProgress(levelState);
-    }
+    //    WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+    //    if (wpl != null)
+    //        wpl.SyncLevelProgress(levelState);
+    //}
     [ClientRpc]
     private void RpcSyncLevel(int state) {
         WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
