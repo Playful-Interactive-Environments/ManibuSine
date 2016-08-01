@@ -21,9 +21,7 @@ public class PlayerView : MonoBehaviour {
     public void ConnectPlayer(NetworkPlayer player)
     {
         this.player = player;
-        Camera cam = player.gameObject.GetComponentInChildren<Head>().gameObject.GetComponentInChildren<Camera>();
-        print("Head" + player.gameObject.GetComponentInChildren<Head>());
-        print("Head.Cam" + player.gameObject.GetComponentInChildren<Head>().gameObject.GetComponent<Camera>());
+        Camera cam = player.GetComponentInChildren<Camera>();
         cam.targetTexture = (RenderTexture)rawImage.texture;
         cam.enabled = true;
         rawImage.enabled = true;
@@ -32,7 +30,7 @@ public class PlayerView : MonoBehaviour {
 
     public void DisconnectPlayer()
     {
-        Camera cam = this.player.gameObject.GetComponentInChildren<Head>().gameObject.GetComponent<Camera>();
+        Camera cam = this.player.GetComponent<Camera>();
         cam.enabled = true;
         rawImage.enabled = true;
         this.player = null;
