@@ -220,15 +220,15 @@ public class NetworkPlayer : NetworkBehaviour
         {
             transform.name = "" + connectionToClient.connectionId;
             GetComponent<CapsuleCollider>().enabled = false;
-            if (connectionToClient.connectionId == 1)
-            {
-                Admin.Instance.PlayerOne = gameObject;
-            }
-            if (connectionToClient.connectionId == 2)
-            {
-                Admin.Instance.PlayerTwo = gameObject;
+            //if (connectionToClient.connectionId == 1)
+            //{
+            //    Admin.Instance.PlayerOne = gameObject;
+            //}
+            //if (connectionToClient.connectionId == 2)
+            //{
+            //    Admin.Instance.PlayerTwo = gameObject;
 
-            }
+            //}
             if (ControllingPlayer != null)
             {
                 transform.position = ControllingPlayer.transform.position;
