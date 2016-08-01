@@ -188,7 +188,7 @@ public class ServerManager : NetworkManager
 
     public void UnregisterPlayer(NetworkPlayer np)
     {
-        if (np.clientType != ClientChooser.ClientType.VRClient)
+        if (!playerClients.Contains(np))
             return;
 
         if (playerClients.IndexOf(np) == 0)
