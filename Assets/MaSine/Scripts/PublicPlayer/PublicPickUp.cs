@@ -4,7 +4,6 @@ using UnityEngine.Networking;
 
 public class PublicPickUp : NetworkBehaviour {
     private float lerpSpeed = 1;
-    private float minDistance = 1.3f;
     public GameObject pickUpParticles;
     public Material on, off;
     private MeshRenderer meshRenderer;
@@ -62,7 +61,7 @@ public class PublicPickUp : NetworkBehaviour {
             return;
 
         //transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
-        transform.position = player.transform.position + Vector3.down;
+        transform.position = player.transform.position + Vector3.down * 0.71f;
     }
 
 	void Update () {
