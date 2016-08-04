@@ -368,7 +368,9 @@ public class NetworkPlayer : NetworkBehaviour
 
         ServerManager.Instance.RegisterPlayer(this);
 
-        if (clientType == ClientChooser.ClientType.RenderClientFloor)
+        SetClientType(clientType);
+
+        /*if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
             SetToRenderClient();
         }
@@ -379,8 +381,7 @@ public class NetworkPlayer : NetworkBehaviour
         else if (clientType == ClientChooser.ClientType.VRClient)
         {
             SetToVRClient();
-        }
-
+        }*/
     }
 
     public void SetClientType(ClientChooser.ClientType clientType)
