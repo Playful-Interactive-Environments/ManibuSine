@@ -2187,6 +2187,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 196606, guid: cdcc1198116ddf1439107db29fe20b55, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cdcc1198116ddf1439107db29fe20b55, type: 2}
   m_IsPrefabParent: 0
@@ -2220,7 +2224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 6
   currentHP: 0
-  godMode: 1
+  godMode: 0
 --- !u!1 &1177988565
 GameObject:
   m_ObjectHideFlags: 0

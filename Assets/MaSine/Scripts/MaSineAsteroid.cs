@@ -7,6 +7,7 @@ public class MaSineAsteroid : NetworkBehaviour {
     NetworkPlayer player;
     Transform ship;
     public static float speed = 15.0f;
+    public bool isStatic = false;
     private AudioManager audioManager;
     private float rotSpeed;
     private float originalScale;
@@ -67,7 +68,8 @@ public class MaSineAsteroid : NetworkBehaviour {
 
         if (isServer)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            if (!isStatic)
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, ship.position) > destroyDistance)
             {
