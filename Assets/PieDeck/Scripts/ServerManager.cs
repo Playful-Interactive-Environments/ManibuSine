@@ -24,6 +24,7 @@ public class ServerManager : NetworkManager
     public GameObject SteeringStation;
     public GameObject PublicPlayer;
     public GameObject PickUp;
+    public GameObject Stage1_StaticAsteroids;
 
     public NetworkPlayer[] playerClients = new NetworkPlayer[2];// = new List<NetworkPlayer>();
 
@@ -126,6 +127,7 @@ public class ServerManager : NetworkManager
         SpawnEntityAtPrefabPosition(RotationTransform);
         SpawnEntityAtPrefabPosition(CanonStationLeft);
         SpawnEntityAtPrefabPosition(CanonStationRight);
+        SpawnEntityAtPrefabPosition(Stage1_StaticAsteroids);
     }
 
 	public void StopHosting()
@@ -159,6 +161,9 @@ public class ServerManager : NetworkManager
 
     public void RegisterPlayer(NetworkPlayer np)
     {
+        if (!isServer)
+            return;
+
         if (np.clientType != ClientChooser.ClientType.VRClient)
             return;
 
@@ -193,6 +198,9 @@ public class ServerManager : NetworkManager
 
     public void UnregisterPlayer(NetworkPlayer np)
     {
+        if (!isServer)
+            return;
+
         if (playerClients[0] == np) {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
             Admin.Instance.ButtonPlayerOne.interactable = true;
