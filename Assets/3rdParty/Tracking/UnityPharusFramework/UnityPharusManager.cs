@@ -283,7 +283,7 @@ namespace UnityPharus
 				if (configTrackLinkEnabled != null && Boolean.TryParse(configTrackLinkEnabled, out configTracklinkBool))
                 {
                     m_pharusSettings.TracklinkEnabled = configTracklinkBool;
-					Debug.Log(string.Format("XML config: TrackLink enabled: {0}", m_pharusSettings.TracklinkEnabled));
+					//Debug.Log(string.Format("XML config: TrackLink enabled: {0}", m_pharusSettings.TracklinkEnabled));
 				} else {
 					Debug.Log(string.Format("XML config: invalid TrackLink enabled config. Using settings from prefab instead: TrackLink enabled: {0}", m_pharusSettings.TracklinkEnabled));
 				}
@@ -301,7 +301,7 @@ namespace UnityPharus
 							m_pharusSettings.Protocol = PharusSettings.EProtocolType.UDP;
 							m_pharusSettings.UDP_Multicast_IP_Address = configUDPMulticastIP;
 							m_pharusSettings.UDP_Port = configUDPPortInt;
-							Debug.Log(string.Format("XML config: using UDP: {0}:{1}", configUDPMulticastIP, configUDPPort));
+							//Debug.Log(string.Format("XML config: using UDP: {0}:{1}", configUDPMulticastIP, configUDPPort));
 						} else {
 							Debug.LogWarning("XML config: invalid UDP config data");
 						}
@@ -334,7 +334,7 @@ namespace UnityPharus
 				{
 					m_pharusSettings.TargetScreenWidth = configResolutionIntX;
 					m_pharusSettings.TargetScreenHeight = configResolutionIntY;
-					Debug.Log(string.Format("XML config: new target resolution: {0}x{1}", m_pharusSettings.TargetScreenWidth, m_pharusSettings.TargetScreenHeight));
+					//Debug.Log(string.Format("XML config: new target resolution: {0}x{1}", m_pharusSettings.TargetScreenWidth, m_pharusSettings.TargetScreenHeight));
 				}
 				else
 				{
@@ -348,7 +348,7 @@ namespace UnityPharus
 				{
 					m_pharusSettings.StageX = configStageFloatX;
 					m_pharusSettings.StageY = configStageFloatY;
-					Debug.Log(string.Format("XML config: new stage size: {0}x{1}", m_pharusSettings.StageX, m_pharusSettings.StageY));
+					//Debug.Log(string.Format("XML config: new stage size: {0}x{1}", m_pharusSettings.StageX, m_pharusSettings.StageY));
 				}
 				else
 				{
@@ -364,7 +364,7 @@ namespace UnityPharus
 			
 			if (!m_pharusSettings.TracklinkEnabled) 
 			{
-				Debug.Log("Disable and Destroy UnityPharusManager");
+				//Debug.Log("Disable and Destroy UnityPharusManager");
 				this.enabled = false;
 				Destroy(this);
 				yield break;
