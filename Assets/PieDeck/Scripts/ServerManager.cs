@@ -46,7 +46,7 @@ public class ServerManager : NetworkManager
 		DontDestroyOnLoad(gameObject);
 
         //Register this script to delegates
-        WaypointLevel.Stage1Done += OnStage1Done;
+        Stage1_Logic.Stage1Done += OnStage1Done;
 	}
 
 	void Update()

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class Stage1_Logic : NetworkBehaviour {
-
+    public static event StageDone Stage1Done;
     public MaSineAsteroid[] asteroids;
 
 	void Start () {
@@ -21,6 +21,11 @@ public class Stage1_Logic : NetworkBehaviour {
                 destroyed++;
         }
 
-        print("Asteroids Left: " + (asteroids.Length - destroyed));
+        // fire stage 1 done event
+        if (destroyed == asteroids.Length) {
+            CancelInvoke("CheckAsteroids");
+            if (Stage1Done != null)
+                Stage1Done();
+        }
     }
 }
