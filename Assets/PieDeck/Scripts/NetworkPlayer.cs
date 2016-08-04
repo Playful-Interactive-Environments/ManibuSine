@@ -193,7 +193,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnShipEnteredEvent(IEventTrigger waypoint)
     {
-        if (!isServer || waypoint != null)
+        if (!isServer || waypoint == null)
             return;
 
         WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
