@@ -136,7 +136,7 @@ public class ServerManager : NetworkManager
         SpawnEntityAtPrefabPosition(RotationTransform);
         SpawnEntityAtPrefabPosition(CanonStationLeft);
         SpawnEntityAtPrefabPosition(CanonStationRight);
-        SpawnEntityAtPrefabPosition(Stage1_StaticAsteroids);
+        //SpawnEntityAtPrefabPosition(Stage1_StaticAsteroids);
     }
 
 	public void StopHosting()

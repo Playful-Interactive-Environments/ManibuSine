@@ -2,13 +2,13 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Stage1_Logic : NetworkBehaviour {
+public class Stage1_Logic : MonoBehaviour {
     public static event StageDone Stage1Done;
     public MaSineAsteroid[] asteroids;
 
 	void Start () {
-        if (!isServer)
-            return;
+        //if (!isServer)
+        //    return;
         asteroids = GetComponentsInChildren<MaSineAsteroid>();
 
         InvokeRepeating("CheckAsteroids", 0.23f, 0.23f);

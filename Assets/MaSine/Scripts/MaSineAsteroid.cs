@@ -34,7 +34,7 @@ public class MaSineAsteroid : NetworkBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //player.CmdDestroyEntity(gameObject);
-
+        print("all: KILLKILLKILL");
         if (isServer)
         {
             if (!silentDestruction)
@@ -42,7 +42,7 @@ public class MaSineAsteroid : NetworkBehaviour {
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
                 audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
             }
-            print("KILLKILLKICLL");
+            print("server: KILLKILLKILL");
             Destroy(gameObject);
         }
     }
