@@ -25,7 +25,7 @@ public class ServerManager : NetworkManager
     public GameObject PublicPlayer;
     public GameObject PickUp;
 
-    public List<NetworkPlayer> playerClients = new List<NetworkPlayer>();
+    public NetworkPlayer[] playerClients = new NetworkPlayer[2];// = new List<NetworkPlayer>();
 
     void Awake()
 	{
@@ -112,7 +112,6 @@ public class ServerManager : NetworkManager
 		Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
         //Instantiate(SoundManager, new Vector3(0,0,0), Quaternion.identity);
 
-
         // TODO: check why this doesn't work
         //Instantiate(TargetTransform);
         //Instantiate(SteeringStation);
@@ -160,22 +159,30 @@ public class ServerManager : NetworkManager
 
     public void RegisterPlayer(NetworkPlayer np)
     {
-        if (np.clientType != ClientChooser.ClientType.VRClient || playerClients.Contains(np))
+        if (np.clientType != ClientChooser.ClientType.VRClient)
             return;
 
-        playerClients.Add(np);
-        if (playerClients.IndexOf(np) == 0)
-        {
+        for (int i = 0; i < 2; i++) {
+            if (playerClients[i] == np)
+                return;
+        }
+
+        if (playerClients[0] == null) {
+            playerClients[0] = np;
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(true);
             Admin.Instance.ButtonPlayerOne.interactable = true;
             Admin.Instance.PlayerOne = np.gameObject;
         }
-        else if (playerClients.IndexOf(np) == 1)
-        {
+        else if (playerClients[1] == null) {
+            playerClients[1] = np;
             Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(true);
             Admin.Instance.ButtonPlayerTwo.interactable = true;
             Admin.Instance.PlayerTwo = np.gameObject;
+        } else {
+            // both are allready assigned
+            return;
         }
+
 
         if (isServer)
         {
@@ -186,30 +193,24 @@ public class ServerManager : NetworkManager
 
     public void UnregisterPlayer(NetworkPlayer np)
     {
-        if (!playerClients.Contains(np))
-            return;
-
-        if (playerClients.IndexOf(np) == 0)
-        {
+        if (playerClients[0] == np) {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
             Admin.Instance.ButtonPlayerOne.interactable = true;
             Admin.Instance.PlayerTwo = null;
+            playerClients[0] = null;
         }
-        else if (playerClients.IndexOf(np) == 1)
-        {
+        else if (playerClients[1] == np) {
             Admin.Instance.ButtonPlayerTwo.gameObject.SetActive(false);
             Admin.Instance.ButtonPlayerTwo.interactable = true;
             Admin.Instance.PlayerTwo = null;
+            playerClients[1] = null;
         }
 
-        playerClients.Remove(np);
         if (isServer)
         {
             //debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
             //print("Client " + np.connectionToClient.connectionId + " disconnected.");
-
-        }
-            
+        }   
     }
 
 	//public override void OnServerConnect(NetworkConnection conn)
