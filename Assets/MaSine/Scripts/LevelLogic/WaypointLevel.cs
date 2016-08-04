@@ -5,6 +5,7 @@ using System;
 
 public class WaypointLevel : MonoBehaviour {
     public static event ShipInteracted NextWaypoint;
+    public static event StageDone Stage1Done;
     [SerializeField]
     public EventTrigger[] eventTriggers;
 

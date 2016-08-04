@@ -44,6 +44,9 @@ public class ServerManager : NetworkManager
 
 		//Sets this to not be destroyed when reloading scene
 		DontDestroyOnLoad(gameObject);
+
+        //Register this script to delegates
+        WaypointLevel.Stage1Done += OnStage1Done;
 	}
 
 	void Update()
@@ -107,6 +110,11 @@ public class ServerManager : NetworkManager
     }
 
 
+    void OnStage1Done()
+    {
+        SpawnEntityAtPrefabPosition(SteeringStation);
+    }
+
     public void StartupHost()
 	{
 		Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
@@ -122,7 +130,7 @@ public class ServerManager : NetworkManager
 		isServer = true;
 		NetworkServer.SpawnObjects();
 
-        SpawnEntityAtPrefabPosition(SteeringStation);
+        //SpawnEntityAtPrefabPosition(SteeringStation);
         SpawnEntityAtPrefabPosition(TargetTransform);
         SpawnEntityAtPrefabPosition(RotationTransform);
         SpawnEntityAtPrefabPosition(CanonStationLeft);
