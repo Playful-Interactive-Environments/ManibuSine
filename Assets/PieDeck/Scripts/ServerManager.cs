@@ -26,12 +26,13 @@ public class ServerManager : NetworkManager
     public GameObject PickUp;
     public GameObject Stage1_StaticAsteroids;
 
-    public NetworkPlayer[] playerClients = new NetworkPlayer[2];// = new List<NetworkPlayer>();
+    public NetworkPlayer[] playerClients;
 
     void Awake()
 	{
-		//Check if instance already exists
-		if (Instance == null)
+        playerClients = new NetworkPlayer[2];
+        //Check if instance already exists
+        if (Instance == null)
 
 			//if not, set instance to this
 			Instance = this;
@@ -207,6 +208,9 @@ public class ServerManager : NetworkManager
     public void UnregisterPlayer(NetworkPlayer np)
     {
         if (!isServer)
+            return;
+
+        if (Admin.Instance.ButtonPlayerOne == null || Admin.Instance.ButtonPlayerTwo == null)
             return;
 
         if (playerClients[0] == np) {
