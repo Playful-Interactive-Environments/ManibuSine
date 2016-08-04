@@ -25,12 +25,13 @@ public class ServerManager : NetworkManager
     public GameObject PublicPlayer;
     public GameObject PickUp;
 
-    public NetworkPlayer[] playerClients = new NetworkPlayer[2];// = new List<NetworkPlayer>();
+    public NetworkPlayer[] playerClients;// = new NetworkPlayer[2];// = new List<NetworkPlayer>();
 
     void Awake()
 	{
-		//Check if instance already exists
-		if (Instance == null)
+        playerClients = new NetworkPlayer[2];
+        //Check if instance already exists
+        if (Instance == null)
 
 			//if not, set instance to this
 			Instance = this;
@@ -193,6 +194,9 @@ public class ServerManager : NetworkManager
 
     public void UnregisterPlayer(NetworkPlayer np)
     {
+        if (Admin.Instance.ButtonPlayerOne == null || Admin.Instance.ButtonPlayerTwo == null)
+            return;
+
         if (playerClients[0] == np) {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
             Admin.Instance.ButtonPlayerOne.interactable = true;
