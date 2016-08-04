@@ -133,7 +133,7 @@ public class ServerManager : NetworkManager
 		isServer = true;
 		NetworkServer.SpawnObjects();
 
-        SpawnEntityAtPrefabPosition(SteeringStation);
+        //SpawnEntityAtPrefabPosition(SteeringStation);
         SpawnEntityAtPrefabPosition(TargetTransform);
         SpawnEntityAtPrefabPosition(RotationTransform);
         SpawnEntityAtPrefabPosition(CanonStationLeft);
