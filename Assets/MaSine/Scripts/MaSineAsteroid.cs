@@ -42,7 +42,7 @@ public class MaSineAsteroid : NetworkBehaviour {
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
                 audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
             }
-            
+            print("KILLKILLKICLL");
             Destroy(gameObject);
         }
     }
