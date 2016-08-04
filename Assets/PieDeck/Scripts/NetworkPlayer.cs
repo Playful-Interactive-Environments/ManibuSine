@@ -124,15 +124,15 @@ public class NetworkPlayer : NetworkBehaviour
 
             currentHP = ShipManager.Instance.currentHP;
 
-            //EventTrigger.ShipEnteredEvent += OnShipEnteredEvent;
+            EventTrigger.ShipEnteredEvent += OnShipEnteredEvent;
 
             ShipCollider.ShipHit += OnShipHit;
 
             UI_Ship.Instance.SetHP(currentHP);
 
-            //WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
-            //if (wpl != null)
-            //    RpcSyncLevel(wpl.state);
+            WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+            if (wpl != null)
+                RpcSyncLevel(wpl.state);
             // initiate on restart/client reconnect
 
             RpcSetHP(currentHP);
@@ -252,6 +252,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     [ClientRpc]
     private void RpcSyncLevel(int state) {
+        if (!isLocalPlayer)
+            return;
+
         WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
         if (wpl != null)
             wpl.SyncLevelProgress(state);
