@@ -118,7 +118,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         { // SERVER
-            print("NetworkPlayer started");
+            //print("NetworkPlayer started");
 
             laserTrackingActivated = false;
 
@@ -364,11 +364,13 @@ public class NetworkPlayer : NetworkBehaviour
     {
         this.clientType = clientType;
 
-        print(this.clientType.ToString() + " has connected with ID " + this.connectionToClient.connectionId);
+        //print(this.clientType.ToString() + " has connected with ID " + this.connectionToClient.connectionId);
 
         ServerManager.Instance.RegisterPlayer(this);
 
-        if (clientType == ClientChooser.ClientType.RenderClientFloor)
+        SetClientType(clientType);
+
+        /*if (clientType == ClientChooser.ClientType.RenderClientFloor)
         {
             SetToRenderClient();
         }
@@ -379,8 +381,7 @@ public class NetworkPlayer : NetworkBehaviour
         else if (clientType == ClientChooser.ClientType.VRClient)
         {
             SetToVRClient();
-        }
-
+        }*/
     }
 
     public void SetClientType(ClientChooser.ClientType clientType)
@@ -423,7 +424,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void SetToVRClient()
     {
-        print(this.gameObject.name + " is set to : " + this.clientType.ToString());
+        //print(this.gameObject.name + " is set to : " + this.clientType.ToString());
         Collider[] npCollider = GetComponents<Collider>();
         Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
         foreach (Collider coll in npCollider)

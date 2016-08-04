@@ -113,7 +113,7 @@ namespace UnityTuio
 			}
 			else 
 			{
-				Debug.Log ("--- Connection establised: listening at port " + m_udpPort + " for TUIO data. ---");
+				//Debug.Log ("--- Connection establised: listening at port " + m_udpPort + " for TUIO data. ---");
 			}
 		}
 		#endregion

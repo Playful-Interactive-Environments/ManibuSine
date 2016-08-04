@@ -224,18 +224,18 @@ namespace UnityTuio
 				if (configTrackingEnabled != null && Boolean.TryParse(configTrackingEnabled, out configTrackingEnabledBool))
 				{
 					m_tuioSettings.TrackingEnabled = configTrackingEnabledBool;
-					Debug.Log(string.Format("XML config: TUIO tracking enabled: {0}", m_tuioSettings.TrackingEnabled));
+					//Debug.Log(string.Format("XML config: TUIO tracking enabled: {0}", m_tuioSettings.TrackingEnabled));
 				} else {
-					Debug.Log(string.Format("XML config: invalid TUIO enabled config. Using settings from prefab instead: TUIO tracking enabled: {0}", m_tuioSettings.TrackingEnabled));
+					//Debug.Log(string.Format("XML config: invalid TUIO enabled config. Using settings from prefab instead: TUIO tracking enabled: {0}", m_tuioSettings.TrackingEnabled));
 				}
 				
 				int configUDPPortInt;
 				if (configUDPPort != null && int.TryParse(configUDPPort, out configUDPPortInt))
 				{
 					m_tuioSettings.UDP_Port = configUDPPortInt;
-					Debug.Log(string.Format("XML config: TUIO using UDP Port: {0}", configUDPPort));
+					//Debug.Log(string.Format("XML config: TUIO using UDP Port: {0}", configUDPPort));
 				} else { 	
-					Debug.LogWarning("XML config: invalid TUIO Port config");
+					//Debug.LogWarning("XML config: invalid TUIO Port config");
 				}
 				
 				int configResolutionIntX;
@@ -245,7 +245,7 @@ namespace UnityTuio
 				{
 					m_tuioSettings.TargetScreenWidth = configResolutionIntX;
 					m_tuioSettings.TargetScreenHeight = configResolutionIntY;
-					Debug.Log(string.Format("XML config: new target resolution: {0}x{1}", m_tuioSettings.TargetScreenWidth, m_tuioSettings.TargetScreenHeight));
+					//Debug.Log(string.Format("XML config: new target resolution: {0}x{1}", m_tuioSettings.TargetScreenWidth, m_tuioSettings.TargetScreenHeight));
 				}
 				else
 				{
@@ -259,7 +259,7 @@ namespace UnityTuio
 				{
 					m_tuioSettings.StageX = configStageFloatX;
 					m_tuioSettings.StageY = configStageFloatY;
-					Debug.Log(string.Format("XML config: new stage size: {0}x{1}", m_tuioSettings.StageX, m_tuioSettings.StageY));
+					//Debug.Log(string.Format("XML config: new stage size: {0}x{1}", m_tuioSettings.StageX, m_tuioSettings.StageY));
 				}
 				else
 				{
