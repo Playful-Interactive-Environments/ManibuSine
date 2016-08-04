@@ -24,13 +24,15 @@ public class ServerManager : NetworkManager
     public GameObject SteeringStation;
     public GameObject PublicPlayer;
     public GameObject PickUp;
+    public GameObject Stage1_StaticAsteroids;
 
-    public NetworkPlayer[] playerClients = new NetworkPlayer[2];// = new List<NetworkPlayer>();
+    public NetworkPlayer[] playerClients;
 
     void Awake()
 	{
-		//Check if instance already exists
-		if (Instance == null)
+        playerClients = new NetworkPlayer[2];
+        //Check if instance already exists
+        if (Instance == null)
 
 			//if not, set instance to this
 			Instance = this;
@@ -45,7 +47,7 @@ public class ServerManager : NetworkManager
 		DontDestroyOnLoad(gameObject);
 
         //Register this script to delegates
-        WaypointLevel.Stage1Done += OnStage1Done;
+        Stage1_Logic.Stage1Done += OnStage1Done;
 	}
 
 	void Update()
@@ -134,6 +136,7 @@ public class ServerManager : NetworkManager
         SpawnEntityAtPrefabPosition(RotationTransform);
         SpawnEntityAtPrefabPosition(CanonStationLeft);
         SpawnEntityAtPrefabPosition(CanonStationRight);
+        SpawnEntityAtPrefabPosition(Stage1_StaticAsteroids);
     }
 
 	public void StopHosting()
@@ -167,6 +170,9 @@ public class ServerManager : NetworkManager
 
     public void RegisterPlayer(NetworkPlayer np)
     {
+        if (!isServer)
+            return;
+
         if (np.clientType != ClientChooser.ClientType.VRClient)
             return;
 
@@ -201,6 +207,12 @@ public class ServerManager : NetworkManager
 
     public void UnregisterPlayer(NetworkPlayer np)
     {
+        if (!isServer)
+            return;
+
+        if (Admin.Instance.ButtonPlayerOne == null || Admin.Instance.ButtonPlayerTwo == null)
+            return;
+
         if (playerClients[0] == np) {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
             Admin.Instance.ButtonPlayerOne.interactable = true;
