@@ -3,15 +3,43 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class Stage1_Logic : MonoBehaviour {
+    private static Stage1_Logic instance;
+
     public static event StageDone Stage1Done;
+    public GameObject asteroidPrefab;
     public MaSineAsteroid[] asteroids;
 
-	void Start () {
-        //if (!isServer)
-        //    return;
-        asteroids = GetComponentsInChildren<MaSineAsteroid>();
+    void Awake() {
+        instance = this;
+    }
 
-        InvokeRepeating("CheckAsteroids", 0.23f, 0.23f);
+	public static void SpawnStage1 () {
+        // collect spawn positions
+        SpawnPosition[] spawnPos = instance.GetComponentsInChildren<SpawnPosition>();
+
+        foreach (SpawnPosition item in spawnPos) {
+            // instantiate object
+            GameObject newObj = ServerManager.Instance.SpawnEntityAt(instance.asteroidPrefab, item.transform.position, Quaternion.identity);
+            MaSineAsteroid newAsteroid = newObj.GetComponent<MaSineAsteroid>();
+
+            if (newAsteroid == null)
+                return;
+
+            // parten to this
+            newObj.transform.parent = instance.transform;
+            // set asteroid as static
+            newAsteroid.isStatic = true;
+        }
+
+        // collect static asteroids
+        instance.asteroids = instance.GetComponentsInChildren<MaSineAsteroid>();
+
+        // delete all spawn position game objects
+        for (int i = 0; i < spawnPos.Length; i++)
+            Destroy(spawnPos[i].gameObject);
+        spawnPos = null;
+
+        instance.InvokeRepeating("CheckAsteroids", 0.23f, 0.23f);
 	}
 
     private void CheckAsteroids() {

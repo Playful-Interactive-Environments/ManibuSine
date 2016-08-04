@@ -24,7 +24,8 @@ public class MaSineAsteroid : NetworkBehaviour {
         originalScale = transform.localScale.x;
         transform.localScale = Vector3.zero;
         ship = GameObject.Find("Ship").transform;
-        transform.parent = UniverseTransformer.Instance.transform;
+        if (!isStatic)
+            transform.parent = UniverseTransformer.Instance.transform;
 
         audioManager = AudioManager.Instance;
 

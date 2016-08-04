@@ -79,13 +79,15 @@ public class ServerManager : NetworkManager
         NetworkServer.Spawn(obj);
     }
 
-    public void SpawnEntityAt(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation)
+    public GameObject SpawnEntityAt(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         if (!isServer)
-            return;
+            return null;
 
         GameObject obj = Instantiate(prefab, spawnPosition, spawnRotation) as GameObject;
         NetworkServer.Spawn(obj);
+
+        return obj;
     }
 
 
@@ -136,6 +138,7 @@ public class ServerManager : NetworkManager
         SpawnEntityAtPrefabPosition(RotationTransform);
         SpawnEntityAtPrefabPosition(CanonStationLeft);
         SpawnEntityAtPrefabPosition(CanonStationRight);
+        Stage1_Logic.SpawnStage1();
         //SpawnEntityAtPrefabPosition(Stage1_StaticAsteroids);
     }
 
