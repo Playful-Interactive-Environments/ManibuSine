@@ -25,7 +25,7 @@ public class Stage1_Logic : MonoBehaviour {
             if (newAsteroid == null)
                 return;
 
-            // parten to this
+            // parent to this
             newObj.transform.parent = instance.transform;
             // set asteroid as static
             newAsteroid.isStatic = true;
