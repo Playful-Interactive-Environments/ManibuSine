@@ -4,18 +4,19 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System.Xml;
 
-public class ServerManager : NetworkManager
-{
+public class ServerManager : NetworkManager {
 
-	public string ConnectionIP;
-	public int ConnectionPort = 7777;
-	public bool ClientConnected = false;
+    public string ConnectionIP;
+    public int ConnectionPort = 7777;
+    public bool ClientConnected = false;
     //public TextMesh debugTextClient;
-	public static ServerManager Instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-	public bool isServer;
-	public bool isClient;
-	public Text debugTextServer;
+    public static ServerManager Instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    public bool isServer;
+    public bool isClient;
+    public Text debugTextServer;
     public GameObject SoundManager;
     public GameObject CanonStationLeft;
     public GameObject CanonStationRight;
@@ -24,7 +25,6 @@ public class ServerManager : NetworkManager
     public GameObject SteeringStation;
     public GameObject PublicPlayer;
     public GameObject PickUp;
-    public GameObject Stage1_StaticAsteroids;
 
     public NetworkPlayer[] playerClients;
 
@@ -52,13 +52,14 @@ public class ServerManager : NetworkManager
 
 	void Update()
 	{
-	   if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            StopServer();
-            NetworkServer.Reset();
-            Application.Quit();
-        }
-	}
+        // !!! better not - may cause accidental shutdowns !!!
+        //if(Input.GetKeyDown(KeyCode.Escape))
+        //    {
+        //        StopServer();
+        //        NetworkServer.Reset();
+        //        Application.Quit();
+        //    }
+    }
 
     public void RestartApplication()
     {
@@ -139,7 +140,6 @@ public class ServerManager : NetworkManager
         SpawnEntityAtPrefabPosition(CanonStationLeft);
         SpawnEntityAtPrefabPosition(CanonStationRight);
         Stage1_Logic.SpawnStage1();
-        //SpawnEntityAtPrefabPosition(Stage1_StaticAsteroids);
     }
 
 	public void StopHosting()
@@ -287,7 +287,7 @@ public class ServerManager : NetworkManager
 	#region Client
 	public void JoinGame()
 	{
-		SetIPAddress();
+        SetIPAddress();
 		SetPort();
 		StartClient();
 		isClient = true;
@@ -297,10 +297,17 @@ public class ServerManager : NetworkManager
 	public override void OnClientConnect(NetworkConnection conn)
 	{
 		base.OnClientConnect(conn);
-		//debugTextClient.text = "ClientConnected";
-	}
+        //if (np.clientType == ClientChooser.ClientType.RenderClientWall) {
+        //    CameraToolServer cts = FindObjectOfType<CameraToolServer>();
+        //    if (cts == null)
+        //        return;
 
-	public override void OnStartClient(NetworkClient client)
+        //}
+
+        //debugTextClient.text = "ClientConnected";
+    }
+
+    public override void OnStartClient(NetworkClient client)
 	{
 		base.OnStartClient(client);
 		//debugTextClient.text = "Client Started";

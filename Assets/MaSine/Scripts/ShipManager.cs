@@ -32,7 +32,7 @@ public class ShipManager : MonoBehaviour {
 
     public void SetHP(int hp)
     {
-        if (!godMode)
+        if (godMode)
             currentHP = maxHP;
         else
             currentHP = hp;

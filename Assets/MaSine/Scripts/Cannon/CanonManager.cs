@@ -69,6 +69,10 @@ public class CanonManager : NetworkBehaviour
 
     private void OnGameOver(int damage)
     {
+        // cannon station doesn't exist on render clients
+        if (ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient)
+            return;
+
         if(gunner != null)
         {
             MsgPlayerGone(gunner);

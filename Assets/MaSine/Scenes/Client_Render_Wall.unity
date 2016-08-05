@@ -375,7 +375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.42.1.131
+      value: 10.0.0.25
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -594,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 6
   currentHP: 0
+  godMode: 0
 --- !u!1 &1190071740
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +769,18 @@ Prefab:
     - target: {fileID: 11463268, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136846, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11460472, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22434302, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e8c98ca4013ad546a451d77679e7f6d, type: 2}

@@ -163,9 +163,21 @@ public class NetworkPlayer : NetworkBehaviour
             if(GameObject.Find("Information") != null)
                 GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
         }
-
-        
+        InitMessage();
 	}
+
+    private void InitMessage() {
+        print("0");
+        //if (clientType == ClientChooser.ClientType.RenderClientWall) {
+        //    print("is wall");
+
+            CameraToolServer cts = FindObjectOfType<CameraToolServer>();
+            if (cts == null)
+                return;
+            print("nwp 1");
+            cts.InitConnection(connectionToClient);
+        //}
+    }
 
     private void OnPickedItem(int picked)
     {

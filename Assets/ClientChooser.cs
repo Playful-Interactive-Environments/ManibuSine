@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class ClientChooser : MonoBehaviour {
-    private ClientChooser instance;
-    public ClientChooser Instance { get { return instance; } }
+    private static ClientChooser instance;
+    public static ClientChooser Instance { get { return instance; } }
 
     public enum ClientType {
         NotSet,
@@ -13,6 +13,11 @@ public class ClientChooser : MonoBehaviour {
     }
 
     public ClientType clientType;
+
+    void Awake() {
+        instance = this;
+    }
+
 	// Use this for initialization
 	void Start () {
         int hightest = QualitySettings.names.Length - 1;

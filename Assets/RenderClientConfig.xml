@@ -1,0 +1,6 @@
+<RenderClientConfig>
+  <!--  Fill server ip adress here. Use "" (empty) for predefined ip. -->
+  <ip>10.0.0.25</ip>
+  <!--  Fill projection mode here. "Floor" or "Wall" -->
+  <mode>Wall</mode>
+</RenderClientConfig>
