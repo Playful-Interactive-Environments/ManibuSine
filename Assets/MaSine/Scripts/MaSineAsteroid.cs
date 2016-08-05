@@ -9,7 +9,7 @@ public class MaSineAsteroid : NetworkBehaviour {
     public static float speed = 15.0f;
     public bool isStatic = false;
     private AudioManager audioManager;
-    private float rotSpeed;
+    public float rotSpeed;
     private float originalScale;
 
     public Transform graphicTransform;
@@ -29,7 +29,9 @@ public class MaSineAsteroid : NetworkBehaviour {
 
         audioManager = AudioManager.Instance;
 
-        rotSpeed = Random.Range(-0.05f, 0.05f) * 3.0f; 
+        rotSpeed = Random.Range(-0.1f, 0.1f);
+        if (rotSpeed < 0.01 && rotSpeed > -0.01)
+            rotSpeed = 0.01f;
 	}
 
     void OnTriggerEnter(Collider other)
