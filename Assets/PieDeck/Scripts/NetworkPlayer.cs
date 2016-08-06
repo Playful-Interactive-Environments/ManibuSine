@@ -267,9 +267,9 @@ public class NetworkPlayer : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-        WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
-        if (wpl != null)
-            wpl.SyncLevelProgress(state);
+        //WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
+        //if (wpl != null)
+        //    wpl.SyncLevelProgress(state);
     }
 
     [Command]
