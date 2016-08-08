@@ -150,13 +150,6 @@ public class NetworkPlayer : NetworkBehaviour
                 item.enabled = false;
             }
 
-            //WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
-            //if (wpl != null)
-            //{
-            //    print("state " + levelState);
-            //    wpl.SyncLevelProgress(levelState);
-            //}
-
             transform.FindChild("Body").gameObject.SetActive(false);
             if(GameObject.Find("Information") != null)
                 GameObject.Find("Information").GetComponent<UI_HeadUpInfo>().enabled = true;
@@ -205,6 +198,10 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (!isServer || waypoint == null)
             return;
+
+        if (!(waypoint is MajorEventTrigger))
+            return;
+
         print(GetType().Name + " OnShipEntered");
         WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
         if (wpl != null)

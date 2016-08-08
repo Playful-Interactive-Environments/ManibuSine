@@ -37,6 +37,8 @@ public class Waypoint : MonoBehaviour
         if (!(waypoint is MajorEventTrigger))
             return;
 
+        print("entered");
+
         if (waypoint.GetID() == activateOn)
         {
             EnableWaypoint();
