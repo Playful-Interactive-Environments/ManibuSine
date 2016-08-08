@@ -2,14 +2,7 @@
 using System.Collections;
 
 public class SpawnPosition : MonoBehaviour {
+    // only used to distinguish
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public bool isStageOneAsteroid = false;
 }

@@ -21,12 +21,14 @@ public class Stage1_Logic : MonoBehaviour {
             // instantiate object
             GameObject newObj = ServerManager.Instance.SpawnEntityAt(instance.asteroidPrefab, item.transform.position, Quaternion.identity);
             MaSineAsteroid newAsteroid = newObj.GetComponent<MaSineAsteroid>();
-
             if (newAsteroid == null)
                 return;
 
-            // parent to this
-            newObj.transform.parent = instance.transform;
+            // parent stage one asteroids to this
+            if (item.isStageOneAsteroid)
+                newObj.transform.parent = instance.transform;
+            else // others to universe
+                newObj.transform.parent = UniverseTransformer.Instance.transform;
             // set asteroid as static
             newAsteroid.isStatic = true;
         }
