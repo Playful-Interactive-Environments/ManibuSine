@@ -76,6 +76,9 @@ public class NetworkPlayer : NetworkBehaviour
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
 
+        // set Ship HP on start
+        ShipManager.Instance.SetHP(currentHP);
+
         if (!isServer)
 		{
 			_vrController = GameObject.Find("OVRPlayerController");
