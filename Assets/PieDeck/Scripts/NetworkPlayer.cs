@@ -76,8 +76,7 @@ public class NetworkPlayer : NetworkBehaviour
         minMoveDistance = 0.05f;
         movementLerpSpeed = 0.003f;
 
-        // set Ship HP on start
-        ShipManager.Instance.SetHP(currentHP);
+        
 
         if (!isServer)
 		{
@@ -161,16 +160,16 @@ public class NetworkPlayer : NetworkBehaviour
 	}
 
     private void InitMessage() {
-        print("0");
-        //if (clientType == ClientChooser.ClientType.RenderClientWall) {
-        //    print("is wall");
+        //print("0");
+        ////if (clientType == ClientChooser.ClientType.RenderClientWall) {
+        ////    print("is wall");
 
-            CameraToolServer cts = FindObjectOfType<CameraToolServer>();
-            if (cts == null)
-                return;
-            print("nwp 1");
-            cts.InitConnection(connectionToClient);
-        //}
+        //    CameraToolServer cts = FindObjectOfType<CameraToolServer>();
+        //    if (cts == null)
+        //        return;
+        //    print("nwp 1");
+        //    cts.InitConnection(connectionToClient);
+        ////}
     }
 
     private void OnPickedItem(int picked)
