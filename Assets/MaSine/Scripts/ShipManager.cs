@@ -39,7 +39,11 @@ public class ShipManager : MonoBehaviour {
 
         if (currentHP <= 0)
             if (GameOver != null)
-                if(!godMode)
+                if (!godMode)
+                {
                     GameOver(0);
+                    print("Game Is Over");
+                }
+                    
     }
 }

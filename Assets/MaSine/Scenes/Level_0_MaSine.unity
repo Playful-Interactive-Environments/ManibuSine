@@ -217,7 +217,7 @@ GameObject:
   - 65: {fileID: 206388371}
   - 114: {fileID: 206388370}
   m_Layer: 22
-  m_Name: ColliderObject
+  m_Name: ShipTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,6 +808,7 @@ Transform:
   - {fileID: 1830275267}
   - {fileID: 263077820}
   - {fileID: 206388369}
+  - {fileID: 1597583262}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!1 &1001761220
@@ -1022,7 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 6
   currentHP: 0
-  godMode: 1
+  godMode: 0
 --- !u!1 &1317859378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1088,62 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317859378}
   m_Mesh: {fileID: 4300000, guid: 1ae255f0230c6474fa80897bfdba3871, type: 3}
+--- !u!1 &1597583261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 172900, guid: ae445a943a4dbb94c825fc308507ff91, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1597583262}
+  - 114: {fileID: 1597583264}
+  - 136: {fileID: 1597583263}
+  m_Layer: 28
+  m_Name: ShipCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1597583262
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 455664, guid: ae445a943a4dbb94c825fc308507ff91, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597583261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.47, z: 1.77}
+  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 882940870}
+  m_RootOrder: 3
+--- !u!136 &1597583263
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13613304, guid: ae445a943a4dbb94c825fc308507ff91,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597583261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.68
+  m_Height: 17.36
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.4}
+--- !u!114 &1597583264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11477980, guid: ae445a943a4dbb94c825fc308507ff91,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597583261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2130f36664526a40a946375ab68ca37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1601294481
 Prefab:
   m_ObjectHideFlags: 0

@@ -44,7 +44,7 @@ public class ServerManager : NetworkManager {
 			Destroy(gameObject);
 
 		//Sets this to not be destroyed when reloading scene
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 
         //Register this script to delegates
         Stage1_Logic.Stage1Done += OnStage1Done;
