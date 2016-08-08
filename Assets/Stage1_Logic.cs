@@ -11,6 +11,7 @@ public class Stage1_Logic : MonoBehaviour {
 
     void Awake() {
         instance = this;
+        print("zZzZzZzZ");
     }
 
 	public static void SpawnStage1 () {
