@@ -3,6 +3,13 @@ using System.Collections;
 
 public class MajorEventTrigger : EventTrigger {
     
+    public void WaypointVisited() {
+        Waypoint wp = transform.GetComponentInChildren<Waypoint>();
+        if (wp == null)
+            return;
+        wp.DisableWaypoint();
+    }
+
     public override void SetID(int id)
     {
         base.SetID(id);
