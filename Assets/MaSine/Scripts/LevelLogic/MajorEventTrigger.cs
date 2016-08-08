@@ -3,6 +3,19 @@ using System.Collections;
 
 public class MajorEventTrigger : EventTrigger {
     
+    public void Visited() {
+        Waypoint wp = transform.GetComponentInChildren<Waypoint>();
+        if (wp == null)
+            return;
+        wp.DisableWaypoint();
+
+        // also disable trigger - not needed anymore
+
+        Collider coll = GetComponent<Collider>();
+        if (coll != null)
+            coll.enabled = false;
+    }
+
     public override void SetID(int id)
     {
         base.SetID(id);

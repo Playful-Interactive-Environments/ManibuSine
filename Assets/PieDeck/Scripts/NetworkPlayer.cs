@@ -8,9 +8,7 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar]
     private float headTilt;
-    //[SyncVar]
-    //public int levelState = 0;
-    //[SyncVar]
+
     public int currentHP;
     [SyncVar(hook = "OnSetClientType")]
     public ClientChooser.ClientType clientType;
@@ -207,7 +205,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (!isServer || waypoint == null)
             return;
-
+        print(GetType().Name + " OnShipEntered");
         WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
         if (wpl != null)
             wpl.SyncLevelProgress(waypoint.GetID());

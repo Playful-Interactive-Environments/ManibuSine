@@ -6,7 +6,7 @@ using System;
 public class WaypointLevel : MonoBehaviour {
     public static event ShipInteracted NextWaypoint;
     [SerializeField]
-    public EventTrigger[] eventTriggers;
+    public MajorEventTrigger[] eventTriggers;
 
     private float gameStartsInXSeconds = 0f;
 
@@ -15,10 +15,10 @@ public class WaypointLevel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ShipManager.GameOver += OnGameOver;
-        eventTriggers = GetComponentsInChildren<EventTrigger>();
+        eventTriggers = GetComponentsInChildren<MajorEventTrigger>();
 
-        EventTrigger.ShipEnteredEvent += ShipEnteredWaypoint;
-        EventTrigger.ShipLeftEvent += ShipLeftWaypoint;
+        MajorEventTrigger.ShipEnteredEvent += ShipEnteredWaypoint;
+        MajorEventTrigger.ShipLeftEvent += ShipLeftWaypoint;
 
         Invoke("StartGame", gameStartsInXSeconds);
 	}
@@ -31,7 +31,7 @@ public class WaypointLevel : MonoBehaviour {
     void StartGame()
     {
         int id = 1;
-        foreach (EventTrigger item in eventTriggers) {
+        foreach (MajorEventTrigger item in eventTriggers) {
             item.SetID(id++);
         }
 
@@ -65,7 +65,7 @@ public class WaypointLevel : MonoBehaviour {
 
     }
 	
-	void Dispose () {
+	void OnDestroy () {
         EventTrigger.ShipEnteredEvent -= ShipEnteredWaypoint;
         EventTrigger.ShipLeftEvent -= ShipLeftWaypoint;
 	}
@@ -82,7 +82,7 @@ public class WaypointLevel : MonoBehaviour {
         for (int i = 0; i <= currentLevelState; i++)
         {
             if (i - 1 >= 0)
-                eventTriggers[i-1].ShipEntered();
+                eventTriggers[i-1].Visited();
 
             if (NextWaypoint != null)
                 NextWaypoint(eventTriggers[i]);

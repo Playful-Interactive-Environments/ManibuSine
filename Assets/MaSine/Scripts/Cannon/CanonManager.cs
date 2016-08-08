@@ -67,14 +67,13 @@ public class CanonManager : NetworkBehaviour
 
     }
 
-    private void OnGameOver(int damage)
-    {
-        // cannon station doesn't exist on render clients
-        if (ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient)
-            return;
+    private void OnGameOver(int damage) {
 
-        if(gunner != null)
-        {
+        if (!isServer) // server has no ClientChooser
+            if (ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient) // cannon station doesn't exist on render clients
+                return;
+
+        if (gunner != null) {
             MsgPlayerGone(gunner);
         }
         this.enabled = false;
@@ -279,5 +278,6 @@ public class CanonManager : NetworkBehaviour
     void OnDestroy() {
         CannonPivot.OutOfRange -= OnWithinLimits;
         CannonPivot.InRange -= OnOverLimits;
+        ShipManager.GameOver -= OnGameOver;
     }
 }
