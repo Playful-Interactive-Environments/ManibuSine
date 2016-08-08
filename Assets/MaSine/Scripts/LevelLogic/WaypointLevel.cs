@@ -82,7 +82,7 @@ public class WaypointLevel : MonoBehaviour {
         for (int i = 0; i <= currentLevelState; i++)
         {
             if (i - 1 >= 0)
-                eventTriggers[i-1].WaypointVisited();
+                eventTriggers[i-1].Visited();
 
             if (NextWaypoint != null)
                 NextWaypoint(eventTriggers[i]);
