@@ -201,15 +201,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179088}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7a5170fdeddad849885b28c00038b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   style: 0
   animationSpeed: 1
-  minValue: -0.5
-  maxValue: 0.5
+  minValue: -0.66
+  maxValue: 0.66
   animationVector: {x: 0, y: 1}
 --- !u!114 &11464558
 MonoBehaviour:
