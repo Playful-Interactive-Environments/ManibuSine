@@ -13,6 +13,7 @@ public class PlayerAssignmentStation : MonoBehaviour {
                 if(Admin.Instance.PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer == null)
                 {
                     Admin.Instance.ChoosePlayerOne();
+                    Admin.Instance.RecalibratePlayer();
                     return;
                 }
             }
@@ -23,6 +24,7 @@ public class PlayerAssignmentStation : MonoBehaviour {
                     if (Admin.Instance.CurrentTrackedPlayer != Admin.Instance.PlayerOne.GetComponent<NetworkPlayer>().ControllingPlayer)
                     {
                         Admin.Instance.ChoosePlayerTwo();
+                        Admin.Instance.RecalibratePlayer();
                         return;
                     }
                 }
