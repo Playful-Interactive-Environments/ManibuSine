@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.VR;
 using UnityPharus;
+using System;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -158,6 +159,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         InitMessage();
 	}
+    
 
     private void InitMessage() {
         //print("0");
@@ -267,6 +269,26 @@ public class NetworkPlayer : NetworkBehaviour
         WaypointLevel wpl = FindObjectOfType<WaypointLevel>();
         if (wpl != null)
             wpl.SyncLevelProgress(state);
+    }
+
+    [ClientRpc]
+    internal void RpcSetPlayerView(int playerNumber, NetworkPlayer networkPlayer)
+    {
+        if (clientType != ClientChooser.ClientType.RenderClientWall)
+            return;
+
+        if (playerNumber == 1)
+        {
+            if (GameObject.Find("P1_View") == null)
+                return;
+            GameObject.Find("P1_View").GetComponent<PlayerView>().ConnectPlayer(networkPlayer);
+        }
+        else if (playerNumber == 2)
+        {
+            if (GameObject.Find("P2_View") == null)
+                return;
+            GameObject.Find("P2_View").GetComponent<PlayerView>().ConnectPlayer(networkPlayer);
+        }
     }
 
     [Command]

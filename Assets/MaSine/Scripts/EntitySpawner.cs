@@ -28,4 +28,12 @@ public class EntitySpawner : MonoBehaviour {
 
         serverManager.SpawnEntityAt(entityToSpawn, spawnPosition, spawnRotation);
     }
+
+    public void SpawnAt(GameObject entityToSpawn)
+    {
+        if (!doSpawn)
+            return;
+
+        serverManager.SpawnEntityAtPrefabPosition(entityToSpawn);
+    }
 }
