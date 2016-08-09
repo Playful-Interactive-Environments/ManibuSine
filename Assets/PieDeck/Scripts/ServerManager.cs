@@ -63,7 +63,7 @@ public class ServerManager : NetworkManager {
 
     public void RestartApplication()
     {
-        //StopServer();
+        StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
