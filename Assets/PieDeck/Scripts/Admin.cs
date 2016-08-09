@@ -59,6 +59,14 @@ public class Admin : AManager<Admin> {
             if (P1View != null)
             {
                 P1View.ConnectPlayer(PlayerOne.GetComponent<NetworkPlayer>());
+
+                foreach(NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
+                {
+                    if(np.clientType == ClientChooser.ClientType.RenderClientWall)
+                    {
+                        np.RpcSetPlayerView(1, PlayerOne.GetComponent<NetworkPlayer>().netId.Value);
+                    }
+                }
             }
 		}
 
@@ -76,7 +84,13 @@ public class Admin : AManager<Admin> {
             // Create Camera and assign this player
             if (P2View != null)
             {
-                P2View.ConnectPlayer(PlayerTwo.GetComponent<NetworkPlayer>());
+                foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
+                {
+                    if (np.clientType == ClientChooser.ClientType.RenderClientWall)
+                    {
+                        np.RpcSetPlayerView(2, PlayerOne.GetComponent<NetworkPlayer>().netId.Value);
+                    }
+                }
             }
         }
     }

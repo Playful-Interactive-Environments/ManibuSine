@@ -35,6 +35,7 @@ GameObject:
   - 114: {fileID: 11486918}
   - 198: {fileID: 19869170}
   - 199: {fileID: 19973426}
+  - 114: {fileID: 11408818}
   m_Layer: 25
   m_Name: PickUp
   m_TagString: PickUp
@@ -51,6 +52,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6, y: -0.21, z: 3.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 466024}
   m_Father: {fileID: 0}
@@ -64,6 +66,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 410610}
   m_RootOrder: 0
@@ -181,6 +184,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &11408818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a3fbcdd4f20df4db295e7c2d8bfad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToDestruction: 1
 --- !u!114 &11443914
 MonoBehaviour:
   m_ObjectHideFlags: 1
