@@ -64,7 +64,7 @@ public class Admin : AManager<Admin> {
                 {
                     if(np.clientType == ClientChooser.ClientType.RenderClientWall)
                     {
-                        np.RpcSetPlayerView(1, PlayerOne.GetComponent<NetworkPlayer>());
+                        np.RpcSetPlayerView(1, PlayerOne.GetComponent<NetworkPlayer>().netId.Value);
                     }
                 }
             }
@@ -88,7 +88,7 @@ public class Admin : AManager<Admin> {
                 {
                     if (np.clientType == ClientChooser.ClientType.RenderClientWall)
                     {
-                        np.RpcSetPlayerView(2, PlayerOne.GetComponent<NetworkPlayer>());
+                        np.RpcSetPlayerView(2, PlayerOne.GetComponent<NetworkPlayer>().netId.Value);
                     }
                 }
             }

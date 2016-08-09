@@ -272,9 +272,17 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    internal void RpcSetPlayerView(int playerNumber, NetworkPlayer networkPlayer)
+    internal void RpcSetPlayerView(int playerNumber, uint netID)
     {
         if (clientType != ClientChooser.ClientType.RenderClientWall)
+            return;
+        NetworkPlayer networkPlayer = null;
+        foreach(NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
+        {
+            if (np.netId.Value == netID)
+                networkPlayer = np;
+        }
+        if (networkPlayer == null)
             return;
 
         if (playerNumber == 1)
