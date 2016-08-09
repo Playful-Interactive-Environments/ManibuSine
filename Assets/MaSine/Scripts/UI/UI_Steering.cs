@@ -23,6 +23,8 @@ public class UI_Steering : MonoBehaviour {
 
     void Start() {
         InitializeUI();
+        SteeringStation.EnteredSteering -= OnEnteredSteering;
+        SteeringStation.ExitedSteering -= OnExitedSteering;
         SteeringStation.EnteredSteering += OnEnteredSteering;
         SteeringStation.ExitedSteering += OnExitedSteering;
     }
@@ -104,8 +106,8 @@ public class UI_Steering : MonoBehaviour {
 
     void OnDestroy()
     {
-        //if (steeringManager == null)
-        //    return;
+        if (steeringManager == null)
+            return;
         SteeringStation.EnteredSteering -= OnEnteredSteering;
         SteeringStation.ExitedSteering -= OnExitedSteering;
     }
