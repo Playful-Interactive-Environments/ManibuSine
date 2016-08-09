@@ -104,8 +104,8 @@ public class UI_Steering : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (steeringManager == null)
-            return;
+        //if (steeringManager == null)
+        //    return;
         SteeringStation.EnteredSteering -= OnEnteredSteering;
         SteeringStation.ExitedSteering -= OnExitedSteering;
     }
