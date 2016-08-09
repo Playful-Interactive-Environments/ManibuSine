@@ -32,12 +32,10 @@ public class Waypoint : MonoBehaviour
             c.enabled = false;
     }
 
-    private void ShipEnteredWaypoint(IEventTrigger waypoint)
+    protected virtual void ShipEnteredWaypoint(IEventTrigger waypoint)
     {
         if (!(waypoint is MajorEventTrigger))
             return;
-
-        print("entered");
 
         if (waypoint.GetID() == activateOn)
         {

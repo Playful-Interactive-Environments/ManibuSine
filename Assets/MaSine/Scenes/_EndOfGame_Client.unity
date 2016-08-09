@@ -534,7 +534,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.29.16.36
+      value: 10.42.1.131
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -944,7 +944,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5489026, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489026, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11497922, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1146436750
@@ -1024,6 +1033,23 @@ MonoBehaviour:
   maxHP: 6
   currentHP: 0
   godMode: 0
+--- !u!1 &1261267019 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 161676, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
+  m_PrefabInternal: {fileID: 1091425057}
+--- !u!114 &1261267021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1261267019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5f8a637cfeeec4ca98e3c94ec5d899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerID: 0
+  activateOn: 0
 --- !u!1 &1317859378
 GameObject:
   m_ObjectHideFlags: 0
