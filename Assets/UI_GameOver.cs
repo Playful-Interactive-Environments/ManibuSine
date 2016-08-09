@@ -7,10 +7,8 @@ public class UI_GameOver : MonoBehaviour {
     public Text time, collected, shot, damage;
 
     public static void SetData(string time, int collected, int shot, int damage) {
-        print("1blub");
         if (instance == null)
             return;
-        print("2blub");
         instance.gameObject.SetActive(true);
 
         instance.time.text = time;
@@ -23,5 +21,4 @@ public class UI_GameOver : MonoBehaviour {
         instance = this;
         gameObject.SetActive(false);
 	}
-
 }
