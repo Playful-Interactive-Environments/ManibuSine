@@ -84,6 +84,8 @@ public class ServerManager : NetworkManager {
     {
         if (!isServer)
             return null;
+        if(!NetworkServer.active)
+            return null;
 
         GameObject obj = Instantiate(prefab, spawnPosition, spawnRotation) as GameObject;
         NetworkServer.Spawn(obj);
@@ -168,8 +170,14 @@ public class ServerManager : NetworkManager {
 	public override void OnStopServer()
 	{
 		base.OnStopServer();
-		debugTextServer.text = "Server Stopped";
+        debugTextServer.text = "Server Stopped";
 	}
+
+    void OnDestroy()
+    {
+
+        Stage1_Logic.Stage1Done -= OnStage1Done;
+    }
 
     public void RegisterPlayer(NetworkPlayer np)
     {

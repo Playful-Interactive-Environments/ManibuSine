@@ -58,7 +58,6 @@ public class Admin : AManager<Admin> {
             // Create Camera and assign this player
             if (P1View != null)
             {
-                P1View.ConnectPlayer(PlayerOne.GetComponent<NetworkPlayer>());
 
                 foreach(NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
                 {

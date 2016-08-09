@@ -290,6 +290,7 @@ public class NetworkPlayer : NetworkBehaviour
             if (GameObject.Find("P1_View") == null)
                 return;
             GameObject.Find("P1_View").GetComponent<PlayerView>().ConnectPlayer(networkPlayer);
+
         }
         else if (playerNumber == 2)
         {
