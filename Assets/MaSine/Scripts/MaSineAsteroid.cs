@@ -6,6 +6,7 @@ public class MaSineAsteroid : NetworkBehaviour {
 
     NetworkPlayer player;
     Transform ship;
+    public static int destroyedAsteroids;
     public static float speed = 15.0f;
     public bool isStatic = false;
     private AudioManager audioManager;
@@ -49,12 +50,13 @@ public class MaSineAsteroid : NetworkBehaviour {
 
     public override void OnNetworkDestroy()
     {
+        // shot by player
         if (!silentDestruction)
         {
+            destroyedAsteroids++;
             audioManager.PlayClipAt(audioManager.clips[0], audioManager.sources[0], transform.position);
             Instantiate(explosionParticles, transform.position, Quaternion.identity);
         }
-        
     }
 
 	// Update is called once per frame

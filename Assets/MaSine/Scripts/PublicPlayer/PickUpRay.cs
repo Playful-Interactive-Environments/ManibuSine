@@ -83,8 +83,6 @@ public class PickUpRay : MonoBehaviour {
 
                     if (LostTarget != null)
                         LostTarget(playerID);
-
-                    //pickUp.PickIt();
                     
                     steeringStation.NetworkPlayer.CmdPickItUp(pickUp.netId.Value);
                 }

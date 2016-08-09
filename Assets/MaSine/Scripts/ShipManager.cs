@@ -24,6 +24,10 @@ public class ShipManager : MonoBehaviour {
         instance = this;
     }
 
+    public void GameWon() {
+        if (GameOver != null)
+            GameOver(1);
+    }
 	// Use this for initialization
     public void Initialize()
     {
@@ -42,7 +46,7 @@ public class ShipManager : MonoBehaviour {
                 if (!godMode)
                 {
                     GameOver(0);
-                    print("Game Is Over");
+                    print("Game Is Over - And Lost");
                 }
                     
     }

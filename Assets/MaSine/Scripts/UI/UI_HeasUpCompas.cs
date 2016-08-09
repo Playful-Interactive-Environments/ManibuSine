@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class UI_HeasUpCompas : MonoBehaviour {
 
-    private float height = 0.55f;
+    private float height = 0.66f;
 
     private Transform playerTransform;
     private ShipManager ship;
@@ -18,6 +19,7 @@ public class UI_HeasUpCompas : MonoBehaviour {
 
     void Start()
     {
+        ShipManager.GameOver += OnGameOver;
         mRenderer = GetComponentInChildren<MeshRenderer>();
         mRenderer.enabled = false;
         ship = FindObjectOfType<ShipManager>();
@@ -30,6 +32,10 @@ public class UI_HeasUpCompas : MonoBehaviour {
         htArrowBounce.Add("easetype", iTween.EaseType.easeOutElastic);
 
         iTween.MoveBy(gameObject, htArrowBounce);
+    }
+
+    private void OnGameOver(int success) {
+        Destroy(gameObject);
     }
 
     private void OnGetNextWaypoint(IEventTrigger waypoint)
@@ -45,6 +51,10 @@ public class UI_HeasUpCompas : MonoBehaviour {
                 mRenderer.enabled = true;
 
             transform.parent = waypoint.GetTransform();
+            if (transform.parent.name.Contains("Goal")) {
+                height = 13;
+            }
+
             transform.localPosition = Vector3.up * height;
         }
     }
@@ -54,17 +64,11 @@ public class UI_HeasUpCompas : MonoBehaviour {
         if (ship == null)
             return;
         transform.LookAt(ship.transform);
-        //if (playerTransform == null || waypointTransform == null)
-        //{
-        //    //if (mRenderer.enabled)
-        //    //    mRenderer.enabled = false;
-
-        //    return;
-        //}
 	}
 
     void OnDestroy()
     {
         WaypointLevel.NextWaypoint -= OnGetNextWaypoint;
+        ShipManager.GameOver -= OnGameOver;
     }
 }

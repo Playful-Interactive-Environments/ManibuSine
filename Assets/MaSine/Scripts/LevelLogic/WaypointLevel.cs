@@ -76,10 +76,10 @@ public class WaypointLevel : MonoBehaviour {
                 if (NextWaypoint != null)
                     NextWaypoint(eventTriggers[i]);
             } else {
-                // GAME OVER
-                print("Game Over");
+                // GAME OVER - WON
+                ShipManager.Instance.GameWon();
+                break;
             }
-
         }
     }
 }
