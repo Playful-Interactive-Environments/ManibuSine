@@ -39,6 +39,9 @@ abstract public class APharusPlayerManager : MonoBehaviour
 	{
 		if(UnityPharusManager.Instance != null)
 		{
+            if (UnityPharusManager.Instance.EventProcessor == null)
+                return;
+
 			UnityPharusManager.Instance.EventProcessor.TrackAdded -= OnTrackAdded;
 			UnityPharusManager.Instance.EventProcessor.TrackUpdated -= OnTrackUpdated;
 			UnityPharusManager.Instance.EventProcessor.TrackRemoved -= OnTrackRemoved;

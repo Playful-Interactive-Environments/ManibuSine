@@ -63,7 +63,7 @@ public class ServerManager : NetworkManager {
 
     public void RestartApplication()
     {
-        StopServer();
+        //StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
@@ -83,6 +83,8 @@ public class ServerManager : NetworkManager {
     public GameObject SpawnEntityAt(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         if (!isServer)
+            return null;
+        if(!NetworkServer.active)
             return null;
 
         GameObject obj = Instantiate(prefab, spawnPosition, spawnRotation) as GameObject;
