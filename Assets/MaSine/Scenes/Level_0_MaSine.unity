@@ -936,22 +936,6 @@ Prefab:
       propertyPath: shipTransform
       value: 
       objectReference: {fileID: 882940870}
-    - target: {fileID: 171498, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 146118, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489026, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489026, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
   m_IsPrefabParent: 0
@@ -1010,6 +994,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 882940870}
   - 114: {fileID: 1152628787}
+  - 114: {fileID: 1152628788}
   m_Layer: 22
   m_Name: Ship
   m_TagString: Untagged
@@ -1032,6 +1017,17 @@ MonoBehaviour:
   maxHP: 6
   currentHP: 0
   godMode: 0
+--- !u!114 &1152628788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1152628786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f10a6428328ca049a31151e2a7652cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1317859378
 GameObject:
   m_ObjectHideFlags: 0
