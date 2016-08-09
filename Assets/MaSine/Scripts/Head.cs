@@ -41,11 +41,13 @@ public class Head : MonoBehaviour
     //}
     private void OnEnteredSteering(SteeringStation steeringStation)
     {
-        //mask = steeringMask;
+        if (steeringStation.NetworkPlayer.isLocalPlayer)
+            mask = steeringMask;
     }
     private void OnExitSteering(SteeringStation steeringStation)
     {
-        //mask = cannonMask;
+        if (steeringStation.NetworkPlayer.isLocalPlayer)
+            mask = cannonMask;
     }
 
     Ray ray;
