@@ -41,11 +41,11 @@ public class Head : MonoBehaviour
     //}
     private void OnEnteredSteering(SteeringStation steeringStation)
     {
-        mask = steeringMask;
+        //mask = steeringMask;
     }
     private void OnExitSteering(SteeringStation steeringStation)
     {
-        mask = cannonMask;
+        //mask = cannonMask;
     }
 
     Ray ray;
