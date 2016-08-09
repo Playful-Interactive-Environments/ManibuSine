@@ -170,7 +170,8 @@ public class ServerManager : NetworkManager {
 	public override void OnStopServer()
 	{
 		base.OnStopServer();
-		debugTextServer.text = "Server Stopped";
+        Stage1_Logic.Stage1Done -= OnStage1Done;
+        debugTextServer.text = "Server Stopped";
 	}
 
     public void RegisterPlayer(NetworkPlayer np)
