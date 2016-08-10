@@ -303,7 +303,9 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     internal void RpcRestartApplication()
     {
+        print("Restarting appliccation");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     [Command]
