@@ -15,10 +15,17 @@ public class GameSummary : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ShipManager.GameOver += OnGameOver;
+        Stage1_Logic.Stage1Done += OnStage1Done;
+    }
+
+    private void OnStage1Done() {
         startTime = DateTime.Now;
     }
 
     private void OnGameOver(int success) {
+
+        //ServerManager sm = FindObjectOfType<ServerManager>();
+
         // get time
         TimeSpan played = DateTime.Now.Subtract(startTime);
         PlayTime = played.Minutes + ":" + played.Seconds + ":" + played.Milliseconds;
@@ -31,7 +38,8 @@ public class GameSummary : MonoBehaviour {
 
         if (success > 0) {
             print("GAME WON");
-        } else {
+        }
+        else {
             print("GAME LOST");
         }
         print("Playtime: " + PlayTime);
@@ -45,5 +53,6 @@ public class GameSummary : MonoBehaviour {
     // Update is called once per frame
     void OnDestroy () {
         ShipManager.GameOver -= OnGameOver;
+        Stage1_Logic.Stage1Done -= OnStage1Done;
     }
 }
