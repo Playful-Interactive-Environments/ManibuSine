@@ -68,16 +68,9 @@ public class ServerManager : NetworkManager {
 
         foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
         {
-            print("np: " + np.name);
             np.RpcRestartApplication();
         }
-
-        //StopServer();
-        //NetworkServer.Reset();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
         StartCoroutine(RestartDelayed());
-
     }
 
     IEnumerator RestartDelayed()

@@ -305,6 +305,13 @@ public class NetworkPlayer : NetworkBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    [ClientRpc]
+    public void RpcGameStarted() {
+        GameSummary gs = FindObjectOfType<GameSummary>();
+        if (gs == null)
+            return;
+        gs.StartGame();
+    }
 
     [Command]
     public void CmdShoot(uint id)
