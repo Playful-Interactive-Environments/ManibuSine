@@ -11,8 +11,7 @@ public class UI_PickUp : MonoBehaviour {
     private int playerID;
 
     private Image progressCircle;
-
-    // public UI_Targeting targetingUI;
+    
 
     void Start() {
         targetingDot = transform.parent.GetComponentInChildren<UI_TargetingDot>();
@@ -25,8 +24,7 @@ public class UI_PickUp : MonoBehaviour {
 
         SteeringStation.EnteredSteering += OnEnterSteering;
         SteeringStation.ExitedSteering += OnExitSteering;
-
-       // InvokeRepeating("GetSteeringManager", 0.01f, 0.2f);
+        
     }
     void Update() {
         AnimateUI();
@@ -37,25 +35,10 @@ public class UI_PickUp : MonoBehaviour {
             return;
 
         progressCircle.fillAmount = ray.PickUpProgress01;
-
-        //targetingUI.AnimateUI(1 - ray.PickUpProgress01, pickUp);
+        
     }
-
-
-    //void GetSteeringManager()
-    //{
-    //    SteeringStation steeringManager = FindObjectOfType<SteeringStation>();
-    //    if (steeringManager != null)
-    //    {
-    //        CancelInvoke("GetSteeringManager");
-    //        steeringManager.EnteredSteering += OnEnterSteering;
-    //        steeringManager.ExitedSteering += OnExitSteering;
-    //    }
-    //}
-
     private void OnGotTarget(int playerID, PickUpRay ray)
     {
-        //targetingUI.ShowGraphics(true);
 
         progressCircle.enabled = true;
         progressCircle.fillAmount = 0;
@@ -67,12 +50,10 @@ public class UI_PickUp : MonoBehaviour {
     private void OnLostTarget(int playerID)
     {
         progressCircle.enabled = false;
-        //targetingUI.ShowGraphics(false);
     }
 
     private void OnEnterSteering(SteeringStation steeringStation)
     {
-        //targetingUI.ActivatePickUpUI();
         if (!steeringStation.NetworkPlayer.isLocalPlayer)
             return;
 
@@ -86,7 +67,6 @@ public class UI_PickUp : MonoBehaviour {
             return;
 
         progressCircle.enabled = false;
-        //targetingUI.ShowGraphics(false);
 
         playerID = 0;
 
@@ -94,9 +74,9 @@ public class UI_PickUp : MonoBehaviour {
     }
 
     void OnDestroy() {
-        PickUpRay.GotTarget += OnGotTarget;
-        PickUpRay.LostTarget += OnLostTarget;
-        SteeringStation.EnteredSteering += OnEnterSteering;
-        SteeringStation.ExitedSteering += OnExitSteering;
+        PickUpRay.GotTarget -= OnGotTarget;
+        PickUpRay.LostTarget -= OnLostTarget;
+        SteeringStation.EnteredSteering -= OnEnterSteering;
+        SteeringStation.ExitedSteering -= OnExitSteering;
     }
 }
