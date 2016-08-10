@@ -19,6 +19,10 @@ public class UI_GameOver : MonoBehaviour {
 
 	void Awake () {
         instance = this;
-        gameObject.SetActive(false);
 	}
+
+    void Start() {
+        print("AWAKE");
+        gameObject.SetActive(false);
+    }
 }

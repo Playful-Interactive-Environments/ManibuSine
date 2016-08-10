@@ -66,9 +66,9 @@ public class NetworkPlayer : NetworkBehaviour
     }
     void OnSetClientType(ClientChooser.ClientType clientType)
     {
-        print("Syncvar Client Type set to: " + clientType.ToString());
+        //print("Syncvar Client Type set to: " + clientType.ToString());
         SetClientType(clientType);
-        print(this.ToString());
+        //print(this.ToString());
 
     }
 
@@ -96,7 +96,7 @@ public class NetworkPlayer : NetworkBehaviour
                 ClientChooser cc = FindObjectOfType<ClientChooser>();
                 if (cc != null)
                 {
-                    print(cc);
+                    //print(cc);
                     CmdSetClientType(cc.clientType);
                     SetClientType(cc.clientType);
                 }
@@ -109,9 +109,9 @@ public class NetworkPlayer : NetworkBehaviour
                     cylinder.AssignPlayer(this);
             }else if (isClient)
             {
-                print("Start Client Type set to: " + clientType.ToString());
+                //print("Start Client Type set to: " + clientType.ToString());
                 SetClientType(clientType);
-                print(this.ToString());
+                //print(this.ToString());
             }
 
             if (isClient) {
@@ -460,7 +460,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         // Do stuff to make it a render client
         
-        print( this.gameObject.name +" is set to : " + this.clientType.ToString());
+        //print( this.gameObject.name +" is set to : " + this.clientType.ToString());
         Collider[] npCollider = GetComponents<Collider>();
         Transform[] npChildTransforms = GetComponentsInChildren<Transform>();
         foreach (Collider coll in npCollider)
