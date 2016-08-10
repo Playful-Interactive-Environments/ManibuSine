@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine.VR;
 using UnityPharus;
 using System;
+using UnityEngine.SceneManagement;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -159,7 +160,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
         InitMessage();
 	}
-    
 
     private void InitMessage() {
         //print("0");
@@ -271,7 +271,7 @@ public class NetworkPlayer : NetworkBehaviour
             wpl.SyncLevelProgress(state);
     }
 
-    [ClientRpc]
+    
     internal void RpcSetPlayerView(int playerNumber, uint netID)
     {
         if (clientType != ClientChooser.ClientType.RenderClientWall)
@@ -298,6 +298,12 @@ public class NetworkPlayer : NetworkBehaviour
                 return;
             GameObject.Find("P2_View").GetComponent<PlayerView>().ConnectPlayer(networkPlayer);
         }
+    }
+
+    [ClientRpc]
+    internal void RpcRestartApplication()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     [Command]
