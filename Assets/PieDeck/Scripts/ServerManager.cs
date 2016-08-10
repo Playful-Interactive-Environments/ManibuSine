@@ -68,6 +68,7 @@ public class ServerManager : NetworkManager {
 
         foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
         {
+            print("np: " + np.name);
             np.RpcRestartApplication();
         }
 
