@@ -271,8 +271,8 @@ public class NetworkPlayer : NetworkBehaviour
             wpl.SyncLevelProgress(state);
     }
 
-    
-    internal void RpcSetPlayerView(int playerNumber, uint netID)
+    [ClientRpc]
+    public void RpcSetPlayerView(int playerNumber, uint netID)
     {
         if (clientType != ClientChooser.ClientType.RenderClientWall)
             return;
