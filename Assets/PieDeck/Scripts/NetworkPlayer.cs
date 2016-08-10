@@ -304,13 +304,9 @@ public class NetworkPlayer : NetworkBehaviour
     public void RpcRestartApplication()
     {
         Network.Disconnect();
-        StartCoroutine(RestartDelayed());
-    }
-    
-    IEnumerator RestartDelayed()
-    {
-        yield return new WaitForSeconds(1.31f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        GameObject restarter = new GameObject();
+        restarter.AddComponent<ClientRestarter>();
     }
 
     [ClientRpc]

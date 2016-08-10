@@ -66,6 +66,8 @@ public class ServerManager : NetworkManager {
         if (!isServer)
             return;
 
+        print("am i?");
+
         foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
         {
             np.RpcRestartApplication();
@@ -75,7 +77,7 @@ public class ServerManager : NetworkManager {
 
     IEnumerator RestartDelayed()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
