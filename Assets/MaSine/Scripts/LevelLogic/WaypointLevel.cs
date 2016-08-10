@@ -60,6 +60,7 @@ public class WaypointLevel : MonoBehaviour {
     void OnDestroy() {
         EventTrigger.ShipEnteredEvent -= ShipEnteredWaypoint;
         EventTrigger.ShipLeftEvent -= ShipLeftWaypoint;
+        ShipManager.GameOver -= OnGameOver;
     }
 
     public void SyncLevelProgress(int currentLevelState) {

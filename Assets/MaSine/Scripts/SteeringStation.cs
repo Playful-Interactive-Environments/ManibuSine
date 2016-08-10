@@ -170,13 +170,6 @@ public class SteeringStation : NetworkBehaviour {
     }
 
     void OnDestroy() {
-        if (isServer)
-            return;
-
-        //UI_Steering sui = FindObjectOfType<UI_Steering>();
-        //if (sui == null)
-        //    return;
-
-        //sui.LogOfSteeringStation(this);
+        ShipManager.GameOver -= OnGameOver;
     }
 }
