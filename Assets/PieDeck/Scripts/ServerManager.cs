@@ -66,8 +66,6 @@ public class ServerManager : NetworkManager {
         if (!isServer)
             return;
 
-        print("am i?");
-
         foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
         {
             np.RpcRestartApplication();

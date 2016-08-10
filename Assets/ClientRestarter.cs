@@ -9,7 +9,7 @@ public class ClientRestarter : MonoBehaviour {
 	}
 
     IEnumerator RestartDelayed() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         print("do it boy");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

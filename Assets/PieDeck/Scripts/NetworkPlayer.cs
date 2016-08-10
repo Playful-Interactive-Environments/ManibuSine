@@ -303,6 +303,8 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcRestartApplication()
     {
+        if (!isLocalPlayer)
+            return;
         Network.Disconnect();
 
         GameObject restarter = new GameObject();
