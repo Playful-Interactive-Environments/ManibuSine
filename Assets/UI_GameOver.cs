@@ -22,7 +22,6 @@ public class UI_GameOver : MonoBehaviour {
 	}
 
     void Start() {
-        print("AWAKE");
         gameObject.SetActive(false);
     }
 }

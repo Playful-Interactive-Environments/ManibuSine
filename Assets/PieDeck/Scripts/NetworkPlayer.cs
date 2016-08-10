@@ -309,7 +309,7 @@ public class NetworkPlayer : NetworkBehaviour
     
     IEnumerator RestartDelayed()
     {
-        yield return new WaitForSeconds(0.61f);
+        yield return new WaitForSeconds(1.31f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
