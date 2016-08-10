@@ -303,6 +303,7 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcRestartApplication()
     {
+        Network.Disconnect();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     [ClientRpc]
