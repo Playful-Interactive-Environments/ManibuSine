@@ -131,6 +131,10 @@ public class ServerManager : NetworkManager {
     void OnStage1Done()
     {
         SpawnEntityAtPrefabPosition(SteeringStation);
+
+        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>()) {
+            np.RpcGameStarted();
+        }
     }
 
     public void StartupHost()

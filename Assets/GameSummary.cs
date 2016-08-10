@@ -21,15 +21,11 @@ public class GameSummary : MonoBehaviour {
     }
 
     private void OnStage1Done() {
-        if (!ServerManager.Instance.isServer)
-            return;
-        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>()) {
-            np.RpcGameStarted();
-        }
         StartGame();
     }
 
     public void StartGame() {
+        print("started");
         startTime = DateTime.Now;
     }
 
