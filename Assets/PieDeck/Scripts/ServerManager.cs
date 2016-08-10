@@ -218,11 +218,26 @@ public class ServerManager : NetworkManager {
 
     public void UnregisterPlayer(NetworkPlayer np)
     {
+        //Unregister player from wall client Playerview
+        foreach (PlayerView pv in FindObjectsOfType<PlayerView>())
+        {
+            if(pv.player != null)
+            {
+                if (pv.player.netId.Value == np.netId.Value)
+                {
+                    pv.DisconnectPlayer();
+                }
+            }
+            
+        }
+
+        //Unrergister Player from Admin Singleton
         if (!isServer)
             return;
 
         if (Admin.Instance.ButtonPlayerOne == null || Admin.Instance.ButtonPlayerTwo == null)
             return;
+
 
         if (playerClients[0] == np) {
             Admin.Instance.ButtonPlayerOne.gameObject.SetActive(false);
@@ -236,12 +251,6 @@ public class ServerManager : NetworkManager {
             Admin.Instance.PlayerTwo = null;
             playerClients[1] = null;
         }
-
-        if (isServer)
-        {
-            //debugTextServer.text = "Client " + np.connectionToClient.connectionId + " disconnected.";
-            //print("Client " + np.connectionToClient.connectionId + " disconnected.");
-        }   
     }
 
 	//public override void OnServerConnect(NetworkConnection conn)

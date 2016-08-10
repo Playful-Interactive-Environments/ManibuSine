@@ -30,9 +30,9 @@ public class PlayerView : MonoBehaviour {
 
     public void DisconnectPlayer()
     {
-        Camera cam = this.player.GetComponent<Camera>();
-        cam.enabled = true;
-        rawImage.enabled = true;
+        Camera cam = this.player.GetComponentInChildren<Camera>();
+        cam.enabled = false;
+        rawImage.enabled = false;
         this.player = null;
 
     }
