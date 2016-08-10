@@ -36,4 +36,9 @@ public class EntitySpawner : MonoBehaviour {
 
         serverManager.SpawnEntityAtPrefabPosition(entityToSpawn);
     }
+
+    public void OnDestroy()
+    {
+        ShipManager.GameOver -= OnGameOver;
+    }
 }

@@ -72,12 +72,20 @@ public class ServerManager : NetworkManager {
             np.RpcRestartApplication();
         }
 
+        //StopServer();
+        //NetworkServer.Reset();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        StartCoroutine(RestartDelayed());
+
+    }
+
+    IEnumerator RestartDelayed()
+    {
+        yield return 0;
         StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        
-
     }
 
     public void SpawnEntityAtPrefabPosition(GameObject prefab) {
