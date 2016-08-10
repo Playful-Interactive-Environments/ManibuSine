@@ -70,6 +70,9 @@ public class ServerManager : NetworkManager {
         {
             np.RpcRestartApplication();
         }
+
+        Network.Disconnect();
+
         StartCoroutine(RestartDelayed());
     }
 
