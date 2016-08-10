@@ -13,6 +13,7 @@ public class PlayerAssignmentTrigger : MonoBehaviour
     private void OnGameOver(int damage)
     {
         enabled = false;
+        GetComponent<Collider>().enabled = false;
     }
 
     void OnDestroy()
