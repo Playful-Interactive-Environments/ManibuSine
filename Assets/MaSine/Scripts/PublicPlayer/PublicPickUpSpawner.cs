@@ -30,4 +30,9 @@ public class PublicPickUpSpawner : MonoBehaviour {
 
         entitySpawner.SpawnAt(pickUpPrefab.gameObject, spawnPosition, new Quaternion());
 	}
+
+    void OnDestroy()
+    {
+        ShipManager.GameOver -= OnGameOver;
+    }
 }
