@@ -63,14 +63,16 @@ public class ServerManager : NetworkManager {
 
     public void RestartApplication()
     {
-        if (!isServer)
-            return;
+        
 
         foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
         {
             np.RpcRestartApplication();
         }
-        
+
+        if (!isServer)
+            return;
+
         StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
