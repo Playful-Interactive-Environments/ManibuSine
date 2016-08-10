@@ -301,7 +301,7 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    internal void RpcRestartApplication()
+    public void RpcRestartApplication()
     {
         print("Restarting appliccation");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
