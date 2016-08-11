@@ -32,7 +32,7 @@ public class AudioFader : MonoBehaviour {
             source.volume = volume * fadeCurrent / fadeDuration;
         } else {
             source.volume = 0;
-            source.Stop();
+            //source.Stop();
             fadingOut = false;
         }
     }

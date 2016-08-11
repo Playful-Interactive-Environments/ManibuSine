@@ -25,6 +25,7 @@ public class ShipManager : MonoBehaviour {
     }
 
     public void GameWon() {
+        print(GetType().Name + " GameWon()");
         if (GameOver != null)
             GameOver(1);
     }

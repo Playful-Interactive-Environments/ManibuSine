@@ -14,10 +14,9 @@ public class GameSummary : MonoBehaviour {
 
     private DateTime startTime;
 
-    
-
 	// Use this for initialization
 	void Start () {
+        GameIsOver = false;
         ShipManager.GameOver += OnGameOver;
         Stage1_Logic.Stage1Done += OnStage1Done;
 
@@ -33,6 +32,8 @@ public class GameSummary : MonoBehaviour {
     }
 
     private void OnGameOver(int success) {
+
+        print(GetType().Name + " OnGameOver");
         if (GameIsOver)
             return;
         GameIsOver = true;
