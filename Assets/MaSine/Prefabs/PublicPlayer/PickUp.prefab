@@ -274,6 +274,7 @@ MonoBehaviour:
   pickUpParticles: {fileID: 100010, guid: e2467dc9c7ce115408bd580fdebc8c40, type: 2}
   on: {fileID: 2100000, guid: da78a195951abd245b98ff3df33bf20e, type: 2}
   off: {fileID: 2100000, guid: 0c43ff6e286664c42991ff33a8984d05, type: 2}
+  graphicTransform: {fileID: 466136}
 --- !u!114 &11447258
 MonoBehaviour:
   m_ObjectHideFlags: 1

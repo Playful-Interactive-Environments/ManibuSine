@@ -8,7 +8,8 @@ public class PublicPickUp : NetworkBehaviour {
     public Material on, off;
     private MeshRenderer meshRenderer;
     private AudioSource audio;
-
+    public Transform graphicTransform;
+    private float rotSpeed;
     private PublicPlayer player;
     public PublicPlayer Player {
         get {
@@ -36,6 +37,11 @@ public class PublicPickUp : NetworkBehaviour {
 
         audio = GetComponent<AudioSource>();
         transform.parent = UniverseTransformer.Instance.transform;
+
+        rotSpeed = Random.Range(-0.1f, 0.1f);
+        if (rotSpeed < 0.01 && rotSpeed > -0.01)
+            rotSpeed = 0.01f;
+
     }
 
     public void PickIt()
@@ -65,6 +71,7 @@ public class PublicPickUp : NetworkBehaviour {
     }
 
 	void Update () {
+        graphicTransform.Rotate(rotSpeed, rotSpeed, rotSpeed);
         PositionUpdate();
 	}
 }
