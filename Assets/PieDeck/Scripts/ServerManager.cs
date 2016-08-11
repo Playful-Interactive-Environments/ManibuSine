@@ -66,13 +66,13 @@ public class ServerManager : NetworkManager {
         if (!isServer)
             return;
 
-        //foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
-        //{
-        //    np.RpcRestartApplication();
-        //}
+        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
+        {
+            np.RpcRestartApplication();
+        }
 
         //Network.Disconnect();
-        
+
         StartCoroutine(RestartDelayed());
     }
 
@@ -185,18 +185,13 @@ public class ServerManager : NetworkManager {
 		debugTextServer.text = "Server Started";
 
         ShipManager.Instance.Initialize();
-
-        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
-        {
-            np.RpcRestartApplication();
-        }
     }
 
 	public override void OnStopServer()
 	{
 		base.OnStopServer();
         debugTextServer.text = "Server Stopped";
-	}
+    }
 
     void OnDestroy()
     {
@@ -338,6 +333,8 @@ public class ServerManager : NetworkManager {
 
 	public override void OnClientConnect(NetworkConnection conn)
 	{
+        if (NetworkManager.singleton.IsClientConnected())
+            return;
 		base.OnClientConnect(conn);
         //if (np.clientType == ClientChooser.ClientType.RenderClientWall) {
         //    CameraToolServer cts = FindObjectOfType<CameraToolServer>();
