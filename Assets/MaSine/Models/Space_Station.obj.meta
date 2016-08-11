@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: f45c9cca68b4d754a882033afea79325
-timeCreated: 1466953114
+guid: b455d4228e86716489ce5e4432866948
+timeCreated: 1470905316
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: ShipWrecks
+    100002: Space_station
     400000: //RootNode
-    400002: ShipWrecks
-    2300000: ShipWrecks
-    3300000: ShipWrecks
-    4300000: ShipWrecks
+    400002: Space_station
+    2300000: Space_station
+    3300000: Space_station
+    4300000: Space_station
   materials:
     importMaterials: 1
     materialName: 0
@@ -52,7 +52,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
+    normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1

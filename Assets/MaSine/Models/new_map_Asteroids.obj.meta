@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: c04b8dceb37af424e890e812150f3505
-timeCreated: 1470487165
+guid: 7540f09bf1ad0b0439e6749b52a669f1
+timeCreated: 1470905316
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Env_asteroids_combined
-    400000: //RootNode
-    400002: Env_asteroids_combined
-    2300000: Env_asteroids_combined
-    3300000: Env_asteroids_combined
-    4300000: Env_asteroids_combined
+    100000: big_asteroids
+    100002: //RootNode
+    400000: big_asteroids
+    400002: //RootNode
+    2300000: big_asteroids
+    3300000: big_asteroids
+    4300000: big_asteroids
   materials:
     importMaterials: 1
     materialName: 0

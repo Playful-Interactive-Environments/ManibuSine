@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 2e600af298985c44d824f0ada35894ad
-timeCreated: 1466953114
+guid: 66d35849c2ee4ea409f38ab6ed260bab
+timeCreated: 1470905315
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: StaticAsteroids
+    100002: ship_panels
     400000: //RootNode
-    400002: StaticAsteroids
-    2300000: StaticAsteroids
-    3300000: StaticAsteroids
-    4300000: StaticAsteroids
+    400002: ship_panels
+    2300000: ship_panels
+    3300000: ship_panels
+    4300000: ship_panels
   materials:
     importMaterials: 1
     materialName: 0
