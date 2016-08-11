@@ -5,7 +5,8 @@ public class ClientManager : MonoBehaviour {
 
 	
 	void Start () {
-        InvokeRepeating("TryConnecting", 2, 0.5f);
+        InvokeRepeating("TryConnecting", 2, 2.5f);
+        
 	}
 	
 	// Update is called once per frame
@@ -20,10 +21,10 @@ public class ClientManager : MonoBehaviour {
     {
         if (ServerManager.Instance.isNetworkActive)
         {
-            CancelInvoke("TryConnecting");
+            //CancelInvoke("TryConnecting");
             return;
         }
-            
+        print("Try connecting");
         GetComponent<ServerManager>().JoinGame();
     }
 }

@@ -79,6 +79,7 @@ public class ServerManager : NetworkManager {
     IEnumerator RestartDelayed()
     {
         yield return new WaitForSeconds(0.5f);
+        StopHost();
         StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
