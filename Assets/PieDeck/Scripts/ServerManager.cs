@@ -72,14 +72,14 @@ public class ServerManager : NetworkManager {
         }
 
         //Network.Disconnect();
-
+        
         StartCoroutine(RestartDelayed());
     }
 
     IEnumerator RestartDelayed()
     {
         yield return new WaitForSeconds(0.5f);
-        StopHost();
+        //StopHost();
         StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -333,8 +333,8 @@ public class ServerManager : NetworkManager {
 
 	public override void OnClientConnect(NetworkConnection conn)
 	{
-        if (NetworkManager.singleton.IsClientConnected())
-            return;
+        //if (NetworkManager.singleton.IsClientConnected())
+        //    return;
 		base.OnClientConnect(conn);
         //if (np.clientType == ClientChooser.ClientType.RenderClientWall) {
         //    CameraToolServer cts = FindObjectOfType<CameraToolServer>();
