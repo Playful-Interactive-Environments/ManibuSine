@@ -26,11 +26,11 @@ public class ClientChooser : MonoBehaviour {
                 break;
             case ClientType.RenderClientFloor:
                 // set quality to max
-                //QualitySettings.SetQualityLevel(hightest);
+                QualitySettings.SetQualityLevel(hightest);
                 break;
             case ClientType.RenderClientWall:
                 // set quality to max
-                //QualitySettings.SetQualityLevel(hightest);
+                QualitySettings.SetQualityLevel(hightest);
                 break;
             default:
                 break;

@@ -30,23 +30,28 @@ public class Head : MonoBehaviour
         SteeringStation.ExitedSteering += OnExitSteering;
     }
 
-
     private void OnEnterCannon(CanonManager canonManager)
     {
         mask = cannonMask;
     }
+
+    // check if either is local player or if no render client
+    private bool CheckEnteringPlayer(SteeringStation steeringStation) {
+        return (steeringStation.NetworkPlayer.isLocalPlayer || (!ServerManager.Instance.isServer && ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient));
+    }
+
     //private void OnExitCannon(CanonManager canonManager)
     //{
         
     //}
     private void OnEnteredSteering(SteeringStation steeringStation)
     {
-        if (steeringStation.NetworkPlayer.isLocalPlayer || ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient)
+        if (CheckEnteringPlayer(steeringStation))
             mask = steeringMask;
     }
     private void OnExitSteering(SteeringStation steeringStation)
     {
-        if (steeringStation.NetworkPlayer.isLocalPlayer || ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient)
+        if (CheckEnteringPlayer(steeringStation))
             mask = cannonMask;
     }
 
