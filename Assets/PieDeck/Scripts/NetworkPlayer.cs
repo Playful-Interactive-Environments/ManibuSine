@@ -303,6 +303,7 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcRestartApplication()
     {
+
         if (!isLocalPlayer)
             return;
 

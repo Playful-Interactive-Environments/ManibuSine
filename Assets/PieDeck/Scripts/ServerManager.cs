@@ -72,21 +72,17 @@ public class ServerManager : NetworkManager {
         }
 
         //Network.Disconnect();
+        
+        StartCoroutine(RestartDelayed());
+    }
 
+    IEnumerator RestartDelayed()
+    {
+        yield return new WaitForSeconds(0.5f);
         StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        //StartCoroutine(RestartDelayed());
     }
-
-    //IEnumerator RestartDelayed()
-    //{
-    //    yield return new WaitForSeconds(0.5f);
-    //    StopServer();
-    //    NetworkServer.Reset();
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //}
 
     public void SpawnEntityAtPrefabPosition(GameObject prefab) {
         GameObject obj = Instantiate(prefab) as GameObject;
