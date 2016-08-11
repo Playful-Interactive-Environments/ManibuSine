@@ -162,11 +162,6 @@ public class ServerManager : NetworkManager {
         SpawnEntityAtPrefabPosition(CanonStationLeft);
         SpawnEntityAtPrefabPosition(CanonStationRight);
         Stage1_Logic.SpawnStage1();
-
-        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
-        {
-            np.RpcRestartApplication();
-        }
     }
 
 	public void StopHosting()
@@ -190,7 +185,12 @@ public class ServerManager : NetworkManager {
 		debugTextServer.text = "Server Started";
 
         ShipManager.Instance.Initialize();
-	}
+
+        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
+        {
+            np.RpcRestartApplication();
+        }
+    }
 
 	public override void OnStopServer()
 	{
