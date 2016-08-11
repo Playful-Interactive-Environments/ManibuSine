@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 public class ClientRestarter : MonoBehaviour {
 
 	void Start () {
-        StartCoroutine(RestartDelayed());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        //StartCoroutine(RestartDelayed());
 	}
 
-    IEnumerator RestartDelayed() {
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    //IEnumerator RestartDelayed() {
+    //    yield return new WaitForSeconds(1.5f);
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //}
 }
