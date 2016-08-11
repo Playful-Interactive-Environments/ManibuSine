@@ -32,7 +32,8 @@ public class Head : MonoBehaviour
 
     private void OnEnterCannon(CanonManager canonManager)
     {
-        mask = cannonMask;
+        if (canonManager.NetworkPlayer.isLocalPlayer)
+            mask = cannonMask;
     }
 
     // check if either is local player or if no render client

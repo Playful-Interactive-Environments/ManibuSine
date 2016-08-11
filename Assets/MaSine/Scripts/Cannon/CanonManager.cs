@@ -37,6 +37,11 @@ public class CanonManager : NetworkBehaviour
     private Canon canon;
 
     NetworkPlayer networkPlayer;
+    public NetworkPlayer NetworkPlayer {
+        get {
+            return networkPlayer;
+        }
+    }
 
     private float rotationSpeed = 3;
     private float translationSpeed = 5;
@@ -44,6 +49,7 @@ public class CanonManager : NetworkBehaviour
     private float targetingDuration = 1.0f;
     private float targetedTime = 0.0f;
     public float TargetedTime { get { return targetedTime; } }
+
     private float targetingSpeed = 1.0f;
     private Quaternion startQuat;
 
