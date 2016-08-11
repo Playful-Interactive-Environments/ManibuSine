@@ -41,12 +41,12 @@ public class Head : MonoBehaviour
     //}
     private void OnEnteredSteering(SteeringStation steeringStation)
     {
-        if (steeringStation.NetworkPlayer.isLocalPlayer)
+        if (steeringStation.NetworkPlayer.isLocalPlayer || ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient)
             mask = steeringMask;
     }
     private void OnExitSteering(SteeringStation steeringStation)
     {
-        if (steeringStation.NetworkPlayer.isLocalPlayer)
+        if (steeringStation.NetworkPlayer.isLocalPlayer || ClientChooser.Instance.clientType != ClientChooser.ClientType.VRClient)
             mask = cannonMask;
     }
 
