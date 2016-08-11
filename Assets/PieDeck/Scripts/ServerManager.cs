@@ -72,21 +72,18 @@ public class ServerManager : NetworkManager {
         }
 
         //Network.Disconnect();
+        
+        StartCoroutine(RestartDelayed());
+    }
 
+    IEnumerator RestartDelayed()
+    {
+        yield return new WaitForSeconds(0.5f);
+        //StopHost();
         StopServer();
         NetworkServer.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        //StartCoroutine(RestartDelayed());
     }
-
-    //IEnumerator RestartDelayed()
-    //{
-    //    yield return new WaitForSeconds(0.5f);
-    //    StopServer();
-    //    NetworkServer.Reset();
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //}
 
     public void SpawnEntityAtPrefabPosition(GameObject prefab) {
         GameObject obj = Instantiate(prefab) as GameObject;
@@ -188,13 +185,13 @@ public class ServerManager : NetworkManager {
 		debugTextServer.text = "Server Started";
 
         ShipManager.Instance.Initialize();
-	}
+    }
 
 	public override void OnStopServer()
 	{
 		base.OnStopServer();
         debugTextServer.text = "Server Stopped";
-	}
+    }
 
     void OnDestroy()
     {
@@ -336,6 +333,8 @@ public class ServerManager : NetworkManager {
 
 	public override void OnClientConnect(NetworkConnection conn)
 	{
+        //if (NetworkManager.singleton.IsClientConnected())
+        //    return;
 		base.OnClientConnect(conn);
         //if (np.clientType == ClientChooser.ClientType.RenderClientWall) {
         //    CameraToolServer cts = FindObjectOfType<CameraToolServer>();
