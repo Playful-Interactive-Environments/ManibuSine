@@ -15,6 +15,7 @@ public class UI_PickUp : MonoBehaviour {
 
     void Start() {
         targetingDot = transform.parent.GetComponentInChildren<UI_TargetingDot>();
+
         dotGfx = targetingDot.GetComponent<Image>();
 
         progressCircle = GetComponentInChildren<Image>();
@@ -39,7 +40,7 @@ public class UI_PickUp : MonoBehaviour {
     }
     private void OnGotTarget(int playerID, PickUpRay ray)
     {
-
+        dotGfx.sprite = targetingDot.dot;
         progressCircle.enabled = true;
         progressCircle.fillAmount = 0;
 
