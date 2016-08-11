@@ -66,10 +66,10 @@ public class ServerManager : NetworkManager {
         if (!isServer)
             return;
 
-        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
-        {
-            np.RpcRestartApplication();
-        }
+        //foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
+        //{
+        //    np.RpcRestartApplication();
+        //}
 
         //Network.Disconnect();
         
@@ -162,6 +162,11 @@ public class ServerManager : NetworkManager {
         SpawnEntityAtPrefabPosition(CanonStationLeft);
         SpawnEntityAtPrefabPosition(CanonStationRight);
         Stage1_Logic.SpawnStage1();
+
+        foreach (NetworkPlayer np in FindObjectsOfType<NetworkPlayer>())
+        {
+            np.RpcRestartApplication();
+        }
     }
 
 	public void StopHosting()
