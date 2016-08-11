@@ -28,7 +28,6 @@ public class UI_PickUpProgressFloor : MonoBehaviour {
     }
 
     private void OnGotTarget(int picked, PickUpRay ray) {
-        print(this.GetType().Name + ": GotTarget");
         this.ray = ray;
         progressCircle.enabled = true;
     }
