@@ -41,6 +41,7 @@ public class UI_PickUp : MonoBehaviour {
     private void OnGotTarget(int playerID, PickUpRay ray)
     {
         dotGfx.sprite = targetingDot.dot;
+        dotGfx.material = targetingDot.originalMaterial;
         progressCircle.enabled = true;
         progressCircle.fillAmount = 0;
 
