@@ -1543,54 +1543,6 @@ Prefab:
       propertyPath: shipTransform
       value: 
       objectReference: {fileID: 882940870}
-    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Color.r
-      value: 0.26666668
-      objectReference: {fileID: 0}
-    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Color.g
-      value: 0.5921569
-      objectReference: {fileID: 0}
-    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Color.b
-      value: 0.56078434
-      objectReference: {fileID: 0}
-    - target: {fileID: 10841288, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Intensity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2351454, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2351454, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349016, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349016, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2371326, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2376408, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2342828, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394210, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 421afb11a1da1614bb406267c9a4b318, type: 2}
   m_IsPrefabParent: 0
