@@ -11,6 +11,8 @@ public class UI_GameOver : MonoBehaviour {
             return;
         instance.gameObject.SetActive(true);
 
+        print("show me");
+
         instance.time.text = time;
         instance.collected.text = collected.ToString();
         instance.shot.text = shot.ToString();

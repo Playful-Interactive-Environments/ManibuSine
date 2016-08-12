@@ -47,8 +47,6 @@ public class ShipManager : MonoBehaviour {
                 if (!godMode)
                 {
                     GameOver(0);
-                    print("Game Is Over - And Lost");
-                }
-                    
+                }        
     }
 }
