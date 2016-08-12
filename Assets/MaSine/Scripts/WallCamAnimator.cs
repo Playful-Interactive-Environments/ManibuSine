@@ -3,6 +3,7 @@ using System.Collections;
 
 public class WallCamAnimator : MonoBehaviour {
     public bool animateRotation = true;
+    public bool frontView = false;
     public bool resetRotation = false;
     private float rotationSpeed = 7;
 
@@ -44,14 +45,21 @@ public class WallCamAnimator : MonoBehaviour {
         resetDistance = true;
         animateDistance = false;
     }
+    //public void GoToFrontView() {
+
+    //}
     public void ResetAll() {
         ResetDistance();
         ResetRotation();
     }
 
+
+
     private void RotationUpdate() {
-        if (animateRotation) {
+        if (animateRotation && !frontView) {
             transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        } else if (animateRotation && frontView) {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,180,0) , Time.deltaTime * 5);
         }
         else if (resetRotation) {
             transform.rotation = Quaternion.Lerp(transform.rotation, initRot, Time.deltaTime * 5);
