@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mat_Drone_main
+  m_Name: mat_BlinkLight2D
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -75,7 +75,14 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 2800000, guid: 4e54bb6e782d0024db4968c5fa3d197e, type: 3}
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailTex
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -93,6 +100,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: PixelSnap
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -102,7 +113,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.358
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -127,12 +138,52 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Stencil
+        second: 0
+      data:
+        first:
+          name: _StencilComp
+        second: 8
+      data:
+        first:
+          name: _StencilOp
+        second: 0
+      data:
+        first:
+          name: _StencilReadMask
+        second: 255
+      data:
+        first:
+          name: _StencilWriteMask
+        second: 255
+      data:
+        first:
+          name: _ColorMask
+        second: 15
+      data:
+        first:
+          name: _UseUIAlphaClip
+        second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: _Strength
+        second: 0.2
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0.46206903, b: 1, a: 1}
+        second: {r: 1, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 0.34402034, g: 0.37937376, b: 0.46323532, a: 1}
+        second: {r: 1, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 0, b: 0, a: 1}

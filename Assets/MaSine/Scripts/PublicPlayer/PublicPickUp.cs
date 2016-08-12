@@ -7,9 +7,12 @@ public class PublicPickUp : NetworkBehaviour {
     public GameObject pickUpParticles;
     public Material on, off;
     private MeshRenderer meshRenderer;
+    private MeshRenderer crateMeshRenderer;
     private AudioSource audio;
     public Transform graphicTransform;
     private float rotSpeed;
+
+
     private PublicPlayer player;
     public PublicPlayer Player {
         get {
@@ -33,14 +36,14 @@ public class PublicPickUp : NetworkBehaviour {
     }
 
     void Start() {
-        //meshRenderer = GetComponent<MeshRenderer>();
+        crateMeshRenderer = GetComponentInChildren<MeshRenderer>();
 
         audio = GetComponent<AudioSource>();
         transform.parent = UniverseTransformer.Instance.transform;
 
         rotSpeed = Random.Range(-0.1f, 0.1f);
-        if (rotSpeed < 0.01 && rotSpeed > -0.01)
-            rotSpeed = 0.01f;
+        if (rotSpeed < 0.04 && rotSpeed > -0.04)
+            rotSpeed = 0.05f;
 
     }
 
@@ -56,6 +59,7 @@ public class PublicPickUp : NetworkBehaviour {
 
         // disable rendering and collider (trigger)
         meshRenderer.enabled = false;
+        crateMeshRenderer.enabled = false;
         Collider[] col = GetComponentsInChildren<Collider>();
         foreach (Collider item in col)
             item.enabled = false;
