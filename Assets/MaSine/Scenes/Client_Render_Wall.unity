@@ -325,7 +325,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 330989289}
-  m_Mesh: {fileID: 4300000, guid: b03c90bf026377a488cad6d20f0b1b7b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e0267c78d22b4e44f841a24ba7dbdb8d, type: 3}
 --- !u!1001 &552203088
 Prefab:
   m_ObjectHideFlags: 0
@@ -1247,6 +1247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animateRotation: 0
+  frontView: 0
   resetRotation: 0
   animateDistance: 0
   resetDistance: 0
@@ -1678,10 +1679,10 @@ MonoBehaviour:
   tweakMode: 0
   screenBlendMode: 1
   hdr: 0
-  sepBlurSpread: 1.87
+  sepBlurSpread: 1.3
   quality: 1
-  bloomIntensity: 0.72
-  bloomThreshold: 0.4
+  bloomIntensity: 0.6
+  bloomThreshold: 0.5
   bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
   bloomBlurIterations: 2
   hollywoodFlareBlurIterations: 2
