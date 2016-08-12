@@ -42,8 +42,8 @@ public class PublicPickUp : NetworkBehaviour {
         transform.parent = UniverseTransformer.Instance.transform;
 
         rotSpeed = Random.Range(-0.1f, 0.1f);
-        if (rotSpeed < 0.01 && rotSpeed > -0.01)
-            rotSpeed = 0.01f;
+        if (rotSpeed < 0.04 && rotSpeed > -0.04)
+            rotSpeed = 0.05f;
 
     }
 
