@@ -75,5 +75,13 @@ public class WallCamAnimator : MonoBehaviour {
     void Update() {
         RotationUpdate();
         DistanceUpdate();
+
+        if (ServerManager.Instance.IsClientConnected()) {
+            ResetRotation();
+            ResetDistance();
+        } else if (!ServerManager.Instance.IsClientConnected()) {
+            StartRotation();
+            StartDistance();
+        }
     }
 }
