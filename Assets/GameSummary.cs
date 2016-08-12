@@ -32,10 +32,9 @@ public class GameSummary : MonoBehaviour {
     }
 
     private void OnGameOver(int success) {
-
-        print(GetType().Name + " OnGameOver");
         if (GameIsOver)
             return;
+
         GameIsOver = true;
         // get time
         TimeSpan played = DateTime.Now.Subtract(startTime);
