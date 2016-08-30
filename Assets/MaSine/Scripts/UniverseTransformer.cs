@@ -11,6 +11,13 @@ public class UniverseTransformer : MonoBehaviour {
     public Transform shipTransform;
 
     private Rigidbody targetBody;
+    public float CurrentSpeed {
+        get {
+            if (targetBody != null)
+                return targetBody.velocity.magnitude;
+            else return 0;
+        }
+    }
     private Rigidbody targetRotatorBody;
     
     public float lerpSpeed = 0.1f;
