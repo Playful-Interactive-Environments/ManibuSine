@@ -4,6 +4,9 @@ using UnityEngine.Networking;
 using System;
 
 public class SteeringStation : NetworkBehaviour {
+    // this is not a singleton - can be null!
+    private static SteeringStation instance; // static instance reference
+    public static SteeringStation Instance { get { return instance; } }
 
     public delegate void SteeringDelegateTransform(SteeringStation steeringStation);
     public static SteeringDelegateTransform  EnteredSteering, ExitedSteering;
@@ -39,6 +42,7 @@ public class SteeringStation : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
+        instance = this;
         ShipManager.GameOver += OnGameOver;
         mRenderer = GetComponentInChildren<MeshRenderer>();
         originalColor = mRenderer.material.color;
