@@ -495,7 +495,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 58163ece78f47db4092f482b51cd7d78, type: 3}
-    m_FontSize: 9
+    m_FontSize: 8
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -973,7 +973,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 58163ece78f47db4092f482b51cd7d78, type: 3}
-    m_FontSize: 9
+    m_FontSize: 8
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1164,7 +1164,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22415344, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000030517578
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 22415344, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -1212,7 +1212,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22450644, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000030517578
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22450644, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_Pivot.x
@@ -1228,19 +1228,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22450644, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 110
+      value: 67.5
       objectReference: {fileID: 0}
     - target: {fileID: 22415344, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 110
+      value: 67.5
       objectReference: {fileID: 0}
     - target: {fileID: 22450644, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 196
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 22415344, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 196
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 11430062, guid: 6a8125825335e0b41a051368212e98e5, type: 2}
       propertyPath: m_Enabled
@@ -1947,9 +1947,9 @@ MonoBehaviour:
   tweakMode: 0
   screenBlendMode: 1
   hdr: 0
-  sepBlurSpread: 1.3
+  sepBlurSpread: 2.1
   quality: 1
-  bloomIntensity: 0.6
+  bloomIntensity: 0.9
   bloomThreshold: 0.5
   bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
   bloomBlurIterations: 2
