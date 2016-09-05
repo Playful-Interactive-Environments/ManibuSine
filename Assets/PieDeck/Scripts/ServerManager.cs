@@ -135,6 +135,9 @@ public class ServerManager : NetworkManager {
         tp.PublicPlayer = obj.GetComponent<PublicPlayer>();
 
         obj.GetComponent<PublicPlayer>().ControllingPlayer = tp;
+
+        if (!NetworkServer.active)  // prevent exception at restart
+            return;
         NetworkServer.Spawn(obj);
     }
 

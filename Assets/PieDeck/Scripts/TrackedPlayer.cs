@@ -10,6 +10,8 @@ public class TrackedPlayer : ATrackingEntity
 	public float Height;
 	public override void SetPosition(Vector2 coords)
 	{
+        if (this == null)  // prevent exception at restart
+            return;
 		this.transform.position = new Vector3(coords.x * 0.01f + offsetX, Height, coords.y * 0.01f + offsetY);
 	}
 }

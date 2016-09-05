@@ -23,7 +23,7 @@ public class TrackedPlayerNetworkBehaviour : NetworkBehaviour {
     {
         if (ServerManager.Instance.isServer)
         {
-            if (NetworkServer.active) {
+            if (NetworkServer.active) {  // prevent exception at restart
                 NetworkServer.Spawn(gameObject);
                 this.transform.FindChild("Server").gameObject.SetActive(true);
                 this.transform.FindChild("Client").gameObject.SetActive(false);
