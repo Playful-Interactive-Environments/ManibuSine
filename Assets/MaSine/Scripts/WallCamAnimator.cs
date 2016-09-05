@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class WallCamAnimator : MonoBehaviour {
+
+    public GameObject logo;
+
     public bool animateRotation = true;
     public bool frontView = false;
     public bool resetRotation = false;
@@ -87,9 +90,11 @@ public class WallCamAnimator : MonoBehaviour {
         if (ServerManager.Instance.IsClientConnected()) {
             ResetRotation();
             ResetDistance();
+            logo.SetActive(false);
         } else if (!ServerManager.Instance.IsClientConnected()) {
             StartRotation();
             StartDistance();
+            logo.SetActive(true);
         }
     }
 }

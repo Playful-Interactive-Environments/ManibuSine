@@ -25,7 +25,12 @@ public class RenderClientConfig : MonoBehaviour {
         }
     }
 
+    void Update() {
+        //Debug.LogError("IP: " + ServerManager.Instance.ConnectionIP);
+    }
+
     void OnLevelWasLoaded() {
+        //Debug.LogError("Load: " + ServerManager.Instance.ConnectionIP);
         // not in use - because type is chosen by scene
         //if (ClientChooser.Instance == null)
         //    return;
