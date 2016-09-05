@@ -8,6 +8,7 @@ public class PublicPlayer : NetworkBehaviour {
     private float lerpSpeed = 5;
 
     private MeshRenderer mr;
+    private AudioSource audioSource;
 
     public Material lineMaterial;
     private LineRenderer lineRenderer;
@@ -30,6 +31,7 @@ public class PublicPlayer : NetworkBehaviour {
     private PublicPickUp pickUp;
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         mr = GetComponent<MeshRenderer>();
         Color randomColor = Color.HSVToRGB(Random.Range(0.0f, 0.999f), 0.999f, 0.2f);
         randomColor = new Color(randomColor.r, randomColor.g, randomColor.b, 0.7f);
@@ -49,11 +51,6 @@ public class PublicPlayer : NetworkBehaviour {
         if (isClient) {
             DestroyImmediate(body);
         }
-    }
-
-    private void UpdatePickUpPosition() {
-        if (pickUp == null)
-            return;
     }
 
     void Update() {
@@ -92,6 +89,10 @@ public class PublicPlayer : NetworkBehaviour {
         p.Player = this;
 
         id = p.netId.Value;
+
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.Play();
+
         if (isServer)
             RpcGetPickUp(p.netId.Value);
     }

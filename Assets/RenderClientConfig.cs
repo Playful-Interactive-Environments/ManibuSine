@@ -25,7 +25,12 @@ public class RenderClientConfig : MonoBehaviour {
         }
     }
 
+    void Update() {
+        //Debug.LogError("IP: " + ServerManager.Instance.ConnectionIP);
+    }
+
     void OnLevelWasLoaded() {
+        //Debug.LogError("Load: " + ServerManager.Instance.ConnectionIP);
         // not in use - because type is chosen by scene
         //if (ClientChooser.Instance == null)
         //    return;
@@ -51,7 +56,7 @@ public class RenderClientConfig : MonoBehaviour {
         }
 
         // destroy RenderClientConfig after it has been used
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     void Awake() {

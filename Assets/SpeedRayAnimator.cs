@@ -21,7 +21,7 @@ public class SpeedRayAnimator : MonoBehaviour {
     void Update() {
         // no animation if there is no steering station
         // TODO: check if game over works (|| ...enabled == false)
-        if (SteeringStation.Instance == null /*|| SteeringStation.Instance.enabled == false*/) {
+        if (SteeringStation.Instance == null || SteeringStation.Instance.enabled == false) {
             currentSpeed = 0;
             rayColor.a = 0;
             mat.SetColor("_TintColor", rayColor);

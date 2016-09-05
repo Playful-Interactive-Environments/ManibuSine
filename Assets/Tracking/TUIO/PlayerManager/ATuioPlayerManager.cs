@@ -169,7 +169,8 @@ abstract public class ATuioPlayerManager : MonoBehaviour
 		{
 			if(player.TrackID.Equals(sessionID))
 			{
-				GameObject.Destroy(player.gameObject);
+                if (player != null) // prevent exception at restart
+				    GameObject.Destroy(player.gameObject);
 				_playerList.Remove(player);
 				// return here in case you are really really sure the trackID is in our list only once!
 //				return;
