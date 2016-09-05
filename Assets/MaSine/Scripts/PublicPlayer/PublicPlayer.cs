@@ -94,6 +94,10 @@ public class PublicPlayer : NetworkBehaviour {
         p.Player = this;
 
         id = p.netId.Value;
+
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.Play();
+
         if (isServer)
             RpcGetPickUp(p.netId.Value);
     }
