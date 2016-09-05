@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PublicPickUp : NetworkBehaviour {
+    public float lifeTime = 30;
+    public float alive = 0;
+
     private float lerpSpeed = 1;
     public GameObject pickUpParticles;
     public Material on, off;
@@ -66,6 +69,20 @@ public class PublicPickUp : NetworkBehaviour {
 
     }
 
+    private void MeasureLivetime () {
+        // only age if not carried by player
+        if (player != null)
+            return;
+
+        if (alive < lifeTime) {
+            // age
+            alive += Time.deltaTime;
+        } else {
+            // destory
+            Destroy(this.gameObject);
+        }
+    }
+
     private void PositionUpdate() {
         if (player == null)
             return;
@@ -77,5 +94,6 @@ public class PublicPickUp : NetworkBehaviour {
 	void Update () {
         graphicTransform.Rotate(rotSpeed, rotSpeed, rotSpeed);
         PositionUpdate();
+        MeasureLivetime();
 	}
 }
