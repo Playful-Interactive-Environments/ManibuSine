@@ -8,6 +8,7 @@ public class PublicPlayer : NetworkBehaviour {
     private float lerpSpeed = 5;
 
     private MeshRenderer mr;
+    private AudioSource audioSource;
 
     public Material lineMaterial;
     private LineRenderer lineRenderer;
@@ -30,6 +31,7 @@ public class PublicPlayer : NetworkBehaviour {
     private PublicPickUp pickUp;
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         mr = GetComponent<MeshRenderer>();
         Color randomColor = Color.HSVToRGB(Random.Range(0.0f, 0.999f), 0.999f, 0.2f);
         randomColor = new Color(randomColor.r, randomColor.g, randomColor.b, 0.7f);

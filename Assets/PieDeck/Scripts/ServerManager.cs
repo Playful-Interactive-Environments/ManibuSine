@@ -124,6 +124,13 @@ public class ServerManager : NetworkManager {
         if (!isServer)
             return;
 
+        TrackedPlayerNetworkBehaviour tpnb = tp.GetComponent<TrackedPlayerNetworkBehaviour>();
+        if (tpnb != null) {
+            if (tpnb.ControlledPlayer != null) {
+                return;
+            }
+        }
+
         GameObject obj = Instantiate(PublicPlayer, tp.transform.position, Quaternion.identity) as GameObject;
         tp.PublicPlayer = obj.GetComponent<PublicPlayer>();
 
