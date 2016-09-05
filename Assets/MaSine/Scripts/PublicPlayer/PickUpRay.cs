@@ -112,6 +112,7 @@ public class PickUpRay : MonoBehaviour {
 
     void OnDestroy()
     {
+        pickUpsInUpCargo = 0;
         // causes null reference
         SteeringStation.EnteredSteering -= OnEnteredSteering;
         SteeringStation.ExitedSteering -= OnExitedSteering;

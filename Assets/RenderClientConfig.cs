@@ -51,7 +51,7 @@ public class RenderClientConfig : MonoBehaviour {
         }
 
         // destroy RenderClientConfig after it has been used
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     void Awake() {

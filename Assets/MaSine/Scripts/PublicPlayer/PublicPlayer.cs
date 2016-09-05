@@ -53,11 +53,6 @@ public class PublicPlayer : NetworkBehaviour {
         }
     }
 
-    private void UpdatePickUpPosition() {
-        if (pickUp == null)
-            return;
-    }
-
     void Update() {
         if (isServer) {
             if (controllingPlayer == null)
