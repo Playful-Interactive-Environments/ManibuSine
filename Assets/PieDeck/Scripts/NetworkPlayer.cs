@@ -307,6 +307,8 @@ public class NetworkPlayer : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
+        Debug.LogError("Restart");
+
         GameObject restarter = new GameObject();
         restarter.AddComponent<ClientRestarter>();
     }

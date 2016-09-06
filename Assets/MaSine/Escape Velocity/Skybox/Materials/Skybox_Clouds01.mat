@@ -141,7 +141,7 @@ Material:
       data:
         first:
           name: _Rotation
-        second: -0.000020455775
+        second: 0.00001698724
     m_Colors:
       data:
         first:
