@@ -390,7 +390,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: ConnectionIP
-      value: 10.0.0.190
+      value: 192.168.19.165
       objectReference: {fileID: 0}
     - target: {fileID: 11484338, guid: 5bcbf7ec768a6404db3d8497f3612c99, type: 2}
       propertyPath: debugTextClient
@@ -838,6 +838,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317859378}
   m_Mesh: {fileID: 4300000, guid: 1ae255f0230c6474fa80897bfdba3871, type: 3}
+--- !u!1001 &1514503864
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 459.1008
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 185.9737
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 869.8385
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 32f1fbbfd7e080a45a2fb43ca68c56de, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1601294481
 Prefab:
   m_ObjectHideFlags: 0
