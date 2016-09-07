@@ -66,7 +66,7 @@ public class WallCamAnimator : MonoBehaviour {
         }
         else if (resetRotation) {
             transform.rotation = Quaternion.Lerp(transform.rotation, initRot, Time.deltaTime * 5);
-            if (Mathf.Abs(Mathf.Abs(transform.rotation.eulerAngles.y) - Mathf.Abs(initRot.y)) < 0.001f)
+            if (Mathf.Abs(Mathf.Abs(transform.rotation.eulerAngles.y) - Mathf.Abs(initRot.y)) < 0.0002f)
                 resetRotation = false;
         }
     }
