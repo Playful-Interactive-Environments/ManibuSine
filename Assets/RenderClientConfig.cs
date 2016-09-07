@@ -69,6 +69,8 @@ public class RenderClientConfig : MonoBehaviour {
             SceneManager.LoadScene("Client_Render_Floor");
         else if (rc_mode == ClientChooser.ClientType.RenderClientWall)
             SceneManager.LoadScene("Client_Render_Wall");
+
+        Screen.SetResolution(6467, 3830, true);
     }
 
     private bool ConfigureRenderClient() {
