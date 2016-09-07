@@ -13,7 +13,7 @@ public class ClientRestarter : MonoBehaviour {
     }
 
     IEnumerator RestartDelayed() {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.9f);
         Debug.LogError("Load Scene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
