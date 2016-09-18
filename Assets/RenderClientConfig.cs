@@ -70,6 +70,7 @@ public class RenderClientConfig : MonoBehaviour {
         else if (rc_mode == ClientChooser.ClientType.RenderClientWall)
             SceneManager.LoadScene("Client_Render_Wall");
 
+        // wall resolution | TODO: set wall and floor separated
         Screen.SetResolution(6467, 3830, true);
     }
 

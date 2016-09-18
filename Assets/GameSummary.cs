@@ -5,12 +5,21 @@ using System.Globalization;
 
 public class GameSummary : MonoBehaviour {
 
+    [Header("Score multiplicators")]
+    public float xAstariods = 500;
+    public float xCollected = 1000;
+    public float xHit = -1000;
+    public float xPlayTime = -6;
+    public float xGameWon = 7500;
+
     public static bool GameIsOver;
 
     public static int ShotAsteroids;
     public static int CollectedItems;
     public static int HitByAsteroids;
     public static string PlayTime;
+
+    public static int TotalScore;
 
     private DateTime startTime;
 
@@ -46,7 +55,16 @@ public class GameSummary : MonoBehaviour {
         // get damage received
         HitByAsteroids = ShipManager.Instance.maxHP - ShipManager.Instance.currentHP;
 
-        UI_GameOver.SetData(PlayTime, CollectedItems, ShotAsteroids, HitByAsteroids);
+        // calculate total score
+        TotalScore = (int)
+            (ShotAsteroids * xAstariods +
+            CollectedItems * xCollected + 
+            HitByAsteroids * xHit +
+            played.TotalSeconds * xPlayTime +
+            success * xGameWon);
+
+
+        UI_GameOver.SetData(PlayTime, CollectedItems, ShotAsteroids, HitByAsteroids, TotalScore);
     }
 
     // Update is called once per frame
