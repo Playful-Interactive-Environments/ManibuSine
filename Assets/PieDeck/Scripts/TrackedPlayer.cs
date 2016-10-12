@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class TrackedPlayer : ATrackingEntity
 {
     //add offset to adjust tracking area without changing the whole setup
-    private float offsetX = 0;//5.275f;
+    private float offsetX = 4.1f;//5.275f in pie;
     private float offsetY = 0;
 	public float Height;
 	public override void SetPosition(Vector2 coords)
