@@ -15,6 +15,7 @@ public class PublicPickUp : NetworkBehaviour {
     public Transform graphicTransform;
     private float rotSpeed;
 
+    public GameObject leKeilCollider;
 
     private PublicPlayer player;
     public PublicPlayer Player {
@@ -38,6 +39,17 @@ public class PublicPickUp : NetworkBehaviour {
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
+    // remove rigidbody and collider object (layer: LeKeil)
+    void ClientSetup() {
+        if (isServer)
+            return;
+
+        Rigidbody body = GetComponent<Rigidbody>();
+        Destroy(body);
+
+        Destroy(leKeilCollider);
+    }
+
     void Start() {
         crateMeshRenderer = GetComponentInChildren<MeshRenderer>();
 
@@ -48,6 +60,7 @@ public class PublicPickUp : NetworkBehaviour {
         if (rotSpeed < 0.04 && rotSpeed > -0.04)
             rotSpeed = 0.05f;
 
+        ClientSetup();
     }
 
     public void PickIt()

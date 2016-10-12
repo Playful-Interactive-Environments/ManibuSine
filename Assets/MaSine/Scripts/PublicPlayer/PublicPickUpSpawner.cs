@@ -28,6 +28,15 @@ public class PublicPickUpSpawner : MonoBehaviour {
         spawnPosition += transform.up * Random.Range(-1f, 1f) * transform.lossyScale.y / 2f;
         spawnPosition += transform.forward * Random.Range(-1f, 1f) * transform.lossyScale.z / 2f;
 
+        // todo this is hardcoded on 16m width (deep space)
+        if (spawnPosition.x > 5.5f && spawnPosition.x < 10.5f) {
+            // move to left side
+            if (spawnPosition.x < 8)
+                spawnPosition.x -= 3;
+            else
+                spawnPosition.x += 3;
+        }
+
         entitySpawner.SpawnAt(pickUpPrefab.gameObject, spawnPosition, new Quaternion());
 	}
 
