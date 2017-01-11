@@ -4,7 +4,55 @@ timeCreated: 1456309375
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: Center
+    100002: Direction1
+    100004: Direction2
+    100006: Direction3
+    100008: Direction4
+    100010: Direction5
+    100012: Direction6
+    100014: Direction7
+    100016: Direction8
+    100018: //RootNode
+    400000: Center
+    400002: Direction1
+    400004: Direction2
+    400006: Direction3
+    400008: Direction4
+    400010: Direction5
+    400012: Direction6
+    400014: Direction7
+    400016: Direction8
+    400018: //RootNode
+    2300000: Center
+    2300002: Direction1
+    2300004: Direction2
+    2300006: Direction3
+    2300008: Direction4
+    2300010: Direction5
+    2300012: Direction6
+    2300014: Direction7
+    2300016: Direction8
+    3300000: Center
+    3300002: Direction1
+    3300004: Direction2
+    3300006: Direction3
+    3300008: Direction4
+    3300010: Direction5
+    3300012: Direction6
+    3300014: Direction7
+    3300016: Direction8
+    4300000: Center
+    4300002: Direction1
+    4300004: Direction2
+    4300006: Direction3
+    4300008: Direction4
+    4300010: Direction5
+    4300012: Direction6
+    4300014: Direction7
+    4300016: Direction8
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -12,7 +60,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
