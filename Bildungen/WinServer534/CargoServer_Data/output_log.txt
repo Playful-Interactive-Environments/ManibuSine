@@ -2,9 +2,9 @@ Mono path[0] = 'C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Bildungen
 Mono path[1] = 'C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Bildungen/WinServer534/CargoServer_Data/Mono'
 Mono config path = 'C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Bildungen/WinServer534/CargoServer_Data/Mono/etc'
 PlayerConnection initialized from C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Bildungen/WinServer534/CargoServer_Data (debug = 0)
-PlayerConnection initialized network socket : 0.0.0.0 55106
-Multi-casting "[IP] 10.42.1.146 [Port] 55106 [Flags] 2 [Guid] 2088972685 [EditorId] 3328135602 [Version] 1048832 [Id] WindowsPlayer(F073PC) [Debug] 0" to [225.0.0.222:54997]...
-PlayerConnection already initialized - listening to [10.42.1.146:55106]
+PlayerConnection initialized network socket : 0.0.0.0 55255
+Multi-casting "[IP] 10.42.1.146 [Port] 55255 [Flags] 2 [Guid] 522116089 [EditorId] 3328135602 [Version] 1048832 [Id] WindowsPlayer(F073PC) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [10.42.1.146:55255]
 Initialize engine version: 5.3.4f1 (fdbb5133b820)
 [VRDevice] Initialization of device oculus failed.
 
@@ -34,7 +34,7 @@ Platform assembly: C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildun
 Loading C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildungen\WinServer534\CargoServer_Data\Managed\System.Data.dll into Unity Child Domain
 Platform assembly: C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildungen\WinServer534\CargoServer_Data\Managed\Vuforia.UnityExtensions.dll (this message is harmless)
 Loading C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildungen\WinServer534\CargoServer_Data\Managed\Vuforia.UnityExtensions.dll into Unity Child Domain
-- Completed reload, in  0.142 seconds
+- Completed reload, in  0.136 seconds
 Platform assembly: C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildungen\WinServer534\CargoServer_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildungen\WinServer534\CargoServer_Data\Managed\System.dll (this message is harmless)
 Platform assembly: C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildungen\WinServer534\CargoServer_Data\Managed\System.Xml.dll (this message is harmless)
@@ -42,7 +42,7 @@ Platform assembly: C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Bildun
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
 <RI> Initialized touch support.
-UnloadTime: 0.774910 ms
+UnloadTime: 0.595295 ms
 [VRDevice] Initialization of device oculus failed.
 
  
@@ -86,7 +86,6 @@ UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDri
  
 (Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusManager.cs Line: 451)
 
-A blocking operation was interrupted by a call to WSACancelBlockingCall.
 --- Disconnected from PharusServer: port is now free ---
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
@@ -100,6 +99,7 @@ UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDri
  
 (Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 175)
 
+A blocking operation was interrupted by a call to WSACancelBlockingCall.
 
 --- Trying to reconnect tracking service... ---
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
@@ -121,124 +121,10 @@ UnityPharus.UnityPharusListener:Reconnect() (at C:\Users\Daniel\OneDrive\Dokumen
 UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:441)
  
 (Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 138)
-
---- There might be a connection problem... (no data received in the past 5 seconds)---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:LogWarning(Object)
-UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:451)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusManager.cs Line: 451)
-
-A blocking operation was interrupted by a call to WSACancelBlockingCall.
-
---- Disconnected from PharusServer: port is now free ---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-UnityPharus.UnityPharusListener:Shutdown() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:175)
-UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:439)
-UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\UnityEngineMonoBehaviourBindings.gen.cs:60)
-UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:452)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 175)
-
---- Trying to reconnect tracking service... ---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-UnityPharus.UnityPharusListener:Reconnect() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:189)
-UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:441)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 189)
-
---- Connection establised: receiving data from PharusServer at 239.1.1.1:44345 ---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-UnityPharus.UnityPharusListener:InitTracking() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:138)
-UnityPharus.UnityPharusListener:Reconnect() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:191)
-UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:441)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 138)
-
---- There might be a connection problem... (no data received in the past 5 seconds)---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:LogWarning(Object)
-UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:451)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusManager.cs Line: 451)
-
-A blocking operation was interrupted by a call to WSACancelBlockingCall.
-
---- Disconnected from PharusServer: port is now free ---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-UnityPharus.UnityPharusListener:Shutdown() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:175)
-UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:439)
-UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\UnityEngineMonoBehaviourBindings.gen.cs:60)
-UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:452)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 175)
-
---- Trying to reconnect tracking service... ---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-UnityPharus.UnityPharusListener:Reconnect() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:189)
-UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:441)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 189)
-
---- Connection establised: receiving data from PharusServer at 239.1.1.1:44345 ---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-UnityPharus.UnityPharusListener:InitTracking() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:138)
-UnityPharus.UnityPharusListener:Reconnect() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:191)
-UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:441)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 138)
-
---- There might be a connection problem... (no data received in the past 5 seconds)---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:LogWarning(Object)
-UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:451)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusManager.cs Line: 451)
-
-A blocking operation was interrupted by a call to WSACancelBlockingCall.
-
---- Disconnected from PharusServer: port is now free ---
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-UnityPharus.UnityPharusListener:Shutdown() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:175)
-UnityPharus.<ReconnectListenerDelayed>c__Iterator5:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:439)
-UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\UnityEngineMonoBehaviourBindings.gen.cs:60)
-UnityPharus.<CheckServerAlive>c__Iterator6:MoveNext() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:452)
- 
-(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 175)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1c24 -> priority: 1 
-  Thread -> id: 2a44 -> priority: 1 
+  Thread -> id: 2380 -> priority: 1 
+  Thread -> id: 2740 -> priority: 1 
 A blocking operation was interrupted by a call to WSACancelBlockingCall.
 
 null packet
@@ -251,4 +137,16 @@ UnityTuio.UnityTuioListener:Shutdown() (at C:\Users\Daniel\OneDrive\Dokumente\RE
 UnityTuio.UnityTuioManager:OnDestroy() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityTuioFramwork\UnityTuioManager.cs:151)
  
 (Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityTuioFramwork/UnityTuioListener.cs Line: 145)
+
+A blocking operation was interrupted by a call to WSACancelBlockingCall.
+
+--- Disconnected from PharusServer: port is now free ---
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UnityPharus.UnityPharusListener:Shutdown() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusListener.cs:175)
+UnityPharus.UnityPharusManager:OnDestroy() (at C:\Users\Daniel\OneDrive\Dokumente\REPOS\IM_ManibuSine\Assets\3rdParty\Tracking\UnityPharusFramework\UnityPharusManager.cs:191)
+ 
+(Filename: C:/Users/Daniel/OneDrive/Dokumente/REPOS/IM_ManibuSine/Assets/3rdParty/Tracking/UnityPharusFramework/UnityPharusListener.cs Line: 175)
 
